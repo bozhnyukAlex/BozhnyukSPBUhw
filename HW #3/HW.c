@@ -3,6 +3,8 @@
 int bitAnd();
 int bitOr();
 int bitXor();
+int thirdBits();
+int fitsBits();
 
 
 int main(){
@@ -16,23 +18,30 @@ int main(){
             case 1:{
                 printf("Input two numbers: ");
                 int parA, parB, res;
-                scanf("%d %d", &parA, &parB);
+                scanf("%i %i", &parA, &parB);
                 res = bitAnd(parA, parB);
-                printf("Result: %d \n", &res);
+                printf("Result: %i \n", res);
                 break;
             }
             case 2:{
                 printf("Input two numbers: ");
                 int parA, parB, res;
-                scanf("%d %d", &parA, &parB);
+                scanf("%i %i", &parA, &parB);
                 res = bitXor(parA, parB);
-                printf("Result: %d \n", &res);
+                printf("Result: %i \n", res);
                 break;
             }
             case 3:{
+                int res = thirdBits();
+                printf("Result: %i \n", res);
                 break;
             }
             case 4:{
+                int num, btCount;
+                printf("Input number and bits count: ");
+                scanf("%i %i", &num, &btCount);
+                int res = fitsBits(num, btCount);
+                printf("Result: %i \n", res);
                 break;
             }
             case 5:{
@@ -76,4 +85,19 @@ int bitOr(int parA, int parB){
 }
 int bitXor(int parA, int parB){
     return bitOr(parA & ~parB, ~parA & parB);
+}
+int thirdBits(){
+    int res = 36, step = 6, first = 36;
+    int step2 = step + step; //I can't use * operator;
+    int step4 = step2 + step2;
+    res |= (res << step);
+    res |= (res << step2);
+    res |= (first << step4);
+    return res;
+}
+int fitsBits(int num, int btCount){
+    int shift = 32 + (~btCount + 1);
+    int newNum = num << shift;
+    newNum >>= shift;
+    return !(num ^ newNum);
 }
