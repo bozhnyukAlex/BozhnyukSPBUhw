@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 
 int bitAnd();
 int bitOr();
@@ -45,9 +45,19 @@ int main(){
                 break;
             }
             case 5:{
+                int num;
+                printf("Input number: ");
+                scanf("%i", &num);
+                int res = sign(num);
+                printf("Result: %i \n", res);
                 break;
             }
             case 6:{
+                int num, byte;
+                printf("Input number and byte: ");
+                scanf("%i %i", &num, &byte);
+                int res = getByte(num, byte);
+                printf("Result: %i \n", res);
                 break;
             }
             case 7:{
@@ -100,4 +110,16 @@ int fitsBits(int num, int btCount){
     int newNum = num << shift;
     newNum >>= shift;
     return !(num ^ newNum);
+}
+int sign(int num){
+    int shift = 31;
+    int is0 = !(num ^ 0);
+    return !is0 | (num >> shift);
+}
+int getByte(int num, int byte){
+    int mask = 0xFF;
+    int shift = byte << 3;
+    mask <<= shift;
+    int res = num & mask;
+    return res >> shift;
 }
