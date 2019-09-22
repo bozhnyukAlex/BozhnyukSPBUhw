@@ -5,7 +5,12 @@ int bitOr();
 int bitXor();
 int thirdBits();
 int fitsBits();
-
+int getByte();
+int logicalShift();
+int addOk();
+int bang();
+int conditional();
+int isPower2();
 
 int main(){
     int option = -1;
@@ -61,18 +66,43 @@ int main(){
                 break;
             }
             case 7:{
+                int num, delta;
+                printf("Input number and shift distance: ");
+                scanf("%i %i", &num, &delta);
+                int res = logicalShift(num, delta);
+                printf("Result:  %i \n", res);
                 break;
             }
             case 8:{
+                int num1, num2;
+                printf("Input two numbers: ");
+                scanf("%i %i", &num1, &num2);
+                int res = addOk(num1, num2);
+                printf("Result: %i", res);
                 break;
             }
             case 9:{
+                int num;
+                printf("Input number: ");
+                scanf("%i", &num);
+                int res = bang(num);
+                printf("Result: %i", res);
                 break;
             }
             case 10:{
+                int num1, num2, num3;
+                printf("Input three numbers: ");
+                scanf("%i %i %i", &num1, &num2, &num3);
+                int res = conditional(num1, num2, num3);
+                printf("Result: %i \n", res);
                 break;
             }
             case 11:{
+                int num;
+                printf("Input number: ");
+                scanf("%i", &num);
+                int res = isPower2(num);
+                printf("Result: %i \n", res);
                 break;
             }
             case 12:{
@@ -83,7 +113,6 @@ int main(){
 
         }
     }
-
     return 0;
 }
 
@@ -116,10 +145,37 @@ int sign(int num){
     int is0 = !(num ^ 0);
     return !is0 | (num >> shift);
 }
-int getByte(int num, int byte){
+int getByte(int num, int nbyte){
     int mask = 0xFF;
-    int shift = byte << 3;
+    int shift = nbyte << 3;
     mask <<= shift;
     int res = num & mask;
     return res >> shift;
 }
+int setBit0(int num, int bit){
+    return num & ~(1 << bit);
+}
+int setBit1(int num, int bit){
+    return num | (1 << bit);
+}
+int logicalShift(int num, int delta){
+    int mask = (1 << (32 + (~delta + 1)));
+    mask += (~1 + 1);
+    num >>= delta;
+    return num & mask;
+}
+int addOk(int numA, int numB){
+
+}
+int bang(int num){
+
+}
+int conditional(int x, int y, int z){
+   /* int is0 = !(x ^ 0);
+    return (is0 & z) | (~is0 & y);*/
+}
+int isPower2(int num){
+    int is0 = !(num ^ 0);
+    return !is0 & !(num & (num + (~1 + 1)));
+}
+
