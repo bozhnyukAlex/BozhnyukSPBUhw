@@ -164,15 +164,20 @@ int logicalShift(int num, int delta){
     num >>= delta;
     return num & mask;
 }
+int getMBit(int n, int m){
+    return (n >> m) & 1;
+}
 int addOk(int numA, int numB){
 
 }
 int bang(int num){
+    int is0 = ~((num >> 31) & 1) & ((num ^ (num + (~1 + 1))) >> 31) & 1 ;
+    return is0;
 
 }
 int conditional(int x, int y, int z){
-   /* int is0 = !(x ^ 0);
-    return (is0 & z) | (~is0 & y);*/
+    int is0 = !(x ^ 0);
+    return ((~is0+1) & z) | (~(~is0+1) & y);
 }
 int isPower2(int num){
     int is0 = !(num ^ 0);
