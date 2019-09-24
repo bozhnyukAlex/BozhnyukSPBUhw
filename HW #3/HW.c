@@ -19,6 +19,10 @@ int main(){
     while(1){
         printf("\nYour option: ");
         scanf("%d", &option);
+        if(option <= 0 || option >= 13){
+            printf("Wrong option! Try Again!\n");
+            continue;
+        }
         switch(option){
             case 1:{
                 printf("Input two numbers: ");
@@ -110,7 +114,6 @@ int main(){
                 break;
             }
 
-
         }
     }
     return 0;
@@ -152,22 +155,18 @@ int getByte(int num, int nbyte){
     int res = num & mask;
     return res >> shift;
 }
-int setBit0(int num, int bit){
-    return num & ~(1 << bit);
-}
-int setBit1(int num, int bit){
-    return num | (1 << bit);
-}
 int logicalShift(int num, int delta){
     int mask = (1 << (32 + (~delta + 1)));
     mask += (~1 + 1);
     num >>= delta;
     return num & mask;
 }
-int getMBit(int n, int m){
-    return (n >> m) & 1;
-}
 int addOk(int numA, int numB){
+    int sgnA = (numA >> 31) & 1,
+        sgnB = (numB >> 31) & 1;
+    int sum = numA + numB;
+    int sgnAB = (sum >> 31) & 1;
+    return (!sgnA | !sgnB | sgnAB) & (sgnA | sgnB | !sgnAB);
 
 }
 int bang(int num){
