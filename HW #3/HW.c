@@ -11,7 +11,7 @@ int addOk();
 int bang();
 int conditional();
 int isPower2();
-/*
+
 int main(){
     int option = -1;
     printf("Hello, User! Select option. Press number from 1 to 12\n");
@@ -117,7 +117,7 @@ int main(){
         }
     }
     return 0;
-}*/
+}
 
 int bitAnd(int parA, int parB){
     return ~(~parA | ~parB);
@@ -153,7 +153,7 @@ int getByte(int num, int nbyte){
     int shift = nbyte << 3;
     mask <<= shift;
     int res = num & mask;
-    return res >> shift;
+    return (res >> shift) & 0xFF;
 }
 int logicalShift(int num, int delta){
     int mask = (1 << (32 + (~delta + 1)));
