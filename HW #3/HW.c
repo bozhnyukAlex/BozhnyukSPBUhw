@@ -11,7 +11,7 @@ int addOk();
 int bang();
 int conditional();
 int isPower2();
-
+/*
 int main(){
     int option = -1;
     printf("Hello, User! Select option. Press number from 1 to 12\n");
@@ -117,7 +117,7 @@ int main(){
         }
     }
     return 0;
-}
+}*/
 
 int bitAnd(int parA, int parB){
     return ~(~parA | ~parB);
@@ -179,7 +179,9 @@ int conditional(int x, int y, int z){
     return ((~is0+1) & z) | (~(~is0+1) & y);
 }
 int isPower2(int num){
+    int isMore0 = (num >> 31) & 1;
     int is0 = !(num ^ 0);
-    return !is0 & !(num & (num + (~1 + 1)));
+    return !isMore0 & !is0 & !(num & (num + (~1 + 1)));
 }
+
 
