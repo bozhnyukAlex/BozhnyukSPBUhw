@@ -156,10 +156,15 @@ int getByte(int num, int nbyte){
     return (res >> shift) & 0xFF;
 }
 int logicalShift(int num, int delta){
+    int beg = num;
+    int res;
+    int isD0 = !(delta ^ 0);
     int mask = (1 << (32 + (~delta + 1)));
     mask += (~1 + 1);
     num >>= delta;
-    return num & mask;
+    res = num & mask;
+    return ((~isD0+1) & beg) | (~(~isD0+1) & res);
+}
 }
 int addOk(int numA, int numB){
     int sgnA = (numA >> 31) & 1,
