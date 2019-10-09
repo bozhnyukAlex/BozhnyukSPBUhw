@@ -20,8 +20,9 @@ char* strcat(char* dst, char* src){
     size_t srcLen = strlen(src),
         dstLen = strlen(dst);
     int index = 0;
-    for(index = 0; index < srcLen; index++){
+    while(index < srcLen){
         dst[dstLen+index] = src[index];
+        index++;
     }
     dst[dstLen+index] = '\0';
     return dst;
