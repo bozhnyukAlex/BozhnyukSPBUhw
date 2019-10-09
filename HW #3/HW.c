@@ -7,7 +7,7 @@ int thirdBits();
 int fitsBits();
 int getByte();
 int logicalShift();
-int addOk();
+int addOK();
 int bang();
 int conditional();
 int isPower2();
@@ -15,7 +15,7 @@ int isPower2();
 int main(){
     int option = -1;
     printf("Hello, User! Select option. Press number from 1 to 12\n");
-    printf(" 1 - bitAnd\n 2 - bitXor\n 3 - thirdBits\n 4 - fitsBits\n 5 - sign\n 6 - getByte\n 7 - logicalShift\n 8 - addOk\n 9 - bang\n 10 - conditional\n 11 - isPower2\n 12 - Exit Program");
+    printf(" 1 - bitAnd\n 2 - bitXor\n 3 - thirdBits\n 4 - fitsBits\n 5 - sign\n 6 - getByte\n 7 - logicalShift\n 8 - addOK\n 9 - bang\n 10 - conditional\n 11 - isPower2\n 12 - Exit Program");
     while(1){
         printf("\nYour option: ");
         scanf("%d", &option);
@@ -81,7 +81,7 @@ int main(){
                 int num1, num2;
                 printf("Input two numbers: ");
                 scanf("%i %i", &num1, &num2);
-                int res = addOk(num1, num2);
+                int res = addOK(num1, num2);
                 printf("Result: %i", res);
                 break;
             }
@@ -117,8 +117,8 @@ int main(){
         }
     }
     return 0;
-}*/
-
+}
+*/
 int bitAnd(int parA, int parB){
     return ~(~parA | ~parB);
 }
@@ -165,8 +165,8 @@ int logicalShift(int num, int delta){
     res = num & mask;
     return ((~isD0+1) & beg) | (~(~isD0+1) & res);
 }
-}
-int addOk(int numA, int numB){
+
+int addOK(int numA, int numB){
     int sgnA = (numA >> 31) & 1,
         sgnB = (numB >> 31) & 1;
     int sum = numA + numB;
