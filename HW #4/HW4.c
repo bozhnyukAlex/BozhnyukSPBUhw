@@ -1,5 +1,5 @@
 #include <stdio.h>
-int strlen(char* str){
+size_t strlen(char* str){
     size_t strlength = 0;
     int index = 0;
     while(str[index]){
