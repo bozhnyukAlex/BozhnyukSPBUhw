@@ -94,5 +94,11 @@ int main(){
     printf("\t\t------Dynamic variable and array addresses------\n");
     printf("DinA: %p\nDinB: %p\nDinC: %p\nDinD: %p\nDinE: %p\nDinF: %p\nArr: %p\n", dinA, dinB, dinC, dinD, dinE, dinF, arr);
     free(arr);
+    free(dinA);
+    free(dinB);
+    free(dinC);
+    free(dinD);
+    free(dinE);
+    free(dinF);
     return 0;
 }
