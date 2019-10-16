@@ -7,11 +7,13 @@ int strToInt(char *s){
     if ((sLen > 10 && s[0] != '-') || (sLen > 11 && s[0] == '-')) {
         return -1;
     }
+    char IMIN[] = "-2147483648";
+    char IMAX[] = "2147483648";
+    if((s[0] != '-' && sLen == 10 && strcmp(IMAX, s) < 0) || (s[0] == '-' && sLen == 11 && strcmp(IMIN, s) < 0)){
+        return -1;
+    }
     while (index < sLen) {
         int curDig = s[index]-'0';
-        if (((long long)(res * 10 + curDig) > INT_MAX && s[0] != '-') || ((long long)((res * 10 + curDig)*(-1)) < INT_MIN && s[0] == '-')) {
-            return -1;
-        }
         res *= 10;
         res += curDig;
         index++;
