@@ -3,10 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 int main(){
-    int inN, index, radix = 10;
+    size_t inN, index, radix = 10;
     const int cntSize = 256;
-    const int mxSize = 1000000;
-    int cnt[cntSize];
+    const size_t mxSize = 1000000;
+    size_t cnt[cntSize];
     for (index = 0; index < cntSize; index++) {
         cnt[index] = 0;
     }
