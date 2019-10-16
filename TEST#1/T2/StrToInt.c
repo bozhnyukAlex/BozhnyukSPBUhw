@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
+#include <malloc.h>
 int strToInt(char *s){
     int index = (s[0] == '-')? 1 : 0, sLen = strlen(s);
     int res = 0;
