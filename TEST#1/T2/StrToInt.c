@@ -10,7 +10,7 @@ int strToInt(char *s){
     }
     char IMIN[] = "-2147483648";
     char IMAX[] = "2147483648";
-    if((s[0] != '-' && sLen == 10 && strcmp(IMAX, s) < 0) || (s[0] == '-' && sLen == 11 && strcmp(IMIN, s) < 0)){
+    if ((s[0] != '-' && sLen == 10 && strcmp(IMAX, s) < 0) || (s[0] == '-' && sLen == 11 && strcmp(IMIN, s) < 0)) {
         return -1;
     }
     while (index < sLen) {
@@ -23,8 +23,8 @@ int strToInt(char *s){
 }
 int main(){
     const int MAX_LENGTH = 255;
-    char ERROR_INPUT[255] = "Error input!";
-    char ERROR_OVERFLOW[255] = "Error overflow!";
+    char ERROR_INPUT[] = "Error input!";
+    char ERROR_OVERFLOW[] = "Error overflow!";
     char *str;
 
     str = (char*) malloc(MAX_LENGTH);
@@ -40,7 +40,7 @@ int main(){
         puts(ERROR_INPUT);
         return 0;
     }
-    while (index < stLen){
+    while (index < stLen) {
         if (str[index] < '0' || str[index] > '9') {
             puts(ERROR_INPUT);
             return 0;

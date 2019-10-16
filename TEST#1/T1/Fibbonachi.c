@@ -1,10 +1,14 @@
 #include <stdio.h>
-int Fibonacci(int n){ ///without recursion
-    if (n == 0) return 0;
-    if (n == 1 || n == 2) return 1;
+int Fibonacci(int n) { ///without recursion
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1 || n == 2) {
+        return 1;
+    }
     int first = 1, second = 1, temp = 0;
     int index = 3;
-    while(index <= n){
+    while (index <= n) {
         temp = first + second;
         first = second;
         second = temp;

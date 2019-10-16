@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 int main(){
-    size_t inN, index, radix = 10;
+    size_t inN, index;
     const int cntSize = 256;
     const size_t mxSize = 1000000;
     size_t cnt[cntSize];
