@@ -64,11 +64,11 @@ int main(){
         *dinD = (int*)malloc(sizeof(char)),
         *dinE = (int*)malloc(sizeof(char)),
         *dinF = (int*)malloc(sizeof(char));
-    dinA = 1000;
-    dinC = 10001;
-    dinD = '0'; //значение меняется!
-    dinE = 'Q';
-    dinF = 'R';
+    *dinA = 1000;
+    *dinC = 10001;
+    *dinD = '0'; //значение меняется!
+    *dinE = 'Q';
+    *dinF = 'R';
 
     arr = (int*)malloc(arrSize * sizeof(int));
     if(arr == NULL || dinA == NULL || dinB == NULL || dinC == NULL || dinD == NULL || dinE == NULL || dinF == NULL){
