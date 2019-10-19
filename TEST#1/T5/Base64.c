@@ -6,10 +6,11 @@ char* strToBase64(char* s){
         index,
         sL = strlen(s),
         mask = 0x3F,
-        mxSize = 1000000;
+        mxSize = 1000000,
+        step = 3;
     char result[mxSize];
     sprintf(result, "");
-    for (index = 0; index < sL - sL % 3; index += 3) {
+    for (index = 0; index < sL - sL % 3; index += step) {
         int fChar = s[index],
             sChar = s[index+1],
             tChar = s[index+2];
@@ -44,44 +45,45 @@ char* strToBase64(char* s){
 
 char* base64ToStr(char *s){
     char base[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    int i, j,
+    int index, Jindex,
         sL = strlen(s),
         bL = 64,
         buffer = 0,
         mask = 0xFF,
-        mxSize = 1000000;
+        mxSize = 1000000,
+        step = 4;
     char result[mxSize];
     sprintf(result, "");
-    for(i = 0; i < sL; i += 4){
-        int fChar = s[i],
-            sChar = s[i+1],
-            tChar = s[i+2],
-            frChar = s[i+3],
+    for (index = 0; index < sL; index += step) {
+        int fChar = s[index],
+            sChar = s[index + 1],
+            tChar = s[index + 2],
+            frChar = s[index + 3],
             fI = -1,
             sI = -1,
             tI = -1,
             frI = -1;
-        for(j = 0; j < bL; j++){
-            if(base[j] == fChar){
-                fI = j;
+        for (Jindex = 0; Jindex < bL; Jindex++) {
+            if (base[Jindex] == fChar) {
+                fI = Jindex;
             }
-            if(base[j] == sChar){
-                sI = j;
+            if (base[Jindex] == sChar) {
+                sI = Jindex;
             }
-            if(base[j] == tChar){
-                tI = j;
+            if (base[Jindex] == tChar) {
+                tI = Jindex;
             }
-            if(base[j] == frChar){
-                frI = j;
+            if (base[Jindex] == frChar) {
+                frI = Jindex;
             }
         }
-        if(tI == -1){
+        if (tI == -1) {
             buffer = (fI << 18) + (sI << 12);
         }
-        else if(tI != -1 && frI == -1){
+        else if (tI != -1 && frI == -1) {
             buffer = (fI << 18) + (sI << 12) + (tI << 6);
         }
-        else if(tI != -1 && frI != -1){
+        else if (tI != -1 && frI != -1) {
             buffer = (fI << 18) + (sI << 12) + (tI << 6) + frI;
         }
         char firstChar = (buffer >> 16) & mask,
@@ -99,7 +101,7 @@ int main(){
     gets(s);
     printf("Choose the option: \n 1 - Encode \n 2 - Decode \nYour option: ");
     scanf("%d", &option);
-    switch(option){
+    switch (option) {
         case 1: {
             printf("Result: ");
             puts(strToBase64(s));
