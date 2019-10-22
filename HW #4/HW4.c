@@ -18,10 +18,10 @@ char* strcat(char* dst, char* src){
     size_t dstLen = strlen(dst);
     size_t index = 0;
     while (src[index]) {
-        dst[dstLen+index] = src[index];
+        dst[dstLen + index] = src[index];
         index++;
     }
-    dst[dstLen+index] = '\0';
+    dst[dstLen + index] = '\0';
     return dst;
 }
 int strcmp(char* s1, char* s2){
@@ -37,8 +37,8 @@ int main(){
     char s1[MAX_STRING_SIZE], s2[MAX_STRING_SIZE], s3[MAX_STRING_SIZE];
     gets(s1);
     gets(s2);
-    strcpy(s3,s1);
-    puts(strcat(s1,s2));
+    strcpy(s3, "hello\0 hell");
+   // puts(strcat(s1,s2));
     printf("%d\n%d\n%s", strlen(s2), strcmp(s3,s2), s3);
     return 0;
 }*/
