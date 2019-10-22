@@ -71,7 +71,7 @@ int main(){
     *dinF = 'R';
 
     arr = (int*)malloc(arrSize * sizeof(int));
-    if(arr == NULL || dinA == NULL || dinB == NULL || dinC == NULL || dinD == NULL || dinE == NULL || dinF == NULL){
+    if (arr == NULL || dinA == NULL || dinB == NULL || dinC == NULL || dinD == NULL || dinE == NULL || dinF == NULL) {
         printf("ERROR!");
         return 0;
     }
