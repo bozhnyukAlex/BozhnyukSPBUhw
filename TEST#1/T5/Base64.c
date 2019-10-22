@@ -12,8 +12,8 @@ char* strToBase64(char* s){
     sprintf(result, "");
     for (index = 0; index < sL - sL % 3; index += step) {
         int fChar = s[index],
-            sChar = s[index+1],
-            tChar = s[index+2];
+            sChar = s[index + 1],
+            tChar = s[index + 2];
         buffer = (fChar << 16) + (sChar << 8) + tChar;
         int firstChar = (buffer >> 18) & mask,
             secondChar = (buffer >> 12) & mask,
@@ -24,15 +24,15 @@ char* strToBase64(char* s){
     }
 
     if (sL % 3 == 1) {
-        int fChar = s[sL-1];
+        int fChar = s[sL - 1];
         buffer = fChar << 16;
         int firstChar = (buffer >> 18) & mask,
             secondChar = (buffer >> 12) & mask;
         sprintf(result,"%s%c%c%c%c", result, base[firstChar], base[secondChar], '=', '=');
     }
     else if (sL % 3 == 2) {
-        int fChar = s[sL-2],
-            sChar = s[sL-1];
+        int fChar = s[sL - 2],
+            sChar = s[sL - 1];
         buffer = fChar << 16;
         buffer |= (sChar << 8);
         int firstChar = (buffer >> 18) & mask,
