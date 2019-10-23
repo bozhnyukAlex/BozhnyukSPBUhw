@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <stdlib.h>
-int main(){
+int main() {
     size_t inN, index;
     const int cntSize = 256;
     const size_t mxSize = 1000000;
@@ -12,25 +12,19 @@ int main(){
     }
     printf("Input numbers count: ");
     scanf("%d", &inN);
-    int *arr;
+    int num;
     char result[mxSize];
-    arr = malloc(inN * sizeof(int));
-    if (arr == NULL) {
-        printf("ERROR");
-        return 0;
-    }
     printf("Input numbers: ");
     for (index = 0; index < inN; index++) {
-        scanf("%d", &arr[index]);
-        cnt[arr[index]]++;
-        if (index == 0) {
-            sprintf(result, "%s", "");
+        scanf("%d", &num);
+        cnt[num]++;
+        if (index == 0 && cnt[num] == 1) {
+            sprintf(result, "%d", num);
         }
-        if (cnt[arr[index]] == 1) {
-            sprintf(result, "%s %d", result, arr[index]);
+        if (index != 0 && cnt[num] == 1) {
+            sprintf(result, "%s %d", result, num);
         }
     }
     puts(result);
-    free(arr);
     return 0;
 }
