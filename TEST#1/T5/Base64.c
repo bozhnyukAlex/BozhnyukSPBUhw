@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-char* strToBase64(char* s){
+char* strToBase64(char* s) {
     char base[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     int buffer = 0,
         index,
@@ -43,7 +43,7 @@ char* strToBase64(char* s){
     return result;
 }
 
-char* base64ToStr(char *s){
+char* base64ToStr(char *s) {
     char base[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     int index, Jindex,
         sL = strlen(s),
@@ -93,7 +93,7 @@ char* base64ToStr(char *s){
     }
     return result;
 }
-int main(){
+int main() {
     int mxSize = 1000000;
     char s[mxSize];
     int option = 0;
