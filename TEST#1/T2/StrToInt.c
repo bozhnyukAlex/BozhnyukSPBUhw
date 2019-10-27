@@ -14,7 +14,7 @@ int strToInt(char *s) {
         res += curDig;
         index++;
     }
-    return (s[0] == '-')? res : res;
+    return (s[0] == '-')? -res : res;
 }
 int main() {
     const int MAX_LENGTH = 255;
@@ -30,19 +30,48 @@ int main() {
     printf("Input string: ");
     gets(str);
 
+
     int stLen = strlen(str),
-        index = (str[0] == '-')? 1 : 0; ///обработка проблем ввода
-    if (strcmp(str, "-") == 0 || stLen == 0) {
+    index = 0;
+
+    while (str[index] == ' ') {
+        str[index] = '0';
+        index++;
+    }
+    if (str[index] == '-') {
+        str[index] = '0';
+        str[0] = '-';
+        index++;
+    }
+
+    if (strcmp(str, "-") == 0 || stLen == 0 || str[index] == '\0') {
         puts(ERROR_INPUT);
         return 1;
     }
-    while (index < stLen) {
-        if (str[index] < '0' || str[index] > '9') {
+    while (str[index] >= '0' && str[index] <= '9') {
+        index++;
+    }
+    int index1 = index;
+    if (str[index] != '\0') {
+        if (str[index] != ' ') {
             puts(ERROR_INPUT);
             return 1;
         }
-        index++;
-    } ///конец обработки проблем ввода
+        else {
+            while (str[index1] == ' ') {
+                index1++;
+            }
+            if (str[index1] == '\0') {
+                str[index] = '\0';
+            }
+            else {
+                puts(ERROR_INPUT);
+                return 1;
+            }
+
+        }
+    }
+
     int result = strToInt(str);
     if (result == -1) {
         puts(ERROR_OVERFLOW);
