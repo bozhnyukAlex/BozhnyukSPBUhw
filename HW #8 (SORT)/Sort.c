@@ -18,11 +18,11 @@
 void swap(int *a, int *b);
 void countSort(int *arr, int size);
 void insertionSort(int *arr, int size);
-void quickSort(int *arr, int l, int r);
+void quickSort(int *arr, int left, int right);
 void sort(int *arr, int size, void (*f)(int *a, int s));
 void fill(int *arr, int size);
 void test(int *arr, int size, void (*f)(int *a, int s));
-void qtest(int *arr, int l, int r);
+void qtest(int *arr, int left, int right);
 
 
 int main() {
