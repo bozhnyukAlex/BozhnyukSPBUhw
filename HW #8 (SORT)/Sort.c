@@ -13,115 +13,64 @@
 #define T_MILLION_SIZE 10000000
 #define H_MILLION_SIZE 100000000
 #define MILLION_MOD 1000000
+#define SIZE_COUNT 9
+#define SORTS_COUNT 3
 
 
 void swap(int *a, int *b);
-void countSort(int *arr, int size);
-void insertionSort(int *arr, int size);
-void quickSort(int *arr, int left, int right);
-void sort(int *arr, int size, void (*f)(int *a, int s));
-void fill(int *arr, int size);
-void test(int *arr, int size, void (*f)(int *a, int s));
-void qtest(int *arr, int left, int right);
-
+void countSort(int *arr, size_t size);
+void insertionSort(int *arr, size_t size);
+void quickSortEX(int *arr, size_t left, size_t right);
+void quickSort(int *arr, size_t size);
+void fill(int *arr, size_t size);
+void test(int *arr, size_t size, void (*f)(int *a, size_t s));
 
 int main() {
     srand(5);
-    int *arrF,
-        *arrTN,
-        *arrH,
-        *arrT,
-        *arrTT,
-        *arrHT,
-        *arrM,
-        *arrTM,
-        *arrHM;
-    int i;
-    arrF = malloc(FIVE_SIZE * sizeof(int));
-    arrTN = malloc(TEN_SIZE * sizeof(int));
-    arrH = malloc(HUNDRED_SIZE * sizeof(int));
-    arrT = malloc(THOUSAND_SIZE * sizeof(int));
-    arrTT = malloc(T_THOUSAND_SIZE * sizeof(int));
-    arrHT = malloc(H_THOUSAND_SIZE * sizeof(int));
-    arrM = malloc(MILLION_SIZE * sizeof(int));
-    arrTM = malloc(T_MILLION_SIZE * sizeof(int));
-    arrHM = malloc(H_MILLION_SIZE * sizeof(int));
-
-    if (arrF == NULL || arrTN == NULL || arrH == NULL || arrT == NULL || arrTT == NULL || arrHT == NULL || arrM == NULL || arrHM == NULL || arrTM == NULL) {
-        printf("ERROR");
+    int **arrs;
+    size_t i, j;
+    int sizes[] = {FIVE_SIZE, TEN_SIZE, HUNDRED_SIZE, THOUSAND_SIZE, T_THOUSAND_SIZE, H_THOUSAND_SIZE, MILLION_SIZE, T_MILLION_SIZE, H_MILLION_SIZE};
+    arrs = (int**) malloc(SIZE_COUNT * sizeof(int*));
+    if (arrs == NULL) {
+        printf("ERROR\n");
         return 0;
     }
-
-    fill(arrF, FIVE_SIZE);
-    fill(arrTN, TEN_SIZE);
-    fill(arrH, HUNDRED_SIZE);
-    fill(arrT, THOUSAND_SIZE);
-    fill(arrHT, H_THOUSAND_SIZE);
-    fill(arrTT, T_THOUSAND_SIZE);
-    fill(arrM, MILLION_SIZE);
-    fill(arrHM, H_MILLION_SIZE);
-    fill(arrTM, T_MILLION_SIZE);
-
-
-    int option = 0;
-    while (1) {
-        printf("\nChoose your option: \n 1 - Check countSort \n 2 - Check insertionSort \n 3 - Check quickSort \n 4 - Exit program \n");
-        scanf("%d", &option);
-        if (option < 1 || option > 4) {
-            printf("Wrong option!\n");
-            continue;
+    for (i = 0; i < SIZE_COUNT; i++) {
+        arrs[i] = (int*) malloc(sizes[i] * sizeof(int));
+        if (arrs[i] == NULL) {
+            printf("ERROR");
+            return 0;
         }
-        int (*sortType) (int *a, int s);
-        switch (option) {
+        fill(arrs[i], sizes[i]);
+    }
+
+    void (*sortMethods[SORTS_COUNT]) (int *ar, size_t size) = {countSort, quickSort, insertionSort};
+
+    for (i = 0; i < SORTS_COUNT; i++) {
+        switch (i) {
+            case 0: {
+                printf("Count Sort: \n");
+                break;
+            }
             case 1: {
-                sortType = countSort;
+                printf("Quick Sort: \n");
                 break;
             }
             case 2: {
-                sortType = insertionSort;
+                printf("Insertion Sort: \n");
                 break;
             }
-            case 3: {
-                qtest(arrF, 0, FIVE_SIZE - 1);
-                qtest(arrTN, 0, TEN_SIZE - 1);
-                qtest(arrH, 0, HUNDRED_SIZE - 1);
-                qtest(arrT, 0, THOUSAND_SIZE - 1);
-                qtest(arrTT, 0, T_THOUSAND_SIZE - 1);
-                qtest(arrHT, 0, H_THOUSAND_SIZE - 1);
-                qtest(arrM, 0, MILLION_SIZE - 1);
-                qtest(arrTM, 0, T_MILLION_SIZE - 1);
-                qtest(arrHM, 0, H_MILLION_SIZE - 1);
-                break;
-            }
-            case 4: {
-                return 0;
-            }
         }
-        if (option == 3) {
-            continue;
+        for (j = 0; j < SIZE_COUNT; j++) {
+            test(arrs[j], sizes[j], sortMethods[i]);
         }
-        printf("\nTest Results: \n");
-        test(arrF, FIVE_SIZE, sortType);
-        test(arrTN, TEN_SIZE, sortType);
-        test(arrH, HUNDRED_SIZE, sortType);
-        test(arrT, THOUSAND_SIZE, sortType);
-        test(arrTT, T_THOUSAND_SIZE, sortType);
-        test(arrHT, H_THOUSAND_SIZE, sortType);
-        test(arrM, MILLION_SIZE, sortType);
-        test(arrTM, T_MILLION_SIZE, sortType);
-        test(arrHM, H_MILLION_SIZE, sortType);
+        printf("\n");
     }
 
-
-    free(arrF);
-    free(arrH);
-    free(arrHM);
-    free(arrHT);
-    free(arrM);
-    free(arrT);
-    free(arrTM);
-    free(arrTN);
-    free(arrTT);
+    for (i = 0; i < SIZE_COUNT; i++) {
+        free(arrs[i]);
+    }
+    free(arrs);
     return 0;
 }
 
@@ -132,10 +81,14 @@ void swap(int *a, int *b) {
     *a = *b;
     *b = temp;
 }
-void countSort(int *arr, int size) {
+void countSort(int *arr, size_t size) {
     int *cnt;
-    int i, j;
-    cnt = malloc(MILLION_SIZE * sizeof(int));
+    size_t i, j;
+    cnt = (int*) malloc(MILLION_SIZE * sizeof(int));
+    if (cnt == NULL) {
+        printf("ERROR");
+        return;
+    }
     for (i = 0; i < MILLION_SIZE; i++) {
         cnt[i] = 0;
     }
@@ -150,10 +103,11 @@ void countSort(int *arr, int size) {
             }
         }
     }
+    free(cnt);
 }
 
-void insertionSort(int *arr, int size) {
-    int i, j;
+void insertionSort(int *arr, size_t size) {
+    size_t i, j;
     int mn, mni;
     for (i = 0; i < size - 1; i++) {
         mn = MILLION_MOD;
@@ -168,11 +122,10 @@ void insertionSort(int *arr, int size) {
     }
 }
 
-void quickSort(int *arr, int left, int right) {
-    srand(time(0));
+void quickSortEX(int *arr, size_t left, size_t right) {
     if (left < right) {
         int pivot = arr[left + (rand() % (right - left + 1))];
-        int i = left, j = right;
+        size_t i = left, j = right;
         while (i <= j) {
             while (arr[i] < pivot) {
                 i++;
@@ -181,43 +134,36 @@ void quickSort(int *arr, int left, int right) {
                 j--;
             }
             if (i <= j) {
-                swap(&arr[i++], &arr[j--]);
+                swap(&arr[i], &arr[j]);
+                i++;
+                j--;
             }
         }
-        quickSort(arr, left, j);
-        quickSort(arr, i , right);
+        quickSortEX(arr, left, j);
+        quickSortEX(arr, i , right);
     }
 }
 
-void sort(int *arr, int size, void (*f)(int *a, int s)) {
-    f(arr, size);
+void quickSort(int *arr, size_t size) {
+    quickSortEX(arr, 0, size - 1);
 }
-void fill(int *arr, int size) {
-    srand(5);
-    int i;
+
+void fill(int *arr, size_t size) {
+
+    size_t i;
     for (i = 0; i < size; i++) {
         arr[i] = rand() % MILLION_MOD;
     }
 }
 
-void test(int *arr, int size, void (*f)(int *a, int s)) {
+void test(int *arr, size_t size, void (*sort)(int *a, size_t s)) {
     clock_t begin, end;
     double timeSpend;
     begin = clock();
-    sort(arr, size, f);
+    sort(arr, size);
     end = clock();
     timeSpend = (double) (end - begin) / CLOCKS_PER_SEC;
     printf("Size %d - %.10lf\n", size, timeSpend);
     fill(arr, size);
 }
-void qtest(int *arr, int left, int right) {
-    clock_t begin, end;
-    int size = right + 1;
-    double timeSpend;
-    begin = clock();
-    quickSort(arr, left, right);
-    end = clock();
-    timeSpend = (double) (end - begin) / CLOCKS_PER_SEC;
-    printf("Size %d - %.10lf\n", size, timeSpend);
-    fill(arr, size);
-}
+
