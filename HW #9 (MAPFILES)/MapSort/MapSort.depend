@@ -19,3 +19,14 @@
 	<stdint.h>
 	<sys/types.h>
 
+1574718302 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.c
+	<windows.h>
+	<errno.h>
+	<io.h>
+	"mman.h"
+
+1574718302 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.h
+	<_mingw.h>
+	<stdint.h>
+	<sys/types.h>
+

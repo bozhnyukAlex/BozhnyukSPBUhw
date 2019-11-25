@@ -4,9 +4,7 @@
 #include <fcntl.h>
 #include <malloc.h>
 #include <sys/stat.h>
-#include "mman1.h"
-#define FILE_NAME_LENGTH 11
-#define BITES_COUNT 10000
+#include "mman-win32-master/mman.h"
 #define MAX_STR_LEN 100
 #define MAX_STR_CNT 10000
 
@@ -17,8 +15,10 @@ int main() {
         printf("ERROR");
         return 1;
     }
-
-    char *text = mmap(0, BITES_COUNT, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
+    struct stat st;
+	fstat(fd, &st); ///struct with information about fd (we need size - bytes count)
+	int size = st.st_size;
+    char *text = mmap(0, size, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
 
 
     int tl = strlen(text);
@@ -56,11 +56,7 @@ int main() {
 //    }
 
 
-    for (i = 0; i < strCount; i++) {
-        free(strings[i]);
-    }
-    free(strings);
-    munmap(text, BITES_COUNT);
+    munmap(text, size);
     close(fd);
     return 0;
 }
