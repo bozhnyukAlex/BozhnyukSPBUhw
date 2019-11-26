@@ -68,6 +68,9 @@ void deleteNode(struct List* list, size_t numDelete) {
     }
 }
 void clearList(struct List* list) {
+    if (list->length == 0) {
+        return;
+    }
     struct Node* curr = list->head;
     while (curr) {
         struct Node *tmp = curr;

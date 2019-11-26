@@ -1,15 +1,28 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <string.h>
 #include "mylist.h"
+#define OPTION_LENGTH 1000
 
 int main () {
     struct List list = createList();
+    char opt[OPTION_LENGTH] = "";
     int option = -1;
     printf("Choose option: \n 1 - Print\n 2 - InsertToBegin\n 3 - InsertAfterEl\n 4 - GetN\n 5 - DeleteNode\n 6 - ClearList\n 7 - Exit\n");
     while (1) {
         printf("Your option: ");
-        scanf("%d", &option);
+        scanf("%s", &opt);
+        if (strlen(opt) > 1) {
+            printf("Wrong option!\n");
+            continue;
+        }
+        if (opt[0] < '1' || opt[0] > '7') {
+            printf("Wrong option!\n");
+            continue;
+        }
+        option = opt[0] - '0';
+
         switch (option) {
             case 1: {
                 if (list.length == 0) {
@@ -58,7 +71,7 @@ int main () {
                 }
                 else {
                     struct Node* node = getN(&list, num);
-                    printf("%d node value: %d", num, node->data);
+                    printf("Node: %d value: %d", num, node->data);
                 }
                 printf("\n");
                 break;
@@ -86,6 +99,7 @@ int main () {
                 return 0;
             }
         }
+
     }
     return 0;
 }

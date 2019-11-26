@@ -1,13 +1,14 @@
 # depslib dependency file v1.0
-1574687803 source:c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\main.c
+1574787627 source:c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\main.c
 	<stdio.h>
 	<malloc.h>
 	<stdlib.h>
+	<string.h>
 	"mylist.h"
 
-1574683800 c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\mylist.h
+1574785226 c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\mylist.h
 
-1574683731 source:c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\mylist.c
+1574787623 source:c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\mylist.c
 	<stdio.h>
 	<malloc.h>
 	<stdlib.h>
