@@ -5,14 +5,15 @@
 	<io.h>
 	"mman.h"
 
-1574859253 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
+1574882834 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
 	<stdio.h>
 	<stdlib.h>
-	<string.h>
 	<fcntl.h>
 	<malloc.h>
 	<sys/stat.h>
+	<sys/types.h>
 	"mman-win32-master/mman.h"
+	<string.h>
 
 1574549018 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman1.h
 	<_mingw.h>

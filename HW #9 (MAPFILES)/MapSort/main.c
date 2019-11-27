@@ -21,27 +21,24 @@ int main() {
     }
     struct stat st;
 	fstat(fd, &st); ///struct with information about fd (we need size - bytes count)
-	int size = st.st_size, osize = 0;
-    char *text = mmap(0, size, PROT_READ, MAP_PRIVATE, fd, 0);
-    char *res = (char*) malloc(size * sizeof(int));
+	int size = st.st_size;
+    char* text = mmap(0, size, PROT_READ, MAP_PRIVATE, fd, 0);
+
    // puts(text);
-    if (text == MAP_FAILED || res == NULL) {
+    if (text == MAP_FAILED) {
         printf("ERROR");
         return 1;
     }
     int txtLen = strlen(text);
-    int maxLen = -1, ///for malloc
+    int maxLen = 0, ///for malloc
         curLen = 0,
         strCount = 1;
     for (i = 0; i < txtLen; i++) {
-        if (text[i] != '\n') {
-            curLen++;
+        curLen++;
+        if (maxLen < curLen) {
+            maxLen = curLen;
         }
-        else {
-            if (maxLen < curLen) {
-                maxLen = curLen;
-            }
-            osize += (curLen + 1);
+        if (text[i] == '\n') {
             curLen = 0;
             strCount++;
         }
@@ -51,7 +48,7 @@ int main() {
     char **strings = (char**) malloc(strCount * sizeof(char*));
     char *cur = (char*) malloc(maxLen * sizeof(char));
 
-    if (strings == NULL) {
+    if (strings == NULL || cur == NULL) {
         printf("ERROR");
         return 1;
     }
@@ -63,7 +60,6 @@ int main() {
             j++;
         }
         cur[j] = '\0';
-        //j++;
         pos++;
         strings[i] = strdup(cur);
         i++;
@@ -75,12 +71,16 @@ int main() {
 //    for (i = 0; i < strCount; i++) {
 //        puts(strings[i]);
 //    }
-  //  printf("\n");
+//    printf("\n");
     qsort(strings, strCount, sizeof(char*), strCmp);
-
 //    for (i = 0; i < strCount; i++) {
 //        puts(strings[i]);
 //    }
+    char *res = (char*) malloc(txtLen * sizeof(char));
+    if (res == NULL) {
+        printf("ERROR");
+        return 1;
+    }
     sprintf(res, "");
     for (i = 0; i < strCount; i++) {
         if (i == 0) {
@@ -89,20 +89,17 @@ int main() {
         else {
             sprintf(res, "%s\n%s", res, strings[i]);
         }
-        osize += strlen(strings[i]);
-
     }
-  //  puts(res);
 
-
-    write(fdout, res, osize);
+    write(fdout, res, txtLen);
     for (i = 0; i < strCount; i++) {
         free(strings[i]);
     }
+    munmap(text, txtLen);
     free(strings);
     free(cur);
     free(res);
-    munmap(text, size);
     close(fd);
+    close(fdout);
     return 0;
 }

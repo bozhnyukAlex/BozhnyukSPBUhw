@@ -1,16 +1,6 @@
-ORGANISM NAME:	Drosophila arizonae
-ORGANISM COMMON NAME:	NA
-TAXID:	7263
-ANNOTATION RELEASE NAME:	NCBI Drosophila arizonae Annotation Release 100
-ANNOTATION EVIDENCE FREEZE DATE:	24 August 2016
-ANNOTATION RELEASE DATE:	29 August 2016
-ANNOTATION REPORT:	http://www.ncbi.nlm.nih.gov/genome/annotation_euk/Drosophila_arizonae/100/
-
-ANNOTATED ASSEMBLIES:
-* REFERENCE:
-ASSEMBLY NAME:	ASM165402v1
-ASSEMBLY ACCESSION:	GCF_001654025.1
-ASSEMBLY SUBMITTER:	Biotechnology Institute of UNAM
-ASSEMBLY DATE:	9 May 2016
-ASSEMBLY TYPE:	Haploid
-NUMBER OF ASSEMBLY-UNITS:	1
+booom
+aslsdlkslkad
+pkfldjglkdfjgkfd
+qwepiqwrpoqir
+lmcxvllcxkv
+pslk
