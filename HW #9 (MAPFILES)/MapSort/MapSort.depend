@@ -5,27 +5,27 @@
 	<io.h>
 	"mman.h"
 
-1574590633 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
+1574859253 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<fcntl.h>
 	<malloc.h>
 	<sys/stat.h>
-	"mman1.h"
+	"mman-win32-master/mman.h"
 
 1574549018 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman1.h
 	<_mingw.h>
 	<stdint.h>
 	<sys/types.h>
 
-1574718302 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.c
+1574839507 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.c
 	<windows.h>
 	<errno.h>
 	<io.h>
 	"mman.h"
 
-1574718302 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.h
+1574839507 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.h
 	<_mingw.h>
 	<stdint.h>
 	<sys/types.h>
