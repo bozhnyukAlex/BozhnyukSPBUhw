@@ -58,9 +58,14 @@ void insertAfterEl(struct List* list, size_t afterNum, int newValue) {
 void deleteNode(struct List* list, size_t numDelete) {
     struct Node* toDelete = getN(list, numDelete);
     struct Node* curr = list->head;
+    if (curr == toDelete) {
+        list->head = curr->next;
+        free(toDelete);
+        return;
+    }
     while (curr) {
         if (curr->next == toDelete) {
-            curr->next = toDelete->next;
+            curr->next = curr->next->next;
             free(toDelete);
             return;
         }
