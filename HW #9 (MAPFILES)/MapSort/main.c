@@ -32,7 +32,7 @@ int main() {
     int txtLen = strlen(text);
     int maxLen = 0, ///for malloc
         curLen = 0,
-        strCount = 1;
+        strCount = 0;
     for (i = 0; i < txtLen; i++) {
         curLen++;
         if (maxLen < curLen) {
