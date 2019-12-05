@@ -15,6 +15,7 @@
 #define MILLION_MOD 1000000
 #define SIZE_COUNT 9
 #define SORTS_COUNT 3
+#define SORT_NAME_LENGTH 15
 
 
 void swap(int *a, int *b);
@@ -24,6 +25,11 @@ void quickSortEX(int *arr, size_t left, size_t right);
 void quickSort(int *arr, size_t size);
 void fill(int *arr, size_t size);
 void test(int *arr, size_t size, void (*f)(int *a, size_t s));
+
+struct sortingFn {
+    void (*op) (int* a, size_t s);
+    char description[SORT_NAME_LENGTH];
+} ;
 
 int main() {
     srand(5);
@@ -44,25 +50,17 @@ int main() {
         fill(arrs[i], sizes[i]);
     }
 
-    void (*sortMethods[SORTS_COUNT]) (int *ar, size_t size) = {countSort, quickSort, insertionSort};
+   // void (*sortMethods[SORTS_COUNT]) (int *ar, size_t size) = {countSort, quickSort, insertionSort};
+    struct sortingFn sortMethods[SORTS_COUNT] = {
+        countSort, "Count Sort     ",
+        quickSort, "Quick Sort     ",
+        insertionSort, "Insertion Sort"
+    };
 
     for (i = 0; i < SORTS_COUNT; i++) {
-        switch (i) {
-            case 0: {
-                printf("Count Sort: \n");
-                break;
-            }
-            case 1: {
-                printf("Quick Sort: \n");
-                break;
-            }
-            case 2: {
-                printf("Insertion Sort: \n");
-                break;
-            }
-        }
+        printf("%s\n", sortMethods[i].description);
         for (j = 0; j < SIZE_COUNT; j++) {
-            test(arrs[j], sizes[j], sortMethods[i]);
+            test(arrs[j], sizes[j], sortMethods[i].op);
         }
         printf("\n");
     }
@@ -98,7 +96,6 @@ void countSort(int *arr, size_t size) {
     for (i = 0; i < MILLION_SIZE; i++) {
         if (cnt[i] != 0) {
             for (j = 0; j < cnt[i]; j++) {
-                //printf("%d ", i);
                 printf("");
             }
         }
