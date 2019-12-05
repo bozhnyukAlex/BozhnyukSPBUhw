@@ -1,15 +1,8 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
-struct Node {
-    int data;
-    struct Node* next;
-};
-struct List {
-    struct Node* head;
-    struct Node* end;
-    size_t length;
-};
+#include "mylist.h"
+
 struct List createList() {
     struct List list;
     list.head = NULL;
@@ -20,6 +13,10 @@ struct List createList() {
 
 struct Node* createNode(int value) {
     struct Node* node = (struct Node*) malloc(sizeof(struct Node));
+    if (node == NULL) {
+        printf("ERROR");
+        exit(0);
+    }
     node->data = value;
     node->next = NULL;
     return node;

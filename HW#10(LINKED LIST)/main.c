@@ -4,6 +4,18 @@
 #include <string.h>
 #include "mylist.h"
 #define OPTION_LENGTH 1000
+#define MIN_STR_LEN 1
+#define MIN_OPT '1'
+#define MAX_OPT '7'
+enum {
+    PRINT = 1,
+    INSERT_TO_BEGIN,
+    INSERT_AFTER_ELEMENT,
+    GET_N,
+    DELETE_NODE,
+    CLEAR_LIST,
+    EXIT
+};
 
 int main () {
     struct List list = createList();
@@ -13,18 +25,18 @@ int main () {
     while (1) {
         printf("Your option: ");
         scanf("%s", &opt);
-        if (strlen(opt) > 1) {
+        if (strlen(opt) > MIN_STR_LEN) {
             printf("Wrong option!\n");
             continue;
         }
-        if (opt[0] < '1' || opt[0] > '7') {
+        if (opt[0] < MIN_OPT || opt[0] > MAX_OPT) {
             printf("Wrong option!\n");
             continue;
         }
         option = opt[0] - '0';
 
         switch (option) {
-            case 1: {
+            case PRINT: {
                 if (list.length == 0) {
                     printf("List is empty.");
                 }
@@ -39,7 +51,7 @@ int main () {
                 printf("\n\n");
                 break;
             }
-            case 2: {
+            case INSERT_TO_BEGIN: {
                 printf("Input integer value: ");
                 int data;
                 scanf("%d", &data);
@@ -48,13 +60,13 @@ int main () {
                 printf("\n");
                 break;
             }
-            case 3: {
+            case INSERT_AFTER_ELEMENT: {
                 printf("Input number of previous node and current node value: ");
                 int currData = -1;
                 size_t afterNum = -1;
                 scanf("%d %d", &afterNum, &currData);
                 if (afterNum < 0 || afterNum >= list.length) {
-                    printf("There are no nods with this number!");
+                    printf("There are no nodes with this number!");
                 }
                 else {
                     insertAfterEl(&list, afterNum, currData);
@@ -62,7 +74,7 @@ int main () {
                 printf("\n");
                 break;
             }
-            case 4: {
+            case GET_N: {
                 size_t num = -1;
                 printf("Input integer number of node: ");
                 scanf("%d", &num);
@@ -77,7 +89,7 @@ int main () {
                 break;
 
             }
-            case 5: {
+            case DELETE_NODE: {
                 size_t num = -1;
                 printf("Input number of node you want to delete: ");
                 scanf("%d", &num);
@@ -90,16 +102,17 @@ int main () {
                 printf("\n");
                 break;
             }
-            case 6: {
+            case CLEAR_LIST: {
                 clearList(&list);
                 printf("\n");
                 break;
             }
-            case 7: {
+            case EXIT: {
+                clearList(&list);
                 return 0;
             }
         }
-
     }
+    clearList(&list);
     return 0;
 }
