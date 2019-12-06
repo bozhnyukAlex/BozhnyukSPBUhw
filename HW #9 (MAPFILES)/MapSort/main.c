@@ -8,14 +8,14 @@
 #define MAX_STR_LEN 100
 #define MAX_STR_CNT 10000
 
-int strCmp (const void * a, const void * b) {
+int strCmp (const void* a, const void* b) {
   return strcmp(*(char**)a, *(char**)b);
 }
 int main() {
     int fd = open("content.txt", O_RDWR, 0);
     int fdout = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IWRITE);
     int i = 0, j = 0;
-    if (fd == -1) {
+    if (fd == -1 || fdout == -1) {
         printf("ERROR");
         return 1;
     }
@@ -44,7 +44,7 @@ int main() {
         }
     }
 
-   // printf("!!! %d %d\n", strCount, maxLen);
+    printf("!!! %d %d\n", strCount, maxLen);
     char **strings = (char**) malloc(strCount * sizeof(char*));
     char *cur = (char*) malloc(maxLen * sizeof(char));
 
@@ -52,8 +52,8 @@ int main() {
         printf("ERROR");
         return 1;
     }
-    int pos = 0;
-    for (i = 0; i < strCount;) {
+    int posStr = 0, posCur = 0;
+    /*for (i = 0; i < strCount;) {
         j = 0;
         for (; text[pos] != '\n' && pos < txtLen; pos++) {
             cur[j] = text[pos];
@@ -67,11 +67,23 @@ int main() {
             break;
         }
     }
+*/
+    //printf("!!!!");
+    int prev = 0;
+    for (i = 0; i < txtLen; i++) {
+        if (text[i] == '\n') {
+            strings[posStr] = (char*) malloc(maxLen * sizeof(char));
+            strings[posStr] = &text[posCur];
+            posStr++;
+           // strings[posStr][i - posCur] = '\0';
+            posCur = i + 1;
+        }
+    }
 
-//    for (i = 0; i < strCount; i++) {
-//        puts(strings[i]);
-//    }
-//    printf("\n");
+    for (i = 0; i < strCount; i++) {
+        puts(strings[i]);
+    }
+    printf("\n");
     qsort(strings, strCount, sizeof(char*), strCmp);
 //    for (i = 0; i < strCount; i++) {
 //        puts(strings[i]);

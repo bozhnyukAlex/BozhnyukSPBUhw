@@ -5,7 +5,7 @@
 	<io.h>
 	"mman.h"
 
-1575126904 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
+1575660817 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -19,13 +19,13 @@
 	<stdint.h>
 	<sys/types.h>
 
-1575126905 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.c
+1575579106 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.c
 	<windows.h>
 	<errno.h>
 	<io.h>
 	"mman.h"
 
-1575126905 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.h
+1575579106 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.h
 	<_mingw.h>
 	<stdint.h>
 	<sys/types.h>
