@@ -58,12 +58,14 @@ void deleteNode(struct List* list, size_t numDelete) {
     if (curr == toDelete) {
         list->head = curr->next;
         free(toDelete);
+        list->length--;
         return;
     }
     while (curr) {
         if (curr->next == toDelete) {
             curr->next = curr->next->next;
             free(toDelete);
+            list->length--;
             return;
         }
         curr = curr->next;
