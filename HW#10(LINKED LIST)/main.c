@@ -6,7 +6,7 @@
 #define OPTION_LENGTH 1000
 #define MIN_STR_LEN 1
 #define MIN_OPT '1'
-#define MAX_OPT '7'
+#define MAX_OPT '9'
 enum {
     PRINT = 1,
     INSERT_TO_BEGIN,
@@ -14,6 +14,8 @@ enum {
     GET_N,
     DELETE_NODE,
     CLEAR_LIST,
+    CREATE_CYCLE,
+    CHECK_CYCLE,
     EXIT
 };
 
@@ -21,7 +23,9 @@ int main () {
     struct List list = createList();
     char opt[OPTION_LENGTH] = "";
     int option = -1;
-    printf("Choose option: \n 1 - Print\n 2 - InsertToBegin\n 3 - InsertAfterEl\n 4 - GetN\n 5 - DeleteNode\n 6 - ClearList\n 7 - Exit\n");
+    int hasCycle = 0;
+    int checked = 0;
+    printf("Choose option: \n 1 - Print\n 2 - InsertToBegin\n 3 - InsertAfterEl\n 4 - GetN\n 5 - DeleteNode\n 6 - ClearList\n 7 - CreateCycle\n 8 - CheckCycle\n 9 - Exit\n");
     while (1) {
         printf("Your option: ");
         scanf("%s", &opt);
@@ -37,6 +41,10 @@ int main () {
 
         switch (option) {
             case PRINT: {
+                if (checked == 0) {
+                    printf("Check the list on the subject of cycles!\n");
+                    continue;
+                }
                 if (list.length == 0) {
                     printf("List is empty.");
                 }
@@ -66,7 +74,7 @@ int main () {
                 size_t afterNum = -1;
                 scanf("%d %d", &afterNum, &currData);
                 if (afterNum < 0 || afterNum >= list.length) {
-                    printf("There are no nodes with this number!");
+                    printf("There are no nodes with this number!\n");
                 }
                 else {
                     insertAfterEl(&list, afterNum, currData);
@@ -75,11 +83,15 @@ int main () {
                 break;
             }
             case GET_N: {
+                if (checked == 0) {
+                    printf("Check the list on the subject of cycles!\n");
+                    continue;
+                }
                 size_t num = -1;
                 printf("Input integer number of node: ");
                 scanf("%d", &num);
                 if (num < 0 || num >= list.length) {
-                    printf("There are no node with this number in our List!");
+                    printf("There is no node with this number in our List!\n");
                 }
                 else {
                     struct Node* node = getN(&list, num);
@@ -90,11 +102,15 @@ int main () {
 
             }
             case DELETE_NODE: {
+                if (checked == 0) {
+                    printf("Check the list on the subject of cycles!\n");
+                    continue;
+                }
                 size_t num = -1;
                 printf("Input number of node you want to delete: ");
                 scanf("%d", &num);
                 if (num < 0 || num >= list.length) {
-                    printf("There are no node with this number in our List!");
+                    printf("There is no node with this number in our List!\n");
                 }
                 else {
                     deleteNode(&list, num);
@@ -107,8 +123,37 @@ int main () {
                 printf("\n");
                 break;
             }
+            case CREATE_CYCLE: {
+                printf("Where do you want to create a cycle? Input: ");
+                size_t num = -1;
+                scanf("%d", &num);
+                if (num < 0 || num >= list.length) {
+                    printf("There is no node with this number in our List!\n");
+                }
+                checked = 0;
+                printf("Cycle was created!\n");
+                break;
+            }
+            case CHECK_CYCLE: {
+                hasCycle = checkCycle(&list);
+                if (hasCycle) {
+                    printf("Attention! List has got a cycle! Deleting...\n");
+                    deleteCycle(&list);
+                }
+                else {
+                    printf("List has not got a cycle!\n");
+                }
+                checked = 1;
+                break;
+
+            }
             case EXIT: {
+                if (checked == 0) {
+                    printf("Check the list on the subject of cycles!\n");
+                    continue;
+                }
                 clearList(&list);
+
                 return 0;
             }
         }

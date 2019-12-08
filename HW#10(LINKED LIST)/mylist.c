@@ -71,6 +71,33 @@ void deleteNode(struct List* list, size_t numDelete) {
         curr = curr->next;
     }
 }
+
+void createCycle(struct List* list, size_t to) {
+    list->end->next = getN(list, to);
+}
+
+int checkCycle(struct List* list) {
+    struct Node* left = list->head;
+    struct Node* right = list->head;
+    if (left == NULL) {
+        return 0;
+    }
+    while (1) {
+        if (right->next == NULL || right->next->next == NULL || left->next == NULL) {
+            return 0;
+        }
+        if(right->next == left || right->next->next == left || (left == right && left != list->head) || left->next == right) {
+            return 1;
+        }
+        right = right->next->next;
+        left = left->next;
+    }
+}
+
+void deleteCycle(struct List* list) {
+    list->end->next = NULL;
+}
+
 void clearList(struct List* list) {
     if (list->length == 0) {
         return;

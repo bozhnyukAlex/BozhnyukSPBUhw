@@ -17,6 +17,9 @@ void insertToBegin(struct List* list, struct Node* node);
 void insertAfterEl(struct List* list, size_t afterNum, int newValue);
 void deleteNode(struct List* list, size_t numDelete);
 void clearList(struct List* list);
+void createCycle(struct List* list, size_t to);
+int checkCycle(struct List* list);
+void deleteCycle(struct List* list);
 
 
 #endif // MYLIST_H_INCLUDED
