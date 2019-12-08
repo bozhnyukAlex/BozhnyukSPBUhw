@@ -53,6 +53,16 @@ void insertToBegin(struct List* list, struct Node* node) {
         list->end = node; ///if not, list->end already exists
     }
 }
+void insertBack(struct List* list, struct Node* node) {
+	if (list->length == 0) {
+		insertToBegin(list, node);
+	}
+	else {
+		list->end->next = node;
+		list->end = node;
+		list->length++;
+	}
+}
 void insertAfterEl(struct List* list, size_t afterNum, int newValue, char* newKey) {
     struct Node* after = getN(list, afterNum);
     struct Node* newNode = createNode(newValue, newKey);
