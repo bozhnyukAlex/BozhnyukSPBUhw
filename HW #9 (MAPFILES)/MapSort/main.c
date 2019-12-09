@@ -8,23 +8,32 @@
 #define MAX_STR_LEN 100
 #define MAX_STR_CNT 10000
 
-int strCmp (const void* a, const void* b) {
-  return strcmp(*(char**)a, *(char**)b);
+int myStrcmp(char* s1, char* s2) {
+    size_t index = 0;
+    while (s1[index] == s2[index] && s1[index] != '\n' && s2[index] != '\n') {
+        index++;
+    }
+    return s1[index] - s2[index];
 }
+
+int strCmp(const void* a, const void* b) {
+  return myStrcmp(*(char**)a, *(char**)b);
+}
+
 int main() {
     int fd = open("content.txt", O_RDWR, 0);
-    int fdout = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IWRITE);
-    int i = 0, j = 0;
-    if (fd == -1 || fdout == -1) {
+    FILE* fout = fopen("output.txt", "w");
+    size_t i = 0, j = 0;
+    if (fd == -1 || fout == NULL) {
         printf("ERROR");
         return 1;
     }
+
     struct stat st;
 	fstat(fd, &st); ///struct with information about fd (we need size - bytes count)
-	int size = st.st_size;
+	size_t size = st.st_size;
     char* text = mmap(0, size, PROT_READ, MAP_PRIVATE, fd, 0);
 
-   // puts(text);
     if (text == MAP_FAILED) {
         printf("ERROR");
         return 1;
@@ -44,74 +53,34 @@ int main() {
         }
     }
 
-    printf("!!! %d %d\n", strCount, maxLen);
     char **strings = (char**) malloc(strCount * sizeof(char*));
-    char *cur = (char*) malloc(maxLen * sizeof(char));
-
-    if (strings == NULL || cur == NULL) {
+    if (strings == NULL) {
         printf("ERROR");
         return 1;
     }
     int posStr = 0, posCur = 0;
-    /*for (i = 0; i < strCount;) {
-        j = 0;
-        for (; text[pos] != '\n' && pos < txtLen; pos++) {
-            cur[j] = text[pos];
-            j++;
-        }
-        cur[j] = '\0';
-        pos++;
-        strings[i] = strdup(cur);
-        i++;
-        if (pos >= txtLen) {
-            break;
-        }
-    }
-*/
-    //printf("!!!!");
     int prev = 0;
-    for (i = 0; i < txtLen; i++) {
+    i = 0;
+    while (text[i]) {
         if (text[i] == '\n') {
-            strings[posStr] = (char*) malloc(maxLen * sizeof(char));
             strings[posStr] = &text[posCur];
             posStr++;
-           // strings[posStr][i - posCur] = '\0';
             posCur = i + 1;
         }
+        i++;
     }
-
-    for (i = 0; i < strCount; i++) {
-        puts(strings[i]);
-    }
-    printf("\n");
     qsort(strings, strCount, sizeof(char*), strCmp);
-//    for (i = 0; i < strCount; i++) {
-//        puts(strings[i]);
-//    }
-    char *res = (char*) malloc(txtLen * sizeof(char));
-    if (res == NULL) {
-        printf("ERROR");
-        return 1;
-    }
-    sprintf(res, "");
     for (i = 0; i < strCount; i++) {
-        if (i == 0) {
-            sprintf(res, "%s", strings[i]);
+        size_t pos = 0;
+        while (strings[i][pos] != '\n') {
+            fputc(strings[i][pos], fout);
+            pos++;
         }
-        else {
-            sprintf(res, "%s\n%s", res, strings[i]);
-        }
-    }
-
-    write(fdout, res, txtLen);
-    for (i = 0; i < strCount; i++) {
-        free(strings[i]);
+        fputc('\n', fout);
     }
     munmap(text, txtLen);
     free(strings);
-    free(cur);
-    free(res);
     close(fd);
-    close(fdout);
+    close(fout);
     return 0;
 }

@@ -1,8 +1,36 @@
-dasljdsladlksajdklas
-sadlkdsalk
-sadlklj
-dsalk
-
-dsalk
-
-fdslfd
+
+
+          method: Gnomon' note on CDS
+          what was annotated on the genome
+      added CDS feature to organelle proteins
+      coded_by to range on the RefSeq transcripts instead of scaffolds
+      corrected CDS range (if different than the genome length)
+      removed 'Derived by automated computational analysis using gene prediction 
+      removed /inference and /exception on CDS
+      removed some db_xrefs that are present on genome but missing on known RefSeq (NP_s)
+      used native known RefSeq markup for gene names and such when they differ from 
+  * corrected CDS feature annotation, including:
+  * corrected DBSOURCE to RefSeq transcripts instead of scaffolds
+  * removed unexpected PUBLICATIONS propagated from the scaffolds
+* REFERENCE:
+======================================================================
+ANNOTATED ASSEMBLIES:
+ANNOTATION EVIDENCE FREEZE DATE:	8 January 2015
+ANNOTATION RELEASE DATE:	13 January 2015
+ANNOTATION RELEASE NAME:	NCBI Acromyrmex echinatior Annotation Release 100
+ANNOTATION REPORT:	http://www.ncbi.nlm.nih.gov/genome/annotation_euk/Acromyrmex_echinatior/100/
+ASSEMBLY ACCESSION:	GCF_000204515.1
+ASSEMBLY DATE:	3 May 2011
+ASSEMBLY NAME:	Aech_3.9
+ASSEMBLY SUBMITTER:	Beijing Genomics Institute, Shenzhen
+ASSEMBLY TYPE:	Haploid
+May 4, 2015 - update for protein.gbk.gz
+NUMBER OF ASSEMBLY-UNITS:	1
+Note:
+ORGANISM COMMON NAME:	Panamanian leafcutter ant
+ORGANISM NAME:	Acromyrmex echinatior
+TAXID:	103372
+The protein.gbk.gz file in the protein directory was regenerated to correct an error 
+in the source for the protein (DBSOURCE and coded_by fields). For some proteins, the 
+scaffold on which the protein is annotated was used as the source rather than the 
+transcript. The full list of changes includes:
