@@ -63,5 +63,5 @@ int main() {
     free(word);
     free(copy);
     fclose(file);
-	return 0;
+    return 0;
 }
