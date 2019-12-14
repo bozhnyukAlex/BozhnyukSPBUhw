@@ -13,23 +13,23 @@
 #define ZERO 0
 
 int main() {
-	struct HashTable table = createTable(TABLE_SIZE_CONST, hashConst);
+    struct HashTable table = createTable(TABLE_SIZE_CONST, hashConst);
 
-	FILE *file = fopen("David_Copperfield.txt", "r");
-	if (file == NULL) {
-		printf("ERROR");
-		return 1;
-	}
-	char* word = (char*) malloc(STR_SIZE * sizeof(char));
-	char* copy;
-	if (word == NULL || copy == NULL) {
+    FILE *file = fopen("David_Copperfield.txt", "r");
+    if (file == NULL) {
         printf("ERROR");
         return 1;
-	}
-	clock_t begin, end;
+    }
+    char* word = (char*) malloc(STR_SIZE * sizeof(char));
+    char* copy;
+    if (word == NULL || copy == NULL) {
+        printf("ERROR");
+        return 1;
+    }
+    clock_t begin, end;
     double timeSpend;
     begin = clock();
-	while (fscanf(file, "%s", word) != EOF) {
+    while (fscanf(file, "%s", word) != EOF) {
         if (!((word[0] <='z' && word[0] >= 'a') || (word[0] <='Z' && word[0] >= 'A') || (word[0] <='0' && word[0] >= '9'))) {
             continue;
         }
@@ -39,18 +39,18 @@ int main() {
             }
         }
 
-		struct Node* element = getEl(&table, word);
-		if (element == NULL) {
+        struct Node* element = getEl(&table, word);
+        if (element == NULL) {
             copy = (char*) malloc(STR_SIZE * sizeof(char));
             strcpy(copy, word);
-			insertEl(&table, copy, 1);
-		}
-		else {
-			element->data++;
-		}
-	}
-	end = clock();
-	timeSpend = (double) (end - begin) / CLOCKS_PER_SEC;
+            insertEl(&table, copy, 1);
+        }
+        else {
+            element->data++;
+        }
+    }
+    end = clock();
+    timeSpend = (double) (end - begin) / CLOCKS_PER_SEC;
     //printTable(&table);
 
     int mnChainLen = minChainLength(&table),
@@ -62,6 +62,6 @@ int main() {
     cleanTable(&table);
     free(word);
     free(copy);
-	fclose(file);
+    fclose(file);
 	return 0;
 }
