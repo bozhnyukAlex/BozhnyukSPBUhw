@@ -130,6 +130,7 @@ int main () {
                 if (num < 0 || num >= list.length) {
                     printf("There is no node with this number in our List!\n");
                 }
+                createCycle(&list, num);
                 checked = 0;
                 printf("Cycle was created!\n");
                 break;

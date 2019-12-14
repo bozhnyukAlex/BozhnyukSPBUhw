@@ -83,14 +83,15 @@ int checkCycle(struct List* list) {
         return 0;
     }
     while (1) {
+        right = right->next->next;
+        left = left->next;
         if (right->next == NULL || right->next->next == NULL || left->next == NULL) {
             return 0;
         }
-        if(right->next == left || right->next->next == left || (left == right && left != list->head) || left->next == right) {
+        if(right == left) {
             return 1;
         }
-        right = right->next->next;
-        left = left->next;
+
     }
 }
 
