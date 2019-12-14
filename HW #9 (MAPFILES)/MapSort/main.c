@@ -23,7 +23,7 @@ int strCmp(const void* a, const void* b) {
 int main() {
     int fd = open("content.txt", O_RDWR, 0);
     FILE* fout = fopen("output.txt", "w");
-    size_t i = 0, j = 0;
+    size_t i = 0;
     if (fd == -1 || fout == NULL) {
         printf("ERROR");
         return 1;
@@ -81,6 +81,6 @@ int main() {
     munmap(text, txtLen);
     free(strings);
     close(fd);
-    close(fout);
+    fclose(fout);
     return 0;
 }
