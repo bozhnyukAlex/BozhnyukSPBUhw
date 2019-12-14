@@ -13,7 +13,7 @@
 #define ZERO 0
 
 int main() {
-    struct HashTable table = createTable(TABLE_SIZE_CONST, hashConst);
+    struct HashTable table = createTable(TABLE_SIZE_SUM, hashSum);
 
     FILE *file = fopen("David_Copperfield.txt", "r");
     if (file == NULL) {
