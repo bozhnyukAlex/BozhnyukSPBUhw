@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1575821354 source:c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\hashtable.c
+1576364404 source:c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\hashtable.c
 	<stdio.h>
 	<string.h>
 	<malloc.h>
@@ -7,12 +7,12 @@
 	"mylist.h"
 	"hashTable.h"
 
-1575742809 c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\mylist.h
+1576320170 c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\mylist.h
 
-1575821199 c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\hashtable.h
+1576320170 c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\hashtable.h
 	"mylist.h"
 
-1575822034 source:c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\main.c
+1576364356 source:c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\main.c
 	<stdio.h>
 	<malloc.h>
 	<string.h>
@@ -20,7 +20,7 @@
 	<ctype.h>
 	"hashTable.h"
 
-1575742809 source:c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\mylist.c
+1576320170 source:c:\users\acer\bozhnyukspbuhw\hw#11(hash table)\hasht\mylist.c
 	<stdio.h>
 	<malloc.h>
 	<stdlib.h>

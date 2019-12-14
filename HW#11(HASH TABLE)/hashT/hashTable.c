@@ -5,7 +5,7 @@
 #include "mylist.h"
 #include "hashTable.h"
 #define TABLE_SIZE 256
-#define INFINITY 1000
+#define INFINITY 100000000
 size_t hashSum(char* key) {
 	size_t index = 0;
 	size_t hashIndex = 0;
@@ -29,9 +29,7 @@ long long binpow(int a, int n) {
 }
 
 size_t hashConst(char* key) {
-    srand(time(0));
-    size_t hashIndex = rand();
-    return hashIndex;
+    return 42;
 }
 
 size_t hashPolynom(char* key) {
@@ -61,7 +59,7 @@ struct HashTable createTable(size_t size, int (*hFn) (char*)) {
 	newTable.arr = (struct List*) malloc(size * sizeof(struct List));
 	if (newTable.arr == NULL) {
         printf("ERROR!\n");
-        exit(0);
+        exit(-1);
 	}
 	newTable.hash = hFn;
 	newTable.size = size;
@@ -97,13 +95,13 @@ void cleanTable(struct HashTable* table) {
 void printTable(struct HashTable* table) {
     size_t i = 0;
     for (i = 0; i < table->size; i++) {
-        if(table->arr[i].length == 0) {
+        if (table->arr[i].length == 0) {
             continue;
 		}
 		printf("%d: ", i);
 		struct Node* curr = table->arr[i].head;
 		while (curr) {
-			if(curr -> next == NULL){
+			if (curr -> next == NULL) {
                 printf("[%s | %d] ", curr->key, curr->data);
 			}
 			else {

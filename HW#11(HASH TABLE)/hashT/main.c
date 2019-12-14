@@ -7,13 +7,13 @@
 #include "hashTable.h"
 
 #define TABLE_SIZE_SUM 2050
-#define TABLE_SIZE_CONST 10000000
+#define TABLE_SIZE_CONST 100
 #define TABLE_SIZE_POLYNOM 100000000
 #define STR_SIZE 21
 #define ZERO 0
 
 int main() {
-	struct HashTable table = createTable(TABLE_SIZE_POLYNOM, hashPolynom);
+	struct HashTable table = createTable(TABLE_SIZE_CONST, hashConst);
 
 	FILE *file = fopen("David_Copperfield.txt", "r");
 	if (file == NULL) {
@@ -38,6 +38,7 @@ int main() {
                 word[0] = tolower(word[0]);
             }
         }
+
 		struct Node* element = getEl(&table, word);
 		if (element == NULL) {
             copy = (char*) malloc(STR_SIZE * sizeof(char));
@@ -50,7 +51,7 @@ int main() {
 	}
 	end = clock();
 	timeSpend = (double) (end - begin) / CLOCKS_PER_SEC;
-   // printTable(&table);
+    //printTable(&table);
 
     int mnChainLen = minChainLength(&table),
         mxChainLen = maxChainLength(&table),
