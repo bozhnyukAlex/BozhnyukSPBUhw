@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1576365841 source:c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\main.c
+	<stdio.h>
+	<malloc.h>
+	<stdlib.h>
+	<string.h>
+	"mylist.h"
+
+1576365766 c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\mylist.h
+
+1576366144 source:c:\users\acer\bozhnyukspbuhw\hw#10(linked list)\mylist.c
+	<stdio.h>
+	<malloc.h>
+	<stdlib.h>
+	"mylist.h"
+
