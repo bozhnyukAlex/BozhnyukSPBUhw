@@ -2,12 +2,13 @@
 #include <string.h>
 #include <limits.h>
 #include <malloc.h>
-int strToInt(char *s) {
+int strToInt(char *s, int *retCode) {
     int index = (s[0] == '-')? 1 : 0, sLen = strlen(s);
     long long res = 0;
     while (s[index]) {
         int curDig = s[index]-'0';
         if ((s[0] != '-' && res * 10 + curDig > INT_MAX) || (s[0] == '-' && (res * 10 + curDig) * (-1) < INT_MIN)) {
+            *retCode = 0;
             return -1;
         }
         res *= 10;
@@ -71,9 +72,9 @@ int main() {
 
         }
     }
-
-    int result = strToInt(str);
-    if (result == -1) {
+    int rtCode = 1;
+    int result = strToInt(str, &rtCode);
+    if (rtCode == 0) {
         puts(ERROR_OVERFLOW);
     }
     else {
