@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <string.h>
+enum {
+    ENCODE = 1,
+    DECODE
+};
 char* strToBase64(char* s) {
     char base[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     int buffer = 0,
@@ -102,12 +106,12 @@ int main() {
     printf("Choose the option: \n 1 - Encode \n 2 - Decode \nYour option: ");
     scanf("%d", &option);
     switch (option) {
-        case 1: {
+        case ENCODE: {
             printf("Result: ");
             puts(strToBase64(s));
             break;
         }
-        case 2: {
+        case DECODE: {
             printf("Result: ");
             puts(base64ToStr(s));
             break;
