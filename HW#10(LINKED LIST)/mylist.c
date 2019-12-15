@@ -88,7 +88,7 @@ int checkCycle(struct List* list) {
         if (right->next == NULL || right->next->next == NULL || left->next == NULL) {
             return 0;
         }
-        if(right == left) {
+        if (right == left) {
             return 1;
         }
 
