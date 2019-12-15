@@ -113,3 +113,21 @@ void clearList(struct List* list) {
     list->end = NULL;
     list->length = 0;
 }
+
+void reverseList(struct List* list) {
+    if (list->length == 0 || list->length == 1) {
+        return;
+    }
+    struct Node* nextNode = NULL;
+    struct Node* curr = list->head;
+    struct Node* prev = NULL;
+    list->end = curr;
+    while (curr) {
+        nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+
+    list->head = prev;
+}

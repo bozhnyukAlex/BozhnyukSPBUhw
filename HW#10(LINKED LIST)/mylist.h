@@ -20,6 +20,7 @@ void clearList(struct List* list);
 void createCycle(struct List* list, size_t to);
 int checkCycle(struct List* list);
 void deleteCycle(struct List* list);
+void reverseList(struct List* list);
 
 
 #endif // MYLIST_H_INCLUDED
