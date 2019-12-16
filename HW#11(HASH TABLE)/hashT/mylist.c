@@ -117,6 +117,7 @@ void clearList(struct List* list) {
     }
     struct Node* curr = list->head;
     while (curr) {
+        free(curr->key);
         struct Node *tmp = curr;
         curr = curr->next;
         free(tmp);
