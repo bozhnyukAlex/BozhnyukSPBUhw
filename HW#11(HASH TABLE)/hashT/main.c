@@ -61,7 +61,6 @@ int main() {
 
     cleanTable(&table);
     free(word);
-    free(copy);
     fclose(file);
     return 0;
 }
