@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1574548937 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman1.c
+	<windows.h>
+	<errno.h>
+	<io.h>
+	"mman.h"
+
+1575926920 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<fcntl.h>
+	<malloc.h>
+	<sys/stat.h>
+	"mman-win32-master/mman.h"
+
+1574549018 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman1.h
+	<_mingw.h>
+	<stdint.h>
+	<sys/types.h>
+
+1575896008 source:c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.c
+	<windows.h>
+	<errno.h>
+	<io.h>
+	"mman.h"
+
+1575896008 c:\users\acer\bozhnyukspbuhw\hw #9 (mapfiles)\mapsort\mman-win32-master\mman.h
+	<_mingw.h>
+	<stdint.h>
+	<sys/types.h>
+
