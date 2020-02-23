@@ -1,0 +1,7 @@
+ldc 10
+st 0
+   l:   ldc 1
+ld 0
+ sub
+br l         
+  ret
