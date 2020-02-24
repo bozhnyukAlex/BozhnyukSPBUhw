@@ -1,6 +1,3 @@
 ﻿  main.c
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(331,31): warning C4018: <: несоответствие типов со знаком и без знака
-  stack.c
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\stack.c(36,16): warning C4018: <: несоответствие типов со знаком и без знака
-  Создание кода...
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(349,31): warning C4018: <=: несоответствие типов со знаком и без знака
   Interpreter.vcxproj -> D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\Debug\Interpreter.exe

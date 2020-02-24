@@ -13,7 +13,7 @@ typedef struct Stack {
 
 void push(Stack* stack, int value) {
 	if (stack->size >= MAX_STACK_SIZE) {
-		print("STACK OVERFLOW!\n");
+		printf("STACK OVERFLOW!\n");
 		exit(STACK_OVERFLOW);
 	}
 	stack->data[stack->size] = value;
@@ -22,21 +22,21 @@ void push(Stack* stack, int value) {
 
 void pop(Stack* stack) {
 	if (stack->size <= 0) {
-		print("STACK UNDERFLOW!\n");
+		printf("STACK UNDERFLOW!\n");
 		exit(STACK_UNDERFLOW);
 	}
 	stack->size--;
 }
 int peek(Stack* stack) {
 	if (stack->size <= 0) {
-		print("STACK UNDERFLOW!\n");
+		printf("STACK UNDERFLOW!\n");
 		exit(STACK_UNDERFLOW);
 	}
 	return stack->data[stack->size -1];
 }
 int get(Stack* stack, size_t index) {
 	if (index < 0 || (index > stack->size - 1 && stack->size != 0) || stack->size == 0) {
-		print("GET ERROR!\n");
+		printf("GET ERROR!\n");
 		exit(GET_ERROR);
 	}
 	return stack->data[index];
@@ -44,6 +44,7 @@ int get(Stack* stack, size_t index) {
 
 void printStack(Stack* stack) {
 	int i = 0;
+	printf("stack %d : ", stack->size);
 	for (i = 0; i < stack->size - 1; i++) {
 		printf("%d | ", stack->data[i]);
 	}

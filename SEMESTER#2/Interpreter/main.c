@@ -16,6 +16,7 @@
 #define STR_OP 2
 #define INPUT_ERROR -1
 #define NO_OP_ERROR -2
+#define MALLOC_ERROR -3
 
 int isGoodLiteral(char x) {
 	if (x >= 'a' && x <= 'z') { //rewrite!
@@ -96,6 +97,7 @@ int main() {
 	int hasLabel = 0;
 	int lineNum = -1;
 	int lowPos = 0;
+	int hasRet = 0;
 
 	while (!feof(input)) {
 		fgets(str, LINE_SIZE, input);
@@ -136,30 +138,39 @@ int main() {
 			cur[j - lowPos] = str[j];
 		}
 		cur[j - lowPos] = '\0';
+
 		if (str[i] == ':') { //cur is label
 			hasLabel = 1;
-			copy = (char*)malloc((i + 1 - lowPos) * sizeof(char));
-			strcpy(copy, cur);
-			if (getEl(&interpreter->program.lableToLine, copy) != NULL) {
-				///Error: laber already exists!
-				printf("Laber already exists!134");
-				return -1;
+			
+			copy = (char*) malloc((i + 1 - lowPos) * sizeof(char));
+			if (copy == NULL) {
+				printf("Malloc Error!\n");
+				return MALLOC_ERROR;
 			}
+			strcpy(copy, cur);
+
+			if (getEl(&interpreter->program.lableToLine, copy) != NULL) {
+				printf("Error: this label already exists!\n");
+				return INPUT_ERROR;
+			}
+			
 			insertEl(&interpreter->program.lableToLine, copy, lineNum);
-			if (str[i + 1] == 0) {
+			if (str[i + 1] == 0 || str[i + 1] == '\n') {
 				///Error: end of string?!
 				printf("Input Error!140");
-				return -1;
+				return INPUT_ERROR;
 			}
 			if (str[i + 1] != ' ' && !isGoodLiteral(str[i + 1])) {
-				printf("Error Input!144");
-				return -1;
+				printf("Input Error!144");
+				return INPUT_ERROR;
 			}
 			i++;
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
 					///Error: no commands input error
+					printf("Input Error!\n");
+					return INPUT_ERROR;
 				}
 			}
 			lowPos = i;
@@ -171,6 +182,7 @@ int main() {
 			}
 			cur[j - lowPos] = '\0';
 		}
+
 		int command;
 		if (strcmp("ld", cur) == 0) {
 			command = LD;
@@ -201,8 +213,12 @@ int main() {
 		}
 		else {
 			///Error wrong operator
-			printf("Error Input!192");
-			return -1;
+			printf("Error Input!192\n");
+			return INPUT_ERROR;
+		}
+		if (hasRet == 1) { // ret check!
+			printf("Input Error!\n");
+			return INPUT_ERROR;
 		}
 
 		if (command == LD || command == ST || command == LDC) {
@@ -211,14 +227,14 @@ int main() {
 			if (hasLabel && str[i] != ' ') {
 				///Error: invalid input
 				printf("Error Input!202");
-				return -1;
+				return INPUT_ERROR;
 			}
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
 					///Error: input error
 					printf("Error Input!209");
-					return -1;
+					return INPUT_ERROR;
 				}
 			}
 			lowPos = i;
@@ -228,7 +244,7 @@ int main() {
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
 				/// Error: invalid operand input
 				printf("Error: Invalid operand input!219");
-				return -1;
+				return INPUT_ERROR;
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
 			if (op == NULL) {
@@ -274,6 +290,9 @@ int main() {
 				printf("Error Input!258");
 				return -1;
 			}
+			if (command == RET) {
+				hasRet = 1;
+			}
 			interpreter->program.operations[lineNum].opType = 0;
 			interpreter->program.operations[lineNum].noOpCmd.opCode = command;
 		}
@@ -305,13 +324,6 @@ int main() {
 			}
 			op[k - lowPos] = '\0';
 
-			/// has this label???
-			///label can be in forward!
-			/*if (getEl(&interpreter->program.lableToLine, op) == NULL) {
-				///Error: no such  label!
-				printf("Error: No such label!294");
-				return -1;
-			}*/
 
 			while (str[i] == ' ') {
 				i++;
@@ -335,9 +347,10 @@ int main() {
 	printf("%d\n", lineNum);
 
 	while (interpreter->state.ip <= lineNum) {
+		//printf("%d\n", interpreter->state.ip);
 		switch (interpreter->program.operations[interpreter->state.ip].opType) {
 			case NO_OP: {
-				if (interpreter->state.stack.size <= 2 && interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode != RET) {
+				if (interpreter->state.stack.size < 2 && interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode != RET) {
 					printf("NO SUCH OPERANDS!");
 					return NO_OP_ERROR;
 				}
@@ -379,6 +392,7 @@ int main() {
 							return INPUT_ERROR;
 						}
 						///maybe all free here
+						printStack(&interpreter->state.stack);
 						break;
 					}
 				}
@@ -386,29 +400,55 @@ int main() {
 				break;
 			}
 			case INT_OP: {
+				int oper = interpreter->program.operations[interpreter->state.ip].intOpCmd.arg; ///32 bit
 				switch (interpreter->program.operations[interpreter->state.ip].intOpCmd.opCode) {
 					case LD: {
+						if (oper < 0 || oper >= MEMORY_SIZE) {
+							printf("ARGUMENT_ERROR!");
+							return INPUT_ERROR;
+						}
+						/// what about undefined address???
+						push(&interpreter->state.stack, interpreter->state.memory[oper]);
 						break;
 					}
 					case ST: {
+						if (oper < 0 || oper >= MEMORY_SIZE) {
+							printf("ARGUMENT_ERROR!");
+							return INPUT_ERROR;
+						}
+						interpreter->state.memory[oper] = peek(&interpreter->state.stack);
 						break;
 					}
 					case LDC: {
+						push(&interpreter->state.stack, oper);
 						break;
 					}
 				}
+				interpreter->state.ip++;
 				break;
 			}
 			case STR_OP: {
+				char* label = interpreter->program.operations[interpreter->state.ip].strOpCmd.label;
+				if (getEl(&interpreter->program.lableToLine, label) == NULL) { //label check
+					printf("NO SUCH LABEL!\n");
+					return INPUT_ERROR;
+				}
+				int line = getEl(&interpreter->program.lableToLine, label)->data;
 				switch (interpreter->program.operations[interpreter->state.ip].strOpCmd.opCode) {
 					case JMP: {
-						///label check!
+						interpreter->state.ip = line;
 						break;
 					}
 					case BR: {
+						//printf("%d st", peek(&interpreter->state.stack));
+						if (peek(&interpreter->state.stack) != 0) {
+							interpreter->state.ip = line;
+						}
+						else {
+							interpreter->state.ip++;
+						}
 						break;
 					}
-
 				}
 				break;
 			}
