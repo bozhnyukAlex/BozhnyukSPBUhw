@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "hashTable.h"
+#include "stack.h"
 
 #define MEMORY_SIZE 1024 * 1024
 #define MAX_ADDR = MEMORY_SIZE / sizeof(int)
@@ -10,6 +11,11 @@
 #define MAX_LINES 1024
 #define LINE_SIZE 1000
 #define TABLE_SIZE 1000
+#define NO_OP 0
+#define INT_OP 1
+#define STR_OP 2
+#define INPUT_ERROR -1
+#define NO_OP_ERROR -2
 
 int isGoodLiteral(char x) {
 	if (x >= 'a' && x <= 'z') { //rewrite!
@@ -35,11 +41,11 @@ int isDigit(char x) {
 }
 
 enum OpCodes {
-	ld = 1, st, ldc, add, sub, cmp, jmp, br, ret
+	LD = 1, ST, LDC, ADD, SUB, CMP, JMP, BR, RET
 };
 
 struct State {
-	int stack[MAX_STACK_SIZE];
+	Stack stack;
 	int memory[MEMORY_SIZE];
 	size_t ip;
 };
@@ -85,6 +91,7 @@ int main() {
 	struct Interpreter* interpreter = (struct Interpreter*) malloc(sizeof(struct Interpreter));
 	interpreter->program.lableToLine = createTable(TABLE_SIZE, hashPolynom);
 	interpreter->state.ip = 0;
+	interpreter->state.stack.size = 0;
 	char str[LINE_SIZE];
 	int hasLabel = 0;
 	int lineNum = -1;
@@ -118,7 +125,11 @@ int main() {
 			printf("Error Input!118");
 			return -1;
 		}
-		char* cur = (char*)malloc((i + 1 - lowPos) * sizeof(char)); //free cur every iteration!
+		char* cur = (char*)malloc((i + 1 - lowPos) * sizeof(char)); //free cur when free all operands[]
+		if (cur == 0) {
+			printf("Malloc error!\n");
+			return -1;
+		}
 		char* copy;
 		int j;
 		for (j = lowPos; j < i; j++) {
@@ -162,31 +173,31 @@ int main() {
 		}
 		int command;
 		if (strcmp("ld", cur) == 0) {
-			command = ld;
+			command = LD;
 		}
 		else if (strcmp("st", cur) == 0) {
-			command = st;
+			command = ST;
 		}
 		else if (strcmp("ldc", cur) == 0) {
-			command = ldc;
+			command = LDC;
 		}
 		else if (strcmp("add", cur) == 0) {
-			command = add;
+			command = ADD;
 		}
 		else if (strcmp("sub", cur) == 0) {
-			command = sub;
+			command = SUB;
 		}
 		else if (strcmp("cmp", cur) == 0) {
-			command = cmp;
+			command = CMP;
 		}
 		else if (strcmp("ret", cur) == 0) {
-			command = ret;
+			command = RET;
 		}
 		else if (strcmp("jmp", cur) == 0) {
-			command = jmp;
+			command = JMP;
 		}
 		else if (strcmp("br", cur) == 0) {
-			command = br;
+			command = BR;
 		}
 		else {
 			///Error wrong operator
@@ -194,7 +205,7 @@ int main() {
 			return -1;
 		}
 
-		if (command == ld || command == st || command == ldc) {
+		if (command == LD || command == ST || command == LDC) {
 			///int operand
 			///check argument (only numbers)
 			if (hasLabel && str[i] != ' ') {
@@ -216,12 +227,16 @@ int main() {
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
 				/// Error: invalid operand input
-				printf("Error Input!219");
+				printf("Error: Invalid operand input!219");
 				return -1;
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
+			if (op == NULL) {
+				printf("Malloc error!\n");
+				return -1;
+			}
 
-			int k; ///BIG ERROR 
+			int k; 
 			for (k = lowPos; k < i; k++) {
 				op[k - lowPos] = str[k];
 			}
@@ -241,8 +256,9 @@ int main() {
 			interpreter->program.operations[lineNum].opType = 1;
 			interpreter->program.operations[lineNum].intOpCmd.arg = arg;
 			interpreter->program.operations[lineNum].intOpCmd.opCode = command;
+			free(op);
 		}
-		else if (command == add || command == sub || command == cmp || command == ret) {
+		else if (command == ADD || command == SUB || command == CMP || command == RET) {
 			///no operand
 			///check: no literal (maybe spaces only)
 			if (hasLabel && str[i] != ' ' && str[i] != 0) {
@@ -261,7 +277,7 @@ int main() {
 			interpreter->program.operations[lineNum].opType = 0;
 			interpreter->program.operations[lineNum].noOpCmd.opCode = command;
 		}
-		else if (command == jmp || command == br) {
+		else if (command == JMP || command == BR) {
 			///string operand
 			/// LABEL
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
@@ -278,7 +294,7 @@ int main() {
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
 				/// Error: invalid operand input
-				printf("Error Input!281");
+				printf("Error: Invlid operand input!281");
 				return -1;
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
@@ -288,12 +304,14 @@ int main() {
 				op[k - lowPos] = str[k];
 			}
 			op[k - lowPos] = '\0';
+
 			/// has this label???
-			if (getEl(&interpreter->program.lableToLine, op) == NULL) {
+			///label can be in forward!
+			/*if (getEl(&interpreter->program.lableToLine, op) == NULL) {
 				///Error: no such  label!
-				printf("Error Input!294");
+				printf("Error: No such label!294");
 				return -1;
-			}
+			}*/
 
 			while (str[i] == ' ') {
 				i++;
@@ -311,6 +329,89 @@ int main() {
 			/// Error: invalid command input
 			printf("Error Input!312");
 			return -1;
+		}
+	}
+	printTable(&interpreter->program.lableToLine);
+	printf("%d\n", lineNum);
+
+	while (interpreter->state.ip <= lineNum) {
+		switch (interpreter->program.operations[interpreter->state.ip].opType) {
+			case NO_OP: {
+				if (interpreter->state.stack.size <= 2 && interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode != RET) {
+					printf("NO SUCH OPERANDS!");
+					return NO_OP_ERROR;
+				}
+				switch (interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode) {
+					case ADD: {
+						int first = peek(&interpreter->state.stack),
+							second = get(&interpreter->state.stack, interpreter->state.stack.size - 2);
+						int sum = first + second;
+						push(&interpreter->state.stack, sum); // check overflow: in stack.c
+						break;
+					}
+					case SUB: {
+						int first = peek(&interpreter->state.stack),
+							second = get(&interpreter->state.stack, interpreter->state.stack.size - 2);
+						int sub = first - second;
+						push(&interpreter->state.stack, sub); // check overflow: in stack.c
+						break;
+					}
+					case CMP: {
+						int first = peek(&interpreter->state.stack),
+							second = get(&interpreter->state.stack, interpreter->state.stack.size - 2);
+						int res;
+						if (first == second) {
+							res = 0;
+						}
+						else if (first < second) {
+							res = -1;
+						}
+						else if (first > second) {
+							res = 1;
+						}
+						push(&interpreter->state.stack, res); // check overflow: in stack.c
+						break;
+					}
+					case RET: {
+						///ret check!
+						if (interpreter->state.ip != lineNum) { ///need to fix, we need to check this earlier
+							printf("INPUR ERROR!");
+							return INPUT_ERROR;
+						}
+						///maybe all free here
+						break;
+					}
+				}
+				interpreter->state.ip++;
+				break;
+			}
+			case INT_OP: {
+				switch (interpreter->program.operations[interpreter->state.ip].intOpCmd.opCode) {
+					case LD: {
+						break;
+					}
+					case ST: {
+						break;
+					}
+					case LDC: {
+						break;
+					}
+				}
+				break;
+			}
+			case STR_OP: {
+				switch (interpreter->program.operations[interpreter->state.ip].strOpCmd.opCode) {
+					case JMP: {
+						///label check!
+						break;
+					}
+					case BR: {
+						break;
+					}
+
+				}
+				break;
+			}
 		}
 	}
 	fclose(input);

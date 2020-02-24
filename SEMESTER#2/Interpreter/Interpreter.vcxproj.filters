@@ -24,12 +24,18 @@
     <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\mylist.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="stack.c">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\hashTable.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\mylist.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

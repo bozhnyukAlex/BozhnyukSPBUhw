@@ -141,10 +141,12 @@
     <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\hashTable.c" />
     <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\mylist.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="stack.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\hashTable.h" />
     <ClInclude Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\mylist.h" />
+    <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

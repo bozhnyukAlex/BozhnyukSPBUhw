@@ -1,7 +1,7 @@
-ldc 10
+ sadgh:         ldc 10 
 st 0
-   l:   ldc 1
+   loop:   ldc    1       
 ld 0
- sub
-br l         
+das_Dsad:               sub     
+OPOPOPOP: br loop         
   ret
