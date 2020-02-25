@@ -1,4 +1,7 @@
-ldc 1
-ldc 2
-add
+war: ldc 10
+loop: st 0
+   ldc 1
+ld 0
+kook: sub
+br loop
 ret
