@@ -3,5 +3,5 @@ loop: st 0
    ldc 1
 ld 0
 kook: sub
-br loop
+br  loop
 ret

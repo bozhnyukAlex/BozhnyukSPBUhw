@@ -21,19 +21,21 @@
 #define MALLOC_ERROR -3
 
 int isGoodLiteral(char x) {
-	if (x >= 'a' && x <= 'z') { //rewrite!
-		return 1;
-	}
-	if (x >= 'A' && x <= 'Z') {
-		return 1;
-	}
-	if (x >= '0' && x <= '9') {
-		return 1;
-	}
-	if (x == '_' || x == '&' || x == '$') {
+	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') || (x >= '0' && x <= '9') || (x == '_' || x == '&' || x == '$')) {
 		return 1;
 	}
 	return 0;
+}
+
+void error() {
+	printf("INPUT ERROR!\n");
+	exit(INPUT_ERROR);
+}
+void mallocCheck(char* x) {
+	if (x == NULL) {
+		printf("MALLOC ERROR!\n");
+		exit(MALLOC_ERROR);
+	}
 }
 
 int isDigit(char x) {
@@ -49,7 +51,7 @@ enum OpCodes {
 
 struct State {
 	Stack stack;
-	int memory[MEMORY_SIZE];
+	int32_t memory[MAX_ADDR];
 	size_t ip;
 };
 
@@ -115,26 +117,21 @@ int main() {
 		}
 		if (str[i] == 0 || str[i] == '\n') {
 			///Error: empty String?!
-			printf("Input Error!\n");
-			return INPUT_ERROR;
+			error();
 		}
 		if (!isGoodLiteral(str[i])) {
-			printf("Input Error!\n");
-			return INPUT_ERROR;
+			error();
 		}
 		lowPos = i;
 		while (isGoodLiteral(str[i]) && str[i] != 0 && str[i] != '\n') {
 			i++;
 		}
 		if (str[i] != ' ' && str[i] != ':' && str[i] != '\n' && str[i] != 0) {
-			printf("Input Error!\n");
-			return INPUT_ERROR;
+			error();
 		}
 		char* cur;
 		char* lbl;
 		size_t j;
-		
-
 		if (str[i] == ':') { //we have label
 			hasLabel = 1;
 			
@@ -147,7 +144,6 @@ int main() {
 				lbl[j - lowPos] = str[j];
 			}
 			lbl[j - lowPos] = '\0';
-			//strcpy(copy, cur);
 
 			if (getEl(&interpreter->program.lableToLine, lbl) != NULL) {
 				printf("Error: this label already exists!\n");
@@ -156,21 +152,16 @@ int main() {
 			
 			insertEl(&interpreter->program.lableToLine, lbl, lineNum);
 			if (str[i + 1] == 0 || str[i + 1] == '\n') {
-				///Error: end of string?!
-				printf("Input Error!\n");
-				return INPUT_ERROR;
+				error();
 			}
 			if (str[i + 1] != ' ' && !isGoodLiteral(str[i + 1])) {
-				printf("Input Error!");
-				return INPUT_ERROR;
+				error();
 			}
 			i++;
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
-					///Error: no commands input error
-					printf("Input Error!\n");
-					return INPUT_ERROR;
+					error();
 				}
 			}
 			
@@ -179,10 +170,7 @@ int main() {
 				i++;
 			} /// i is after cmd now
 			cur = (char*) malloc((i + 1 - lowPos) * sizeof(char));
-			if (cur == NULL) {
-				printf("Malloc error!\n");
-				return INPUT_ERROR;
-			}
+			mallocCheck(cur);
 			for (j = lowPos; j < i; j++) {
 				cur[j - lowPos] = str[j];
 			}
@@ -192,7 +180,7 @@ int main() {
 			cur = (char*) malloc((i + 1 - lowPos) * sizeof(char));
 			if (cur == NULL) {
 				printf("Malloc error!\n");
-				return INPUT_ERROR;
+				return MALLOC_ERROR;
 			}
 			for (j = lowPos; j < i; j++) {
 				cur[j - lowPos] = str[j];
@@ -200,7 +188,7 @@ int main() {
 			cur[j - lowPos] = '\0';
 		}
 		else {
-			printf("Input Error!\n");
+			error();
 			return INPUT_ERROR;
 		}
 		
@@ -234,29 +222,20 @@ int main() {
 			command = BR;
 		}
 		else {
-			///Error wrong operator
-			printf("Input Error!\n");
-			return INPUT_ERROR;
+			error();
 		}
 		if (hasRet == 1) { // ret check!
-			printf("Input Error!\n");
-			return INPUT_ERROR;
+			error();
 		}
 		free(cur);
 		if (command == LD || command == ST || command == LDC) {
-			///int operand
-			///check argument (only numbers)
 			if (hasLabel && str[i] != ' ') {
-				///Error: invalid input
-				printf("Input Error!\n");
-				return INPUT_ERROR;
+				error();
 			}
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
-					///Error: input error
-					printf("Input Error!\n");
-					return INPUT_ERROR;
+					error();
 				}
 			}
 			lowPos = i;
@@ -264,15 +243,10 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
-				/// Error: invalid operand input
-				printf("Error: Invalid operand input!219");
-				return INPUT_ERROR;
+				error();
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
-			if (op == NULL) {
-				printf("Malloc error!\n");
-				return MALLOC_ERROR;
-			}
+			mallocCheck(op);
 
 			size_t k; 
 			for (k = lowPos; k < i; k++) {
@@ -286,9 +260,7 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != '\n') {
-				///Error: invalid input
-				printf("Input Error!\n");
-				return INPUT_ERROR;
+				error();
 			}
 
 			interpreter->program.operations[lineNum].opType = INT_OP;
@@ -297,19 +269,14 @@ int main() {
 			free(op);
 		}
 		else if (command == ADD || command == SUB || command == CMP || command == RET) {
-			///no operand
 			if (hasLabel && str[i] != ' ' && str[i] != 0 && str[i] != '\n') {
-				///Error: invalid input -wrong symbol
-				printf("Input Error!\n");
-				return -1;
+				error();
 			}
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != '\n') {
-				///Error: input error
-				printf("Input Error!\n");
-				return INPUT_ERROR;
+				error();
 			}
 			if (command == RET) {
 				hasRet = 1;
@@ -318,14 +285,10 @@ int main() {
 			interpreter->program.operations[lineNum].noOpCmd.opCode = command;
 		}
 		else if (command == JMP || command == BR) {
-			///string operand
-			/// LABEL
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
-					///Error: input error
-					printf("Input Error!\n");
-					return INPUT_ERROR;
+					error();
 				}
 			}
 			lowPos = i;
@@ -333,11 +296,10 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
-				/// Error: invalid operand input
-				printf("Error: Invlid operand input!");
-				return INPUT_ERROR;
+				error();
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
+			mallocCheck(op);
 
 			size_t k;
 			for (k = lowPos; k < i; k++) {
@@ -350,9 +312,7 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != '\n') {
-				///Error: invalid input
-				printf("Input Error!\n");
-				return INPUT_ERROR;
+				error();
 			}
 			interpreter->program.operations[lineNum].opType = STR_OP;
 			interpreter->program.operations[lineNum].strOpCmd.label = op;
@@ -360,19 +320,15 @@ int main() {
 			
 		}
 		else {
-			/// Error: invalid command input
-			printf("Input Error!\n");
-			return INPUT_ERROR;
+			error();
 		}
 	}
 ///	printTable(&interpreter->program.lableToLine);
-	//printf("%d\n", lineNum);
 	if (!hasRet) {
 		printf("Your program needs to contain ret command!\n");
 		return INPUT_ERROR;
 	}
 	while (interpreter->state.ip <= lineNum) {
-		//printf("%d\n", interpreter->state.ip);
 		switch (interpreter->program.operations[interpreter->state.ip].opType) {
 			case NO_OP: {
 				if (interpreter->state.stack.size < 2 && interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode != RET) {
@@ -411,12 +367,6 @@ int main() {
 						break;
 					}
 					case RET: {
-						///ret check!
-						if (interpreter->state.ip != lineNum) { ///need to fix, we need to check this earlier
-							printf("INPUR ERROR!");
-							return INPUT_ERROR;
-						}
-						///maybe all free here
 						printStack(&interpreter->state.stack);
 						break;
 					}
@@ -429,17 +379,14 @@ int main() {
 				switch (interpreter->program.operations[interpreter->state.ip].intOpCmd.opCode) {
 					case LD: {
 						if (oper < 0 || oper >= MAX_ADDR) {
-							printf("ARGUMENT_ERROR!");
-							return INPUT_ERROR;
+							error();
 						}
-						/// what about undefined address???
 						push(&interpreter->state.stack, interpreter->state.memory[oper]);
 						break;
 					}
 					case ST: {
 						if (oper < 0 || oper >= MEMORY_SIZE) {
-							printf("ARGUMENT_ERROR!");
-							return INPUT_ERROR;
+							error();
 						}
 						interpreter->state.memory[oper] = peek(&interpreter->state.stack);
 						break;
@@ -465,7 +412,6 @@ int main() {
 						break;
 					}
 					case BR: {
-						//printf("%d st", peek(&interpreter->state.stack));
 						if (peek(&interpreter->state.stack) != 0) {
 							interpreter->state.ip = line;
 						}
