@@ -44,8 +44,9 @@ int get(Stack* stack, size_t index) {
 
 void printStack(Stack* stack) {
 	int i = 0;
+	int len = stack->size - 1;
 	printf("stack %d : ", stack->size);
-	for (i = 0; i < stack->size - 1; i++) {
+	for (i = 0; i < len; i++) {
 		printf("%d | ", stack->data[i]);
 	}
 	if (stack->size > 0) {

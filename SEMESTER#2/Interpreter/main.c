@@ -27,8 +27,8 @@ int isGoodLiteral(char x) {
 	return 0;
 }
 
-void error() {
-	printf("INPUT ERROR!\n");
+void error(int line) {
+	printf("INPUT ERROR IN LINE %d!\n", line);
 	exit(INPUT_ERROR);
 }
 void mallocCheck(char* x) {
@@ -117,17 +117,17 @@ int main() {
 		}
 		if (str[i] == 0 || str[i] == '\n') {
 			///Error: empty String?!
-			error();
+			error(lineNum);
 		}
 		if (!isGoodLiteral(str[i])) {
-			error();
+			error(lineNum);
 		}
 		lowPos = i;
 		while (isGoodLiteral(str[i]) && str[i] != 0 && str[i] != '\n') {
 			i++;
 		}
 		if (str[i] != ' ' && str[i] != ':' && str[i] != '\n' && str[i] != 0) {
-			error();
+			error(lineNum);
 		}
 		char* cur;
 		char* lbl;
@@ -152,16 +152,16 @@ int main() {
 			
 			insertEl(&interpreter->program.lableToLine, lbl, lineNum);
 			if (str[i + 1] == 0 || str[i + 1] == '\n') {
-				error();
+				error(lineNum);
 			}
 			if (str[i + 1] != ' ' && !isGoodLiteral(str[i + 1])) {
-				error();
+				error(lineNum);
 			}
 			i++;
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
-					error();
+					error(lineNum);
 				}
 			}
 			
@@ -188,7 +188,7 @@ int main() {
 			cur[j - lowPos] = '\0';
 		}
 		else {
-			error();
+			error(lineNum);
 			return INPUT_ERROR;
 		}
 		
@@ -222,20 +222,20 @@ int main() {
 			command = BR;
 		}
 		else {
-			error();
+			error(lineNum);
 		}
 		if (hasRet == 1) { // ret check!
-			error();
+			error(lineNum);
 		}
 		free(cur);
 		if (command == LD || command == ST || command == LDC) {
 			if (hasLabel && str[i] != ' ') {
-				error();
+				error(lineNum);
 			}
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
-					error();
+					error(lineNum);
 				}
 			}
 			lowPos = i;
@@ -243,7 +243,7 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
-				error();
+				error(lineNum);
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
 			mallocCheck(op);
@@ -260,7 +260,7 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != '\n') {
-				error();
+				error(lineNum);
 			}
 
 			interpreter->program.operations[lineNum].opType = INT_OP;
@@ -270,13 +270,13 @@ int main() {
 		}
 		else if (command == ADD || command == SUB || command == CMP || command == RET) {
 			if (hasLabel && str[i] != ' ' && str[i] != 0 && str[i] != '\n') {
-				error();
+				error(lineNum);
 			}
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != '\n') {
-				error();
+				error(lineNum);
 			}
 			if (command == RET) {
 				hasRet = 1;
@@ -288,7 +288,7 @@ int main() {
 			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
 				i++;
 				if (str[i] == 0 || str[i] == '\n') {
-					error();
+					error(lineNum);
 				}
 			}
 			lowPos = i;
@@ -296,7 +296,7 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
-				error();
+				error(lineNum);
 			}
 			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
 			mallocCheck(op);
@@ -312,7 +312,7 @@ int main() {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != '\n') {
-				error();
+				error(lineNum);
 			}
 			interpreter->program.operations[lineNum].opType = STR_OP;
 			interpreter->program.operations[lineNum].strOpCmd.label = op;
@@ -320,7 +320,7 @@ int main() {
 			
 		}
 		else {
-			error();
+			error(lineNum);
 		}
 	}
 ///	printTable(&interpreter->program.lableToLine);
@@ -379,16 +379,17 @@ int main() {
 				switch (interpreter->program.operations[interpreter->state.ip].intOpCmd.opCode) {
 					case LD: {
 						if (oper < 0 || oper >= MAX_ADDR) {
-							error();
+							error(lineNum);
 						}
 						push(&interpreter->state.stack, interpreter->state.memory[oper]);
 						break;
 					}
 					case ST: {
-						if (oper < 0 || oper >= MEMORY_SIZE) {
-							error();
+						if (oper < 0 || oper >= MAX_ADDR) {
+							error(lineNum);
 						}
 						interpreter->state.memory[oper] = peek(&interpreter->state.stack);
+						pop(&interpreter->state.stack);
 						break;
 					}
 					case LDC: {
@@ -424,6 +425,8 @@ int main() {
 				break;
 			}
 		}
+//		printf("%d ||", interpreter->state.ip - 1);
+//		printStack(&interpreter->state.stack);
 	}
 	cleanTable(&interpreter->program.lableToLine);
 	for (size_t i = 0; i <= lineNum; i++) {
