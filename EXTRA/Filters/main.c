@@ -41,6 +41,7 @@ void inputCheck(int argc, char* argv[]) {
 
 void useFilter(unsigned char* bmpImage, int height, int width, char* mode) {
 	unsigned char* bmpCopy = (unsigned char*) malloc(3 * height * width * sizeof(char));
+	memset(bmpCopy, 255, 3 * height * width * sizeof(char));
 	if (strcmp("ColorWB", mode) == 0) {
 		for (int i = 0; i < width * height * 3; i += 3) {
 			unsigned char result = (bmpImage[i] + bmpImage[i + 1] + bmpImage[i + 2]) / 3;
@@ -150,6 +151,8 @@ int main(int argc, char* argv[]) {
 
 	fread(&bmpFileHeader, sizeof(bmpFileHeader), 1, input);
 	fread(&bmpInfoHeader, sizeof(bmpInfoHeader), 1, input);
+
+	printf("%d %d %d\n", bmpInfoHeader.biHeight, bmpInfoHeader.biWidth, bmpFileHeader.bfType);
 
 	unsigned char* bmpImage = (unsigned char*)malloc(bmpInfoHeader.biSizeImage);
 	if (bmpImage == NULL) {
