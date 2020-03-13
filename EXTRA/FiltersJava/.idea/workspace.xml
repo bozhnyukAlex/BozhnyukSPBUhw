@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f303fa71-5395-400b-8e0b-c744d85b8da7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FiltersJava.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/average.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/colorWb.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/gauss3.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/gauss5.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/input.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/input2.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/input3.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/input4.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/input5.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/output.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/output1.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/output2.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/output3.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/output4.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/sobelX.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/sobelY.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Picture/BitMapFileHeader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Picture/BitMapInfoHeader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Picture/Picture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Picture/RGB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test/FilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/.vs/Filters/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/.vs/Filters/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/.vs/Filters/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/.vs/Filters/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/Filters.lastbuildstate" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/Filters.lastbuildstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/Filters.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Debug/output.bmp" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Debug/output.bmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/Filters.vcxproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/Filters.vcxproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Filters/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Filters/main.c" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\BozhnyukSPBUhw\EXTRA\FiltersJava\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YzFGVGFzxvpyRJ9ixOOOunl9kU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Main" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.FilterTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="FiltersJava" />
+      <option name="PROGRAM_PARAMETERS" value="D:\BozhnyukSPBUhw\EXTRA\FiltersJava\pic\input.bmp Average3x3 D:\BozhnyukSPBUhw\EXTRA\FiltersJava\pic\output.bmp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FilterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FiltersJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.FilterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FilterTest.colorWBTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FiltersJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.FilterTest" />
+      <option name="METHOD_NAME" value="colorWBTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.FilterTest" />
+      <item itemvalue="JUnit.FilterTest.colorWBTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FilterTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.FilterTest.colorWBTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f303fa71-5395-400b-8e0b-c744d85b8da7" name="Default Changelist" comment="" />
+      <created>1583937420177</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583937420177</updated>
+      <workItem from="1583937423683" duration="18953000" />
+      <workItem from="1584023804293" duration="23141000" />
+      <workItem from="1584051276451" duration="3416000" />
+      <workItem from="1584088189618" duration="6989000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1583937428743">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1583937428743" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584096403893">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584096403893" />
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1584053957547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584053957547" />
+    <state x="740" y="225" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1584026786967">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="225" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584026786967" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1584039069304">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584039069304" />
+    <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1584048900733">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584048900733" />
+    <state width="492" height="466" key="DebuggerActiveHint" timestamp="1584031222222">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="492" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1584031222222" />
+    <state width="1877" height="279" key="GridCell.Tab.0.bottom" timestamp="1584096726703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726703" />
+    <state width="1877" height="279" key="GridCell.Tab.0.center" timestamp="1584096726703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726703" />
+    <state width="1877" height="279" key="GridCell.Tab.0.left" timestamp="1584096726703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726703" />
+    <state width="1877" height="279" key="GridCell.Tab.0.right" timestamp="1584096726703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726703" />
+    <state width="1877" height="469" key="GridCell.Tab.1.bottom" timestamp="1584096726698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="469" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726698" />
+    <state width="1877" height="469" key="GridCell.Tab.1.center" timestamp="1584096726698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="469" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726698" />
+    <state width="1877" height="469" key="GridCell.Tab.1.left" timestamp="1584096726698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="469" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726698" />
+    <state width="1877" height="469" key="GridCell.Tab.1.right" timestamp="1584096726698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="469" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1584096726698" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584088190606">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584088190606" />
+    <state x="664" y="413" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1584051497836">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="664" y="413" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1584051497836" />
+    <state x="731" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1584051420441">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="731" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584051420441" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584096477298">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584096477298" />
+  </component>
+</project>
