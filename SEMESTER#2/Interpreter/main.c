@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 #include <stdint.h>
+#include <ctype.h>
 #include "hashTable.h"
 #include "stack.h"
 
@@ -19,16 +20,17 @@
 #define INPUT_ERROR -1
 #define NO_OP_ERROR -2
 #define MALLOC_ERROR -3
+#define OP_ERROR -500
 
 int isGoodLiteral(char x) {
-	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z') || (x >= '0' && x <= '9') || (x == '_' || x == '&' || x == '$')) {
+	if (isalpha(x) || isdigit(x) || (x == '_' || x == '&' || x == '$')) {
 		return 1;
 	}
 	return 0;
 }
 
 void error(int line) {
-	printf("INPUT ERROR IN LINE %d!\n", line);
+	printf("INPUT ERROR IN LINE %d!\n", line + 1);
 	exit(INPUT_ERROR);
 }
 void mallocCheck(char* x) {
@@ -38,12 +40,6 @@ void mallocCheck(char* x) {
 	}
 }
 
-int isDigit(char x) {
-	if (x >= '0' && x <= '9') {
-		return 1;
-	}
-	return 0;
-}
 
 enum OpCodes {
 	LD = 1, ST, LDC, ADD, SUB, CMP, JMP, BR, RET
@@ -86,26 +82,15 @@ struct Interpreter {
 	struct Program program;
 	struct State state;
 };
-int main() {
-	FILE* input;
-	if ((input = fopen("input.txt", "r")) == NULL) {
-		printf("Problem with opening file\n");
-		return -1;
-	}
 
-	struct Interpreter* interpreter = (struct Interpreter*) malloc(sizeof(struct Interpreter));
-	if (interpreter == NULL) {
-		printf("Malloc error!\n");
-		return MALLOC_ERROR;
-	}
-	interpreter->program.lableToLine = createTable(TABLE_SIZE, hashPolynom);
-	interpreter->state.ip = 0;
-	interpreter->state.stack.size = 0;
+
+void parse(FILE* input, struct Interpreter* interpreter) {
 	char str[LINE_SIZE];
 	int hasLabel = 0;
 	int lineNum = -1;
 	size_t lowPos = 0;
 	int hasRet = 0;
+	int maxRet = -1;
 
 	while (!feof(input)) {
 		fgets(str, LINE_SIZE, input);
@@ -134,12 +119,9 @@ int main() {
 		size_t j;
 		if (str[i] == ':') { //we have label
 			hasLabel = 1;
-			
-			lbl = (char*) malloc((i + 1 - lowPos) * sizeof(char)); //free while cleaning table
-			if (lbl == NULL) {
-				printf("Malloc Error!\n");
-				return MALLOC_ERROR;
-			}
+
+			lbl = (char*)malloc((i + 1 - lowPos) * sizeof(char)); //free while cleaning table
+			mallocCheck(lbl);
 			for (j = lowPos; j < i; j++) {
 				lbl[j - lowPos] = str[j];
 			}
@@ -149,7 +131,7 @@ int main() {
 				printf("Error: this label already exists!\n");
 				return INPUT_ERROR;
 			}
-			
+
 			insertEl(&interpreter->program.lableToLine, lbl, lineNum);
 			if (str[i + 1] == 0 || str[i + 1] == '\n') {
 				error(lineNum);
@@ -164,24 +146,21 @@ int main() {
 					error(lineNum);
 				}
 			}
-			
+
 			lowPos = i;
 			while (isGoodLiteral(str[i])) {
 				i++;
 			} /// i is after cmd now
-			cur = (char*) malloc((i + 1 - lowPos) * sizeof(char));
+			cur = (char*)malloc((i + 1 - lowPos) * sizeof(char));
 			mallocCheck(cur);
 			for (j = lowPos; j < i; j++) {
 				cur[j - lowPos] = str[j];
 			}
 			cur[j - lowPos] = '\0';
 		}
-		else if (str[i] == ' ' || str[i] == '\n' || str[i] == 0){ //we have command
-			cur = (char*) malloc((i + 1 - lowPos) * sizeof(char));
-			if (cur == NULL) {
-				printf("Malloc error!\n");
-				return MALLOC_ERROR;
-			}
+		else if (str[i] == ' ' || str[i] == '\n' || str[i] == 0) { //we have command
+			cur = (char*)malloc((i + 1 - lowPos) * sizeof(char));
+			mallocCheck(cur);
 			for (j = lowPos; j < i; j++) {
 				cur[j - lowPos] = str[j];
 			}
@@ -191,8 +170,6 @@ int main() {
 			error(lineNum);
 			return INPUT_ERROR;
 		}
-		
-
 		int command;
 		if (strcmp("ld", cur) == 0) {
 			command = LD;
@@ -224,9 +201,6 @@ int main() {
 		else {
 			error(lineNum);
 		}
-		if (hasRet == 1) { // ret check!
-			error(lineNum);
-		}
 		free(cur);
 		if (command == LD || command == ST || command == LDC) {
 			if (hasLabel && str[i] != ' ') {
@@ -239,16 +213,16 @@ int main() {
 				}
 			}
 			lowPos = i;
-			while (isDigit(str[i])) {
+			while (isdigit(str[i])) {
 				i++;
 			}
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
 				error(lineNum);
 			}
-			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
+			char* op = (char*)malloc((i - lowPos + 1) * sizeof(int));
 			mallocCheck(op);
 
-			size_t k; 
+			size_t k;
 			for (k = lowPos; k < i; k++) {
 				op[k - lowPos] = str[k];
 			}
@@ -280,6 +254,9 @@ int main() {
 			}
 			if (command == RET) {
 				hasRet = 1;
+				if (maxRet < lineNum) {
+					maxRet = lineNum;
+				}
 			}
 			interpreter->program.operations[lineNum].opType = NO_OP;
 			interpreter->program.operations[lineNum].noOpCmd.opCode = command;
@@ -298,7 +275,7 @@ int main() {
 			if (str[i] != 0 && str[i] != ' ' && str[i] != '\n') {
 				error(lineNum);
 			}
-			char* op = (char*) malloc((i - lowPos + 1) * sizeof(int));
+			char* op = (char*)malloc((i - lowPos + 1) * sizeof(int));
 			mallocCheck(op);
 
 			size_t k;
@@ -317,18 +294,23 @@ int main() {
 			interpreter->program.operations[lineNum].opType = STR_OP;
 			interpreter->program.operations[lineNum].strOpCmd.label = op;
 			interpreter->program.operations[lineNum].strOpCmd.opCode = command;
-			
+
 		}
 		else {
 			error(lineNum);
 		}
 	}
-///	printTable(&interpreter->program.lableToLine);
+	///	printTable(&interpreter->program.lableToLine);
 	if (!hasRet) {
 		printf("Your program needs to contain ret command!\n");
 		return INPUT_ERROR;
 	}
-	while (interpreter->state.ip <= lineNum) {
+	if (interpreter->program.operations[maxRet + 1].opType != OP_ERROR) {
+		error(maxRet + 1);
+	}
+}
+void execute(FILE* input, struct Interpreter* interpreter) {
+	while (1) {
 		switch (interpreter->program.operations[interpreter->state.ip].opType) {
 			case NO_OP: {
 				if (interpreter->state.stack.size < 2 && interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode != RET) {
@@ -368,7 +350,18 @@ int main() {
 					}
 					case RET: {
 						printStack(&interpreter->state.stack);
-						break;
+						cleanTable(&interpreter->program.lableToLine);
+						size_t i = 0;
+						while (interpreter->program.operations[i].opType != OP_ERROR){
+							if (interpreter->program.operations[i].opType == STR_OP) {
+								free(interpreter->program.operations[i].strOpCmd.label);
+							}
+							i++;
+						}
+						free(interpreter);
+						fclose(input);
+						_CrtDumpMemoryLeaks();
+						return;
 					}
 				}
 				interpreter->state.ip++;
@@ -379,14 +372,14 @@ int main() {
 				switch (interpreter->program.operations[interpreter->state.ip].intOpCmd.opCode) {
 					case LD: {
 						if (oper < 0 || oper >= MAX_ADDR) {
-							error(lineNum);
+							error(interpreter->state.ip);
 						}
 						push(&interpreter->state.stack, interpreter->state.memory[oper]);
 						break;
 					}
 					case ST: {
 						if (oper < 0 || oper >= MAX_ADDR) {
-							error(lineNum);
+							error(interpreter->state.ip);
 						}
 						interpreter->state.memory[oper] = peek(&interpreter->state.stack);
 						pop(&interpreter->state.stack);
@@ -425,17 +418,32 @@ int main() {
 				break;
 			}
 		}
-//		printf("%d ||", interpreter->state.ip - 1);
-//		printStack(&interpreter->state.stack);
+		//		printf("%d ||", interpreter->state.ip - 1);
+		//		printStack(&interpreter->state.stack);
 	}
-	cleanTable(&interpreter->program.lableToLine);
-	for (size_t i = 0; i <= lineNum; i++) {
-		if (interpreter->program.operations[i].opType == STR_OP) {
-			free(interpreter->program.operations[i].strOpCmd.label);
-		}
+}
+
+
+
+int main() {
+	FILE* input;
+	if ((input = fopen("input.txt", "r")) == NULL) {
+		printf("Problem with opening file\n");
+		return -1;
 	}
-	free(interpreter);
-	fclose(input);
-	_CrtDumpMemoryLeaks();
+
+	struct Interpreter* interpreter = (struct Interpreter*) malloc(sizeof(struct Interpreter));
+	if (interpreter == NULL) {
+		printf("Malloc error!\n");
+		return MALLOC_ERROR;
+	}
+	interpreter->program.lableToLine = createTable(TABLE_SIZE, hashPolynom);
+	interpreter->state.ip = 0;
+	interpreter->state.stack.size = 0;
+	for (size_t i = 0; i < MAX_LINES; i++) {
+		interpreter->program.operations[i].opType = OP_ERROR;
+	}
+	parse(input, interpreter);
+	execute(input, interpreter);
 	return 0;
 }

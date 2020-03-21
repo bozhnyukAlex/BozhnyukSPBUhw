@@ -1,6 +1,7 @@
 ﻿  main.c
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(331,31): warning C4018: <=: несоответствие типов со знаком и без знака
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(432,23): warning C4018: <=: несоответствие типов со знаком и без знака
-  stack.c
-  Создание кода...
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(132,23): warning C4098: parse: функция типа "void", возвращающая значение
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(171,22): warning C4098: parse: функция типа "void", возвращающая значение
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(306,21): warning C4098: parse: функция типа "void", возвращающая значение
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(318,24): warning C4098: execute: функция типа "void", возвращающая значение
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(400,24): warning C4098: execute: функция типа "void", возвращающая значение
   Interpreter.vcxproj -> D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\Debug\Interpreter.exe
