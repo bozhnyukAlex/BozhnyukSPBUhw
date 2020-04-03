@@ -97,12 +97,16 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 		lineNum++;
 		hasLabel = 0;
 		size_t i = 0;
-		while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
+		while (str[i] == ' ') {
 			i++;
 		}
 		if (str[i] == 0 || str[i] == '\n') {
 			///Error: empty String?!
 			error(lineNum);
+		}
+		if (str[i] == ';') { //ok, it's comment
+			lineNum--;
+			continue;
 		}
 		if (!isGoodLiteral(str[i])) {
 			error(lineNum);
@@ -233,7 +237,7 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 			while (str[i] == ' ') {
 				i++;
 			}
-			if (str[i] != 0 && str[i] != '\n') {
+			if (str[i] != 0 && str[i] != '\n' && str[i] != ';') {
 				error(lineNum);
 			}
 
@@ -246,10 +250,10 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 			if (hasLabel && str[i] != ' ' && str[i] != 0 && str[i] != '\n') {
 				error(lineNum);
 			}
-			while (str[i] == ' ' && str[i] != 0 && str[i] != '\n') {
+			while (str[i] == ' ') {
 				i++;
 			}
-			if (str[i] != 0 && str[i] != '\n') {
+			if (str[i] != 0 && str[i] != '\n' && str[i] != ';') {
 				error(lineNum);
 			}
 			if (command == RET) {
@@ -288,7 +292,7 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 			while (str[i] == ' ') {
 				i++;
 			}
-			if (str[i] != 0 && str[i] != '\n') {
+			if (str[i] != 0 && str[i] != '\n' && str[i] != ';') {
 				error(lineNum);
 			}
 			interpreter->program.operations[lineNum].opType = STR_OP;
