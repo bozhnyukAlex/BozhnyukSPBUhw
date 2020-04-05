@@ -12,10 +12,10 @@ size_t hashPolynom(char* key);
 struct HashTable {
 	struct List* arr;
 	size_t size;
-	int(*hash) (char*);
+	size_t(*hash) (char*);
 };
 
-struct HashTable createTable(size_t size, int(*hFn) (char*));
+struct HashTable createTable(size_t size, size_t(*hFn) (char*));
 void insertEl(struct HashTable* table, char* key, int value);
 void removeEl(struct HashTable* table, char* key);
 struct Node* getEl(struct HashTable* table, char* key);

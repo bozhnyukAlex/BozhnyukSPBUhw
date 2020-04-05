@@ -138,8 +138,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\hashTable.c" />
     <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\mylist.c" />
+    <ClCompile Include="hashTable.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="stack.c" />
   </ItemGroup>

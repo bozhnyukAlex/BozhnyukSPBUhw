@@ -18,13 +18,13 @@
     <ClCompile Include="main.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\hashTable.c">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SEMESTER#1\HW#11(HASH TABLE)\hashT\mylist.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="stack.c">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="hashTable.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>

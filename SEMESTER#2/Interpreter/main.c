@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <crtdbg.h>
+//#include <crtdbg.h>
 #include <stdint.h>
 #include <ctype.h>
 #include "hashTable.h"
@@ -13,7 +13,7 @@
 #define MAX_STACK_SIZE 1024 * 1024
 #define MAX_LINES 1024
 #define LINE_SIZE 1000
-#define TABLE_SIZE 1000
+//#define TABLE_SIZE 1000
 #define NO_OP 0
 #define INT_OP 1
 #define STR_OP 2
@@ -133,7 +133,7 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 
 			if (getEl(&interpreter->program.lableToLine, lbl) != NULL) {
 				printf("Error: this label already exists!\n");
-				return INPUT_ERROR;
+				exit(INPUT_ERROR);
 			}
 
 			insertEl(&interpreter->program.lableToLine, lbl, lineNum);
@@ -172,7 +172,7 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 		}
 		else {
 			error(lineNum);
-			return INPUT_ERROR;
+			return;
 		}
 		int command;
 		if (strcmp("ld", cur) == 0) {
@@ -287,8 +287,6 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 				op[k - lowPos] = str[k];
 			}
 			op[k - lowPos] = '\0';
-
-
 			while (str[i] == ' ') {
 				i++;
 			}
@@ -307,7 +305,7 @@ void parse(FILE* input, struct Interpreter* interpreter) {
 	///	printTable(&interpreter->program.lableToLine);
 	if (!hasRet) {
 		printf("Your program needs to contain ret command!\n");
-		return INPUT_ERROR;
+		exit(INPUT_ERROR);
 	}
 	if (interpreter->program.operations[maxRet + 1].opType != OP_ERROR) {
 		error(maxRet + 1);
@@ -319,7 +317,7 @@ void execute(FILE* input, struct Interpreter* interpreter) {
 			case NO_OP: {
 				if (interpreter->state.stack.size < 2 && interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode != RET) {
 					printf("NO SUCH OPERANDS!");
-					return NO_OP_ERROR;
+					exit(INPUT_ERROR);
 				}
 				switch (interpreter->program.operations[interpreter->state.ip].noOpCmd.opCode) {
 					case ADD: {
@@ -364,7 +362,7 @@ void execute(FILE* input, struct Interpreter* interpreter) {
 						}
 						free(interpreter);
 						fclose(input);
-						_CrtDumpMemoryLeaks();
+					//	_CrtDumpMemoryLeaks();
 						return;
 					}
 				}
@@ -401,7 +399,7 @@ void execute(FILE* input, struct Interpreter* interpreter) {
 				char* label = interpreter->program.operations[interpreter->state.ip].strOpCmd.label;
 				if (getEl(&interpreter->program.lableToLine, label) == NULL) { //label check
 					printf("NO SUCH LABEL!\n");
-					return INPUT_ERROR;
+					exit(INPUT_ERROR);
 				}
 				int line = getEl(&interpreter->program.lableToLine, label)->data;
 				switch (interpreter->program.operations[interpreter->state.ip].strOpCmd.opCode) {
@@ -431,10 +429,11 @@ void execute(FILE* input, struct Interpreter* interpreter) {
 
 int main() {
 	FILE* input;
-	if ((input = fopen("input.txt", "r")) == NULL) {
+	if ((input = fopen("input.txt", "rt")) == NULL) {
 		printf("Problem with opening file\n");
 		return -1;
 	}
+	const size_t TABLE_SIZE = 1000;
 
 	struct Interpreter* interpreter = (struct Interpreter*) malloc(sizeof(struct Interpreter));
 	if (interpreter == NULL) {

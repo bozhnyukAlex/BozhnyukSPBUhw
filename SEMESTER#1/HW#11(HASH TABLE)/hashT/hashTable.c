@@ -54,7 +54,7 @@ size_t hashPolynom(char* key) {
 }
 
 
-struct HashTable createTable(size_t size, int (*hFn) (char*)) {
+struct HashTable createTable(size_t size, size_t (*hFn) (char*)) {
 	struct HashTable newTable;
 	newTable.arr = (struct List*) malloc(size * sizeof(struct List));
 	if (newTable.arr == NULL) {

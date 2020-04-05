@@ -1,7 +1,5 @@
-﻿  main.c
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(136,23): warning C4098: parse: функция типа "void", возвращающая значение
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(175,22): warning C4098: parse: функция типа "void", возвращающая значение
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(310,21): warning C4098: parse: функция типа "void", возвращающая значение
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(322,24): warning C4098: execute: функция типа "void", возвращающая значение
-D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\main.c(404,24): warning C4098: execute: функция типа "void", возвращающая значение
+﻿  hashTable.c
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\hashTable.c(62,13): warning C4013: exit: нет определения; предполагается "extern" с возвратом типа "int"
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\hashTable.c(129,11): warning C4018: >: несоответствие типов со знаком и без знака
+D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\hashTable.c(139,11): warning C4018: <: несоответствие типов со знаком и без знака
   Interpreter.vcxproj -> D:\BozhnyukSPBUhw\SEMESTER#2\Interpreter\Debug\Interpreter.exe
