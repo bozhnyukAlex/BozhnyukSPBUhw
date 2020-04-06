@@ -1,0 +1,52 @@
+ldc 30
+st 0
+ldc 0
+st 1
+ldc 1   
+ld 0 
+cmp        
+ldc 2
+st 1
+br lb3
+jmp FIN
+lb3: st 228 ; 228 is a constant for garbage address
+ldc 2
+cmp
+br lb4
+jmp FIN
+lb4: ldc 1
+ldc 1
+loop: add
+add
+ld 0
+cmp
+ldc 1
+add
+br lb1
+jmp FIN
+lb1: st 228
+st 228
+st 228
+st 228
+ld 1
+add
+st 1
+st 228
+add 
+ld 0
+cmp
+ldc 1
+add
+br lb2
+jmp FIN
+lb2: st 228
+st 228
+st 228
+st 228
+ld 1
+add
+st 1
+st 228
+jmp loop
+FIN: ld 1
+ret

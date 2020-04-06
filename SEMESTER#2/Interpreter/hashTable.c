@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <malloc.h>
 #include <limits.h>
 #include "mylist.h"
@@ -59,7 +60,7 @@ struct HashTable createTable(size_t size, size_t (*hFn) (char*)) {
 	newTable.arr = (struct List*) malloc(size * sizeof(struct List));
 	if (newTable.arr == NULL) {
         printf("ERROR!\n");
-        exit(-1);
+		exit(-1);
 	}
 	newTable.hash = hFn;
 	newTable.size = size;
@@ -123,7 +124,7 @@ int elementCount(struct HashTable* table) {
 	return res;
 }
 int minChainLength(struct HashTable* table) {
-	int min = INFINITY;
+	size_t min = INFINITY;
 	size_t i = 0;
 	for (i = 0; i < table->size; i++) {
 		if (min > table->arr[i].length && table->arr[i].length > 0) {
@@ -133,7 +134,7 @@ int minChainLength(struct HashTable* table) {
 	return min;
 }
 int maxChainLength(struct HashTable* table) {
-	int max = 0;
+	size_t max = 0;
 	size_t i = 0;
 	for (i = 0; i < table->size; i++) {
 		if (max < table->arr[i].length) {
