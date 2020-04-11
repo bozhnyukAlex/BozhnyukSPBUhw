@@ -14,8 +14,8 @@ public class JavaSweeper extends JFrame {
 
     private JPanel panel; //аналог Scene, как я понимаю
     private JLabel label;
-    private final int COLS = 9;
-    private final int ROWS = 9;
+    private final int COLS = 10;
+    private final int ROWS = 10;
     private final int BOMBS = 10;
     private final int IMAGE_SIZE = 50;
 
