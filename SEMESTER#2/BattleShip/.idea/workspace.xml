@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Battleship:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/BattleShip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleShip.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +39,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -81,6 +80,8 @@
       <workItem from="1586681517097" duration="32014000" />
       <workItem from="1586732214507" duration="2655000" />
       <workItem from="1586785988671" duration="19134000" />
+      <workItem from="1586808503304" duration="414000" />
+      <workItem from="1586808955142" duration="42000" />
     </task>
     <servers />
   </component>
@@ -92,6 +93,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586786388082" />
+    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586808874385">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586808874385" />
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1586624789208">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -128,10 +133,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="351" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586808142338" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586786128283">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1586808889835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586786128283" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586808889835" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586808958687">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586808958687" />
     <state x="690" y="275" key="extract.method.dialog" timestamp="1586807830550">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
