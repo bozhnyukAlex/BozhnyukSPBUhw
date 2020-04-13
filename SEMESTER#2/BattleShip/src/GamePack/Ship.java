@@ -28,4 +28,13 @@ public class Ship {
     public ArrayList<Cell> getDecks() {
         return decks;
     }
+
+    public boolean hasDeckWithThisCoordinates(int di, int dj) {
+        for (Cell deck : decks) {
+            if (deck.getX() == dj * Cell.SIZE && deck.getY() == di * Cell.SIZE) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

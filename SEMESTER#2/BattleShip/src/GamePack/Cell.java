@@ -7,6 +7,7 @@ public class Cell {
     private int x, y;
     public static final int SIZE = 24;
     private boolean isBusy;
+    private int busyCount;
     private Color cellColor;
 
 
@@ -14,19 +15,27 @@ public class Cell {
         this.x = x;
         this.y = y;
         isBusy = false;
+        busyCount = 0;
     }
 
     public boolean isBusy() {
-        return isBusy;
+        return busyCount != 0;
+    }
+
+    public void changeBusyCount(int mode) {
+        busyCount += mode;
     }
 
     public void setBusy(boolean busy) {
         isBusy = busy;
     }
 
-    public void setCellColor(GraphicsContext gc, Color cellColor) {
-
+    public void setCellColor(Color cellColor) {
         this.cellColor = cellColor;
+    }
+
+    public Color getCellColor() {
+        return cellColor;
     }
 
     public int getX() {
@@ -37,7 +46,11 @@ public class Cell {
         return y;
     }
 
-    public void draw(GraphicsContext gc) {
+    public void draw(GraphicsContext gc, boolean isDelete) {
+        if (isDelete) {
+            gc.setFill(Color.color(0.96F, 0.96F, 0.96F));
+            gc.fillRect(x, y, SIZE, SIZE);
+        }
         gc.setStroke(Color.BLUE);
         gc.strokeRect(x, y, SIZE, SIZE);
     }
@@ -52,7 +65,7 @@ public class Cell {
         else {
             gc.setFill(Color.RED);
         }
-        gc.fillRect(x+1, y+1, SIZE-1, SIZE-1);
+        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
 
     }
 }
