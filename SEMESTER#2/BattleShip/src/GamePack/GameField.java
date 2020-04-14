@@ -7,7 +7,30 @@ import javafx.scene.paint.Color;
 
 public class GameField extends Canvas {
     public static final int SIZE = 10;
+    public static final int PLAYER = 3;
+    public static final int ENEMY = 4;
     private Cell cells[][];
+
+
+    public GameField(int mode) {
+        switch (mode) {
+            case PLAYER: {
+                setLayoutX(95);
+                setLayoutY(126);
+                setWidth(240);
+                setHeight(240);
+                break;
+            }
+            case ENEMY: {
+                setLayoutX(367);
+                setLayoutY(126);
+                setWidth(240);
+                setHeight(240);
+                break;
+            }
+        }
+        initAndDraw();
+    }
 
     public Cell[][] getCells() {
         return cells;
@@ -50,6 +73,6 @@ public class GameField extends Canvas {
     }
 
     public boolean inRange(int i, int j) {
-        return i >= 0 && i <= SIZE && j >= 0 && j <= SIZE;
+        return i >= 0 && i < SIZE && j >= 0 && j < SIZE;
     }
 }

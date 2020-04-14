@@ -38,6 +38,10 @@ public class Logic {
         state = GameState.PREPARATION;
     }
 
+    public void gameStart() {
+        state = GameState.PLAYING;
+    }
+
     public boolean checkPreparation() {
         if (state != GameState.PREPARATION) {
             return false;
