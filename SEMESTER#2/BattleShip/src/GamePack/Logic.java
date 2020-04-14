@@ -14,12 +14,18 @@ public class Logic {
     private final int DIR_LEFT = 2;
     private final int DIR_RIGHT = 3;
     private final int INCREASE_MODE = 1;
+    private AI enemyAI;
+    private FightState fightState;
 
 
     public Logic() {
         playerShipsLeft = 10;
         enemyShipsLeft = 10;
         playerShips = new ArrayList<Ship>();
+    }
+
+    public void initAI(GameField opponentField, IntelligenceLevel il) {
+        enemyAI = new AI(opponentField, il);
     }
 
     public ArrayList<Ship> autoShipGenerate(GameField field) {
@@ -164,6 +170,14 @@ public class Logic {
         return playerShipsLeft;
     }
 
+    public FightState getFightState() {
+        return fightState;
+    }
+
+    public void setFightState(FightState fightState) {
+        this.fightState = fightState;
+    }
+
     public ArrayList<Ship> getPlayerShips() {
         return playerShips;
     }
@@ -201,5 +215,9 @@ public class Logic {
             return false;
         }
         return playerShips.size() == 10;
+    }
+
+    public Cell makeAiAttack() {
+        return enemyAI.makeShot();
     }
 }

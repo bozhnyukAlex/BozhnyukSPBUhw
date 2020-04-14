@@ -6,7 +6,8 @@ import javafx.scene.paint.Color;
 public class Cell {
     private int x, y;
     public static final int SIZE = 24;
-    private boolean isBusy;
+    private boolean isDeck;
+    private boolean isShot;
     private int busyCount;
     private Color cellColor;
 
@@ -14,7 +15,8 @@ public class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
-        isBusy = false;
+        isDeck = false;
+        isShot = false;
         busyCount = 0;
     }
 
@@ -26,8 +28,12 @@ public class Cell {
         busyCount += mode;
     }
 
-    public void setBusy(boolean busy) {
-        isBusy = busy;
+    public void setDeck(boolean deck) {
+        isDeck = deck;
+    }
+
+    public boolean isDeck() {
+        return isDeck;
     }
 
     public void setCellColor(Color cellColor) {
@@ -46,6 +52,14 @@ public class Cell {
         return y;
     }
 
+    public boolean isShot() {
+        return isShot;
+    }
+
+    public void setShot(boolean shot) {
+        isShot = shot;
+    }
+
     public void draw(GraphicsContext gc, boolean isDelete) {
         if (isDelete) {
             gc.setFill(Color.color(0.96F, 0.96F, 0.96F));
@@ -58,8 +72,8 @@ public class Cell {
 
 
 
-    public void drawShipDeck(GraphicsContext gc, boolean isStart) {
-        if (isStart) {
+    public void drawShipDeck(GraphicsContext gc, boolean isFirstClickSet) {
+        if (isFirstClickSet) {
             gc.setFill(Color.ORANGE);
         }
         else {
@@ -67,5 +81,10 @@ public class Cell {
         }
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
 
+    }
+
+    public void drawWater(GraphicsContext gc) {
+        gc.setFill(Color.BLUE);
+        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 }

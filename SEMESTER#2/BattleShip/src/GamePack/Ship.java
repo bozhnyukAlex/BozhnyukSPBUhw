@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class Ship {
     private int length;
     private ArrayList<Cell> decks;
-    private Direction direction;
 
     public Ship(int length) {
         this.length = length;
@@ -19,13 +18,6 @@ public class Ship {
         build(decks);
     }
 
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
 
     public int getLength() {
         return length;
@@ -36,7 +28,15 @@ public class Ship {
     }
 
     public void build(Cell ... cells) {
-        decks.addAll(Arrays.asList(cells));
+        for (Cell cell : cells) {
+            decks.add(cell);
+            cell.setDeck(true);
+        }
+      //  decks.addAll(Arrays.asList(cells));
+    }
+
+    public void getDamage() {
+        length--;
     }
 
     public ArrayList<Cell> getDecks() {

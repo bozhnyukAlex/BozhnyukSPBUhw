@@ -106,6 +106,7 @@ public class BattleShip extends Application {
         captureTriggers = new boolean[] {false, false, false, false, false};
         setDisableToButtonsOnSecondField(true);
         playerField = new GameField(PLAYER_FIELD);
+        enemyField = new GameField();
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
         itemDelete = new MenuItem(DELETE_SHIP);
@@ -370,10 +371,31 @@ public class BattleShip extends Application {
                 enemyField = new GameField(ENEMY_FIELD);
                 toggleRightField(TO_ENEMY_FIELD);
                 logic.setEnemyShips(logic.autoShipGenerate(enemyField));
-                enemyField.drawShips(logic.getEnemyShips());
+                logic.initAI(playerField, IntelligenceLevel.LOW);
+                logic.setFightState(FightState.PLAYER_MOVE);
+                enemyField.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                            if (logic.getState().equals(GameState.PLAYING) && logic.getFightState().equals(FightState.PLAYER_MOVE)) {
+                                int plsi = (int) mouseEvent.getY() / Cell.SIZE;
+                                int plsj = (int) mouseEvent.getX() / Cell.SIZE;
+                                enemyField.getCell(plsi, plsj).setShot(true);
+                                if (enemyField.getCell(plsi, plsj).isDeck()) {
 
+                                }
+                                else {
+                                    enemyField.getCell(plsi, plsj).drawWater(enemyField.getGraphicsContext2D());
+                                }
+                            }
+                        }
+                    }
+                });
             }
         });
+
+
+
 
         autoGenerateButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -385,7 +407,6 @@ public class BattleShip extends Application {
                 setDisableToEnableButtons(true);
                 readyButton.setDisable(false);
                 statusLabel.setText(YOU_ARE_READY);
-
             }
         });
 

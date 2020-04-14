@@ -34,6 +34,8 @@ public class GameField extends Canvas {
         initAndDraw();
     }
 
+    public GameField () {}
+
     public Cell[][] getCells() {
         return cells;
     }
@@ -88,6 +90,8 @@ public class GameField extends Canvas {
             }
         }
     }
+
+
 
 
 
