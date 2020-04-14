@@ -6,11 +6,20 @@ import java.util.Arrays;
 public class Ship {
     private int length;
     private ArrayList<Cell> decks;
+    private Direction direction;
 
     public Ship(int length) {
         this.length = length;
         decks = new ArrayList<>();
 
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     public int getLength() {

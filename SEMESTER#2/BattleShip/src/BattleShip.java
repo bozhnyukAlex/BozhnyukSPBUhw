@@ -1,6 +1,4 @@
-import GamePack.Cell;
-import GamePack.Logic;
-import GamePack.Ship;
+import GamePack.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,7 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class BattleShip extends Application {
-    private final int FIELD_SIZE = 10;
+    private static final int FIELD_SIZE = 10;
     @FXML
     private VBox pane;
     @FXML
@@ -38,7 +36,7 @@ public class BattleShip extends Application {
     @FXML
     private Label statusLabel;
     @FXML
-    private Canvas playerField;
+    private GameField playerField;
     @FXML
     private Canvas enemyField;
     @FXML
@@ -73,7 +71,7 @@ public class BattleShip extends Application {
     private boolean firstClickOnPlayerField, secondClickOnPlayerField;
     private int clickCount;
 
-    private Cell[][] cells;
+  //  private Cell[][] cells;
     private Logic logic;
     private int oneShipToGo, twoShipToGo, threeShipToGo, fourShipToGo;
 
@@ -108,8 +106,9 @@ public class BattleShip extends Application {
        // super.init();
         captureTriggers = new boolean[] {false, false, false, false, false};
         setDisableToButtonsOnSecondField(true);
-        cells = new Cell[FIELD_SIZE][FIELD_SIZE];
-        drawField(playerField);
+        //cells = new Cell[FIELD_SIZE][FIELD_SIZE];
+        //drawField(playerField);
+        playerField.initAndDraw();
         firstClickOnPlayerField = secondClickOnPlayerField = false;
         deleteMenu = new ContextMenu();
         itemDelete = new MenuItem(DELETE_SHIP);
@@ -127,7 +126,7 @@ public class BattleShip extends Application {
                 readyButton.setDisable(true);
                 if (logic != null) {
                     if (!logic.getPlayerShips().isEmpty()) {
-                        updateField(playerField);
+                        playerField.update();
                         updateEnableLabels();
                         updateTriggers();
                     }
@@ -177,78 +176,83 @@ public class BattleShip extends Application {
                 setTrigger(4,true);
             }
         });
-
         playerField.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PREPARATION)) {
                     int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
                     cli /= Cell.SIZE;
                     clj /= Cell.SIZE;
                     if (getTrigger() == 1) {
-                        if (cells[cli][clj].isBusy()) {
+                        if (playerField.getCell(cli, clj).isBusy()/*cells[cli][clj].isBusy()*/) {
                             statusLabel.setText(CELL_IS_BUSY);
                             return;
                         }
 
-                        cells[cli][clj].drawShipDeck(playerField.getGraphicsContext2D(), false);
-                        cells[cli][clj].setCellColor(Color.RED);
+                        //cells[cli][clj].drawShipDeck(playerField.getGraphicsContext2D(), false);
+                        //cells[cli][clj].setCellColor(Color.RED);
+                        playerField.getCell(cli, clj).drawShipDeck(playerField.getGraphicsContext2D(), false);
+                        playerField.getCell(cli, clj).setCellColor(Color.RED);
                         Ship ship1 = new Ship(1);
-                        ship1.build(cells[cli][clj]);
+                        ship1.build(playerField.getCell(cli, clj));
                         logic.addPlayerShip(ship1);
-                        setBusyAroundCell(cli, clj, INCREASE_BUSY);
+                        playerField.setBusyAroundCell(cli, clj, INCREASE_BUSY);
                         decreaseShipsToGo();
                         setLabelAfterSettingShip();
                         setTrigger(1, false);
                         if (logic.checkPreparation()) {
                             readyButton.setDisable(false);
                         }
+
                     }
                     if (getTrigger() != 1 && getTrigger() != 0) {
                         clickCount++;
                         if (clickCount == 1) {
-                          //  itemDelete.setDisable(true);
-                            if (cells[cli][clj].isBusy()) {
+                            if (playerField.getCell(cli, clj).isBusy()/*cells[cli][clj].isBusy()*/) {
                                 statusLabel.setText(CELL_IS_BUSY);
                                 clickCount--;
                                 return;
                             }
                             statusLabel.setText(SET_DIR);
-                            cells[cli][clj].drawShipDeck(playerField.getGraphicsContext2D(), true);
-                            cells[cli][clj].setCellColor(Color.ORANGE);
+                           // cells[cli][clj].drawShipDeck(playerField.getGraphicsContext2D(), true);
+                          //  cells[cli][clj].setCellColor(Color.ORANGE);
+                            playerField.getCell(cli, clj).drawShipDeck(playerField.getGraphicsContext2D(), true);
+                            playerField.getCell(cli, clj).setCellColor(Color.ORANGE);
                             Ship nShip = new Ship(getTrigger());
-                            nShip.build(cells[cli][clj]);
+                            nShip.build(playerField.getCell(cli, clj));
                             logic.addPlayerShip(nShip);
                         }
                         if (clickCount == 2) {
-                           // itemDelete.setDisable(false); ///IF DELETED!!!
                             Ship prevShip = logic.getPlayerShips().get(logic.getPlayerShips().size() - 1);
                             int pi = prevShip.getDecks().get(0).getY() / Cell.SIZE,
                                     pj = prevShip.getDecks().get(0).getX() / Cell.SIZE;
-                            cells[pi][pj].setCellColor(Color.RED);
+                            //cells[pi][pj].setCellColor(Color.RED);
+                            playerField.getCell(pi, pj).setCellColor(Color.RED);
                             int di = Math.abs(pi - cli),
                                     dj = Math.abs(pj - clj);
                             if (cli == pi - di && pj == clj) {
                                 if (pi - prevShip.getLength() + 1 < 0) {
                                     statusLabel.setText(CELL_IS_BUSY);
                                     clickCount--;
-                                    cells[pi][pj].setCellColor(Color.ORANGE);
+                                    //cells[pi][pj].setCellColor(Color.ORANGE);
+                                    playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                     return;
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    if (cells[pi - i][pj].isBusy()) {
+                                    if (/*cells[pi - i][pj].isBusy()*/playerField.getCell(pi - i, pj).isBusy()) {
                                         statusLabel.setText(CELL_IS_BUSY);
                                         clickCount--;
-                                        cells[pi][pj].setCellColor(Color.ORANGE);
+                                        //cells[pi][pj].setCellColor(Color.ORANGE);
+                                        playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                         return;
                                     }
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    cells[pi - i][pj].drawShipDeck(playerField.getGraphicsContext2D(), false);
-                                    cells[pi - i][pj].setCellColor(Color.RED);
-                                    setBusyAroundCell(pi - i, pj, INCREASE_BUSY);
+                                    playerField.getCell(pi - i, pj).drawShipDeck(playerField.getGraphicsContext2D(), false);
+                                    playerField.getCell(pi - i, pj).setCellColor(Color.RED);
+                                    playerField.setBusyAroundCell(pi - i, pj, INCREASE_BUSY);
                                     if (i != 0) {
-                                        prevShip.build(cells[pi - i][pj]);
+                                        prevShip.build(playerField.getCell(pi - i, pj));
                                     }
                                 }
                             }
@@ -256,23 +260,25 @@ public class BattleShip extends Application {
                                 if (pi + prevShip.getLength() - 1 >= FIELD_SIZE) {
                                     statusLabel.setText(CELL_IS_BUSY);
                                     clickCount--;
-                                    cells[pi][pj].setCellColor(Color.ORANGE);
+                                  //  cells[pi][pj].setCellColor(Color.ORANGE);
+                                    playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                     return;
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    if (cells[pi + i][pj].isBusy()) {
+                                    if (playerField.getCell(pi + i, pj).isBusy()) {
                                         statusLabel.setText(CELL_IS_BUSY);
                                         clickCount--;
-                                        cells[pi][pj].setCellColor(Color.ORANGE);
+                                        //cells[pi][pj].setCellColor(Color.ORANGE);
+                                        playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                         return;
                                     }
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    cells[pi + i][pj].drawShipDeck(playerField.getGraphicsContext2D(), false);
-                                    cells[pi + i][pj].setCellColor(Color.RED);
-                                    setBusyAroundCell(pi + i, pj, INCREASE_BUSY);
+                                    playerField.getCell(pi + i, pj).drawShipDeck(playerField.getGraphicsContext2D(), false);
+                                    playerField.getCell(pi + i, pj).setCellColor(Color.RED);
+                                    playerField.setBusyAroundCell(pi + i, pj, INCREASE_BUSY);
                                     if (i != 0) {
-                                        prevShip.build(cells[pi + i][pj]);
+                                        prevShip.build(playerField.getCell(pi + i, pj));
                                     }
                                 }
                             }
@@ -280,23 +286,25 @@ public class BattleShip extends Application {
                                 if (pj - prevShip.getLength() + 1 < 0) {
                                     statusLabel.setText(CELL_IS_BUSY);
                                     clickCount--;
-                                    cells[pi][pj].setCellColor(Color.ORANGE);
+                                   // cells[pi][pj].setCellColor(Color.ORANGE);
+                                    playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                     return;
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    if (cells[pi][pj - i].isBusy()) {
+                                    if (playerField.getCell(pi, pj - i).isBusy()) {
                                         statusLabel.setText(CELL_IS_BUSY);
                                         clickCount--;
-                                        cells[pi][pj].setCellColor(Color.ORANGE);
+                                        //cells[pi][pj].setCellColor(Color.ORANGE);
+                                        playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                         return;
                                     }
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    cells[pi][pj - i].drawShipDeck(playerField.getGraphicsContext2D(), false);
-                                    cells[pi][pj - i].setCellColor(Color.RED);
-                                    setBusyAroundCell(pi, pj - i, INCREASE_BUSY);
+                                    playerField.getCell(pi, pj - i).drawShipDeck(playerField.getGraphicsContext2D(), false);
+                                    playerField.getCell(pi, pj - i).setCellColor(Color.RED);
+                                    playerField.setBusyAroundCell(pi, pj - i, INCREASE_BUSY);
                                     if (i != 0) {
-                                        prevShip.build(cells[pi][pj - i]);
+                                        prevShip.build(playerField.getCell(pi, pj - i));
                                     }
                                 }
                             }
@@ -304,23 +312,24 @@ public class BattleShip extends Application {
                                 if (pj + prevShip.getLength() - 1 >= FIELD_SIZE) {
                                     statusLabel.setText(CELL_IS_BUSY);
                                     clickCount--;
-                                    cells[pi][pj].setCellColor(Color.ORANGE);
+                                    //cells[pi][pj].setCellColor(Color.ORANGE);
+                                    playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                     return;
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    if (cells[pi][pj + i].isBusy()) {
+                                    if (playerField.getCell(pi, pj + i).isBusy()) {
                                         statusLabel.setText(CELL_IS_BUSY);
                                         clickCount--;
-                                        cells[pi][pj].setCellColor(Color.ORANGE);
+                                        playerField.getCell(pi, pj).setCellColor(Color.ORANGE);
                                         return;
                                     }
                                 }
                                 for (int i = 0; i < prevShip.getLength(); i++) {
-                                    cells[pi][pj + i].drawShipDeck(playerField.getGraphicsContext2D(), false);
-                                    cells[pi][pj + i].setCellColor(Color.RED);
-                                    setBusyAroundCell(pi, pj + i, INCREASE_BUSY);
+                                    playerField.getCell(pi, pj + i).drawShipDeck(playerField.getGraphicsContext2D(), false);
+                                    playerField.getCell(pi, pj + i).setCellColor(Color.RED);
+                                    playerField.setBusyAroundCell(pi, pj + i, INCREASE_BUSY);
                                     if (i != 0) {
-                                        prevShip.build(cells[pi][pj + i]);
+                                        prevShip.build(playerField.getCell(pi, pj + i));
                                     }
                                 }
                             }
@@ -354,7 +363,7 @@ public class BattleShip extends Application {
                     rcj = (int) contextMenuEvent.getX();
                 rci /= Cell.SIZE;
                 rcj /= Cell.SIZE;
-                if (cells[rci][rcj].getCellColor().equals(Color.RED) || cells[rci][rcj].getCellColor().equals(Color.ORANGE)) {
+                if (playerField.getCell(rci, rcj).getCellColor().equals(Color.RED) || playerField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
                     deleteMenu.show(playerField, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY());
                 }
 
@@ -417,7 +426,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void drawField(Canvas canvas) {
+ /*   public void drawField(Canvas canvas) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE ; j++) {
@@ -426,7 +435,7 @@ public class BattleShip extends Application {
                 cells[i][j].draw(gc, false);
             }
         }
-    }
+    }*/
 
     private int getTrigger() {
         if (captureTriggers[1]) {
@@ -463,7 +472,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void setBusyAroundCell(int i, int j, int mode) {
+    /*public void setBusyAroundCell(int i, int j, int mode) {
         for (int w = -1; w <= 1; w++) {
             for (int v = -1; v <= 1; v++) {
                 if (i + w >= 0 && i + w < FIELD_SIZE && j + v >= 0 && j + v < FIELD_SIZE) {
@@ -471,7 +480,7 @@ public class BattleShip extends Application {
                 }
             }
         }
-    }
+    }*/
 
     public void decreaseShipsToGo() {
         switch (getTrigger()) {
@@ -520,41 +529,41 @@ public class BattleShip extends Application {
         captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
     }
 
-    public void updateField(Canvas field) {
+    /*public void updateField(Canvas field) {
         GraphicsContext gc = field.getGraphicsContext2D();
         gc.clearRect(0,0, field.getWidth(), field.getHeight());
-        drawField(field);
-    }
+        playerField.draw();
+    }*/
 
 
     public void deleteAllDecks(int di, int dj) {
-        if (cells[di][dj].getCellColor().equals(Color.RED)) {
-            cells[di][dj].setCellColor(Color.WHITE);
-            cells[di][dj].draw(playerField.getGraphicsContext2D(), true);
-            setBusyAroundCell(di, dj, DECREASE_BUSY);
-            if (di - 1 >= 0 && cells[di - 1][dj].getCellColor().equals(Color.RED)) {
+        if (playerField.getCell(di, dj).getCellColor().equals(Color.RED)) {
+            playerField.getCell(di, dj).setCellColor(Color.WHITE);
+            playerField.getCell(di, dj).draw(playerField.getGraphicsContext2D(), true);
+            playerField.setBusyAroundCell(di, dj, DECREASE_BUSY);
+            if (di - 1 >= 0 && playerField.getCell(di - 1, dj).getCellColor().equals(Color.RED)) {
                 deleteAllDecks(di - 1, dj);
             }
-            if (di + 1 < FIELD_SIZE && cells[di + 1][dj].getCellColor().equals(Color.RED)) { ///don't write else!!!!!
+            if (di + 1 < FIELD_SIZE && playerField.getCell(di + 1, dj).getCellColor().equals(Color.RED)) { ///don't write else!!!!!
                 deleteAllDecks(di + 1, dj);
             }
-            if (dj + 1 < FIELD_SIZE && cells[di][dj + 1].getCellColor().equals(Color.RED)) {
+            if (dj + 1 < FIELD_SIZE && playerField.getCell(di, dj + 1).getCellColor().equals(Color.RED)) {
                 deleteAllDecks(di, dj + 1);
             }
-            if (dj - 1 >= 0 && cells[di][dj - 1].getCellColor().equals(Color.RED)) {
+            if (dj - 1 >= 0 && playerField.getCell(di, dj - 1).getCellColor().equals(Color.RED)) {
                 deleteAllDecks(di, dj - 1);
             }
         }
-        else if (cells[di][dj].getCellColor().equals(Color.ORANGE)) {
-            cells[di][dj].setCellColor(Color.WHITE);
-            cells[di][dj].draw(playerField.getGraphicsContext2D(), true);
+        else if (playerField.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
+            playerField.getCell(di, dj).setCellColor(Color.WHITE);
+            playerField.getCell(di, dj).draw(playerField.getGraphicsContext2D(), true);
         }
     }
 
 
 
     public void deleteShip(int di, int dj) {
-        if (cells[di][dj].getCellColor().equals(Color.ORANGE)) {
+        if (playerField.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
             deleteAllDecks(di, dj);
             logic.getPlayerShips().remove(logic.getPlayerShips().size() - 1);
             clickCount--;
@@ -596,6 +605,7 @@ public class BattleShip extends Application {
         readyButton.setDisable(true);
         deleteAllDecks(di, dj);
     }
+
 
 
 
