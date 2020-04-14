@@ -11,7 +11,12 @@ public class Ship {
     public Ship(int length) {
         this.length = length;
         decks = new ArrayList<>();
+    }
 
+    public Ship(Cell ... decks) {
+        this.length = decks.length;
+        this.decks = new ArrayList<Cell>();
+        build(decks);
     }
 
     public Direction getDirection() {

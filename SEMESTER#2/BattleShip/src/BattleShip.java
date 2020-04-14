@@ -28,6 +28,8 @@ public class BattleShip extends Application {
     private AnchorPane anchorPane;
     private Scene startScene;
     @FXML
+    private Button autoGenerateButton;
+    @FXML
     private Button startButton;
     @FXML
     private Button settingsButton;
@@ -69,7 +71,6 @@ public class BattleShip extends Application {
     private boolean firstClickOnPlayerField, secondClickOnPlayerField;
     private int clickCount;
 
-  //  private Cell[][] cells;
     private Logic logic;
     private int oneShipToGo, twoShipToGo, threeShipToGo, fourShipToGo;
 
@@ -79,6 +80,8 @@ public class BattleShip extends Application {
     private final String CHOOSE_SHIP = "Выберите корабль";
     private final String DELETE_SHIP = "Удалить корабль";
     private final String YOU_ARE_READY = "Вы готовы к бою!";
+    private final String YOUR_MOVE = "Ваш ход!";
+    private final String ENEMY_MOVE = "Ход противника!";
 
     private final int INCREASE_BUSY = 1;
     private final int DECREASE_BUSY = -1;
@@ -86,13 +89,6 @@ public class BattleShip extends Application {
     private final int ENEMY_FIELD = 4;
     private final int TO_BUTTON_PANE = 5;
     private final int TO_ENEMY_FIELD = 6;
-
-
-
-
-
-
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -107,16 +103,14 @@ public class BattleShip extends Application {
 
     @FXML
     public void initialize() throws Exception {
-       // super.init();
         captureTriggers = new boolean[] {false, false, false, false, false};
         setDisableToButtonsOnSecondField(true);
-        //cells = new Cell[FIELD_SIZE][FIELD_SIZE];
-        //drawField(playerField);
         playerField = new GameField(PLAYER_FIELD);
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
         itemDelete = new MenuItem(DELETE_SHIP);
         deleteMenu.getItems().add(itemDelete);
+        autoGenerateButton.setDisable(true);
 
 
         oneShipToGo = Integer.parseInt(oneShipToGoLab.getText());
@@ -130,6 +124,7 @@ public class BattleShip extends Application {
                     toggleRightField(TO_BUTTON_PANE);
                 }
                 statusLabel.setText("Подготовка");
+                autoGenerateButton.setDisable(false);
                 setDisableToButtonsOnSecondField(false); // it looks weird, need to fix it later
                 readyButton.setDisable(true);
                 if (logic != null) {
@@ -225,8 +220,7 @@ public class BattleShip extends Application {
                         }
                         if (clickCount == 2) {
                             Ship prevShip = logic.getPlayerShips().get(logic.getPlayerShips().size() - 1);
-                            int pi = prevShip.getDecks().get(0).getY() / Cell.SIZE,
-                                    pj = prevShip.getDecks().get(0).getX() / Cell.SIZE;
+                            int pi = prevShip.getDecks().get(0).getY() / Cell.SIZE,  pj = prevShip.getDecks().get(0).getX() / Cell.SIZE;
                             playerField.getCell(pi, pj).setCellColor(Color.RED);
                             int di = Math.abs(pi - cli),
                                     dj = Math.abs(pj - clj);
@@ -347,7 +341,6 @@ public class BattleShip extends Application {
             }
         });
 
-
         playerField.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
             @Override
             public void handle(ContextMenuEvent contextMenuEvent) {
@@ -373,11 +366,37 @@ public class BattleShip extends Application {
         readyButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                logic.play();
                 enemyField = new GameField(ENEMY_FIELD);
                 toggleRightField(TO_ENEMY_FIELD);
+                logic.setEnemyShips(logic.autoShipGenerate(enemyField));
+                enemyField.drawShips(logic.getEnemyShips());
+
             }
         });
 
+        autoGenerateButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                playerField.update();
+                logic.setPlayerShips(logic.autoShipGenerate(playerField));
+                playerField.drawShips(logic.getPlayerShips());
+                setZeroToEnableLabelsAndCounts();
+                setDisableToEnableButtons(true);
+                readyButton.setDisable(false);
+                statusLabel.setText(YOU_ARE_READY);
+
+            }
+        });
+
+    }
+
+    private void setZeroToEnableLabelsAndCounts() {
+        oneShipToGo = twoShipToGo = threeShipToGo = fourShipToGo = 0;
+        oneShipToGoLab.setText("0");
+        twoShipToGoLab.setText("0");
+        threeShipToGoLab.setText("0");
+        fourShipToGoLab.setText("0");
     }
 
     private void setLabelAfterSettingShip() {
@@ -396,6 +415,14 @@ public class BattleShip extends Application {
         enable4Ship.setDisable(state);
         readyButton.setDisable(state);
     }
+
+    private void setDisableToEnableButtons(boolean state) {
+        enable1Ship.setDisable(state);
+        enable2Ship.setDisable(state);
+        enable3Ship.setDisable(state);
+        enable4Ship.setDisable(state);
+    }
+
     private void setDisableExceptNthButton(int num, boolean state) {
         switch (num) {
             case 1: {
@@ -423,19 +450,10 @@ public class BattleShip extends Application {
                 enable3Ship.setDisable(state);
                 break;
             }
+
         }
     }
 
- /*   public void drawField(Canvas canvas) {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        for (int i = 0; i < FIELD_SIZE; i++) {
-            for (int j = 0; j < FIELD_SIZE ; j++) {
-                cells[i][j] = new Cell(j * Cell.SIZE, i * Cell.SIZE); /// ЭТО ПЛОХО, В ОТДЕЛЬНЫЙ МЕТОД ЛУЧШЕ\
-                cells[i][j].setCellColor(Color.WHITE);
-                cells[i][j].draw(gc, false);
-            }
-        }
-    }*/
 
     private int getTrigger() {
         if (captureTriggers[1]) {
@@ -472,15 +490,6 @@ public class BattleShip extends Application {
         }
     }
 
-    /*public void setBusyAroundCell(int i, int j, int mode) {
-        for (int w = -1; w <= 1; w++) {
-            for (int v = -1; v <= 1; v++) {
-                if (i + w >= 0 && i + w < FIELD_SIZE && j + v >= 0 && j + v < FIELD_SIZE) {
-                    cells[i + w][j + v].changeBusyCount(mode);
-                }
-            }
-        }
-    }*/
 
     public void decreaseShipsToGo() {
         switch (getTrigger()) {
@@ -529,12 +538,6 @@ public class BattleShip extends Application {
         captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
     }
 
-    /*public void updateField(Canvas field) {
-        GraphicsContext gc = field.getGraphicsContext2D();
-        gc.clearRect(0,0, field.getWidth(), field.getHeight());
-        playerField.draw();
-    }*/
-
 
     public void deleteAllDecks(int di, int dj) {
         if (playerField.getCell(di, dj).getCellColor().equals(Color.RED)) {
@@ -565,10 +568,12 @@ public class BattleShip extends Application {
             case TO_BUTTON_PANE: {
                 anchorPane.getChildren().remove(enemyField);
                 anchorPane.getChildren().add(enemyPane);
+                break;
             }
             case TO_ENEMY_FIELD: {
                 anchorPane.getChildren().remove(enemyPane);
                 anchorPane.getChildren().add(enemyField);
+                break;
             }
         }
     }
@@ -618,7 +623,6 @@ public class BattleShip extends Application {
         readyButton.setDisable(true);
         deleteAllDecks(di, dj);
     }
-
 
 
 

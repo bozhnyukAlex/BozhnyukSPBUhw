@@ -5,6 +5,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 public class GameField extends Canvas {
     public static final int SIZE = 10;
     public static final int PLAYER = 3;
@@ -49,7 +51,7 @@ public class GameField extends Canvas {
         GraphicsContext gc = getGraphicsContext2D();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE ; j++) {
-                cells[i][j] = new Cell(j * Cell.SIZE, i * Cell.SIZE); /// ЭТО ПЛОХО, В ОТДЕЛЬНЫЙ МЕТОД ЛУЧШЕ\
+                cells[i][j] = new Cell(j * Cell.SIZE, i * Cell.SIZE);
                 cells[i][j].setCellColor(Color.WHITE);
                 cells[i][j].draw(gc, false);
             }
@@ -71,6 +73,23 @@ public class GameField extends Canvas {
             }
         }
     }
+
+    public void setBusyAroundShip(Ship ship, int mode) {
+        for(Cell deck : ship.getDecks()) {
+            setBusyAroundCell(deck.getY() / Cell.SIZE, deck.getX() / Cell.SIZE, mode);
+        }
+    }
+
+    public void drawShips(ArrayList<Ship> ships) {
+        for(Ship ship : ships) {
+            for (Cell deck : ship.getDecks()) {
+                deck.setCellColor(Color.RED);
+                deck.drawShipDeck(getGraphicsContext2D(), false);
+            }
+        }
+    }
+
+
 
     public boolean inRange(int i, int j) {
         return i >= 0 && i < SIZE && j >= 0 && j < SIZE;
