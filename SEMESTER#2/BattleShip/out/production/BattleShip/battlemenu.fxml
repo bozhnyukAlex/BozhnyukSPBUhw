@@ -41,12 +41,12 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="playerShipsLeft" alignment="CENTER" contentDisplay="CENTER" layoutX="103.0" layoutY="371.0" prefHeight="17.0" prefWidth="212.0" text="Осталось 10 кораблей">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="122.0" layoutY="371.0" prefHeight="25.0" prefWidth="153.0" text="Осталось кораблей:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="enemyShipsLeft" alignment="CENTER" contentDisplay="CENTER" layoutX="375.0" layoutY="371.0" prefHeight="17.0" prefWidth="212.0" text="Осталось 10 кораблей">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="371.0" prefHeight="25.0" prefWidth="153.0" text="Осталось кораблей:">
                <font>
                   <Font size="16.0" />
                </font>
@@ -68,6 +68,16 @@
                   <Button fx:id="autoGenerateButton" layoutX="22.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="188.0" text="Расставить автоматически" />
                </children>
             </Pane>
+            <Label fx:id="playerShipsLeft" layoutX="281.0" layoutY="371.0" text="10">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="enemyShipsLeft" layoutX="559.0" layoutY="371.0" text="10">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
     </AnchorPane>
   </children>

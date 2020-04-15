@@ -6,13 +6,14 @@ import java.util.Random;
 public class AI {
     private GameField opponentField;
     private IntelligenceLevel iLevel;
+    private Cell previousShot;
 
     public AI(GameField opponentField, IntelligenceLevel iLevel) {
         this.opponentField = opponentField;
         this.iLevel = iLevel;
     }
 
-    public Cell makeShot() {
+    public Cell makeShot( ) {
         int shi, shj;
         switch (iLevel) {
             case LOW:{
@@ -46,11 +47,11 @@ public class AI {
         this.opponentField = opponentField;
     }
 
-    public IntelligenceLevel getiLevel() {
+    public IntelligenceLevel getILevel() {
         return iLevel;
     }
 
-    public void setiLevel(IntelligenceLevel iLevel) {
+    public void setILevel(IntelligenceLevel iLevel) {
         this.iLevel = iLevel;
     }
 }

@@ -3,7 +3,7 @@ package GamePack;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Logic {
+public class  Logic {
     private int playerShipsLeft;
     private int enemyShipsLeft;
     private GameState state;
@@ -217,7 +217,27 @@ public class Logic {
         return playerShips.size() == 10;
     }
 
+    public Ship getShipByDeck (Cell deck, ArrayList<Ship> shipList) {
+        for (Ship ship : shipList) {
+            if (ship.getDecks().contains(deck)) {
+                return ship;
+            }
+        }
+        return null;
+    }
+
     public Cell makeAiAttack() {
         return enemyAI.makeShot();
     }
+
+    public void decreaseEnemyShips() {
+        enemyShipsLeft--;
+    }
+
+
+    public void decreasePlayerShips() {
+        playerShipsLeft--;
+    }
+
+
 }

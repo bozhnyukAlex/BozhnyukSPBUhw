@@ -72,19 +72,19 @@ public class Cell {
 
 
 
-    public void drawShipDeck(GraphicsContext gc, boolean isFirstClickSet) {
-        if (isFirstClickSet) {
-            gc.setFill(Color.ORANGE);
-        }
-        else {
-            gc.setFill(Color.RED);
-        }
+    public void drawShipDeck(GraphicsContext gc, Color color) {
+        gc.setFill(color);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
 
     }
 
     public void drawWater(GraphicsContext gc) {
-        gc.setFill(Color.BLUE);
+        gc.setFill(Color.TURQUOISE);
+        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
+    }
+
+    public void drawDamaged(GraphicsContext gc) {
+        gc.setFill(Color.ORANGE);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 }

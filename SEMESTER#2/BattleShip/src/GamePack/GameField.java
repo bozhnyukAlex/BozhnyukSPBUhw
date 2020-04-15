@@ -82,18 +82,18 @@ public class GameField extends Canvas {
         }
     }
 
-    public void drawShips(ArrayList<Ship> ships) {
+    public void drawShips(ArrayList<Ship> ships, Color color) {
         for(Ship ship : ships) {
-            for (Cell deck : ship.getDecks()) {
-                deck.setCellColor(Color.RED);
-                deck.drawShipDeck(getGraphicsContext2D(), false);
-            }
+            drawShip(ship, color);
         }
     }
 
-
-
-
+    public void drawShip(Ship ship, Color color) {
+        for (Cell deck : ship.getDecks()) {
+            deck.setCellColor(color);
+            deck.drawShipDeck(getGraphicsContext2D(), color);
+        }
+    }
 
     public boolean inRange(int i, int j) {
         return i >= 0 && i < SIZE && j >= 0 && j < SIZE;

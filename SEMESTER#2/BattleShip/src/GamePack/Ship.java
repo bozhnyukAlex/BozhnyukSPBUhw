@@ -51,4 +51,8 @@ public class Ship {
         }
         return false;
     }
+
+    public boolean isDestroyed() {
+        return length == 0;
+    }
 }
