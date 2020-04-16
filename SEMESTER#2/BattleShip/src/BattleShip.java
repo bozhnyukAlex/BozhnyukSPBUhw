@@ -350,7 +350,7 @@ public class BattleShip extends Application {
             enemyField = new GameField(ENEMY_FIELD);
             toggleRightField(TO_ENEMY_FIELD);
             logic.setEnemyShips(logic.autoShipGenerate(enemyField));
-            logic.initAI(playerField, IntelligenceLevel.LOW);
+            logic.initAI(playerField, IntelligenceLevel.MEDIUM);
             logic.setFightState(FightState.PLAYER_MOVE);
             statusLabel.setText(FIGHT);
 
@@ -396,8 +396,10 @@ public class BattleShip extends Application {
             firedShip.getDamage();
             if (firedShip.isDestroyed()) {
                 if (field.equals(playerField)) {
+                    field.setShotAroundShip(firedShip, true);
                     field.drawShip(firedShip, Color.DARKOLIVEGREEN);
                     logic.decreasePlayerShips();
+                    logic.sendToAiSignalAboutDeadShip(true);
                     decreaseLabelHP(DECREASE_PLAYER);
                     if (logic.getPlayerShipsLeft() == 0) {
                         statusLabel.setText(YOU_LOSE);
@@ -416,6 +418,7 @@ public class BattleShip extends Application {
             }
             else {
                 field.getCell(plsi, plsj).drawDamaged(field.getGraphicsContext2D());
+                logic.sendToAiSignalAboutDeadShip(false);
             }
         }
         else {
@@ -492,7 +495,6 @@ public class BattleShip extends Application {
         }
     }
 
-
     private int getTrigger() {
         if (captureTriggers[1]) {
             return 1;
@@ -527,7 +529,6 @@ public class BattleShip extends Application {
             }
         }
     }
-
 
     public void decreaseShipsToGo() {
         switch (getTrigger()) {
@@ -576,7 +577,6 @@ public class BattleShip extends Application {
         captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
     }
 
-
     public void deleteAllDecks(int di, int dj) {
         if (playerField.getCell(di, dj).getCellColor().equals(Color.RED)) {
             playerField.getCell(di, dj).setCellColor(Color.WHITE);
@@ -615,8 +615,6 @@ public class BattleShip extends Application {
             }
         }
     }
-
-
 
     public void deleteShip(int di, int dj) {
         if (playerField.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
@@ -676,8 +674,6 @@ public class BattleShip extends Application {
             }
         }
     }
-
-
 
     public static void main(String[] args) {
         launch(args);

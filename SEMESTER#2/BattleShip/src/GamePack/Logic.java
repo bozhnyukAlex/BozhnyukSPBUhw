@@ -239,5 +239,8 @@ public class  Logic {
         playerShipsLeft--;
     }
 
+    public void sendToAiSignalAboutDeadShip(boolean isDead) {
+        enemyAI.setShipDead(isDead);
+    }
 
 }

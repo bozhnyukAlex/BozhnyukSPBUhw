@@ -60,6 +60,14 @@ public class Cell {
         isShot = shot;
     }
 
+    public int getI() {
+        return y / SIZE;
+    }
+
+    public int getJ() {
+        return x / SIZE;
+    }
+
     public void draw(GraphicsContext gc, boolean isDelete) {
         if (isDelete) {
             gc.setFill(Color.color(0.96F, 0.96F, 0.96F));
@@ -68,8 +76,6 @@ public class Cell {
         gc.setStroke(Color.BLUE);
         gc.strokeRect(x, y, SIZE, SIZE);
     }
-
-
 
 
     public void drawShipDeck(GraphicsContext gc, Color color) {
@@ -87,4 +93,5 @@ public class Cell {
         gc.setFill(Color.ORANGE);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
+
 }

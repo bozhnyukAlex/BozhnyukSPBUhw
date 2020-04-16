@@ -78,7 +78,23 @@ public class GameField extends Canvas {
 
     public void setBusyAroundShip(Ship ship, int mode) {
         for(Cell deck : ship.getDecks()) {
-            setBusyAroundCell(deck.getY() / Cell.SIZE, deck.getX() / Cell.SIZE, mode);
+            setBusyAroundCell(deck.getI(), deck.getJ(), mode);
+        }
+    }
+
+    public void setShotAroundCell(int i, int j, boolean mode) {
+        for (int w = -1; w <= 1; w++) {
+            for (int v = -1; v <= 1; v++) {
+                if (inRange(i + w, j + v)) {
+                    cells[i + w][j + v].setShot(mode);
+                }
+            }
+        }
+    }
+
+    public void setShotAroundShip(Ship ship, boolean mode) {
+        for(Cell deck : ship.getDecks()) {
+            setShotAroundCell(deck.getI(), deck.getJ(), mode);
         }
     }
 
