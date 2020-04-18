@@ -16,6 +16,7 @@ public class  Logic {
     private final int INCREASE_MODE = 1;
     private AI enemyAI;
     private FightState fightState;
+    private GameMode gameMode;
 
 
     public Logic() {
@@ -162,8 +163,20 @@ public class  Logic {
     }
 
 
+    public GameMode getGameMode() {
+        return gameMode;
+    }
+
+    public void setGameMode(GameMode gameMode) {
+        this.gameMode = gameMode;
+    }
+
     public void addPlayerShip(Ship s) {
         playerShips.add(s);
+    }
+
+    public void addEnemyShip(Ship s) {
+        enemyShips.add(s);
     }
 
     public int getPlayerShipsLeft() {
@@ -195,7 +208,7 @@ public class  Logic {
     }
 
     public void preparation() {
-        state = GameState.PREPARATION;
+        state = GameState.PREPARATION1;
     }
 
     public void play() {
@@ -211,7 +224,7 @@ public class  Logic {
     }
 
     public boolean checkPreparation() {
-        if (state != GameState.PREPARATION) {
+        if (state != GameState.PREPARATION1) {
             return false;
         }
         return playerShips.size() == 10;
@@ -241,6 +254,14 @@ public class  Logic {
 
     public void sendToAiSignalAboutDeadShip(boolean isDead) {
         enemyAI.setShipDead(isDead);
+    }
+
+    public void tellAiAboutDestroyedShip(int deckCount) {
+        enemyAI.increaseFiredShip(deckCount);
+    }
+
+    public void changeDifficulty(IntelligenceLevel level) {
+        enemyAI.setILevel(level);
     }
 
 }

@@ -1,7 +1,8 @@
 package GamePack;
 
 public enum GameState {
-    PREPARATION,
+    PREPARATION1,
+    PREPARATION2,
     PLAYING,
     LOST,
     WON

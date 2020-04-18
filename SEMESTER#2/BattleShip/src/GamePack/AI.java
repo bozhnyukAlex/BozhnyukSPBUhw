@@ -8,23 +8,23 @@ public class AI {
     private IntelligenceLevel iLevel;
     private Cell previousShot;
     private Cell firstHit;
-    private boolean isPrevMissed;
     private boolean isShipFired, isShipDead, isFirstShot;
-    private int fourShipFired, threeShipFired, twoShipFired;
+    private int[] shipFired;
     private int findingFourShipState, findingThreeTwoShipState;
+    private int bigFindingState;
 
 
     public AI (GameField opponentField, IntelligenceLevel iLevel) {
         this.opponentField = opponentField;
         this.iLevel = iLevel;
         previousShot = new Cell(-1,-1);
-        isPrevMissed = false;
         isShipFired = false;
         isShipDead = false;
         isFirstShot = true;
-        fourShipFired = threeShipFired = twoShipFired = 0;
-        findingFourShipState = 0;
+        findingFourShipState = 1;
         findingThreeTwoShipState = 1;
+        bigFindingState = 1;
+        shipFired = new int[] {0 ,0, 0, 0, 0};
     }
 
     public Cell makeShot() {
@@ -44,7 +44,7 @@ public class AI {
             case MEDIUM: {
                 if (isFirstShot) { //первый выстрел рандомный
                     isFirstShot = false;
-                    return  makeRandomShotAndReturnFiredCell();
+                    return makeRandomShotAndReturnFiredCell();
                 }
                 else { ///к этому времени мы уже знаем инфу о предыдущем выстреле и знаем, горит ли корабль, мертв ли корабль
                     if (isShipFired) { //если так вышло, что при предыдущем выстреле корабль был ранен
@@ -68,11 +68,18 @@ public class AI {
                 }
                 else {
                     if (isShipFired) {
-                        isShipDead = isShipFired = false;
+                        if (isShipDead) {
+                            isShipFired = isShipDead = false;
+                            return makeSmartShotWithCell();
+                        }
+                        else {
+                            return makeShotToKillWithCell();
+                        }
+                    }
+                    else {
                         return makeSmartShotWithCell();
                     }
                 }
-                break;
             }
         }
         return null;
@@ -86,7 +93,6 @@ public class AI {
             shj = rnd.nextInt(GameField.SIZE);
             if (!opponentField.getCell(shi, shj).isShot()) {
                 if (!opponentField.getCell(shi, shj).isDeck()){
-                    isPrevMissed = true;
                     isShipFired = false;
                     previousShot = opponentField.getCell(shi, shj);
                 }
@@ -208,16 +214,103 @@ public class AI {
         return resShot;
     }
 
-    public Cell makeSmartShotWithCell() {
-      //  Cell resShot = previousShot;
-        if (fourShipFired != 0) {
-            int ci = 3, cj = 0;
-            if (findingFourShipState == 1) {
-                if (ci - 1 >= 0 && cj + 1 <= 3) {
-                    if ()
+    public Cell makeSmartShotWithCell() { // стратегия описана тут: https://habr.com/ru/post/180995/
+        Cell resShot = previousShot;
+        if (bigFindingState == 1) { // если мы еще не нашли четырехпалубный, бьем вверх по диагоналям
+            int curI = 3, curJ = 0;
+            findingFourShipState = 1;
+            M1: while (true) {
+                if (!opponentField. getCell(curI, curJ).isShot()) {
+                    resShot = previousShot = opponentField.getCell(curI, curJ);
+                    if (resShot.isDeck()) {
+                        isShipFired = true;
+                        firstHit = resShot;
+                    }
+                    else {
+                        isShipFired = false;
+                    }
+                    break;
+                }
+                curI--;
+                curJ++;
+                if (curI < 0 || curJ >= GameField.SIZE) {
+                    findingFourShipState++;
+                    switch (findingFourShipState) {
+                        case 2: {
+                            curI = 7;
+                            curJ = 0;
+                            break;
+                        }
+                        case 3: {
+                            curI = 9;
+                            curJ = 2;
+                            break;
+                        }
+                        case 4: {
+                            curI = 9;
+                            curJ = 6;
+                            break;
+                        }
+                        case 5: {
+                            bigFindingState++;
+                            break M1;
+                        }
+                    }
                 }
             }
         }
+        if (bigFindingState == 2) {
+            int curI = 1, curJ = 0;
+            findingThreeTwoShipState = 1;
+        M2:    while (true) {
+                if (!opponentField.getCell(curI, curJ).isShot()) {
+                    resShot = previousShot = opponentField.getCell(curI, curJ);
+                    if (resShot.isDeck()) {
+                        isShipFired = true;
+                        firstHit = resShot;
+                    }
+                    else {
+                        isShipFired = false;
+                    }
+                    break;
+                }
+                curI--;
+                curJ++;
+                if (curI < 0|| curJ >= GameField.SIZE) {
+                    findingThreeTwoShipState++;
+                    switch (findingThreeTwoShipState) {
+                        case 2: {
+                            curI = 5;
+                            curJ = 0;
+                            break;
+                        }
+                        case 3: {
+                            curI = 9;
+                            curJ = 0;
+                            break;
+                        }
+                        case 4: {
+                            curI = 9;
+                            curJ = 4;
+                            break;
+                        }
+                        case 5: {
+                            curI = 9;
+                            curJ = 8;
+                            break;
+                        }
+                        case 6: {
+                            bigFindingState++;
+                            break M2;
+                        }
+                    }
+                }
+            }
+        }
+        if (bigFindingState == 3) { //остались только однопалубные - стреляем рандомно по оставшимся клеткам
+            previousShot = resShot = makeRandomShotAndReturnFiredCell();
+        }
+        return resShot;
     }
 
     public boolean isShipDead() {
@@ -248,14 +341,8 @@ public class AI {
         this.iLevel = iLevel;
     }
 
-    public void increaseFourShipFired() {
-        fourShipFired++;
-    }
-    public void increaseThreeShipFired() {
-        threeShipFired++;
-    }
-    public void increaseTwoShipFired() {
-        twoShipFired++;
+    public void increaseFiredShip(int deckCount) {
+        shipFired[deckCount]++;
     }
     
 }
