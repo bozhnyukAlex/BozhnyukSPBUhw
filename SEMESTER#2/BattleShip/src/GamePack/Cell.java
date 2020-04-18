@@ -68,8 +68,8 @@ public class Cell {
         return x / SIZE;
     }
 
-    public void draw(GraphicsContext gc, boolean isDelete) {
-        if (isDelete) {
+    public void draw(GraphicsContext gc, boolean needFill) {
+        if (needFill) {
             gc.setFill(Color.color(0.96F, 0.96F, 0.96F));
             gc.fillRect(x, y, SIZE, SIZE);
         }

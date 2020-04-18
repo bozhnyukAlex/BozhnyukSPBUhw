@@ -19,10 +19,20 @@ public class  Logic {
     private GameMode gameMode;
 
 
-    public Logic() {
+    public Logic(GameMode mode) {
         playerShipsLeft = 10;
         enemyShipsLeft = 10;
-        playerShips = new ArrayList<Ship>();
+        switch (mode) {
+            case ONE_PLAYER: {
+                playerShips = new ArrayList<Ship>();
+                break;
+            }
+            case TWO_PLAYERS: {
+                playerShips = new ArrayList<Ship>();
+                enemyShips = new ArrayList<Ship>();
+            }
+        }
+        gameMode = mode;
     }
 
     public void initAI(GameField opponentField, IntelligenceLevel il) {
@@ -207,8 +217,12 @@ public class  Logic {
         return state;
     }
 
-    public void preparation() {
+    public void preparationFirst() {
         state = GameState.PREPARATION1;
+    }
+
+    public void preparationSecond() {
+        state = GameState.PREPARATION2;
     }
 
     public void play() {

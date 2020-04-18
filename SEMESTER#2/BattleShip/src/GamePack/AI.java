@@ -123,8 +123,8 @@ public class AI {
                 resShot = opponentField.getCell(prevI, prevJ - 1);
             }
             else if (prevJ + 1 < GameField.SIZE && !opponentField.getCell(prevI, prevJ + 1).isShot()) {
-                previousShot = opponentField.getCell(prevI, prevJ - 1);
-                resShot = opponentField.getCell(prevI, prevJ - 1);
+                previousShot = opponentField.getCell(prevI, prevJ + 1);
+                resShot = opponentField.getCell(prevI, prevJ + 1);
             }
         }
         else { ///если нет, то по логике мы должны были стрелять в стороны, нужно определить по предыдущему выстрелу, в каком напралении начинали двигаться

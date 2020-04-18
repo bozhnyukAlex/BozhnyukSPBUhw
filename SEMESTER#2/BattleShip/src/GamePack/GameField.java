@@ -60,6 +60,15 @@ public class GameField extends Canvas {
         }
     }
 
+    public void redraw() {
+        GraphicsContext gc = getGraphicsContext2D();
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE ; j++) {
+                cells[i][j].draw(gc, true);
+            }
+        }
+    }
+
     public void update() {
         GraphicsContext gc = getGraphicsContext2D();
         gc.clearRect(0,0, getWidth(), getHeight());
