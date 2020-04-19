@@ -6,30 +6,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsWindow">
    <children>
       <Label layoutX="147.0" layoutY="14.0" prefHeight="66.0" prefWidth="307.0" text="Выберите уровень сложности">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <RadioButton layoutX="53.0" layoutY="80.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Легко">
+      <RadioButton fx:id="lowMode" layoutX="53.0" layoutY="80.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Я просто хочу топить">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="53.0" layoutY="190.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Тяжело. Просто тяжело">
+      <RadioButton fx:id="highMode" layoutX="53.0" layoutY="190.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Кошмар!">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="53.0" layoutY="135.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Средне, но может быть тяжко">
+      <RadioButton fx:id="mediumMode" layoutX="53.0" layoutY="135.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="316.0" text="Ультра-потоп">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
-      <Button layoutX="379.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="OK" />
-      <Button layoutX="472.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Cancel" />
+      <Button fx:id="okBtn" layoutX="379.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="OK" />
+      <Button fx:id="cancelBtn" layoutX="472.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Cancel" />
    </children>
 </AnchorPane>

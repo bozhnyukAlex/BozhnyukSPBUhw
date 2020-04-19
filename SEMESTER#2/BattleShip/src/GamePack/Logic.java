@@ -278,4 +278,12 @@ public class  Logic {
         enemyAI.setILevel(level);
     }
 
+    public IntelligenceLevel getDifficulty() {
+        return enemyAI.getILevel();
+    }
+
+    public void setDifficulty(IntelligenceLevel difficulty) {
+        enemyAI.setILevel(difficulty);
+    }
+
 }

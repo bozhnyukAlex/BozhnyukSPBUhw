@@ -20,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.StringReader;
 
 public class BattleShip extends Application {
     private static final int FIELD_SIZE = 10;
@@ -104,6 +105,13 @@ public class BattleShip extends Application {
     private final String MOVE_SECOND = "Ход второго игрока";
     private final String FIRST_WON = "Выиграл первый игрок";
     private final String SECOND_WON = "Выиграл второй игрок";
+    private final String EDIT_AI = "Уровень сложности";
+    private final String LEVEL_EDITED = "Уровень сложности изменен";
+    private final String SET_SHIP_1 = "Поставьте 1 палубный корабль";
+    private final String SET_SHIP_2 = "Поставьте 2-х палубный корабль";
+    private final String SET_SHIP_3 = "Поставьте 3-х палубный корабль";
+    private final String SET_SHIP_4 = "Поставьте 4-х палубный корабль";
+
 
     private final int INCREASE_BUSY = 1;
     private final int DECREASE_BUSY = -1;
@@ -140,6 +148,8 @@ public class BattleShip extends Application {
         twoShipToGo = Integer.parseInt(twoShipToGoLab.getText());
         threeShipToGo = Integer.parseInt(threeShipToGoLab.getText());
         fourShipToGo = Integer.parseInt(fourShipToGoLab.getText());
+        settingsButton.setDisable(true);
+        levelToSend = IntelligenceLevel.MEDIUM;
         onePlayerButton.setOnAction(actionEvent -> {
             if (logic != null && logic.getState().equals(GameState.PLAYING) && logic.getGameMode().equals(GameMode.ONE_PLAYER)) { /// МОЖНО В ОТДЕЛЬНЫЙ МЕТОД
                 toggleRightField(TO_BUTTON_PANE);
@@ -168,8 +178,10 @@ public class BattleShip extends Application {
                 }
             }
             logic = new Logic(GameMode.ONE_PLAYER);
+            logic.initAI(playerField, levelToSend);
            // logic.setGameMode(GameMode.ONE_PLAYER);
             logic.preparationFirst();
+            settingsButton.setDisable(false);
         });
         twoPlayersButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -190,6 +202,7 @@ public class BattleShip extends Application {
                         }
                     }
                 }
+                settingsButton.setDisable(true);
                 playerShipsLeft.setText("10");
                 enemyShipsLeft.setText("10");
                 statusLabel.setText(PREPARE_FIRST);
@@ -209,7 +222,7 @@ public class BattleShip extends Application {
         });
         settingsButton.setOnAction(actionEvent -> {
             //anchorPane.getChildren().remove(enemyPane); - Вот так можно убирать элементы
-            Stage settingsStage = new Stage();
+            /*Stage settingsStage = new Stage();
             try {
                 settingsPane = FXMLLoader.load(getClass().getResource("settings.fxml"));
             } catch (IOException e) {
@@ -218,27 +231,32 @@ public class BattleShip extends Application {
             settingsStage.setScene(new Scene(settingsPane));
             settingsStage.initModality(Modality.APPLICATION_MODAL);
             settingsStage.initOwner(settingsButton.getScene().getWindow());
-            settingsStage.showAndWait();
+            settingsStage.showAndWait();*/
+            boolean okClicked  = showDialogEditAi(levelToSend);
+            if (okClicked) {
+                levelToSend = logic.getDifficulty();
+                statusLabel.setText(LEVEL_EDITED);
+            }
         });
         exitButton.setOnAction(actionEvent -> System.exit(0));
 
         enable1Ship.setOnAction(actionEvent -> {
-            statusLabel.setText("Поставьте 1 палубный корабль");
+            statusLabel.setText(SET_SHIP_1);
             clickCount = 0;
             setTrigger(1, true);
         });
 
         enable2Ship.setOnAction(actionEvent -> {
-            statusLabel.setText("Поставьте 2-х палубный корабль");
+            statusLabel.setText(SET_SHIP_2);
             clickCount = 0;
             setTrigger(2, true);
         });
         enable3Ship.setOnAction(actionEvent -> {
-            statusLabel.setText("Поставьте 3-х палубный корабль");
+            statusLabel.setText(SET_SHIP_3);
             setTrigger(3, true);
         });
         enable4Ship.setOnAction(actionEvent -> {
-            statusLabel.setText("Поставьте 4-х палубный корабль");
+            statusLabel.setText(SET_SHIP_4);
             setTrigger(4,true);
         });
         playerField.setOnMouseClicked(mouseEvent -> {
@@ -280,9 +298,10 @@ public class BattleShip extends Application {
                 enemyField = new GameField(ENEMY_FIELD);
                 toggleRightField(TO_ENEMY_FIELD);
                 logic.setEnemyShips(logic.autoShipGenerate(enemyField));
-                logic.initAI(playerField, IntelligenceLevel.HIGH);
+
                 logic.setFightState(FightState.PLAYER_MOVE);
                 statusLabel.setText(FIGHT);
+                settingsButton.setDisable(true);
 
                 enemyField.setOnMouseClicked(mouseEvent -> {
                     if (mouseEvent.getButton() == MouseButton.PRIMARY) {
@@ -914,6 +933,31 @@ public class BattleShip extends Application {
                 break;
             }
         }
+    }
+
+    public boolean showDialogEditAi(IntelligenceLevel difficulty) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("settings.fxml"));
+        try {
+            settingsPane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle(EDIT_AI);
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(settingsButton.getScene().getWindow());
+        Scene scene = new Scene(settingsPane);
+        dialogStage.setScene(scene);
+
+        SettingsWindow controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setObservableLogic(logic);
+
+        dialogStage.showAndWait();
+        return controller.isOkClicked();
+
     }
 
     public static void main(String[] args) {
