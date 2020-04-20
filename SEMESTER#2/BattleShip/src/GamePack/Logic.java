@@ -124,7 +124,6 @@ public class  Logic {
                 if (canSet(twi, twj, dir, length, field)) {
                     switch (dir) {
                         case DIR_UP: {
-                            //nwS = new Ship(field.getCell(twi,  twj), field.getCell(twi - 1, twj), field.getCell(twi - 2, twj));
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi - i, twj));
                                 field.setBusyAroundCell(twi - i, twj, INCREASE_MODE);
@@ -132,7 +131,6 @@ public class  Logic {
                             break;
                         }
                         case DIR_DOWN: {
-                         //   nwS = new Ship(field.getCell(twi,  twj), field.getCell(twi + 1, twj), field.getCell(twi + 2, twj));
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi + i, twj));
                                 field.setBusyAroundCell(twi + i, twj, INCREASE_MODE);
@@ -140,7 +138,6 @@ public class  Logic {
                             break;
                         }
                         case DIR_LEFT: {
-                        //    nwS = new Ship(field.getCell(twi,  twj), field.getCell(twi,  twj - 1), field.getCell(twi,  twj - 2));
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi, twj - i));
                                 field.setBusyAroundCell(twi, twj - i, INCREASE_MODE);
@@ -148,7 +145,6 @@ public class  Logic {
                             break;
                         }
                         case DIR_RIGHT: {
-                         //   nwS = new Ship(field.getCell(twi,  twj), field.getCell(twi,  twj + 1), field.getCell(twi,  twj + 2));
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi, twj + i));
                                 field.setBusyAroundCell(twi, twj + i, INCREASE_MODE);
@@ -177,9 +173,6 @@ public class  Logic {
         return gameMode;
     }
 
-    public void setGameMode(GameMode gameMode) {
-        this.gameMode = gameMode;
-    }
 
     public void addPlayerShip(Ship s) {
         playerShips.add(s);
@@ -272,10 +265,6 @@ public class  Logic {
 
     public void tellAiAboutDestroyedShip(int deckCount) {
         enemyAI.increaseFiredShip(deckCount);
-    }
-
-    public void changeDifficulty(IntelligenceLevel level) {
-        enemyAI.setILevel(level);
     }
 
     public IntelligenceLevel getDifficulty() {

@@ -19,26 +19,21 @@ public class GameField extends Canvas {
             case PLAYER: {
                 setLayoutX(95);
                 setLayoutY(126);
-                setWidth(240);
-                setHeight(240);
                 break;
             }
             case ENEMY: {
                 setLayoutX(367);
                 setLayoutY(126);
-                setWidth(240);
-                setHeight(240);
                 break;
             }
         }
+        setWidth(240);
+        setHeight(240);
         initAndDraw();
     }
 
     public GameField () {}
 
-    public Cell[][] getCells() {
-        return cells;
-    }
 
     public Cell getCell(int i, int j) {
         return cells[i][j];

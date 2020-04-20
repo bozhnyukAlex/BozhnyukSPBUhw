@@ -1,7 +1,6 @@
 package GamePack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Ship {
     private int length;
@@ -23,16 +22,12 @@ public class Ship {
         return length;
     }
 
-    public void setLength(int length) {
-        this.length = length;
-    }
 
     public void build(Cell ... cells) {
         for (Cell cell : cells) {
             decks.add(cell);
             cell.setDeck(true);
         }
-      //  decks.addAll(Arrays.asList(cells));
     }
 
     public void getDamage() {

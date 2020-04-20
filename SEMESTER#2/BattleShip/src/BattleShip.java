@@ -77,12 +77,10 @@ public class BattleShip extends Application {
     private MenuItem itemDelete;
 
     private boolean[] captureTriggers; //срабатывает при нажатии на кнопки выбора корабля
-    private boolean firstClickOnPlayerField, secondClickOnPlayerField;
     private int clickCount;
 
     private Logic logic;
     private int oneShipToGo, twoShipToGo, threeShipToGo, fourShipToGo;
-    private int playerHP, enemyHP;
     private boolean isEnd;
     private IntelligenceLevel levelToSend;
 
@@ -150,89 +148,11 @@ public class BattleShip extends Application {
         fourShipToGo = Integer.parseInt(fourShipToGoLab.getText());
         settingsButton.setDisable(true);
         levelToSend = IntelligenceLevel.MEDIUM;
-        onePlayerButton.setOnAction(actionEvent -> {
-            if (logic != null && logic.getState().equals(GameState.PLAYING) && logic.getGameMode().equals(GameMode.ONE_PLAYER)) { /// МОЖНО В ОТДЕЛЬНЫЙ МЕТОД
-                toggleRightField(TO_BUTTON_PANE);
-            }
-            else if (logic != null && logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
-                if (logic.getState().equals(GameState.PREPARATION2)) {
-                    toggleLeftField(TO_ENEMY_FIELD);
-                    toggleRightField(TO_BUTTON_PANE);
-                }
-                else if (logic.getState().equals(GameState.PLAYING)) {
-                    toggleRightField(TO_BUTTON_PANE);
-                }
-            }
-            isEnd = false;
-            playerShipsLeft.setText("10");
-            enemyShipsLeft.setText("10");
-            statusLabel.setText(PREPARE);
-            autoGenerateButton.setDisable(false);
-            setDisableToButtonsOnSecondField(false);
-            readyButton.setDisable(true);
-            if (logic != null) {
-                if (!logic.getPlayerShips().isEmpty()) {
-                    playerField.update();
-                    updateEnableLabels();
-                    updateTriggers();
-                }
-            }
-            logic = new Logic(GameMode.ONE_PLAYER);
-            logic.initAI(playerField, levelToSend);
-           // logic.setGameMode(GameMode.ONE_PLAYER);
-            logic.preparationFirst();
-            settingsButton.setDisable(false);
-        });
-        twoPlayersButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (logic != null) {
-                    if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
-                        if (logic.getState().equals(GameState.PLAYING)) {
-                            toggleRightField(TO_BUTTON_PANE);
-                        }
-                    }
-                    else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
-                        if (logic.getState().equals(GameState.PREPARATION2)) {
-                            toggleRightField(TO_BUTTON_PANE);
-                            toggleLeftField(TO_ENEMY_FIELD);
-                        }
-                        else if (logic.getState().equals(GameState.PLAYING)) {
-                            toggleRightField(TO_BUTTON_PANE);
-                        }
-                    }
-                }
-                settingsButton.setDisable(true);
-                playerShipsLeft.setText("10");
-                enemyShipsLeft.setText("10");
-                statusLabel.setText(PREPARE_FIRST);
-                autoGenerateButton.setDisable(false);
-                setDisableToButtonsOnSecondField(false);
-                readyButton.setDisable(true);
-                if (logic != null) {
-                    if (!logic.getPlayerShips().isEmpty()) {
-                        playerField.update();
-                        updateEnableLabels();
-                        updateTriggers();
-                    }
-                }
-                logic = new Logic(GameMode.TWO_PLAYERS);
-                logic.preparationFirst();
-            }
-        });
+
+        onePlayerButton.setOnAction(actionEvent -> gameStart(GameMode.ONE_PLAYER));
+        twoPlayersButton.setOnAction(actionEvent -> gameStart(GameMode.TWO_PLAYERS));
         settingsButton.setOnAction(actionEvent -> {
-            //anchorPane.getChildren().remove(enemyPane); - Вот так можно убирать элементы
-            /*Stage settingsStage = new Stage();
-            try {
-                settingsPane = FXMLLoader.load(getClass().getResource("settings.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            settingsStage.setScene(new Scene(settingsPane));
-            settingsStage.initModality(Modality.APPLICATION_MODAL);
-            settingsStage.initOwner(settingsButton.getScene().getWindow());
-            settingsStage.showAndWait();*/
-            boolean okClicked  = showDialogEditAi(levelToSend);
+            boolean okClicked  = showDialogEditAi();
             if (okClicked) {
                 levelToSend = logic.getDifficulty();
                 statusLabel.setText(LEVEL_EDITED);
@@ -270,7 +190,7 @@ public class BattleShip extends Application {
             else if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PLAYING) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && !isEnd && logic.getFightState().equals(FightState.ENEMY_MOVE)) {
                 int plsi = (int) mouseEvent.getY() / Cell.SIZE;
                 int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                if (playerField.getCell(plsi, plsj).isDeck() && playerField.getCell(plsi, plsj).isShot()) {
+                if (playerField.getCell(plsi, plsj).isShot() && (playerField.getCell(plsi, plsj).isDeck() || playerField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
                     return;
                 }
                 makeFieldShot(plsi, plsj, playerField);
@@ -278,18 +198,14 @@ public class BattleShip extends Application {
         });
 
         playerField.setOnContextMenuRequested(contextMenuEvent -> {
-            int rci = (int) contextMenuEvent.getY(),
-                rcj = (int) contextMenuEvent.getX();
-            rci /= Cell.SIZE;
-            rcj /= Cell.SIZE;
+            int rci = (int) contextMenuEvent.getY() / Cell.SIZE,
+                rcj = (int) contextMenuEvent.getX() / Cell.SIZE;
             if (logic.getState().equals(GameState.PREPARATION1)) {
                 if (playerField.getCell(rci, rcj).getCellColor().equals(Color.RED) || playerField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
                     deleteMenu.show(playerField, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY());
                 }
             }
-            int finalRci = rci;
-            int finalRcj = rcj;
-            itemDelete.setOnAction(actionEvent -> deleteShip(finalRci, finalRcj, playerField));
+            itemDelete.setOnAction(actionEvent -> deleteShip(rci, rcj, playerField));
         });
 
         readyButton.setOnAction(actionEvent -> {
@@ -308,13 +224,13 @@ public class BattleShip extends Application {
                         if (logic.getState().equals(GameState.PLAYING) && logic.getFightState().equals(FightState.PLAYER_MOVE) && !isEnd) {
                             int plsi = (int) mouseEvent.getY() / Cell.SIZE;
                             int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                            if (enemyField.getCell(plsi, plsj).isShot() && enemyField.getCell(plsi, plsj).isDeck()) {
+                            if (enemyField.getCell(plsi, plsj).isShot() && (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
                                 return;
                             }
                             makeFieldShot(plsi, plsj, enemyField);
                             while (logic.getFightState().equals(FightState.ENEMY_MOVE)) {
-                                Cell aiShotted = logic.makeAiAttack();
-                                makeFieldShot(aiShotted.getY() / Cell.SIZE, aiShotted.getX() / Cell.SIZE, playerField);
+                                Cell aiShot = logic.makeAiAttack();
+                                makeFieldShot(aiShot.getY() / Cell.SIZE, aiShot.getX() / Cell.SIZE, playerField);
                             }
                         }
                     }
@@ -349,8 +265,7 @@ public class BattleShip extends Application {
                                     deleteMenu.show(enemyField, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY());
                                 }
                             }
-                            int finalRci = rci, finalRcj = rcj;
-                            itemDelete.setOnAction(actionEvent -> deleteShip(finalRci, finalRcj, enemyField));
+                            itemDelete.setOnAction(actionEvent -> deleteShip(rci, rcj, enemyField));
                         }
                     });
                 }
@@ -367,7 +282,7 @@ public class BattleShip extends Application {
                             if (mouseEvent.getButton() == MouseButton.PRIMARY && !isEnd && logic.getFightState().equals(FightState.PLAYER_MOVE) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getState().equals(GameState.PLAYING)) {
                                 int plsi = (int) mouseEvent.getY() / Cell.SIZE;
                                 int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                                if (enemyField.getCell(plsi, plsj).isDeck() && enemyField.getCell(plsi, plsj).isShot()) {
+                                if (enemyField.getCell(plsi, plsj).isShot() && (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
                                     return;
                                 }
                                 makeFieldShot(plsi, plsj, enemyField);
@@ -935,7 +850,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public boolean showDialogEditAi(IntelligenceLevel difficulty) {
+    public boolean showDialogEditAi() { ///ЛИШНИЙ ПАРАМЕТР
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("settings.fxml"));
         try {
@@ -957,6 +872,51 @@ public class BattleShip extends Application {
 
         dialogStage.showAndWait();
         return controller.isOkClicked();
+
+    }
+
+    public void gameStart(GameMode mode) {
+        isEnd = false;
+        if (logic != null) {
+            if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
+                if (logic.getState().equals(GameState.PLAYING)) {
+                    toggleRightField(TO_BUTTON_PANE);
+                }
+            }
+            else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
+                if (logic.getState().equals(GameState.PREPARATION2)) {
+                    toggleRightField(TO_BUTTON_PANE);
+                    toggleLeftField(TO_ENEMY_FIELD);
+                }
+                else if (logic.getState().equals(GameState.PLAYING)) {
+                    toggleRightField(TO_BUTTON_PANE);
+                }
+            }
+        }
+        playerShipsLeft.setText("10");
+        enemyShipsLeft.setText("10");
+        if (mode.equals(GameMode.ONE_PLAYER)) {
+            statusLabel.setText(PREPARE);
+        }
+        else if (mode.equals(GameMode.TWO_PLAYERS)) {
+            statusLabel.setText(PREPARE_FIRST);
+        }
+        autoGenerateButton.setDisable(false);
+        setDisableToButtonsOnSecondField(false);
+        readyButton.setDisable(true);
+        if (logic != null) {
+            if (!logic.getPlayerShips().isEmpty()) {
+                playerField.update();
+                updateEnableLabels();
+                updateTriggers();
+            }
+        }
+        logic = new Logic(mode);
+        if (mode.equals(GameMode.ONE_PLAYER)) {
+            logic.initAI(playerField, levelToSend);
+        }
+        logic.preparationFirst();
+        settingsButton.setDisable(false);
 
     }
 

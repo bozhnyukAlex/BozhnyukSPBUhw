@@ -1,6 +1,5 @@
 package GamePack;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class AI {
@@ -313,25 +312,11 @@ public class AI {
         return resShot;
     }
 
-    public boolean isShipDead() {
-        return isShipDead;
-    }
 
     public void setShipDead(boolean shipDead) {
         isShipDead = shipDead;
     }
 
-    public void setPreviousShot(Cell previousShot) {
-        this.previousShot = previousShot;
-    }
-
-    public GameField getOpponentField() {
-        return opponentField;
-    }
-
-    public void setOpponentField(GameField opponentField) {
-        this.opponentField = opponentField;
-    }
 
     public IntelligenceLevel getILevel() {
         return iLevel;

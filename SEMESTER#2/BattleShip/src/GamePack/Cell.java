@@ -86,6 +86,7 @@ public class Cell {
 
     public void drawWater(GraphicsContext gc) {
         gc.setFill(Color.TURQUOISE);
+        setCellColor(Color.TURQUOISE);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 
