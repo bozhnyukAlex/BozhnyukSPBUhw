@@ -7,12 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_guava_guava_18_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_hamcrest_hamcrest_junit_2_0_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_loadui_testFx_3_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_testfx_testfx_core_4_0_16_alpha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_testfx_testfx_junit5_4_0_13_alpha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleShip.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleShip.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +27,7 @@
       <list>
         <option value="Class" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -38,23 +42,27 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="AppInterface" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\images" />
@@ -63,8 +71,17 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src\interfacePack" />
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.BattleShip (1)">
+  <component name="RunManager" selected="JUnit.All in Battleship">
     <configuration name="BattleShip (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShip" />
       <module name="Battleship" />
@@ -105,8 +122,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in Battleship" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Battleship" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppInterface in Battleship" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AppInterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Battleship" />
+        <item itemvalue="JUnit.AppInterface in Battleship" />
         <item itemvalue="Application.BattleShip (1)" />
         <item itemvalue="Application.BattleShip" />
       </list>
@@ -142,6 +183,8 @@
       <workItem from="1587422617063" duration="4183000" />
       <workItem from="1587459970944" duration="18894000" />
       <workItem from="1587498317064" duration="8366000" />
+      <workItem from="1587511286462" duration="2155000" />
+      <workItem from="1587513470499" duration="33000" />
     </task>
     <servers />
   </component>
@@ -149,10 +192,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587339691658">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587512753762">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587339691658" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587512753762" />
     <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586808874385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -165,22 +208,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state width="1877" height="384" key="GridCell.Tab.0.bottom" timestamp="1587508452896">
+    <state width="1877" height="267" key="GridCell.Tab.0.bottom" timestamp="1587513442889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
-    <state width="1877" height="384" key="GridCell.Tab.0.center" timestamp="1587508452896">
+    <state width="1877" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587513442889" />
+    <state width="1877" height="267" key="GridCell.Tab.0.center" timestamp="1587513442889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
-    <state width="1877" height="384" key="GridCell.Tab.0.left" timestamp="1587508452896">
+    <state width="1877" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587513442889" />
+    <state width="1877" height="267" key="GridCell.Tab.0.left" timestamp="1587513442889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
-    <state width="1877" height="384" key="GridCell.Tab.0.right" timestamp="1587508452896">
+    <state width="1877" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587513442889" />
+    <state width="1877" height="267" key="GridCell.Tab.0.right" timestamp="1587513442889">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587513442889" />
     <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -197,14 +240,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1586808889835">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1587513151479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586808889835" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587498322496">
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587513151479" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587513470084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587498322496" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587513470084" />
+    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587512475523">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1587512475523" />
+    <state x="724" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587511747961">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="724" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587511747961" />
     <state x="1090" y="166" key="extract.method.dialog" timestamp="1586960755324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
