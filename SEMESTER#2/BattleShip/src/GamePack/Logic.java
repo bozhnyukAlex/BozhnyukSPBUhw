@@ -1,5 +1,7 @@
 package GamePack;
 
+import javafx.scene.control.RadioButton;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,10 +11,6 @@ public class  Logic {
     private GameState state;
     private ArrayList<Ship> playerShips;
     private ArrayList<Ship> enemyShips;
-    private final int DIR_UP = 0;
-    private final int DIR_DOWN = 1;
-    private final int DIR_LEFT = 2;
-    private final int DIR_RIGHT = 3;
     private final int INCREASE_MODE = 1;
     private AI enemyAI;
     private FightState fightState;
@@ -62,7 +60,7 @@ public class  Logic {
         return resShip;
     }
 
-    public boolean canSet(int ci, int cj, int dir, int length, GameField field) {
+    public boolean canSet(int ci, int cj, Direction dir, int length, GameField field) {
         switch (dir) {
             case DIR_UP: {
                 if (ci - length + 1 < 0) {
@@ -114,13 +112,13 @@ public class  Logic {
 
     private Ship getRandomShip(int length, GameField field) {
         Random rnd = new Random();
-        int dir;
+        Direction dir;
         Ship nwS = new Ship(length);
         M: while (true) {
             int twi = rnd.nextInt(GameField.SIZE), twj = rnd.nextInt(GameField.SIZE);
             boolean[] usedDir = new boolean[] {false, false, false, false};
             while(true) {
-                dir = rnd.nextInt(4);
+                dir = generateRandomDir(rnd);
                 if (canSet(twi, twj, dir, length, field)) {
                     switch (dir) {
                         case DIR_UP: {
@@ -158,8 +156,8 @@ public class  Logic {
                     break M;
                 }
                 else {
-                    usedDir[dir] = true;
-                    if (usedDir[DIR_UP] && usedDir[DIR_DOWN] && usedDir[DIR_LEFT] && usedDir[DIR_RIGHT]) {
+                    usedDir[dir.ordinal()] = true;
+                    if (usedDir[Direction.DIR_UP.ordinal()] && usedDir[Direction.DIR_DOWN.ordinal()] && usedDir[Direction.DIR_LEFT.ordinal()] && usedDir[Direction.DIR_RIGHT.ordinal()]) {
                         break;
                     }
                 }
@@ -274,5 +272,11 @@ public class  Logic {
     public void setDifficulty(IntelligenceLevel difficulty) {
         enemyAI.setILevel(difficulty);
     }
+
+    private Direction generateRandomDir(Random rnd) {
+        int pick = rnd.nextInt(Direction.values().length);
+        return Direction.values()[pick];
+    }
+
 
 }
