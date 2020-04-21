@@ -229,7 +229,7 @@ public class BattleShip extends Application {
                                 return;
                             }
                             makeFieldShot(plsi, plsj, enemyField);
-                            while (logic.getFightState().equals(FightState.ENEMY_MOVE)) {
+                            while (logic.getFightState().equals(FightState.ENEMY_MOVE) && !isEnd) {
                                 Cell aiShot = logic.makeAiAttack();
                                 makeFieldShot(aiShot.getI(), aiShot.getJ(), playerField);
                             }
@@ -709,9 +709,10 @@ public class BattleShip extends Application {
         captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
     }
 
-    public void deleteAllDecks(int di, int dj, GameField field) { // В БУДУЩЕМ ОТПРАВИТЬ В КЛАСС GAMEFIELD
+    public void deleteAllDecks(int di, int dj, GameField field) {
         if (field.getCell(di, dj).getCellColor().equals(Color.RED)) {
             field.getCell(di, dj).setCellColor(Color.WHITE);
+            field.getCell(di, dj).setDeck(false);
             field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
             field.setBusyAroundCell(di, dj, DECREASE_BUSY);
             if (di - 1 >= 0 && field.getCell(di - 1, dj).getCellColor().equals(Color.RED)) {

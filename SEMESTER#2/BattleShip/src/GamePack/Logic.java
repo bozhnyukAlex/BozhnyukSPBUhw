@@ -1,5 +1,7 @@
 package GamePack;
 
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -122,6 +124,7 @@ public class  Logic {
                         case DIR_UP: {
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi - i, twj));
+                                field.getCell(twi - i, twj).setCellColor(Color.RED);
                                 field.setBusyAroundCell(twi - i, twj, INCREASE_MODE);
                             }
                             break;
@@ -129,6 +132,7 @@ public class  Logic {
                         case DIR_DOWN: {
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi + i, twj));
+                                field.getCell(twi + i, twj).setCellColor(Color.RED);
                                 field.setBusyAroundCell(twi + i, twj, INCREASE_MODE);
                             }
                             break;
@@ -136,6 +140,7 @@ public class  Logic {
                         case DIR_LEFT: {
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi, twj - i));
+                                field.getCell(twi, twj - i).setCellColor(Color.RED);
                                 field.setBusyAroundCell(twi, twj - i, INCREASE_MODE);
                             }
                             break;
@@ -143,6 +148,7 @@ public class  Logic {
                         case DIR_RIGHT: {
                             for (int i = 0; i < length; i++) {
                                 nwS.build(field.getCell(twi, twj + i));
+                                field.getCell(twi, twj + i).setCellColor(Color.RED);
                                 field.setBusyAroundCell(twi, twj + i, INCREASE_MODE);
                             }
                             break;

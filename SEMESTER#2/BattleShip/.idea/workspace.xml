@@ -7,31 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/images/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/view/battlemenu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/view/settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/BattleShip.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Ship.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Ship.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/SettingsWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/battlemenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/settings.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleShip.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/AI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePack/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/GameField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePack/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SettingsWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/battlemenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/settings.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +65,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.BattleShip (1)">
+    <configuration name="BattleShip (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShip" />
+      <module name="Battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AppInterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="interfacePack.BattleShip" />
       <module name="Battleship" />
@@ -113,7 +107,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BattleShip (1)" />
         <item itemvalue="Application.BattleShip (1)" />
         <item itemvalue="Application.BattleShip" />
       </list>
@@ -147,7 +140,8 @@
       <workItem from="1587331430739" duration="6922000" />
       <workItem from="1587365079622" duration="854000" />
       <workItem from="1587422617063" duration="4183000" />
-      <workItem from="1587459970944" duration="16097000" />
+      <workItem from="1587459970944" duration="18894000" />
+      <workItem from="1587498317064" duration="8366000" />
     </task>
     <servers />
   </component>
@@ -171,46 +165,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state width="1877" height="267" key="GridCell.Tab.0.bottom" timestamp="1587481230667">
+    <state width="1877" height="384" key="GridCell.Tab.0.bottom" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587481230667" />
-    <state width="1877" height="267" key="GridCell.Tab.0.center" timestamp="1587481230667">
+    <state width="1877" height="384" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.0.center" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="267" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587481230667" />
-    <state width="1877" height="267" key="GridCell.Tab.0.left" timestamp="1587481230667">
+    <state width="1877" height="384" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.0.left" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="267" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587481230667" />
-    <state width="1877" height="267" key="GridCell.Tab.0.right" timestamp="1587481230667">
+    <state width="1877" height="384" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.0.right" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="267" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587481230667" />
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom" timestamp="1587472029357">
+    <state width="1877" height="384" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587472029357" />
-    <state width="1877" height="285" key="GridCell.Tab.1.center" timestamp="1587472029356">
+    <state width="1877" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.1.center" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587472029356" />
-    <state width="1877" height="285" key="GridCell.Tab.1.left" timestamp="1587472029356">
+    <state width="1877" height="384" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.1.left" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587472029356" />
-    <state width="1877" height="285" key="GridCell.Tab.1.right" timestamp="1587472029357">
+    <state width="1877" height="384" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
+    <state width="1877" height="384" key="GridCell.Tab.1.right" timestamp="1587508452896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587472029357" />
+    <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587508452896" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1586808889835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586808889835" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587459970699">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587498322496">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587459970699" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587498322496" />
     <state x="1090" y="166" key="extract.method.dialog" timestamp="1586960755324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -223,10 +217,21 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/GamePack/AI.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/GamePack/AI.java</url>
           <line>98</line>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="aiShot.getI() == 4 &amp;&amp; aiShot.getJ() == 4" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/AppInterface/BattleShip.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
