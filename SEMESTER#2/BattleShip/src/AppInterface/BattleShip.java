@@ -1,7 +1,7 @@
+package AppInterface;
+
 import GamePack.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,9 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -20,10 +19,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.StringReader;
 
 public class BattleShip extends Application {
-    private static final int FIELD_SIZE = 10;
+
     @FXML
     private VBox pane;
     @FXML
@@ -70,22 +68,16 @@ public class BattleShip extends Application {
     @FXML
     private Label fourShipToGoLab;
 
-
-
-
     private ContextMenu deleteMenu;
     private MenuItem itemDelete;
-
     private boolean[] captureTriggers; //срабатывает при нажатии на кнопки выбора корабля
     private int clickCount;
-
     private Logic logic;
     private int oneShipToGo, twoShipToGo, threeShipToGo, fourShipToGo;
     private boolean isEnd;
     private IntelligenceLevel levelToSend;
 
-    private final String TITLE = "BattleShip";
-    private final String NO_SHIPS_LEFT = "Кораблей этого типа не осталось!";
+    private final String TITLE = "Морской бой";
     private final String CELL_IS_BUSY = "Сюда ставить нельзя";
     private final String SET_DIR = "Нажмите на поле еще раз для установки направления";
     private final String CHOOSE_SHIP = "Выберите корабль";
@@ -122,12 +114,16 @@ public class BattleShip extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        pane = FXMLLoader.load(getClass().getResource("battlemenu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(BattleShip.class.getResource("/view/battlemenu.fxml"));
+        pane = loader.load();
+        //pane = FXMLLoader.load(getClass().getResource("view/battlemenu.fxml"));
         startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.setTitle(TITLE);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/icon.png")));
         stage.show();
     }
 
@@ -151,6 +147,7 @@ public class BattleShip extends Application {
 
         onePlayerButton.setOnAction(actionEvent -> gameStart(GameMode.ONE_PLAYER));
         twoPlayersButton.setOnAction(actionEvent -> gameStart(GameMode.TWO_PLAYERS));
+
         settingsButton.setOnAction(actionEvent -> {
             boolean okClicked  = showDialogEditAi();
             if (okClicked) {
@@ -158,6 +155,7 @@ public class BattleShip extends Application {
                 statusLabel.setText(LEVEL_EDITED);
             }
         });
+
         exitButton.setOnAction(actionEvent -> System.exit(0));
 
         enable1Ship.setOnAction(actionEvent -> {
@@ -171,14 +169,17 @@ public class BattleShip extends Application {
             clickCount = 0;
             setTrigger(2, true);
         });
+
         enable3Ship.setOnAction(actionEvent -> {
             statusLabel.setText(SET_SHIP_3);
             setTrigger(3, true);
         });
+
         enable4Ship.setOnAction(actionEvent -> {
             statusLabel.setText(SET_SHIP_4);
             setTrigger(4,true);
         });
+
         playerField.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PREPARATION1)) {
                 int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
@@ -230,7 +231,7 @@ public class BattleShip extends Application {
                             makeFieldShot(plsi, plsj, enemyField);
                             while (logic.getFightState().equals(FightState.ENEMY_MOVE)) {
                                 Cell aiShot = logic.makeAiAttack();
-                                makeFieldShot(aiShot.getY() / Cell.SIZE, aiShot.getX() / Cell.SIZE, playerField);
+                                makeFieldShot(aiShot.getI(), aiShot.getJ(), playerField);
                             }
                         }
                     }
@@ -254,19 +255,14 @@ public class BattleShip extends Application {
                             hideDeleteMenu();
                         }
                     });
-                    enemyField.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
-                        @Override
-                        public void handle(ContextMenuEvent contextMenuEvent) { //
-                            int rci = (int) contextMenuEvent.getY() / Cell.SIZE, rcj = (int) contextMenuEvent.getX() / Cell.SIZE;
-                           // rci /= Cell.SIZE;
-                            //rcj /= Cell.SIZE;
-                            if (logic.getState().equals(GameState.PREPARATION2)) {
-                                if (enemyField.getCell(rci, rcj).getCellColor().equals(Color.RED) || enemyField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
-                                    deleteMenu.show(enemyField, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY());
-                                }
+                    enemyField.setOnContextMenuRequested(contextMenuEvent -> {
+                        int rci = (int) contextMenuEvent.getY() / Cell.SIZE, rcj = (int) contextMenuEvent.getX() / Cell.SIZE;
+                        if (logic.getState().equals(GameState.PREPARATION2)) {
+                            if (enemyField.getCell(rci, rcj).getCellColor().equals(Color.RED) || enemyField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
+                                deleteMenu.show(enemyField, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY());
                             }
-                            itemDelete.setOnAction(actionEvent -> deleteShip(rci, rcj, enemyField));
                         }
+                        itemDelete.setOnAction(actionEvent1 -> deleteShip(rci, rcj, enemyField));
                     });
                 }
                 else if (logic.getState().equals(GameState.PREPARATION2)) { //приготовится второй - начинаем игру
@@ -276,17 +272,14 @@ public class BattleShip extends Application {
                     toggleLeftField(TO_ENEMY_FIELD);
                     playerField.redraw();
                     enemyField.redraw();
-                    enemyField.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            if (mouseEvent.getButton() == MouseButton.PRIMARY && !isEnd && logic.getFightState().equals(FightState.PLAYER_MOVE) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getState().equals(GameState.PLAYING)) {
-                                int plsi = (int) mouseEvent.getY() / Cell.SIZE;
-                                int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                                if (enemyField.getCell(plsi, plsj).isShot() && (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
-                                    return;
-                                }
-                                makeFieldShot(plsi, plsj, enemyField);
+                    enemyField.setOnMouseClicked(mouseEvent -> {
+                        if (mouseEvent.getButton() == MouseButton.PRIMARY && !isEnd && logic.getFightState().equals(FightState.PLAYER_MOVE) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getState().equals(GameState.PLAYING)) {
+                            int plsi = (int) mouseEvent.getY() / Cell.SIZE;
+                            int plsj = (int) mouseEvent.getX() / Cell.SIZE;
+                            if (enemyField.getCell(plsi, plsj).isShot() && (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
+                                return;
                             }
+                            makeFieldShot(plsi, plsj, enemyField);
                         }
                     });
 
@@ -406,7 +399,7 @@ public class BattleShip extends Application {
                     }
                 }
                 else if (cli == pi + di && pj == clj) {
-                    if (pi + prevShip.getLength() - 1 >= FIELD_SIZE) {
+                    if (pi + prevShip.getLength() - 1 >= GameField.SIZE) {
                         statusLabel.setText(CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
@@ -454,7 +447,7 @@ public class BattleShip extends Application {
                     }
                 }
                 else if (cli == pi && clj == pj + dj) {
-                    if (pj + prevShip.getLength() - 1 >= FIELD_SIZE) {
+                    if (pj + prevShip.getLength() - 1 >= GameField.SIZE) {
                         statusLabel.setText(CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
@@ -508,7 +501,7 @@ public class BattleShip extends Application {
             firedShip.getDamage();
             if (firedShip.isDestroyed()) {
                 if (field.equals(playerField)) {
-                    field.setShotAroundShip(firedShip, true);
+                    //field.setShotAroundShip(firedShip, true);
                     if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
                         field.drawShip(firedShip, Color.DARKOLIVEGREEN);
                     }
@@ -724,10 +717,10 @@ public class BattleShip extends Application {
             if (di - 1 >= 0 && field.getCell(di - 1, dj).getCellColor().equals(Color.RED)) {
                 deleteAllDecks(di - 1, dj, field);
             }
-            if (di + 1 < FIELD_SIZE && field.getCell(di + 1, dj).getCellColor().equals(Color.RED)) { ///don't write else!!!!!
+            if (di + 1 < GameField.SIZE && field.getCell(di + 1, dj).getCellColor().equals(Color.RED)) { ///don't write else!!!!!
                 deleteAllDecks(di + 1, dj, field);
             }
-            if (dj + 1 < FIELD_SIZE && field.getCell(di, dj + 1).getCellColor().equals(Color.RED)) {
+            if (dj + 1 < GameField.SIZE && field.getCell(di, dj + 1).getCellColor().equals(Color.RED)) {
                 deleteAllDecks(di, dj + 1, field);
             }
             if (dj - 1 >= 0 && field.getCell(di, dj - 1).getCellColor().equals(Color.RED)) {
@@ -850,9 +843,9 @@ public class BattleShip extends Application {
         }
     }
 
-    public boolean showDialogEditAi() { ///ЛИШНИЙ ПАРАМЕТР
+    public boolean showDialogEditAi() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("settings.fxml"));
+        loader.setLocation(getClass().getResource("/view/settings.fxml"));
         try {
             settingsPane = loader.load();
         } catch (IOException e) {
@@ -861,6 +854,7 @@ public class BattleShip extends Application {
         }
         Stage dialogStage = new Stage();
         dialogStage.setTitle(EDIT_AI);
+        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/icon.png")));
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(settingsButton.getScene().getWindow());
         Scene scene = new Scene(settingsPane);
@@ -916,7 +910,12 @@ public class BattleShip extends Application {
             logic.initAI(playerField, levelToSend);
         }
         logic.preparationFirst();
-        settingsButton.setDisable(false);
+        if (mode.equals(GameMode.ONE_PLAYER)) {
+            settingsButton.setDisable(false);
+        }
+        else if (mode.equals(GameMode.TWO_PLAYERS)) {
+            settingsButton.setDisable(false);
+        }
 
     }
 

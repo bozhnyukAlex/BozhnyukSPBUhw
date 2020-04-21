@@ -17,6 +17,8 @@ public class Ship {
         build(decks);
     }
 
+    public Ship() {}
+
 
     public int getLength() {
         return length;

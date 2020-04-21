@@ -1,7 +1,5 @@
 package GamePack;
 
-import javafx.scene.control.RadioButton;
-
 import java.util.ArrayList;
 import java.util.Random;
 

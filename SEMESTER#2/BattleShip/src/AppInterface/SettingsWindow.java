@@ -1,3 +1,5 @@
+package AppInterface;
+
 import GamePack.IntelligenceLevel;
 import GamePack.Logic;
 import javafx.fxml.FXML;

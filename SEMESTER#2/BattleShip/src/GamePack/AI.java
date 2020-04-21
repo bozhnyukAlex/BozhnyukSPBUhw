@@ -87,20 +87,28 @@ public class AI {
     public Cell makeRandomShotAndReturnFiredCell() {
         int shi, shj;
         Random rnd = new Random();
+        int it = 0;
         while (true) {
+            it++;
+
             shi = rnd.nextInt(GameField.SIZE);
             shj = rnd.nextInt(GameField.SIZE);
+
+            System.out.println(it + ") " + shi + " " + shj + " \n");
+
             if (!opponentField.getCell(shi, shj).isShot()) {
-                if (!opponentField.getCell(shi, shj).isDeck()){
-                    isShipFired = false;
-                    previousShot = opponentField.getCell(shi, shj);
+                if (!opponentField.hasFiredShipAround(shi, shj)) {
+                    if (!opponentField.getCell(shi, shj).isDeck()){
+                        isShipFired = false;
+                        previousShot = opponentField.getCell(shi, shj);
+                    }
+                    else if (opponentField.getCell(shi, shj).isDeck()){
+                        isShipFired = true;
+                        previousShot = opponentField.getCell(shi, shj);
+                        firstHit = previousShot;
+                    }
+                    return opponentField.getCell(shi, shj);
                 }
-                else {
-                    isShipFired = true;
-                    previousShot = opponentField.getCell(shi, shj);
-                    firstHit = previousShot;
-                }
-                return opponentField.getCell(shi, shj);
             }
         }
     }
@@ -219,7 +227,7 @@ public class AI {
             int curI = 3, curJ = 0;
             findingFourShipState = 1;
             M1: while (true) {
-                if (!opponentField. getCell(curI, curJ).isShot()) {
+                if (!opponentField. getCell(curI, curJ).isShot() && !opponentField.hasFiredShipAround(curI, curJ)) {
                     resShot = previousShot = opponentField.getCell(curI, curJ);
                     if (resShot.isDeck()) {
                         isShipFired = true;
@@ -262,7 +270,7 @@ public class AI {
             int curI = 1, curJ = 0;
             findingThreeTwoShipState = 1;
         M2:    while (true) {
-                if (!opponentField.getCell(curI, curJ).isShot()) {
+                if (!opponentField.getCell(curI, curJ).isShot() && !opponentField.hasFiredShipAround(curI, curJ)) {
                     resShot = previousShot = opponentField.getCell(curI, curJ);
                     if (resShot.isDeck()) {
                         isShipFired = true;

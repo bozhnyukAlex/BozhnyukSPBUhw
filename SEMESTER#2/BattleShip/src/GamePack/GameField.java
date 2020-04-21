@@ -96,11 +96,11 @@ public class GameField extends Canvas {
         }
     }
 
-    public void setShotAroundShip(Ship ship, boolean mode) {
+ /*   public void setShotAroundShip(Ship ship, boolean mode) {
         for(Cell deck : ship.getDecks()) {
             setShotAroundCell(deck.getI(), deck.getJ(), mode);
         }
-    }
+    }*/
 
     public void drawShips(ArrayList<Ship> ships, Color color) {
         for(Ship ship : ships) {
@@ -117,5 +117,16 @@ public class GameField extends Canvas {
 
     public boolean inRange(int i, int j) {
         return i >= 0 && i < SIZE && j >= 0 && j < SIZE;
+    }
+
+    public boolean hasFiredShipAround(int i, int j) {
+        for (int w = -1; w <= 1; w++) {
+            for (int v = -1; v <= 1; v++) {
+                if (inRange(i + w, j + v) && getCell(i + w, j + v).isDeck() && getCell(i + w, j + v).isShot()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
