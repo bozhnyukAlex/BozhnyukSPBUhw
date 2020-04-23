@@ -11,7 +11,7 @@ public class PickupTest {
     private Pickup pickup;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         pickup = new Pickup(210, "WHITE", "666-XYZ", "India", 4, Transmission.AUTOMATIC, 1590);
     }
 

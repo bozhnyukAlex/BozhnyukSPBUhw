@@ -12,13 +12,16 @@ import static org.junit.Assert.*;
 public class AbstractCarTest {
     private Car carLim;
     private Car carPick;
-
+    //@BeforeClass
+    //@After
+    //AfterClass
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         carLim = new Limousine(150, "YELLOW", "109-AAA", "China", 7, Transmission.AUTOMATIC, 5.75);
         carPick = new Pickup(210, "WHITE", "666-XYZ", "India", 4, Transmission.MECHANIC, 1590);
     }
-
+    //assertTrue(boolean expression)
+    //assertArrayEquals()
     @Test
     public void getterMaxSpeedTest() {
         assertEquals(150, carLim.getMaxSpeed());
@@ -30,6 +33,13 @@ public class AbstractCarTest {
         assertEquals("YELLOW", carLim.getColor());
         assertEquals("WHITE", carPick.getColor());
     }
+    //
+    /*
+    @Test
+    public void ColorWbTest(){
+
+    }
+     */
 
     @Test
     public void getterNumberTest() {
