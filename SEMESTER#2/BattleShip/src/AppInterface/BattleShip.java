@@ -516,7 +516,6 @@ public class BattleShip extends Application {
                     logic.decreasePlayerShips();
                     if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
                         logic.sendToAiSignalAboutDeadShip(true);
-                        logic.tellAiAboutDestroyedShip(firedShip.getDecks().size());
                     }
                     decreaseLabelHP(DECREASE_PLAYER);
                     if (logic.getPlayerShipsLeft() == 0) {

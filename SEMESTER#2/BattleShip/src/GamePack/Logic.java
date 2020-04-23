@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class  Logic {
+public class Logic {
     private int playerShipsLeft;
     private int enemyShipsLeft;
     private GameState state;
@@ -239,7 +239,7 @@ public class  Logic {
         return playerShips.size() == 10;
     }
 
-    public Ship getShipByDeck (Cell deck, ArrayList<Ship> shipList) {
+    public Ship getShipByDeck(Cell deck, ArrayList<Ship> shipList) {
         for (Ship ship : shipList) {
             if (ship.getDecks().contains(deck)) {
                 return ship;
@@ -265,9 +265,6 @@ public class  Logic {
         enemyAI.setShipDead(isDead);
     }
 
-    public void tellAiAboutDestroyedShip(int deckCount) {
-        enemyAI.increaseFiredShip(deckCount);
-    }
 
     public IntelligenceLevel getDifficulty() {
         return enemyAI.getILevel();

@@ -18,13 +18,13 @@ public class GameFieldTest {
 
     @Test
     public void setBusyAroundCellTest() {
-        int sumBefore = checkAround(0,0);
+        int sumBefore = checkAroundBusy(0,0);
         field.setBusyAroundCell(0,0, 1);
-        int sumAfter = checkAround(0,0);
+        int sumAfter = checkAroundBusy(0,0);
         assertTrue(sumBefore < sumAfter);
     }
 
-    public int checkAround(int i, int j) {
+    public int checkAroundBusy(int i, int j) {
         int sum = 0;
         for (int w = -1; w <= 1; w++) {
             for (int v = -1; v <= 1; v++) {
@@ -34,6 +34,17 @@ public class GameFieldTest {
             }
         }
         return sum;
+    }
+
+    public boolean checkAroundDeckAndShot(int i, int j) {
+        for (int w = -1; w <= 1; w++) {
+            for (int v = -1; v <= 1; v++) {
+                if (GameField.inRange(i + w, j + v) && field.getCell(i + w, j + v).isDeck() && field.getCell(i + w, j + v).isShot()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Test
@@ -52,7 +63,10 @@ public class GameFieldTest {
     }
 
     @Test
-    public void hasFiredShipAroundTestTest() {
-
+    public void hasFiredShipAroundTest() {
+        assertFalse(field.hasFiredShipAround(1, 5));
+        field.getCell(2,5).setDeck(true);
+        field.getCell(2, 5).setShot(true);
+        assertTrue(field.hasFiredShipAround(1, 5));
     }
 }

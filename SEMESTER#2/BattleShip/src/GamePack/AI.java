@@ -8,7 +8,6 @@ public class AI {
     private Cell previousShot;
     private Cell firstHit;
     private boolean isShipFired, isShipDead, isFirstShot;
-    private int[] shipFired;
     private int findingFourShipState, findingThreeTwoShipState;
     private int bigFindingState;
 
@@ -23,7 +22,6 @@ public class AI {
         findingFourShipState = 1;
         findingThreeTwoShipState = 1;
         bigFindingState = 1;
-        shipFired = new int[] {0 ,0, 0, 0, 0};
     }
 
     public Cell makeShot() {
@@ -87,14 +85,9 @@ public class AI {
     public Cell makeRandomShotAndReturnFiredCell() {
         int shi, shj;
         Random rnd = new Random();
-        int it = 0;
         while (true) {
-            it++;
-
             shi = rnd.nextInt(GameField.SIZE);
             shj = rnd.nextInt(GameField.SIZE);
-            
-
             if (!opponentField.getCell(shi, shj).isShot()) {
                 if (!opponentField.hasFiredShipAround(shi, shj)) {
                     if (!opponentField.getCell(shi, shj).isDeck()){
@@ -106,6 +99,7 @@ public class AI {
                         previousShot = opponentField.getCell(shi, shj);
                         firstHit = previousShot;
                     }
+                    opponentField.getCell(shi, shj).setShot(true);
                     return opponentField.getCell(shi, shj);
                 }
             }
@@ -217,6 +211,7 @@ public class AI {
                 }
             }
         }
+        resShot.setShot(true);
         return resShot;
     }
 
@@ -316,6 +311,7 @@ public class AI {
         if (bigFindingState == 3) { //остались только однопалубные - стреляем рандомно по оставшимся клеткам
             previousShot = resShot = makeRandomShotAndReturnFiredCell();
         }
+        resShot.setShot(true);
         return resShot;
     }
 
@@ -333,8 +329,5 @@ public class AI {
         this.iLevel = iLevel;
     }
 
-    public void increaseFiredShip(int deckCount) {
-        shipFired[deckCount]++;
-    }
     
 }

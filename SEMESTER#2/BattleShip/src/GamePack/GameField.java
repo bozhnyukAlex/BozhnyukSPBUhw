@@ -95,6 +95,13 @@ public class GameField extends Canvas {
         }
     }
 
+    public void setShip(Ship ship) {
+        for (Cell deck : ship.getDecks()) {
+            cells[deck.getI()][deck.getJ()] = deck;
+            setBusyAroundCell(deck.getI(), deck.getJ(), 1);
+        }
+    }
+
     public static boolean inRange(int i, int j) {
         return i >= 0 && i < SIZE && j >= 0 && j < SIZE;
     }
