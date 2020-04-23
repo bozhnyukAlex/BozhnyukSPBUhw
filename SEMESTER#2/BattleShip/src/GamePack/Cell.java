@@ -95,4 +95,7 @@ public class Cell {
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 
+    public int getBusyCount() {
+        return busyCount;
+    }
 }

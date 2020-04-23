@@ -95,7 +95,7 @@ public class GameField extends Canvas {
         }
     }
 
-    public boolean inRange(int i, int j) {
+    public static boolean inRange(int i, int j) {
         return i >= 0 && i < SIZE && j >= 0 && j < SIZE;
     }
 

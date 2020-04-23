@@ -93,8 +93,7 @@ public class AI {
 
             shi = rnd.nextInt(GameField.SIZE);
             shj = rnd.nextInt(GameField.SIZE);
-
-            System.out.println(it + ") " + shi + " " + shj + " \n");
+            
 
             if (!opponentField.getCell(shi, shj).isShot()) {
                 if (!opponentField.hasFiredShipAround(shi, shj)) {

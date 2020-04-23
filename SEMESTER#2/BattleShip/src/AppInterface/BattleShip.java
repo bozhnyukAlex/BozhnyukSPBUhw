@@ -77,30 +77,32 @@ public class BattleShip extends Application {
     private boolean isEnd;
     private IntelligenceLevel levelToSend;
 
-    private final String TITLE = "Морской бой";
-    private final String CELL_IS_BUSY = "Сюда ставить нельзя";
-    private final String SET_DIR = "Нажмите на поле еще раз для установки направления";
-    private final String CHOOSE_SHIP = "Выберите корабль";
-    private final String DELETE_SHIP = "Удалить корабль";
-    private final String YOU_ARE_READY = "Вы готовы к бою!";
-    private final String YOUR_MOVE = "Ваш ход!";
-    private final String ENEMY_MOVE = "Ход противника!";
-    private final String YOU_WON = "Вы победили!";
-    private final String YOU_LOSE = "Вы проиграли!";
-    private final String FIGHT = "Бой!";
-    private final String PREPARE = "Подготовка";
-    private final String PREPARE_FIRST = "Подготовка первого игрока";
-    private final String PREPARE_SECOND = "Подготовка второго игрока";
-    private final String MOVE_FIRST = "Ход первого игрока";
-    private final String MOVE_SECOND = "Ход второго игрока";
-    private final String FIRST_WON = "Выиграл первый игрок";
-    private final String SECOND_WON = "Выиграл второй игрок";
-    private final String EDIT_AI = "Уровень сложности";
-    private final String LEVEL_EDITED = "Уровень сложности изменен";
-    private final String SET_SHIP_1 = "Поставьте 1 палубный корабль";
-    private final String SET_SHIP_2 = "Поставьте 2-х палубный корабль";
-    private final String SET_SHIP_3 = "Поставьте 3-х палубный корабль";
-    private final String SET_SHIP_4 = "Поставьте 4-х палубный корабль";
+    private final String PLAYER_FIELD_ID = "playerField";
+    private final String ENEMY_FIELD_ID = "enemyField";
+    public static final String TITLE = "Морской бой";
+    public static final String CELL_IS_BUSY = "Сюда ставить нельзя";
+    public static final String SET_DIR = "Нажмите на поле еще раз для установки направления";
+    public static final String CHOOSE_SHIP = "Выберите корабль";
+    public static final String DELETE_SHIP = "Удалить корабль";
+    public static final String YOU_ARE_READY = "Вы готовы к бою!";
+    public static final String YOUR_MOVE = "Ваш ход!";
+    public static final String ENEMY_MOVE = "Ход противника!";
+    public static final String YOU_WON = "Вы победили!";
+    public static final String YOU_LOSE = "Вы проиграли!";
+    public static final String FIGHT = "Бой!";
+    public static final String PREPARE = "Подготовка";
+    public static final String PREPARE_FIRST = "Подготовка первого игрока";
+    public static final String PREPARE_SECOND = "Подготовка второго игрока";
+    public static final String MOVE_FIRST = "Ход первого игрока";
+    public static final String MOVE_SECOND = "Ход второго игрока";
+    public static final String FIRST_WON = "Выиграл первый игрок";
+    public static final String SECOND_WON = "Выиграл второй игрок";
+    public static final String EDIT_AI = "Уровень сложности";
+    public static final String LEVEL_EDITED = "Уровень сложности изменен";
+    public static final String SET_SHIP_1 = "Поставьте 1 палубный корабль";
+    public static final String SET_SHIP_2 = "Поставьте 2-х палубный корабль";
+    public static final String SET_SHIP_3 = "Поставьте 3-х палубный корабль";
+    public static final String SET_SHIP_4 = "Поставьте 4-х палубный корабль";
 
 
     private final int INCREASE_BUSY = 1;
@@ -132,6 +134,7 @@ public class BattleShip extends Application {
         captureTriggers = new boolean[] {false, false, false, false, false};
         setDisableToButtonsOnSecondField(true);
         playerField = new GameField(PLAYER_FIELD);
+        playerField.setId(PLAYER_FIELD_ID);
         enemyField = new GameField();
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
@@ -213,6 +216,7 @@ public class BattleShip extends Application {
             if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
                 logic.play();
                 enemyField = new GameField(ENEMY_FIELD);
+                enemyField.setId(ENEMY_FIELD_ID);
                 toggleRightField(TO_ENEMY_FIELD);
                 logic.setEnemyShips(logic.autoShipGenerate(enemyField));
 
@@ -241,6 +245,7 @@ public class BattleShip extends Application {
                 if (logic.getState().equals(GameState.PREPARATION1)) { //если готовился, то должен начать готовиться второй
                     logic.preparationSecond();
                     enemyField = new GameField(ENEMY_FIELD);
+                    enemyField.setId(ENEMY_FIELD_ID);
                     toggleRightField(TO_ENEMY_FIELD);
                     toggleLeftField(TO_BUTTON_PANE);
                     statusLabel.setText(PREPARE_SECOND);

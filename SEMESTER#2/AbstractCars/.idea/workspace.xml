@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82a49733-c5a1-4510-8f63-8a30bb0a7683" name="Default Changelist" comment="" />
+    <list default="true" id="82a49733-c5a1-4510-8f63-8a30bb0a7683" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BattleShip/.idea/libraries/junit_junit_4_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BattleShip/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShip/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BattleShip/BattleShip.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShip/BattleShip.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BattleShip/out/production/BattleShip/GamePack/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShip/out/production/BattleShip/GamePack/AI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BattleShip/src/GamePack/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BattleShip/src/GamePack/AI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +54,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -63,7 +70,7 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\AbstractCars\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AbstractCarTest.getterTransmissionTest">
+  <component name="RunManager" selected="JUnit.AbstractCarTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main.Main" />
       <module name="AbstractCars" />
@@ -140,9 +147,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AbstractCarTest" />
         <item itemvalue="JUnit.AbstractCarTest.getterTransmissionTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.AbstractCarTest" />
         <item itemvalue="JUnit.PickupTest" />
         <item itemvalue="JUnit.LimousineTest" />
       </list>
@@ -160,6 +167,7 @@
       <updated>1583745043217</updated>
       <workItem from="1583745047695" duration="5443000" />
       <workItem from="1583925510089" duration="734000" />
+      <workItem from="1587565588305" duration="33000" />
     </task>
     <servers />
   </component>
@@ -183,22 +191,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583927545149" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1583750498381">
+    <state width="1877" height="195" key="GridCell.Tab.0.bottom" timestamp="1587565621026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583750498381" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1583750498381">
+    <state width="1877" height="195" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587565621026" />
+    <state width="1877" height="195" key="GridCell.Tab.0.center" timestamp="1587565621026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583750498381" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1583750498381">
+    <state width="1877" height="195" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587565621026" />
+    <state width="1877" height="195" key="GridCell.Tab.0.left" timestamp="1587565621026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583750498381" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1583750498381">
+    <state width="1877" height="195" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587565621026" />
+    <state width="1877" height="195" key="GridCell.Tab.0.right" timestamp="1587565621026">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583750498381" />
+    <state width="1877" height="195" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587565621026" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1587565620485">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587565620485" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1583925510382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
