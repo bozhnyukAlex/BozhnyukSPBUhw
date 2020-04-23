@@ -7,21 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Test/GamePack/AITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test/GamePack/ShipTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Battleship_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Battleship_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/GamePack/GameFieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/GamePack/GameFieldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/GameFieldTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/GameFieldTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Logic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePack/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Cell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,16 +83,54 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LogicTest">
-    <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShip" />
-      <module name="Battleship" />
+  <component name="RunManager" selected="JUnit.ShipTest">
+    <configuration name="AITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GamePack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GamePack" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.AITest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BattleShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AppInterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GamePack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GamePack" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.GameFieldTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="LogicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Battleship" />
+      <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GamePack.*" />
@@ -114,56 +144,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogicTest.autoShipGenerateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Battleship" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GamePack.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
-      <option name="METHOD_NAME" value="autoShipGenerateTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogicTest.canSetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Battleship" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GamePack.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
-      <option name="METHOD_NAME" value="canSetTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogicTest.getShipByDeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Battleship" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GamePack.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
-      <option name="METHOD_NAME" value="getShipByDeckTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Battleship" />
+      <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GamePack.*" />
@@ -179,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LogicTest" />
-        <item itemvalue="JUnit.LogicTest.getShipByDeckTest" />
-        <item itemvalue="JUnit.LogicTest.canSetTest" />
-        <item itemvalue="JUnit.LogicTest.autoShipGenerateTest" />
         <item itemvalue="JUnit.ShipTest" />
+        <item itemvalue="JUnit.LogicTest" />
+        <item itemvalue="JUnit.GameFieldTest" />
+        <item itemvalue="JUnit.AITest" />
+        <item itemvalue="JUnit.BattleShipTest" />
       </list>
     </recent_temporary>
   </component>
@@ -245,22 +227,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state width="1877" height="256" key="GridCell.Tab.0.bottom" timestamp="1587648284476">
+    <state width="1877" height="200" key="GridCell.Tab.0.bottom" timestamp="1587683710129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="256" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587648284476" />
-    <state width="1877" height="256" key="GridCell.Tab.0.center" timestamp="1587648284476">
+    <state width="1877" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
+    <state width="1877" height="200" key="GridCell.Tab.0.center" timestamp="1587683710129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="256" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587648284476" />
-    <state width="1877" height="256" key="GridCell.Tab.0.left" timestamp="1587648284476">
+    <state width="1877" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
+    <state width="1877" height="200" key="GridCell.Tab.0.left" timestamp="1587683710129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="256" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587648284476" />
-    <state width="1877" height="256" key="GridCell.Tab.0.right" timestamp="1587648284476">
+    <state width="1877" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
+    <state width="1877" height="200" key="GridCell.Tab.0.right" timestamp="1587683710129">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="256" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587648284476" />
+    <state width="1877" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
     <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1587643204907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -289,6 +271,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1587566891165" />
+    <state x="678" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587671000517">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="678" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587671000517" />
     <state x="968" y="206" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587645682391">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

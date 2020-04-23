@@ -79,6 +79,8 @@ public class BattleShip extends Application {
 
     private final String PLAYER_FIELD_ID = "playerField";
     private final String ENEMY_FIELD_ID = "enemyField";
+    private static final String ITEM_DELETE_ID = "itemDelete";
+    public static final String DELETE_MENU_ID = "deleteMenu";
     public static final String TITLE = "Морской бой";
     public static final String CELL_IS_BUSY = "Сюда ставить нельзя";
     public static final String SET_DIR = "Нажмите на поле еще раз для установки направления";
@@ -103,7 +105,9 @@ public class BattleShip extends Application {
     public static final String SET_SHIP_2 = "Поставьте 2-х палубный корабль";
     public static final String SET_SHIP_3 = "Поставьте 3-х палубный корабль";
     public static final String SET_SHIP_4 = "Поставьте 4-х палубный корабль";
-
+    public static final String MENU_PATH = "/view/battleMenu.fxml";
+    public static final String SETTINGS_PATH = "/view/settings.fxml";
+    private static final String ICON_PATH = "/images/icon.png";
 
     private final int INCREASE_BUSY = 1;
     private final int DECREASE_BUSY = -1;
@@ -117,15 +121,14 @@ public class BattleShip extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(BattleShip.class.getResource("/view/battlemenu.fxml"));
+        loader.setLocation(BattleShip.class.getResource(MENU_PATH));
         pane = loader.load();
-        //pane = FXMLLoader.load(getClass().getResource("view/battlemenu.fxml"));
         startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.setTitle(TITLE);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/icon.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(ICON_PATH)));
         stage.show();
     }
 
@@ -138,6 +141,7 @@ public class BattleShip extends Application {
         enemyField = new GameField();
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
+        deleteMenu.setId(DELETE_MENU_ID);
         itemDelete = new MenuItem(DELETE_SHIP);
         deleteMenu.getItems().add(itemDelete);
         autoGenerateButton.setDisable(true);
@@ -222,7 +226,6 @@ public class BattleShip extends Application {
 
                 logic.setFightState(FightState.PLAYER_MOVE);
                 statusLabel.setText(FIGHT);
-                settingsButton.setDisable(true);
 
                 enemyField.setOnMouseClicked(mouseEvent -> {
                     if (mouseEvent.getButton() == MouseButton.PRIMARY) {
@@ -251,6 +254,7 @@ public class BattleShip extends Application {
                     statusLabel.setText(PREPARE_SECOND);
                     updateEnableLabels();
                     setDisableToEnableButtons(false);
+                    settingsButton.setDisable(true);
                     enemyField.setOnMouseClicked(mouseEvent -> {
                         if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PREPARATION2)) {
                             int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
@@ -307,7 +311,7 @@ public class BattleShip extends Application {
         });
     }
 
-    public void generateShipsOnField(GameField field) {
+    private void generateShipsOnField(GameField field) {
         field.update();
         if (field.equals(playerField)) {
             logic.setPlayerShips(logic.autoShipGenerate(playerField));
@@ -599,37 +603,6 @@ public class BattleShip extends Application {
         enable4Ship.setDisable(state);
     }
 
-    private void setDisableExceptNthButton(int num, boolean state) {
-        switch (num) {
-            case 1: {
-                enable2Ship.setDisable(state);
-                enable3Ship.setDisable(state);
-                enable4Ship.setDisable(state);
-                break;
-            }
-            case 2: {
-                enable1Ship.setDisable(state);
-                enable3Ship.setDisable(state);
-                enable4Ship.setDisable(state);
-                break;
-            }
-            case 3: {
-                enable1Ship.setDisable(state);
-                enable2Ship.setDisable(state);
-                enable4Ship.setDisable(state);
-                break;
-
-            }
-            case 4: {
-                enable1Ship.setDisable(state);
-                enable2Ship.setDisable(state);
-                enable3Ship.setDisable(state);
-                break;
-            }
-
-        }
-    }
-
     private int getTrigger() {
         if (captureTriggers[1]) {
             return 1;
@@ -648,7 +621,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void hideDeleteMenu() {
+    private void hideDeleteMenu() {
         if (deleteMenu.isShowing()) {
             deleteMenu.hide();
         }
@@ -665,7 +638,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void decreaseShipsToGo() {
+    private void decreaseShipsToGo() {
         switch (getTrigger()) {
             case 1: {
                 oneShipToGoLab.setText(Integer.toString(--oneShipToGo));
@@ -698,7 +671,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void updateEnableLabels() {
+    private void updateEnableLabels() {
         oneShipToGo = 4;
         twoShipToGo = 3;
         threeShipToGo = 2;
@@ -709,11 +682,11 @@ public class BattleShip extends Application {
         fourShipToGoLab.setText("1");
     }
 
-    public void updateTriggers() {
+    private void updateTriggers() {
         captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
     }
 
-    public void deleteAllDecks(int di, int dj, GameField field) {
+    private void deleteAllDecks(int di, int dj, GameField field) {
         if (field.getCell(di, dj).getCellColor().equals(Color.RED)) {
             field.getCell(di, dj).setCellColor(Color.WHITE);
             field.getCell(di, dj).setDeck(false);
@@ -738,7 +711,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void toggleRightField(int mode) {
+    private void toggleRightField(int mode) {
         switch (mode) {
             case TO_BUTTON_PANE: {
                 anchorPane.getChildren().remove(enemyField);
@@ -753,7 +726,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void toggleLeftField(int mode) {
+    private void toggleLeftField(int mode) {
         switch (mode) {
             case TO_BUTTON_PANE: {
                 anchorPane.getChildren().remove(playerField);
@@ -772,7 +745,7 @@ public class BattleShip extends Application {
         }
     }
 
-    public void deleteShip(int di, int dj, GameField field) {
+    private void deleteShip(int di, int dj, GameField field) {
         if (field.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
             deleteAllDecks(di, dj, field);
             if (field.equals(playerField)) {
@@ -833,7 +806,7 @@ public class BattleShip extends Application {
         deleteAllDecks(di, dj, field );
     }
 
-    public void decreaseLabelHP(int mode) {
+    private void decreaseLabelHP(int mode) {
         switch (mode) {
             case DECREASE_PLAYER: {
                 int playerHPD = Integer.parseInt(playerShipsLeft.getText()) - 1;
@@ -848,9 +821,9 @@ public class BattleShip extends Application {
         }
     }
 
-    public boolean showDialogEditAi() {
+    private boolean showDialogEditAi() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/settings.fxml"));
+        loader.setLocation(getClass().getResource(SETTINGS_PATH));
         try {
             settingsPane = loader.load();
         } catch (IOException e) {
@@ -859,7 +832,7 @@ public class BattleShip extends Application {
         }
         Stage dialogStage = new Stage();
         dialogStage.setTitle(EDIT_AI);
-        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/icon.png")));
+        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream(ICON_PATH)));
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(settingsButton.getScene().getWindow());
         Scene scene = new Scene(settingsPane);
@@ -919,7 +892,7 @@ public class BattleShip extends Application {
             settingsButton.setDisable(false);
         }
         else if (mode.equals(GameMode.TWO_PLAYERS)) {
-            settingsButton.setDisable(false);
+            settingsButton.setDisable(true);
         }
 
     }
