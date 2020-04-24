@@ -28,7 +28,6 @@ public class BattleShip extends Application {
     private AnchorPane settingsPane;
     @FXML
     private AnchorPane anchorPane;
-    private Scene startScene;
     @FXML
     private Button autoGenerateButton;
     @FXML
@@ -79,7 +78,6 @@ public class BattleShip extends Application {
 
     private final String PLAYER_FIELD_ID = "playerField";
     private final String ENEMY_FIELD_ID = "enemyField";
-    private static final String ITEM_DELETE_ID = "itemDelete";
     public static final String DELETE_MENU_ID = "deleteMenu";
     public static final String TITLE = "Морской бой";
     public static final String CELL_IS_BUSY = "Сюда ставить нельзя";
@@ -109,10 +107,6 @@ public class BattleShip extends Application {
     public static final String SETTINGS_PATH = "/view/settings.fxml";
     private static final String ICON_PATH = "/images/icon.png";
 
-    private final int INCREASE_BUSY = 1;
-    private final int DECREASE_BUSY = -1;
-    private final int PLAYER_FIELD = 3;
-    private final int ENEMY_FIELD = 4;
     private final int TO_BUTTON_PANE = 5;
     private final int TO_ENEMY_FIELD = 6;
     private final int DECREASE_PLAYER = 7;
@@ -123,7 +117,7 @@ public class BattleShip extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(BattleShip.class.getResource(MENU_PATH));
         pane = loader.load();
-        startScene = new Scene(pane, 810, 435);
+        Scene startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
         stage.centerOnScreen();
         stage.setResizable(false);
@@ -136,7 +130,7 @@ public class BattleShip extends Application {
     public void initialize() {
         captureTriggers = new boolean[] {false, false, false, false, false};
         setDisableToButtonsOnSecondField(true);
-        playerField = new GameField(PLAYER_FIELD);
+        playerField = new GameField(GameField.PLAYER_MODE);
         playerField.setId(PLAYER_FIELD_ID);
         enemyField = new GameField();
         anchorPane.getChildren().add(playerField);
@@ -218,12 +212,12 @@ public class BattleShip extends Application {
 
         readyButton.setOnAction(actionEvent -> {
             if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
-                logic.play();
-                enemyField = new GameField(ENEMY_FIELD);
+                logic.setGameState(GameState.PLAYING);
+                enemyField = new GameField(GameField.ENEMY_MODE);
                 enemyField.setId(ENEMY_FIELD_ID);
                 toggleRightField(TO_ENEMY_FIELD);
-                logic.setEnemyShips(logic.autoShipGenerate(enemyField));
-
+                logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
+                settingsButton.setDisable(true);
                 logic.setFightState(FightState.PLAYER_MOVE);
                 statusLabel.setText(FIGHT);
 
@@ -246,8 +240,8 @@ public class BattleShip extends Application {
             }
             else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
                 if (logic.getState().equals(GameState.PREPARATION1)) { //если готовился, то должен начать готовиться второй
-                    logic.preparationSecond();
-                    enemyField = new GameField(ENEMY_FIELD);
+                    logic.setGameState(GameState.PREPARATION2);
+                    enemyField = new GameField(GameField.ENEMY_MODE);
                     enemyField.setId(ENEMY_FIELD_ID);
                     toggleRightField(TO_ENEMY_FIELD);
                     toggleLeftField(TO_BUTTON_PANE);
@@ -275,7 +269,7 @@ public class BattleShip extends Application {
                     });
                 }
                 else if (logic.getState().equals(GameState.PREPARATION2)) { //приготовится второй - начинаем игру
-                    logic.play();
+                    logic.setGameState(GameState.PLAYING);
                     logic.setFightState(FightState.PLAYER_MOVE);
                     statusLabel.setText(MOVE_FIRST);
                     toggleLeftField(TO_ENEMY_FIELD);
@@ -291,7 +285,6 @@ public class BattleShip extends Application {
                             makeFieldShot(plsi, plsj, enemyField);
                         }
                     });
-
                 }
             }
 
@@ -314,12 +307,12 @@ public class BattleShip extends Application {
     private void generateShipsOnField(GameField field) {
         field.update();
         if (field.equals(playerField)) {
-            logic.setPlayerShips(logic.autoShipGenerate(playerField));
-            field.drawShips(logic.getPlayerShips(), Color.RED);
+            logic.setShips(logic.autoShipGenerate(playerField), Logic.PLAYER_SHIPS);
+            field.drawShips(logic.getShips(Logic.PLAYER_SHIPS), Color.RED);
         }
         else if (field.equals(enemyField)) {
-            logic.setEnemyShips(logic.autoShipGenerate(enemyField));
-            field.drawShips(logic.getEnemyShips(), Color.RED);
+            logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
+            field.drawShips(logic.getShips(Logic.ENEMY_SHIPS), Color.RED);
         }
         setZeroToEnableLabelsAndCounts();
         setDisableToEnableButtons(true);
@@ -328,6 +321,7 @@ public class BattleShip extends Application {
     }
 
     private void setShipToClickedField(GameField clickedField, int cli, int clj) {
+        int INCREASE_BUSY = 1;
         if (getTrigger() == 1) {
             if (clickedField.getCell(cli, clj).isBusy()) {
                 statusLabel.setText(CELL_IS_BUSY);
@@ -374,10 +368,10 @@ public class BattleShip extends Application {
             if (clickCount == 2) {
                 Ship prevShip = new Ship();
                 if (clickedField.equals(playerField)) {
-                    prevShip = logic.getPlayerShips().get(logic.getPlayerShips().size() - 1);
+                    prevShip = logic.getShips(Logic.PLAYER_SHIPS).get(logic.getShips(Logic.PLAYER_SHIPS).size() - 1);
                 }
                 else if (clickedField.equals(enemyField)) {
-                    prevShip = logic.getEnemyShips().get(logic.getEnemyShips().size() - 1);
+                    prevShip = logic.getShips(Logic.ENEMY_SHIPS).get(logic.getShips(Logic.ENEMY_SHIPS).size() - 1);
                 }
                 int pi = prevShip.getDecks().get(0).getY() / Cell.SIZE,  pj = prevShip.getDecks().get(0).getX() / Cell.SIZE;
                 clickedField.getCell(pi, pj).setCellColor(Color.RED);
@@ -502,22 +496,21 @@ public class BattleShip extends Application {
         if (field.getCell(plsi, plsj).isDeck()) {
             Ship firedShip = new Ship();
             if (field.equals(playerField)) {
-                firedShip = logic.getShipByDeck(field.getCell(plsi, plsj), logic.getPlayerShips());
+                firedShip = logic.getShipByDeck(field.getCell(plsi, plsj), logic.getShips(Logic.PLAYER_SHIPS));
             }
             else if (field.equals(enemyField)) {
-                firedShip = logic.getShipByDeck(field.getCell(plsi, plsj), logic.getEnemyShips());
+                firedShip = logic.getShipByDeck(field.getCell(plsi, plsj), logic.getShips(Logic.ENEMY_SHIPS));
             }
             firedShip.getDamage();
             if (firedShip.isDestroyed()) {
                 if (field.equals(playerField)) {
-                    //field.setShotAroundShip(firedShip, true);
                     if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
                         field.drawShip(firedShip, Color.DARKOLIVEGREEN);
                     }
                     else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
                         field.drawShip(firedShip, Color.RED);
                     }
-                    logic.decreasePlayerShips();
+                    logic.decreaseShips(Logic.PLAYER_SHIPS);
                     if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
                         logic.sendToAiSignalAboutDeadShip(true);
                     }
@@ -534,7 +527,7 @@ public class BattleShip extends Application {
                 }
                 else if (field.equals(enemyField)) {
                     field.drawShip(firedShip, Color.RED);
-                    logic.decreaseEnemyShips();
+                    logic.decreaseShips(Logic.ENEMY_SHIPS);
                     decreaseLabelHP(DECREASE_ENEMY);
                     if (logic.getEnemyShipsLeft() == 0) {
                         if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
@@ -691,6 +684,7 @@ public class BattleShip extends Application {
             field.getCell(di, dj).setCellColor(Color.WHITE);
             field.getCell(di, dj).setDeck(false);
             field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
+            int DECREASE_BUSY = -1;
             field.setBusyAroundCell(di, dj, DECREASE_BUSY);
             if (di - 1 >= 0 && field.getCell(di - 1, dj).getCellColor().equals(Color.RED)) {
                 deleteAllDecks(di - 1, dj, field);
@@ -749,29 +743,29 @@ public class BattleShip extends Application {
         if (field.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
             deleteAllDecks(di, dj, field);
             if (field.equals(playerField)) {
-                logic.getPlayerShips().remove(logic.getPlayerShips().size() - 1);
+                logic.getShips(Logic.PLAYER_SHIPS).remove(logic.getShips(Logic.PLAYER_SHIPS).size() - 1);
             }
             else if (field.equals(enemyField)) {
-                logic.getEnemyShips().remove(logic.getEnemyShips().size() - 1);
+                logic.getShips(Logic.ENEMY_SHIPS).remove(logic.getShips(Logic.ENEMY_SHIPS).size() - 1);
             }
             clickCount--;
             return;
         }
         int shipLength = 0;
         if (field.equals(playerField)) {
-            for (Ship ship : logic.getPlayerShips()) {
+            for (Ship ship : logic.getShips(Logic.PLAYER_SHIPS)) {
                 if (ship.hasDeckWithThisCoordinates(di, dj)) {
                     shipLength = ship.getLength();
-                    logic.getPlayerShips().remove(ship);
+                    logic.getShips(Logic.PLAYER_SHIPS).remove(ship);
                     break;
                 }
             }
         }
         else if (field.equals(enemyField)){
-            for (Ship ship : logic.getEnemyShips()) {
+            for (Ship ship : logic.getShips(Logic.ENEMY_SHIPS)) {
                 if (ship.hasDeckWithThisCoordinates(di, dj)) {
                     shipLength = ship.getLength();
-                    logic.getEnemyShips().remove(ship);
+                    logic.getShips(Logic.ENEMY_SHIPS).remove(ship);
                     break;
                 }
             }
@@ -847,7 +841,7 @@ public class BattleShip extends Application {
 
     }
 
-    public void gameStart(GameMode mode) {
+    private void gameStart(GameMode mode) {
         isEnd = false;
         if (logic != null) {
             if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
@@ -877,7 +871,7 @@ public class BattleShip extends Application {
         setDisableToButtonsOnSecondField(false);
         readyButton.setDisable(true);
         if (logic != null) {
-            if (!logic.getPlayerShips().isEmpty()) {
+            if (!logic.getShips(Logic.PLAYER_SHIPS).isEmpty()) {
                 playerField.update();
                 updateEnableLabels();
                 updateTriggers();
@@ -887,7 +881,7 @@ public class BattleShip extends Application {
         if (mode.equals(GameMode.ONE_PLAYER)) {
             logic.initAI(playerField, levelToSend);
         }
-        logic.preparationFirst();
+        logic.setGameState(GameState.PREPARATION1);
         if (mode.equals(GameMode.ONE_PLAYER)) {
             settingsButton.setDisable(false);
         }

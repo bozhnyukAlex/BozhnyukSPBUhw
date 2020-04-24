@@ -15,6 +15,8 @@ public class Logic {
     private AI enemyAI;
     private FightState fightState;
     private GameMode gameMode;
+    public static final int PLAYER_SHIPS = 20;
+    public static final int ENEMY_SHIPS = 30;
 
 
     public Logic(GameMode mode) {
@@ -175,7 +177,6 @@ public class Logic {
         return gameMode;
     }
 
-
     public void addPlayerShip(Ship s) {
         playerShips.add(s);
     }
@@ -196,14 +197,6 @@ public class Logic {
         this.fightState = fightState;
     }
 
-    public ArrayList<Ship> getPlayerShips() {
-        return playerShips;
-    }
-
-    public void setPlayerShips(ArrayList<Ship> playerShips) {
-        this.playerShips = playerShips;
-    }
-
     public int getEnemyShipsLeft() {
         return enemyShipsLeft;
     }
@@ -212,25 +205,38 @@ public class Logic {
         return state;
     }
 
-    public void preparationFirst() {
-        state = GameState.PREPARATION1;
+    public void setGameState(GameState gameState) {
+        state = gameState;
     }
 
-    public void preparationSecond() {
-        state = GameState.PREPARATION2;
+    public ArrayList<Ship> getShips(int mode) {
+        switch (mode) {
+            case PLAYER_SHIPS: {
+                return playerShips;
+            }
+            case ENEMY_SHIPS: {
+                return enemyShips;
+            }
+            default: {
+                return null;
+            }
+        }
     }
 
-    public void play() {
-        state = GameState.PLAYING;
+    public void setShips(ArrayList<Ship> ships, int mode) {
+        switch (mode) {
+            case PLAYER_SHIPS: {
+                playerShips = ships;
+                break;
+            }
+            case ENEMY_SHIPS: {
+                enemyShips = ships;
+                break;
+            }
+        }
     }
 
-    public ArrayList<Ship> getEnemyShips() {
-        return enemyShips;
-    }
 
-    public void setEnemyShips(ArrayList<Ship> enemyShips) {
-        this.enemyShips = enemyShips;
-    }
 
     public boolean checkPreparation() {
         if (state != GameState.PREPARATION1) {
@@ -252,13 +258,17 @@ public class Logic {
         return enemyAI.makeShot();
     }
 
-    public void decreaseEnemyShips() {
-        enemyShipsLeft--;
-    }
-
-
-    public void decreasePlayerShips() {
-        playerShipsLeft--;
+    public void decreaseShips(int mode) {
+        switch (mode) {
+            case PLAYER_SHIPS: {
+                playerShipsLeft--;
+                break;
+            }
+            case ENEMY_SHIPS: {
+                enemyShipsLeft--;
+                break;
+            }
+        }
     }
 
     public void sendToAiSignalAboutDeadShip(boolean isDead) {
@@ -278,6 +288,4 @@ public class Logic {
         int pick = rnd.nextInt(Direction.values().length);
         return Direction.values()[pick];
     }
-
-
 }

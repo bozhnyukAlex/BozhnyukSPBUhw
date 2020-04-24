@@ -23,7 +23,6 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class BattleShipTest extends ApplicationTest {
-    private VBox pane;
     private String DELETE = "Удалить корабль";
     private String ONE_PLAYER_BUTTON_ID = "#onePlayerButton";
     private String TWO_PLAYERS_BUTTON_ID = "#twoPlayersButton";
@@ -59,7 +58,7 @@ public class BattleShipTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         prStage = stage;
-        pane = FXMLLoader.load(BattleShip.class.getResource("/view/battleMenu.fxml"));
+        VBox pane = FXMLLoader.load(BattleShip.class.getResource("/view/battleMenu.fxml"));
         stage.setScene(new Scene(pane));
         stage.show();
         primScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -319,9 +318,6 @@ public class BattleShipTest extends ApplicationTest {
         }
     }
 
-
-
-
     public void checkAllNeighbours(int i, int j) {
         for (int w = -1; w <= 1; w++) {
             for (int v = -1; v <= 1; v++) {
@@ -340,8 +336,6 @@ public class BattleShipTest extends ApplicationTest {
         zeroXEN += enemyField.getLayoutX() + 10;
         zeroYEN += enemyField.getLayoutY() + 10;
     }
-
-
 
     @After
     public void tearDown() throws Exception {

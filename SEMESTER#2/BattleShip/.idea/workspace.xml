@@ -7,13 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Battleship_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Battleship_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uml/UML.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/GamePack/LogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/GamePack/LogicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePack/Ship.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,52 +57,39 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="GamePack" />
       <recent name="AppInterface" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\images" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\view" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src\interfacePack" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
       <recent name="org.testfx.framework.junit5.ApplicationTest" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\uml" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\images" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\view" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src\interfacePack" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShipTest">
-    <configuration name="AITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BattleShip" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GamePack.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.AITest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BattleShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.BattleShip">
+    <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShip" />
       <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
@@ -107,9 +97,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="AppInterface" />
-      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,6 +131,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LogicTest.canSetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GamePack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GamePack" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
+      <option name="METHOD_NAME" value="canSetTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BattleShip" />
       <extension name="coverage">
@@ -161,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ShipTest" />
+        <item itemvalue="Application.BattleShip" />
         <item itemvalue="JUnit.LogicTest" />
+        <item itemvalue="JUnit.LogicTest.canSetTest" />
+        <item itemvalue="JUnit.ShipTest" />
         <item itemvalue="JUnit.GameFieldTest" />
-        <item itemvalue="JUnit.AITest" />
-        <item itemvalue="JUnit.BattleShipTest" />
       </list>
     </recent_temporary>
   </component>
@@ -204,6 +207,8 @@
       <workItem from="1587552812684" duration="14000" />
       <workItem from="1587564661521" duration="23099000" />
       <workItem from="1587628337005" duration="17464000" />
+      <workItem from="1587722968611" duration="1638000" />
+      <workItem from="1587724621676" duration="20675000" />
     </task>
     <servers />
   </component>
@@ -227,22 +232,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state width="1877" height="200" key="GridCell.Tab.0.bottom" timestamp="1587683710129">
+    <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1587724688635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
-    <state width="1877" height="200" key="GridCell.Tab.0.center" timestamp="1587683710129">
+    <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587724688635" />
+    <state width="914" height="83" key="GridCell.Tab.0.bottom" timestamp="1587752715135">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
-    <state width="1877" height="200" key="GridCell.Tab.0.left" timestamp="1587683710129">
+    <state width="914" height="83" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587752715135" />
+    <state width="914" height="83" key="GridCell.Tab.0.center" timestamp="1587752715135">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
-    <state width="1877" height="200" key="GridCell.Tab.0.right" timestamp="1587683710129">
+    <state width="914" height="83" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587752715135" />
+    <state width="914" height="83" key="GridCell.Tab.0.left" timestamp="1587752715135">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587683710129" />
+    <state width="914" height="83" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587752715135" />
+    <state width="914" height="83" key="GridCell.Tab.0.right" timestamp="1587752715135">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="83" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587752715135" />
     <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1587643204907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -259,14 +268,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587643204907" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1587566900784">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1587724607176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587566900784" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587628338562">
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587724607176" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587724624050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587628338562" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587724624050" />
     <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587566891165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -287,5 +296,55 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587598201353" />
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
   </component>
 </project>

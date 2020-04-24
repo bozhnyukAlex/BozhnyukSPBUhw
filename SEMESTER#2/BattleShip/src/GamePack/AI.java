@@ -41,40 +41,40 @@ public class AI {
             case MEDIUM: {
                 if (isFirstShot) { //первый выстрел рандомный
                     isFirstShot = false;
-                    return makeRandomShotAndReturnFiredCell();
+                    return makeRandomShot();
                 }
                 else { ///к этому времени мы уже знаем инфу о предыдущем выстреле и знаем, горит ли корабль, мертв ли корабль
                     if (isShipFired) { //если так вышло, что при предыдущем выстреле корабль был ранен
                         if (isShipDead) { //если прошлый выстрел убил корабль, то можем стрелять рандомно
                             isShipDead = isShipFired = false;
-                            return makeRandomShotAndReturnFiredCell();
+                            return makeRandomShot();
                         }
                         else {
-                            return makeShotToKillWithCell();
+                            return makeShotToKill();
                         }
                     }
                     else { //если в при предыдущем выстреле корабль не горел, то опять стреляем рандомно
-                        return makeRandomShotAndReturnFiredCell();
+                        return makeRandomShot();
                     }
                 }
             }
             case HIGH: {
                 if (isFirstShot) {
                     isFirstShot = false;
-                    return makeSmartShotWithCell();
+                    return makeSmartShot();
                 }
                 else {
                     if (isShipFired) {
                         if (isShipDead) {
                             isShipFired = isShipDead = false;
-                            return makeSmartShotWithCell();
+                            return makeSmartShot();
                         }
                         else {
-                            return makeShotToKillWithCell();
+                            return makeShotToKill();
                         }
                     }
                     else {
-                        return makeSmartShotWithCell();
+                        return makeSmartShot();
                     }
                 }
             }
@@ -82,7 +82,7 @@ public class AI {
         return null;
     }
 
-    public Cell makeRandomShotAndReturnFiredCell() {
+    private Cell makeRandomShot() {
         int shi, shj;
         Random rnd = new Random();
         while (true) {
@@ -106,7 +106,7 @@ public class AI {
         }
     }
 
-    public Cell makeShotToKillWithCell() {
+    private Cell makeShotToKill() {
         Cell resShot = previousShot;
         int prevI = previousShot.getI(), prevJ = previousShot.getJ();
         if (previousShot == firstHit) { // если предыдущий выстрел был первым ранением, то начинаем стрелять в разные стороны
@@ -215,7 +215,7 @@ public class AI {
         return resShot;
     }
 
-    public Cell makeSmartShotWithCell() { // стратегия описана тут: https://habr.com/ru/post/180995/
+    private Cell makeSmartShot() { // стратегия описана тут: https://habr.com/ru/post/180995/
         Cell resShot = previousShot;
         if (bigFindingState == 1) { // если мы еще не нашли четырехпалубный, бьем вверх по диагоналям
             int curI = 3, curJ = 0;
@@ -309,17 +309,15 @@ public class AI {
             }
         }
         if (bigFindingState == 3) { //остались только однопалубные - стреляем рандомно по оставшимся клеткам
-            previousShot = resShot = makeRandomShotAndReturnFiredCell();
+            previousShot = resShot = makeRandomShot();
         }
         resShot.setShot(true);
         return resShot;
     }
 
-
     public void setShipDead(boolean shipDead) {
         isShipDead = shipDead;
     }
-
 
     public IntelligenceLevel getILevel() {
         return iLevel;
@@ -328,6 +326,4 @@ public class AI {
     public void setILevel(IntelligenceLevel iLevel) {
         this.iLevel = iLevel;
     }
-
-    
 }

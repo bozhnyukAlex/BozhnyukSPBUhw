@@ -72,7 +72,7 @@ public class LogicTest {
         Ship testShip = new Ship(new Cell(0,0), new Cell(0, Cell.SIZE));
         field.setShip(testShip);
         logic.addPlayerShip(testShip);
-        assertEquals(logic.getShipByDeck(field.getCell(0, 0) ,logic.getPlayerShips()), testShip);
+        assertEquals(logic.getShipByDeck(field.getCell(0, 0) ,logic.getShips(Logic.PLAYER_SHIPS)), testShip);
     }
 
 }

@@ -1,27 +1,24 @@
 package GamePack;
 
-
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 
 public class GameField extends Canvas {
     public static final int SIZE = 10;
-    public static final int PLAYER = 3;
-    public static final int ENEMY = 4;
-    private Cell cells[][];
-
+    public static final int PLAYER_MODE = 3;
+    public static final int ENEMY_MODE = 4;
+    private Cell[][] cells;
 
     public GameField(int mode) {
         switch (mode) {
-            case PLAYER: {
+            case PLAYER_MODE: {
                 setLayoutX(95);
                 setLayoutY(126);
                 break;
             }
-            case ENEMY: {
+            case ENEMY_MODE: {
                 setLayoutX(367);
                 setLayoutY(126);
                 break;
@@ -33,7 +30,6 @@ public class GameField extends Canvas {
     }
 
     public GameField () {}
-
 
     public Cell getCell(int i, int j) {
         return cells[i][j];
@@ -79,8 +75,6 @@ public class GameField extends Canvas {
             }
         }
     }
-
-
 
     public void drawShips(ArrayList<Ship> ships, Color color) {
         for(Ship ship : ships) {

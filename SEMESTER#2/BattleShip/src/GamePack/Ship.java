@@ -19,11 +19,9 @@ public class Ship {
 
     public Ship() {}
 
-
     public int getLength() {
         return length;
     }
-
 
     public void build(Cell ... cells) {
         for (Cell cell : cells) {
