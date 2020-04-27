@@ -23,7 +23,7 @@ import java.io.IOException;
 public class BattleShip extends Application {
 
     @FXML
-    private VBox pane;
+    public VBox pane;
     @FXML
     private AnchorPane settingsPane;
     @FXML
@@ -73,7 +73,7 @@ public class BattleShip extends Application {
     private int clickCount;
     private Logic logic;
     private int oneShipToGo, twoShipToGo, threeShipToGo, fourShipToGo;
-    private boolean isEnd;
+    private boolean isEnd = true;
     private IntelligenceLevel levelToSend;
 
     private final String PLAYER_FIELD_ID = "playerField";
@@ -114,9 +114,9 @@ public class BattleShip extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(BattleShip.class.getResource(MENU_PATH));
-        pane = loader.load();
+       // FXMLLoader loader = new FXMLLoader();
+       // loader.setLocation(BattleShip.class.getResource("battleMenu.fxml"));
+        pane = FXMLLoader.load(BattleShip.class.getResource("battleMenu.fxml"));
         Scene startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
         stage.centerOnScreen();
@@ -182,6 +182,9 @@ public class BattleShip extends Application {
         });
 
         playerField.setOnMouseClicked(mouseEvent -> {
+            if (isEnd) {
+                return;
+            }
             if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PREPARATION1)) {
                 int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
                 cli /= Cell.SIZE;
@@ -851,8 +854,8 @@ public class BattleShip extends Application {
             }
             else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
                 if (logic.getState().equals(GameState.PREPARATION2)) {
-                    toggleRightField(TO_BUTTON_PANE);
                     toggleLeftField(TO_ENEMY_FIELD);
+                    toggleRightField(TO_BUTTON_PANE);
                 }
                 else if (logic.getState().equals(GameState.PLAYING)) {
                     toggleRightField(TO_BUTTON_PANE);
