@@ -7,15 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Battleship_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppInterface/StringConst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Battleship_jar/Battleship.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Battleship_jar/Battleship.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppInterface/battlemenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppInterface/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battlemenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +63,22 @@
       <recent name="GamePack" />
       <recent name="AppInterface" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\src\AppInterface" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\uml" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\images" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\view" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
       <recent name="org.testfx.framework.junit5.ApplicationTest" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\src\AppInterface" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\res\view" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\uml" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\images" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\view" />
     </key>
   </component>
   <component name="RunManager" selected="Application.BattleShip">
@@ -209,6 +204,7 @@
       <workItem from="1587722968611" duration="1638000" />
       <workItem from="1587724621676" duration="20675000" />
       <workItem from="1588002072905" duration="9283000" />
+      <workItem from="1588371912454" duration="382000" />
     </task>
     <servers />
   </component>
@@ -240,22 +236,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587724688635" />
-    <state width="1877" height="28" key="GridCell.Tab.0.bottom" timestamp="1588011700649">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1588372361593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="28" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588011700649" />
-    <state width="1877" height="28" key="GridCell.Tab.0.center" timestamp="1588011700649">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
+    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1588372361593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="28" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588011700649" />
-    <state width="1877" height="28" key="GridCell.Tab.0.left" timestamp="1588011700649">
+    <state width="1877" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
+    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1588372361593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="28" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588011700649" />
-    <state width="1877" height="28" key="GridCell.Tab.0.right" timestamp="1588011700649">
+    <state width="1877" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1588372361593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="28" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588011700649" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
     <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588007821165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

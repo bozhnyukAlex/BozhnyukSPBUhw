@@ -79,30 +79,6 @@ public class BattleShip extends Application {
     private final String PLAYER_FIELD_ID = "playerField";
     private final String ENEMY_FIELD_ID = "enemyField";
     public static final String DELETE_MENU_ID = "deleteMenu";
-    public static final String TITLE = "Морской бой";
-    public static final String CELL_IS_BUSY = "Сюда ставить нельзя";
-    public static final String SET_DIR = "Нажмите на поле еще раз для установки направления";
-    public static final String CHOOSE_SHIP = "Выберите корабль";
-    public static final String DELETE_SHIP = "Удалить корабль";
-    public static final String YOU_ARE_READY = "Вы готовы к бою!";
-    public static final String YOUR_MOVE = "Ваш ход!";
-    public static final String ENEMY_MOVE = "Ход противника!";
-    public static final String YOU_WON = "Вы победили!";
-    public static final String YOU_LOSE = "Вы проиграли!";
-    public static final String FIGHT = "Бой!";
-    public static final String PREPARE = "Подготовка";
-    public static final String PREPARE_FIRST = "Подготовка первого игрока";
-    public static final String PREPARE_SECOND = "Подготовка второго игрока";
-    public static final String MOVE_FIRST = "Ход первого игрока";
-    public static final String MOVE_SECOND = "Ход второго игрока";
-    public static final String FIRST_WON = "Выиграл первый игрок";
-    public static final String SECOND_WON = "Выиграл второй игрок";
-    public static final String EDIT_AI = "Уровень сложности";
-    public static final String LEVEL_EDITED = "Уровень сложности изменен";
-    public static final String SET_SHIP_1 = "Поставьте 1 палубный корабль";
-    public static final String SET_SHIP_2 = "Поставьте 2-х палубный корабль";
-    public static final String SET_SHIP_3 = "Поставьте 3-х палубный корабль";
-    public static final String SET_SHIP_4 = "Поставьте 4-х палубный корабль";
     public static final String MENU_PATH = "/view/battleMenu.fxml";
     public static final String SETTINGS_PATH = "/view/settings.fxml";
     private static final String ICON_PATH = "/images/icon.png";
@@ -116,12 +92,12 @@ public class BattleShip extends Application {
     public void start(Stage stage) throws Exception {
        // FXMLLoader loader = new FXMLLoader();
        // loader.setLocation(BattleShip.class.getResource("battleMenu.fxml"));
-        pane = FXMLLoader.load(BattleShip.class.getResource("battleMenu.fxml"));
+        pane = FXMLLoader.load(BattleShip.class.getResource(MENU_PATH));
         Scene startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
         stage.centerOnScreen();
         stage.setResizable(false);
-        stage.setTitle(TITLE);
+        stage.setTitle(StringConst.TITLE);
         stage.getIcons().add(new Image(getClass().getResourceAsStream(ICON_PATH)));
         stage.show();
     }
@@ -136,7 +112,7 @@ public class BattleShip extends Application {
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
         deleteMenu.setId(DELETE_MENU_ID);
-        itemDelete = new MenuItem(DELETE_SHIP);
+        itemDelete = new MenuItem(StringConst.DELETE_SHIP);
         deleteMenu.getItems().add(itemDelete);
         autoGenerateButton.setDisable(true);
         oneShipToGo = Integer.parseInt(oneShipToGoLab.getText());
@@ -153,31 +129,31 @@ public class BattleShip extends Application {
             boolean okClicked  = showDialogEditAi();
             if (okClicked) {
                 levelToSend = logic.getDifficulty();
-                statusLabel.setText(LEVEL_EDITED);
+                statusLabel.setText(StringConst.LEVEL_EDITED);
             }
         });
 
         exitButton.setOnAction(actionEvent -> System.exit(0));
 
         enable1Ship.setOnAction(actionEvent -> {
-            statusLabel.setText(SET_SHIP_1);
+            statusLabel.setText(StringConst.SET_SHIP_1);
             clickCount = 0;
             setTrigger(1, true);
         });
 
         enable2Ship.setOnAction(actionEvent -> {
-            statusLabel.setText(SET_SHIP_2);
+            statusLabel.setText(StringConst.SET_SHIP_2);
             clickCount = 0;
             setTrigger(2, true);
         });
 
         enable3Ship.setOnAction(actionEvent -> {
-            statusLabel.setText(SET_SHIP_3);
+            statusLabel.setText(StringConst.SET_SHIP_3);
             setTrigger(3, true);
         });
 
         enable4Ship.setOnAction(actionEvent -> {
-            statusLabel.setText(SET_SHIP_4);
+            statusLabel.setText(StringConst.SET_SHIP_4);
             setTrigger(4,true);
         });
 
@@ -222,7 +198,7 @@ public class BattleShip extends Application {
                 logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
                 settingsButton.setDisable(true);
                 logic.setFightState(FightState.PLAYER_MOVE);
-                statusLabel.setText(FIGHT);
+                statusLabel.setText(StringConst.FIGHT);
 
                 enemyField.setOnMouseClicked(mouseEvent -> {
                     if (mouseEvent.getButton() == MouseButton.PRIMARY) {
@@ -248,7 +224,7 @@ public class BattleShip extends Application {
                     enemyField.setId(ENEMY_FIELD_ID);
                     toggleRightField(TO_ENEMY_FIELD);
                     toggleLeftField(TO_BUTTON_PANE);
-                    statusLabel.setText(PREPARE_SECOND);
+                    statusLabel.setText(StringConst.PREPARE_SECOND);
                     updateEnableLabels();
                     setDisableToEnableButtons(false);
                     settingsButton.setDisable(true);
@@ -274,7 +250,7 @@ public class BattleShip extends Application {
                 else if (logic.getState().equals(GameState.PREPARATION2)) { //приготовится второй - начинаем игру
                     logic.setGameState(GameState.PLAYING);
                     logic.setFightState(FightState.PLAYER_MOVE);
-                    statusLabel.setText(MOVE_FIRST);
+                    statusLabel.setText(StringConst.MOVE_FIRST);
                     toggleLeftField(TO_ENEMY_FIELD);
                     playerField.redraw();
                     enemyField.redraw();
@@ -320,14 +296,14 @@ public class BattleShip extends Application {
         setZeroToEnableLabelsAndCounts();
         setDisableToEnableButtons(true);
         readyButton.setDisable(false);
-        statusLabel.setText(YOU_ARE_READY);
+        statusLabel.setText(StringConst.YOU_ARE_READY);
     }
 
     private void setShipToClickedField(GameField clickedField, int cli, int clj) {
         int INCREASE_BUSY = 1;
         if (getTrigger() == 1) {
             if (clickedField.getCell(cli, clj).isBusy()) {
-                statusLabel.setText(CELL_IS_BUSY);
+                statusLabel.setText(StringConst.CELL_IS_BUSY);
                 return;
             }
             clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.RED);
@@ -352,11 +328,11 @@ public class BattleShip extends Application {
             clickCount++;
             if (clickCount == 1) {
                 if (clickedField.getCell(cli, clj).isBusy()) {
-                    statusLabel.setText(CELL_IS_BUSY);
+                    statusLabel.setText(StringConst.CELL_IS_BUSY);
                     clickCount--;
                     return;
                 }
-                statusLabel.setText(SET_DIR);
+                statusLabel.setText(StringConst.SET_DIR);
                 clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.ORANGE);
                 clickedField.getCell(cli, clj).setCellColor(Color.ORANGE);
                 Ship nShip = new Ship(getTrigger());
@@ -382,14 +358,14 @@ public class BattleShip extends Application {
                         dj = Math.abs(pj - clj);
                 if (cli == pi - di && pj == clj) {
                     if (pi - prevShip.getLength() + 1 < 0) {
-                        statusLabel.setText(CELL_IS_BUSY);
+                        statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi - i, pj).isBusy()) {
-                            statusLabel.setText(CELL_IS_BUSY);
+                            statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return;
@@ -406,14 +382,14 @@ public class BattleShip extends Application {
                 }
                 else if (cli == pi + di && pj == clj) {
                     if (pi + prevShip.getLength() - 1 >= GameField.SIZE) {
-                        statusLabel.setText(CELL_IS_BUSY);
+                        statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi + i, pj).isBusy()) {
-                            statusLabel.setText(CELL_IS_BUSY);
+                            statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return;
@@ -430,14 +406,14 @@ public class BattleShip extends Application {
                 }
                 else if (cli == pi && clj == pj - dj) {
                     if (pj - prevShip.getLength() + 1 < 0) {
-                        statusLabel.setText(CELL_IS_BUSY);
+                        statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi, pj - i).isBusy()) {
-                            statusLabel.setText(CELL_IS_BUSY);
+                            statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return;
@@ -454,14 +430,14 @@ public class BattleShip extends Application {
                 }
                 else if (cli == pi && clj == pj + dj) {
                     if (pj + prevShip.getLength() - 1 >= GameField.SIZE) {
-                        statusLabel.setText(CELL_IS_BUSY);
+                        statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi, pj + i).isBusy()) {
-                            statusLabel.setText(CELL_IS_BUSY);
+                            statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return;
@@ -520,10 +496,10 @@ public class BattleShip extends Application {
                     decreaseLabelHP(DECREASE_PLAYER);
                     if (logic.getPlayerShipsLeft() == 0) {
                         if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
-                            statusLabel.setText(YOU_LOSE);
+                            statusLabel.setText(StringConst.YOU_LOSE);
                         }
                         else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
-                            statusLabel.setText(SECOND_WON);
+                            statusLabel.setText(StringConst.SECOND_WON);
                         }
                         isEnd = true;
                     }
@@ -534,10 +510,10 @@ public class BattleShip extends Application {
                     decreaseLabelHP(DECREASE_ENEMY);
                     if (logic.getEnemyShipsLeft() == 0) {
                         if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
-                            statusLabel.setText(YOU_WON);
+                            statusLabel.setText(StringConst.YOU_WON);
                         }
                         else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)){
-                            statusLabel.setText(FIRST_WON);
+                            statusLabel.setText(StringConst.FIRST_WON);
                         }
                         isEnd = true;
                     }
@@ -554,13 +530,13 @@ public class BattleShip extends Application {
             field.getCell(plsi, plsj).drawWater(field.getGraphicsContext2D());
             if (field.equals(playerField)) {
                 if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
-                    statusLabel.setText(MOVE_FIRST);
+                    statusLabel.setText(StringConst.MOVE_FIRST);
                 }
                 logic.setFightState(FightState.PLAYER_MOVE);
             }
             else if (field.equals(enemyField)) {
                 if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
-                    statusLabel.setText(MOVE_SECOND);
+                    statusLabel.setText(StringConst.MOVE_SECOND);
                 }
                 logic.setFightState(FightState.ENEMY_MOVE);
 
@@ -577,10 +553,10 @@ public class BattleShip extends Application {
 
     private void setLabelAfterSettingShip() {
         if (oneShipToGo == 0 && twoShipToGo == 0 && threeShipToGo == 0 && fourShipToGo == 0) {
-            statusLabel.setText(YOU_ARE_READY);
+            statusLabel.setText(StringConst.YOU_ARE_READY);
         }
         else {
-            statusLabel.setText(CHOOSE_SHIP);
+            statusLabel.setText(StringConst.CHOOSE_SHIP);
         }
     }
 
@@ -796,8 +772,8 @@ public class BattleShip extends Application {
                 break;
             }
         }
-        if (statusLabel.getText().equals(YOU_ARE_READY)) {
-            statusLabel.setText(CHOOSE_SHIP);
+        if (statusLabel.getText().equals(StringConst.YOU_ARE_READY)) {
+            statusLabel.setText(StringConst.CHOOSE_SHIP);
         }
         readyButton.setDisable(true);
         deleteAllDecks(di, dj, field );
@@ -828,7 +804,7 @@ public class BattleShip extends Application {
             return false;
         }
         Stage dialogStage = new Stage();
-        dialogStage.setTitle(EDIT_AI);
+        dialogStage.setTitle(StringConst.EDIT_AI);
         dialogStage.getIcons().add(new Image(getClass().getResourceAsStream(ICON_PATH)));
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(settingsButton.getScene().getWindow());
@@ -865,10 +841,10 @@ public class BattleShip extends Application {
         playerShipsLeft.setText("10");
         enemyShipsLeft.setText("10");
         if (mode.equals(GameMode.ONE_PLAYER)) {
-            statusLabel.setText(PREPARE);
+            statusLabel.setText(StringConst.PREPARE);
         }
         else if (mode.equals(GameMode.TWO_PLAYERS)) {
-            statusLabel.setText(PREPARE_FIRST);
+            statusLabel.setText(StringConst.PREPARE_FIRST);
         }
         autoGenerateButton.setDisable(false);
         setDisableToButtonsOnSecondField(false);

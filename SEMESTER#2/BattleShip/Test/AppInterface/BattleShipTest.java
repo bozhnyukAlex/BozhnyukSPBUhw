@@ -58,7 +58,7 @@ public class BattleShipTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         prStage = stage;
-        VBox pane = FXMLLoader.load(BattleShip.class.getResource("/AppInterface/battlemenu.fxml"));
+        VBox pane = FXMLLoader.load(BattleShip.class.getResource("/view/battlemenu.fxml"));
         stage.setScene(new Scene(pane));
         stage.show();
         primScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -110,7 +110,7 @@ public class BattleShipTest extends ApplicationTest {
         assertFalse(enable3.isDisable());
         assertFalse(enable4.isDisable());
         assertFalse(settingsBtn.isDisable());
-        assertEquals(statusLbl.getText(), BattleShip.PREPARE);
+        assertEquals(statusLbl.getText(), StringConst.PREPARE);
     }
 
     @Test
@@ -119,38 +119,38 @@ public class BattleShipTest extends ApplicationTest {
         clickOn(onePlayerBtn);
         
         clickOn(enable4);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_4);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_4);
         clickOn(zeroXPl, zeroYPL);
-        assertEquals(statusLbl.getText(), BattleShip.SET_DIR);
+        assertEquals(statusLbl.getText(), StringConst.SET_DIR);
         clickOn(zeroXPl, zeroYPL + Cell.SIZE);
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertEquals(en4.getText(), "0");
         assertTrue(enable4.isDisable());
         assertTrue(playerField.getCell(0, 0).isDeck() && playerField.getCell(1, 0).isDeck() && playerField.getCell(2, 0).isDeck() && playerField.getCell(3, 0).isDeck());
 
         clickOn(enable3);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_3);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_3);
         clickOn(zeroXPl + Cell.SIZE * 5, zeroYPL + Cell.SIZE * 6);
-        assertEquals(statusLbl.getText(), BattleShip.SET_DIR);
+        assertEquals(statusLbl.getText(), StringConst.SET_DIR);
         clickOn(zeroXPl + Cell.SIZE * 5, zeroYPL + Cell.SIZE * 5);
         assertEquals(en3.getText(), "1");
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertTrue(playerField.getCell(6, 5).isDeck() && playerField.getCell(5,5).isDeck() && playerField.getCell(4,5).isDeck());
 
         clickOn(enable2);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_2);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_2);
         clickOn(zeroXPl + 7 * Cell.SIZE, zeroYPL + Cell.SIZE * 3);
-        assertEquals(statusLbl.getText(), BattleShip.SET_DIR);
+        assertEquals(statusLbl.getText(), StringConst.SET_DIR);
         clickOn(zeroXPl + 8 * Cell.SIZE, zeroYPL + Cell.SIZE * 3);
         assertEquals(en2.getText(), "2");
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertTrue(playerField.getCell(3,7).isDeck() && playerField.getCell(3, 8).isDeck());
 
         clickOn(enable1);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_1);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_1);
         clickOn(zeroXPl + Cell.SIZE * 9, zeroYPL);
         assertEquals(en1.getText(), "3");
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertTrue(playerField.getCell(0, 9).isDeck());
 
     }
@@ -163,7 +163,7 @@ public class BattleShipTest extends ApplicationTest {
         clickOn(zeroXPl + Cell.SIZE * 5, zeroYPL + Cell.SIZE * 6);
         clickOn(enable1);
         clickOn(zeroXPl + Cell.SIZE * 4, zeroYPL + Cell.SIZE * 5);
-        assertEquals(statusLbl.getText(), BattleShip.CELL_IS_BUSY);
+        assertEquals(statusLbl.getText(), StringConst.CELL_IS_BUSY);
     }
 
     @Test
@@ -172,7 +172,7 @@ public class BattleShipTest extends ApplicationTest {
         clickOn(enable4);
         clickOn(zeroXPl + Cell.SIZE, zeroYPL);
         clickOn(zeroXPl, zeroYPL);
-        assertEquals(statusLbl.getText(), BattleShip.CELL_IS_BUSY);
+        assertEquals(statusLbl.getText(), StringConst.CELL_IS_BUSY);
 
     }
 
@@ -201,7 +201,7 @@ public class BattleShipTest extends ApplicationTest {
             }
         }
         assertEquals(deckCnt, 20);
-        assertEquals(statusLbl.getText(), BattleShip.YOU_ARE_READY);
+        assertEquals(statusLbl.getText(), StringConst.YOU_ARE_READY);
         assertFalse(readyBtn.isDisable());
     }
 
@@ -211,7 +211,7 @@ public class BattleShipTest extends ApplicationTest {
         clickOn(settingsBtn);
         clickOn("Кошмар!");
         clickOn("OK");
-        assertEquals(statusLbl.getText(), BattleShip.LEVEL_EDITED);
+        assertEquals(statusLbl.getText(), StringConst.LEVEL_EDITED);
 
     }
 
@@ -222,15 +222,15 @@ public class BattleShipTest extends ApplicationTest {
         clickOn(readyBtn);
         enemyFieldInit();
         boolean isLose = false, isWin = false;
-        assertEquals(statusLbl.getText(), BattleShip.FIGHT);
+        assertEquals(statusLbl.getText(), StringConst.FIGHT);
         for (int i = 0; i < GameField.SIZE / 2 + 2; i++) {
             for (int j = 0; j < GameField.SIZE; j++) {
                 clickOn(zeroXEN + Cell.SIZE * j, zeroYEN + Cell.SIZE * i);
-                if (statusLbl.getText().equals(BattleShip.YOU_LOSE)) {
+                if (statusLbl.getText().equals(StringConst.YOU_LOSE)) {
                     isLose = true;
                     break;
                 }
-                else if (statusLbl.getText().equals(BattleShip.YOU_WON)) {
+                else if (statusLbl.getText().equals(StringConst.YOU_WON)) {
                     isWin = true;
                     break;
                 }
@@ -253,38 +253,38 @@ public class BattleShipTest extends ApplicationTest {
         clickOn(readyBtn);
         enemyFieldInit();
         clickOn(enable4);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_4);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_4);
         clickOn(zeroXEN, zeroYEN);
-        assertEquals(statusLbl.getText(), BattleShip.SET_DIR);
+        assertEquals(statusLbl.getText(), StringConst.SET_DIR);
         clickOn(zeroXEN, zeroYEN + Cell.SIZE);
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertEquals(en4.getText(), "0");
         assertTrue(enable4.isDisable());
         assertTrue(enemyField.getCell(0, 0).isDeck() && enemyField.getCell(1, 0).isDeck() && enemyField.getCell(2, 0).isDeck() && enemyField.getCell(3, 0).isDeck());
 
         clickOn(enable3);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_3);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_3);
         clickOn(zeroXEN + Cell.SIZE * 5, zeroYEN + Cell.SIZE * 6);
-        assertEquals(statusLbl.getText(), BattleShip.SET_DIR);
+        assertEquals(statusLbl.getText(), StringConst.SET_DIR);
         clickOn(zeroXEN + Cell.SIZE * 5, zeroYEN + Cell.SIZE * 5);
         assertEquals(en3.getText(), "1");
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertTrue(enemyField.getCell(6, 5).isDeck() && enemyField.getCell(5,5).isDeck() && enemyField.getCell(4,5).isDeck());
 
         clickOn(enable2);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_2);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_2);
         clickOn(zeroXEN + 7 * Cell.SIZE, zeroYEN + Cell.SIZE * 3);
-        assertEquals(statusLbl.getText(), BattleShip.SET_DIR);
+        assertEquals(statusLbl.getText(), StringConst.SET_DIR);
         clickOn(zeroXEN + 8 * Cell.SIZE, zeroYEN + Cell.SIZE * 3);
         assertEquals(en2.getText(), "2");
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertTrue(enemyField.getCell(3,7).isDeck() && enemyField.getCell(3, 8).isDeck());
 
         clickOn(enable1);
-        assertEquals(statusLbl.getText(), BattleShip.SET_SHIP_1);
+        assertEquals(statusLbl.getText(), StringConst.SET_SHIP_1);
         clickOn(zeroXEN + Cell.SIZE * 9, zeroYEN);
         assertEquals(en1.getText(), "3");
-        assertEquals(statusLbl.getText(), BattleShip.CHOOSE_SHIP);
+        assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertTrue(enemyField.getCell(0, 9).isDeck());
     }
 
