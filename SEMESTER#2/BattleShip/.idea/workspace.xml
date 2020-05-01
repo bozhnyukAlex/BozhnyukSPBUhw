@@ -7,10 +7,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AppInterface/StringConst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppInterface/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battlemenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/AppInterface/BattleShipTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/GamePack/AITest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/GamePack/GameFieldTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/GamePack/LogicTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/GamePack/ShipTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/battlemenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/settings.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppInterface/BattleShip.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppInterface/SettingsWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppInterface/StringConst.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/AI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/FightState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/GameField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/GameMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/GameState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/IntelligenceLevel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/Logic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePack/Ship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +72,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/test" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -67,6 +88,9 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\test" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\src\org" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\res" />
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -81,7 +105,7 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BattleShip">
+  <component name="RunManager" selected="JUnit.GamePack in core">
     <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShip" />
       <module name="BattleShip" />
@@ -95,54 +119,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BattleShip" />
+    <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.app.BattleShip" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GamePack.*" />
+          <option name="PATTERN" value="org.app.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.GameFieldTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BattleShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AppInterface.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BattleShip" />
+    <configuration name="BattleShipTest.settingsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GamePack.*" />
+          <option name="PATTERN" value="AppInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogicTest.canSetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BattleShip" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GamePack.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
-      <option name="METHOD_NAME" value="canSetTest" />
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
+      <option name="METHOD_NAME" value="settingsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BattleShip" />
+    <configuration name="GamePack in core" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="core" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GamePack.*" />
@@ -150,19 +172,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.ShipTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GamePack in core" />
+        <item itemvalue="JUnit.BattleShipTest.settingsTest" />
+        <item itemvalue="JUnit.BattleShipTest" />
+        <item itemvalue="Application.BattleShip (1)" />
         <item itemvalue="Application.BattleShip" />
-        <item itemvalue="JUnit.LogicTest" />
-        <item itemvalue="JUnit.LogicTest.canSetTest" />
-        <item itemvalue="JUnit.ShipTest" />
-        <item itemvalue="JUnit.GameFieldTest" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +225,7 @@
       <workItem from="1587722968611" duration="1638000" />
       <workItem from="1587724621676" duration="20675000" />
       <workItem from="1588002072905" duration="9283000" />
-      <workItem from="1588371912454" duration="382000" />
+      <workItem from="1588371912454" duration="1298000" />
     </task>
     <servers />
   </component>
@@ -212,10 +233,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Project_Structure" timestamp="1588009692767">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1588372622449">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588009692767" />
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588372622449" />
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587631410921">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -236,22 +257,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587724688635" />
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1588372361593">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1588373337313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
-    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1588372361593">
+    <state width="1877" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588373337313" />
+    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1588373337313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
-    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1588372361593">
+    <state width="1877" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588373337313" />
+    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1588373337313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
-    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1588372361593">
+    <state width="1877" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588373337313" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1588373337313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588372361593" />
+    <state width="1877" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588373337313" />
     <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588007821165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -268,10 +289,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588007821165" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1588010842378">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1588372952327">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588010842378" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588372952327" />
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588002073793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -292,6 +313,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1090" y="166" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586960755324" />
+    <state x="342" y="215" key="new project wizard" timestamp="1588372605011">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="342" y="215" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1588372605011" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587598201353">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
