@@ -8,24 +8,17 @@
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BasicLocaleService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleShip.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/LocaleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/LocaleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/SettingsWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/SettingsWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/StringConst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/StringConst.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/EnglishLocale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/EnglishLocale.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/RussianLocale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/RussianLocale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/view/settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battlemenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/BasicLocaleService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleShip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/LocaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/LocaleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/SettingsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/SettingsWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/StringConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/StringConst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/localePlugins/EnglishLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/localePlugins/EnglishLocale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/localePlugins/RussianLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/localePlugins/RussianLocale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +107,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GamePack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GamePack" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.AITest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in core" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="core" />
       <option name="PACKAGE_NAME" value="" />
@@ -122,33 +130,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BattleShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core" />
+    <configuration name="GamePack in BattleShip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="AppInterface.*" />
+          <option name="PATTERN" value="GamePack.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="AppInterface" />
-      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BattleShipTest.settingsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="AppInterface.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="AppInterface" />
-      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
-      <option name="METHOD_NAME" value="settingsTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="GamePack" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,10 +161,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BattleShip" />
+        <item itemvalue="JUnit.AITest" />
+        <item itemvalue="JUnit.GamePack in BattleShip" />
         <item itemvalue="JUnit.All in core" />
         <item itemvalue="JUnit.GamePack in core" />
-        <item itemvalue="JUnit.BattleShipTest.settingsTest" />
-        <item itemvalue="JUnit.BattleShipTest" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +208,7 @@
       <workItem from="1588002072905" duration="9283000" />
       <workItem from="1588371912454" duration="1591000" />
       <workItem from="1588376733509" duration="237000" />
-      <workItem from="1588414065906" duration="11065000" />
+      <workItem from="1588414065906" duration="12958000" />
     </task>
     <servers />
   </component>
@@ -261,38 +252,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588417362861" />
-    <state width="1877" height="202" key="GridCell.Tab.0.bottom" timestamp="1588427601188">
+    <state width="1877" height="202" key="GridCell.Tab.0.bottom" timestamp="1588429828362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588427601188" />
-    <state width="1877" height="202" key="GridCell.Tab.0.center" timestamp="1588427601187">
+    <state width="1877" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
+    <state width="1877" height="202" key="GridCell.Tab.0.center" timestamp="1588429828362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588427601187" />
-    <state width="1877" height="202" key="GridCell.Tab.0.left" timestamp="1588427601187">
+    <state width="1877" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
+    <state width="1877" height="202" key="GridCell.Tab.0.left" timestamp="1588429828362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588427601187" />
-    <state width="1877" height="202" key="GridCell.Tab.0.right" timestamp="1588427601188">
+    <state width="1877" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
+    <state width="1877" height="202" key="GridCell.Tab.0.right" timestamp="1588429828362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588427601188" />
-    <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588425374685">
+    <state width="1877" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
+    <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588429041698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588425374685" />
-    <state width="1877" height="384" key="GridCell.Tab.1.center" timestamp="1588425374685">
+    <state width="1877" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
+    <state width="1877" height="384" key="GridCell.Tab.1.center" timestamp="1588429041698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588425374685" />
-    <state width="1877" height="384" key="GridCell.Tab.1.left" timestamp="1588425374685">
+    <state width="1877" height="384" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
+    <state width="1877" height="384" key="GridCell.Tab.1.left" timestamp="1588429041698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588425374685" />
-    <state width="1877" height="384" key="GridCell.Tab.1.right" timestamp="1588425374685">
+    <state width="1877" height="384" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
+    <state width="1877" height="384" key="GridCell.Tab.1.right" timestamp="1588429041698">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588425374685" />
+    <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1588419638025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

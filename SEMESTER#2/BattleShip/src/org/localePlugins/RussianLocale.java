@@ -3,7 +3,7 @@ package org.localePlugins;
 import org.app.LocaleService;
 import org.app.StringConst;
 
-public class RussianLocale extends LocaleService {
+public class RussianLocale implements LocaleService {
     @Override
     public void locale() {
         StringConst.CHOOSE_GAME_MODE = "Выберите режим игры";
@@ -49,15 +49,11 @@ public class RussianLocale extends LocaleService {
         StringConst.LEFT_ABC = "      А    Б    В   Г   Д    Е   Ж   З   И   К";
         StringConst.RIGHT_ABC = " А    Б    В   Г   Д    Е   Ж   З   И   К";
         StringConst.LANGUAGE_EDITED = "Язык изменен";
+        StringConst.SET_LANG = "Язык";
     }
 
     @Override
     public String getName() {
         return "Русский";
-    }
-
-    @Override
-    public void debug() {
-        System.out.println("SPEAK RUSSIAN");
     }
 }

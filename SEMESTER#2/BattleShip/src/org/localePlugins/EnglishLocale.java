@@ -3,7 +3,7 @@ package org.localePlugins;
 import org.app.LocaleService;
 import org.app.StringConst;
 
-public class EnglishLocale extends LocaleService {
+public class EnglishLocale implements LocaleService {
     @Override
     public void locale() {
         StringConst.CHOOSE_GAME_MODE = "Choose Game Mode";
@@ -50,6 +50,7 @@ public class EnglishLocale extends LocaleService {
         StringConst.RIGHT_ABC = " A    B    C   D   E    F   G   H   I   K";
         StringConst.CHOOSE_DIFF = "Choose Difficulty";
         StringConst.LANGUAGE_EDITED = "Language edited";
+        StringConst.SET_LANG = "Language";
     }
 
     @Override
@@ -57,8 +58,4 @@ public class EnglishLocale extends LocaleService {
         return "English";
     }
 
-    @Override
-    public void debug() {
-        System.out.println("SPEAK ENGLISH");
-    }
 }

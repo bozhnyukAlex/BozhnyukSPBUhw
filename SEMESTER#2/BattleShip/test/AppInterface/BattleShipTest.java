@@ -320,6 +320,7 @@ public class BattleShipTest extends ApplicationTest {
         }
     }
 
+
     public void checkAllNeighbours(int i, int j) {
         for (int w = -1; w <= 1; w++) {
             for (int v = -1; v <= 1; v++) {

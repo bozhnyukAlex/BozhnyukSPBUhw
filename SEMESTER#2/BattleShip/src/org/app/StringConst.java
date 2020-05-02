@@ -47,6 +47,7 @@ public class StringConst {
     public static String RIGHT_ABC = " А    Б    В   Г   Д    Е   Ж   З   И   К";
     public static String CHOOSE_DIFF = "Выберите уровень сложности";
     public static String LANGUAGE_EDITED = "Язык изменен";
+    public static String SET_LANG = "Язык";
 
 
 }

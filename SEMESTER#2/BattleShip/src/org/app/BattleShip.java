@@ -136,17 +136,13 @@ public class BattleShip extends Application {
         settingsButton.setDisable(true);
         levelToSend = IntelligenceLevel.MEDIUM;
         langBox.setItems(FXCollections.observableArrayList(plugNames));
+        langBox.setPromptText(StringConst.SET_LANG);
         statusLabel.setText(StringConst.CHOOSE_GAME_MODE);
 
         onePlayerButton.setOnAction(actionEvent -> gameStart(GameMode.ONE_PLAYER));
         twoPlayersButton.setOnAction(actionEvent -> gameStart(GameMode.TWO_PLAYERS));
 
-        langBox.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                setLocale(langBox.getValue().toString());
-            }
-        });
+        langBox.setOnAction(actionEvent -> setLocale(langBox.getValue().toString()));
 
         settingsButton.setOnAction(actionEvent -> {
             boolean okClicked  = showDialogEditAi();
@@ -928,7 +924,6 @@ public class BattleShip extends Application {
         plugNames = new ArrayList<String>();
         for (LocaleService localeService : serviceLoader) {
             plugNames.add(localeService.getName());
-            localeService.debug();
         }
         launch(args);
     }
