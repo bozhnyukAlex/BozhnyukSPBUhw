@@ -3,10 +3,10 @@ package org.localePlugins;
 import org.app.LocaleService;
 import org.app.StringConst;
 
-public class EnglishLocale implements LocaleService {
-    public static final String NAME = "English";
+public class EnglishLocale extends LocaleService {
     @Override
     public void locale() {
+        StringConst.CHOOSE_GAME_MODE = "Choose Game Mode";
         StringConst.TITLE = "BattleShip";
         StringConst.CELL_IS_BUSY = "This place is busy!";
         StringConst.SET_DIR = "Press on the field again for setting direction";
@@ -46,6 +46,15 @@ public class EnglishLocale implements LocaleService {
         StringConst.MEDIUM_DIFF = "Ultra-heating";
         StringConst.HIGH_DIFF = "Nightmare!";
         StringConst.CANCEL = "Close";
+        StringConst.LEFT_ABC = "      A    B    C   D   E    F   G   H   I   K";
+        StringConst.RIGHT_ABC = " A    B    C   D   E    F   G   H   I   K";
+        StringConst.CHOOSE_DIFF = "Choose Difficulty";
+        StringConst.LANGUAGE_EDITED = "Language edited";
+    }
+
+    @Override
+    public String getName() {
+        return "English";
     }
 
     @Override

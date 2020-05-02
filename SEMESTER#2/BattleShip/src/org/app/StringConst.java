@@ -3,6 +3,7 @@ package org.app;
 import java.util.Locale;
 
 public class StringConst {
+    public static String CHOOSE_GAME_MODE = "Выберите режим игры";
     public static String TITLE = "Морской бой";
     public static String CELL_IS_BUSY = "Сюда ставить нельзя";
     public static String SET_DIR = "Нажмите на поле еще раз для установки направления";
@@ -42,5 +43,10 @@ public class StringConst {
     public static String MEDIUM_DIFF = "Ультра-потоп";
     public static String HIGH_DIFF = "Кошмар!";
     public static String CANCEL = "Закрыть";
+    public static String LEFT_ABC = "      А    Б    В   Г   Д    Е   Ж   З   И   К";
+    public static String RIGHT_ABC = " А    Б    В   Г   Д    Е   Ж   З   И   К";
+    public static String CHOOSE_DIFF = "Выберите уровень сложности";
+    public static String LANGUAGE_EDITED = "Язык изменен";
+
 
 }

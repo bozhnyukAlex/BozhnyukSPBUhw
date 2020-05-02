@@ -1,13 +1,13 @@
 package org.app;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
@@ -17,13 +17,16 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.game.*;
+import org.game.Cell;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.ServiceLoader;
 
 
 public class BattleShip extends Application {
 
+    private static ServiceLoader<LocaleService> serviceLoader;
     @FXML
     public VBox pane;
     @FXML
@@ -68,6 +71,16 @@ public class BattleShip extends Application {
     private Label threeShipToGoLab;
     @FXML
     private Label fourShipToGoLab;
+    @FXML
+    private Label lSLeft;
+    @FXML
+    private Label rSLeft;
+    @FXML
+    private ComboBox langBox;
+    @FXML
+    private Label leftABC;
+    @FXML
+    private Label rightABC;
 
     private ContextMenu deleteMenu;
     private MenuItem itemDelete;
@@ -77,6 +90,7 @@ public class BattleShip extends Application {
     private int oneShipToGo, twoShipToGo, threeShipToGo, fourShipToGo;
     private boolean isEnd = true;
     private IntelligenceLevel levelToSend;
+    private static ArrayList<String> plugNames;
 
     private final String PLAYER_FIELD_ID = "playerField";
     private final String ENEMY_FIELD_ID = "enemyField";
@@ -92,8 +106,6 @@ public class BattleShip extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-       // FXMLLoader loader = new FXMLLoader();
-       // loader.setLocation(BattleShip.class.getResource("battleMenu.fxml"));
         pane = FXMLLoader.load(BattleShip.class.getResource(MENU_PATH));
         Scene startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
@@ -123,9 +135,18 @@ public class BattleShip extends Application {
         fourShipToGo = Integer.parseInt(fourShipToGoLab.getText());
         settingsButton.setDisable(true);
         levelToSend = IntelligenceLevel.MEDIUM;
+        langBox.setItems(FXCollections.observableArrayList(plugNames));
+        statusLabel.setText(StringConst.CHOOSE_GAME_MODE);
 
         onePlayerButton.setOnAction(actionEvent -> gameStart(GameMode.ONE_PLAYER));
         twoPlayersButton.setOnAction(actionEvent -> gameStart(GameMode.TWO_PLAYERS));
+
+        langBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                setLocale(langBox.getValue().toString());
+            }
+        });
 
         settingsButton.setOnAction(actionEvent -> {
             boolean okClicked  = showDialogEditAi();
@@ -869,12 +890,44 @@ public class BattleShip extends Application {
         else if (mode.equals(GameMode.TWO_PLAYERS)) {
             settingsButton.setDisable(true);
         }
-
     }
 
+    private void setLocale(String localeStr) {
+        for (LocaleService service : serviceLoader) {
+            if (service.getName().equals(localeStr)) {
+                service.locale();
+                break;
+            }
+        }
+        onePlayerButton.setText(StringConst.ONE_PLAYER_GAME);
+        twoPlayersButton.setText(StringConst.TWO_PLAYER_GAME);
+        settingsButton.setText(StringConst.DIFF_SETTINGS);
+        exitButton.setText(StringConst.EXIT);
+        lSLeft.setText(StringConst.SHIPS_LEFT);
+        rSLeft.setText(StringConst.SHIPS_LEFT);
+        enable1Ship.setText(StringConst.SHIP1);
+        enable2Ship.setText(StringConst.SHIP2);
+        enable3Ship.setText(StringConst.SHIP3);
+        enable4Ship.setText(StringConst.SHIP4);
+        readyButton.setText(StringConst.READY);
+        autoGenerateButton.setText(StringConst.AUTOMATIC);
+        statusLabel.setText(StringConst.LANGUAGE_EDITED);
+        if (logic != null) {
+            if (logic.getState().equals(GameState.PLAYING)) {
+                statusLabel.setText(StringConst.FIGHT);
+            }
+        }
+        leftABC.setText(StringConst.LEFT_ABC);
+        rightABC.setText(StringConst.RIGHT_ABC);
+    }
+
+
+
     public static void main(String[] args) {
-        ServiceLoader<LocaleService> serviceLoader = ServiceLoader.load(LocaleService.class);
+        serviceLoader = ServiceLoader.load(LocaleService.class);
+        plugNames = new ArrayList<String>();
         for (LocaleService localeService : serviceLoader) {
+            plugNames.add(localeService.getName());
             localeService.debug();
         }
         launch(args);

@@ -1,5 +1,6 @@
 package org.app;
 
+import javafx.scene.control.Label;
 import org.game.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,6 +19,8 @@ public class SettingsWindow {
     private Button okBtn;
     @FXML
     private Button cancelBtn;
+    @FXML
+    private Label chooseLabel;
 
     private Stage dialogStage;
     private ToggleGroup group;
@@ -27,6 +30,7 @@ public class SettingsWindow {
 
     @FXML
     public void initialize() {
+        setLocale();
         group = new ToggleGroup();
         lowMode.setToggleGroup(group);
         mediumMode.setToggleGroup(group);
@@ -62,6 +66,13 @@ public class SettingsWindow {
         return okClicked;
     }
 
+    private void setLocale() {
+        cancelBtn.setText(StringConst.CANCEL);
+        lowMode.setText(StringConst.LOW_DIFF);
+        mediumMode.setText(StringConst.MEDIUM_DIFF);
+        highMode.setText(StringConst.HIGH_DIFF);
+        chooseLabel.setText(StringConst.CHOOSE_DIFF);
+    }
 
     public void setObservableLogic(Logic observableLogic) {
         this.observableLogic = observableLogic;

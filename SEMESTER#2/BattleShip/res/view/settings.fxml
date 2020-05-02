@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="587.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.app.SettingsWindow">
    <children>
-      <Label layoutX="147.0" layoutY="14.0" prefHeight="66.0" prefWidth="307.0" text="Выберите уровень сложности">
+      <Label layoutX="147.0" layoutY="14.0" prefHeight="66.0" prefWidth="307.0" text="Выберите уровень сложности" fx:id="chooseLabel">
          <font>
             <Font size="22.0" />
          </font>
@@ -29,6 +29,6 @@
          </font>
       </RadioButton>
       <Button fx:id="okBtn" layoutX="379.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="OK" />
-      <Button fx:id="cancelBtn" layoutX="472.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Cancel" />
+      <Button fx:id="cancelBtn" layoutX="472.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Закрыть" />
    </children>
 </AnchorPane>

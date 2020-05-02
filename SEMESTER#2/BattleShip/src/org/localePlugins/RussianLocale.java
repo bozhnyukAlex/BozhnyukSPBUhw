@@ -3,9 +3,10 @@ package org.localePlugins;
 import org.app.LocaleService;
 import org.app.StringConst;
 
-public class RussianLocale implements LocaleService {
+public class RussianLocale extends LocaleService {
     @Override
     public void locale() {
+        StringConst.CHOOSE_GAME_MODE = "Выберите режим игры";
         StringConst.TITLE = "Морской бой";
         StringConst.CELL_IS_BUSY = "Сюда ставить нельзя";
         StringConst.SET_DIR = "Нажмите на поле еще раз для установки направления";
@@ -45,6 +46,14 @@ public class RussianLocale implements LocaleService {
         StringConst.MEDIUM_DIFF = "Ультра-потоп";
         StringConst.HIGH_DIFF = "Кошмар!";
         StringConst.CANCEL = "Закрыть";
+        StringConst.LEFT_ABC = "      А    Б    В   Г   Д    Е   Ж   З   И   К";
+        StringConst.RIGHT_ABC = " А    Б    В   Г   Д    Е   Ж   З   И   К";
+        StringConst.LANGUAGE_EDITED = "Язык изменен";
+    }
+
+    @Override
+    public String getName() {
+        return "Русский";
     }
 
     @Override
