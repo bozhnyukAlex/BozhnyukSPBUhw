@@ -6,7 +6,80 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="" />
+    <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/BattleShip_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/res/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/res/view/battlemenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/res/view/settings.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/app/BasicLocaleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/app/BattleShip.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/app/LocaleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/app/SettingsWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/app/StringConst.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/AI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/Cell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/FightState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/GameField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/GameMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/GameState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/IntelligenceLevel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/Logic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/org/game/Ship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/test/AppInterface/BattleShipTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/test/GamePack/AITest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/test/GamePack/GameFieldTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/test/GamePack/LogicTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/test/GamePack/ShipTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/BattleShip.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/SettingsWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/AppInterface/StringConst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/AI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Cell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Direction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/FightState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/GameState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/IntelligenceLevel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Logic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/GamePack/Ship.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/view/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/app/BasicLocaleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/app/BattleShip.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/app/LocaleService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/app/SettingsWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/app/StringConst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/AI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/AI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/Cell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/Direction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/FightState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/GameField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/GameMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/GameState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/IntelligenceLevel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/Logic$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/Logic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/core/org/game/Ship.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/AITest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/AITest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/GameFieldTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/GameFieldTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/LogicTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/LogicTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/ShipTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/ShipTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/core/AppInterface/BattleShipTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/core/GamePack/AITest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/core/GamePack/GameFieldTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/core/GamePack/LogicTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/core/GamePack/ShipTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,8 +119,8 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/test" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -58,31 +131,32 @@
       <recent name="GamePack" />
       <recent name="AppInterface" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\src\META-INF" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\src\org\localePlugins" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\src\AppInterface" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\res\view" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\uml" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\test" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\src\org" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\res" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
       <recent name="org.testfx.framework.junit5.ApplicationTest" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\src\AppInterface" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\res\view" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\uml" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\images" />
-      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\res\view" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\test" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\src\org" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\core\res" />
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in core">
+  <component name="RunManager" selected="Application.BattleShip">
     <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.app.BattleShip" />
-      <module name="core" />
+      <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.app.*" />
@@ -148,8 +222,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BattleShip" />
         <item itemvalue="JUnit.All in core" />
-        <item itemvalue="Application.BattleShip (1)" />
         <item itemvalue="JUnit.GamePack in core" />
         <item itemvalue="JUnit.BattleShipTest.settingsTest" />
         <item itemvalue="JUnit.BattleShipTest" />
@@ -195,6 +269,8 @@
       <workItem from="1587724621676" duration="20675000" />
       <workItem from="1588002072905" duration="9283000" />
       <workItem from="1588371912454" duration="1591000" />
+      <workItem from="1588376733509" duration="237000" />
+      <workItem from="1588414065906" duration="3645000" />
     </task>
     <servers />
   </component>
@@ -202,18 +278,30 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="677" y="178" key="#BattleShip" timestamp="1588418115936">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="677" y="178" key="#BattleShip/0.0.1920.1040@0.0.1920.1040" timestamp="1588418115936" />
     <state x="552" y="178" key="#Project_Structure" timestamp="1588372622449">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588372622449" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587631410921">
+    <state x="687" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588418419173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587631410921" />
-    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588009686211">
+    <state x="687" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588418419173" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1588419862200">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588009686211" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588419862200" />
+    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588419504841">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588419504841" />
+    <state x="1139" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1588418635650">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1139" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588418635650" />
     <state x="756" y="405" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587146859376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -222,26 +310,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1587724688635">
+    <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1588417362861">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587724688635" />
-    <state width="914" height="202" key="GridCell.Tab.0.bottom" timestamp="1588373714833">
+    <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588417362861" />
+    <state width="914" height="202" key="GridCell.Tab.0.bottom" timestamp="1588420284281">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588373714833" />
-    <state width="914" height="202" key="GridCell.Tab.0.center" timestamp="1588373714833">
+    <state width="914" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588420284281" />
+    <state width="914" height="202" key="GridCell.Tab.0.center" timestamp="1588420284281">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588373714833" />
-    <state width="914" height="202" key="GridCell.Tab.0.left" timestamp="1588373714833">
+    <state width="914" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588420284281" />
+    <state width="914" height="202" key="GridCell.Tab.0.left" timestamp="1588420284281">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588373714833" />
-    <state width="914" height="202" key="GridCell.Tab.0.right" timestamp="1588373714833">
+    <state width="914" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588420284281" />
+    <state width="914" height="202" key="GridCell.Tab.0.right" timestamp="1588420284281">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588373714833" />
+    <state width="914" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588420284281" />
     <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588007821165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -258,14 +346,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588007821165" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1588372952327">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1588419638025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588372952327" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588002073793">
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588419638025" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588414067080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588002073793" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588414067080" />
     <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587566891165">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
