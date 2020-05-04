@@ -334,7 +334,8 @@ public class BattleShip extends Application {
             }
             clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.RED);
             clickedField.getCell(cli, clj).setCellColor(Color.RED);
-            Ship ship1 = new Ship(1);
+            //Ship ship1 = new Ship(1);
+            Ship ship1 = context.getBean("ship1", Ship.class);
             ship1.build(clickedField.getCell(cli, clj));
             if (clickedField.equals(playerField)) {
                 logic.addPlayerShip(ship1);
@@ -361,7 +362,8 @@ public class BattleShip extends Application {
                 statusLabel.setText(StringConst.SET_DIR);
                 clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.ORANGE);
                 clickedField.getCell(cli, clj).setCellColor(Color.ORANGE);
-                Ship nShip = new Ship(getTrigger());
+                //Ship nShip = new Ship(getTrigger());
+                Ship nShip = context.getBean("ship" + getTrigger(), Ship.class);
                 nShip.build(clickedField.getCell(cli, clj));
                 if (clickedField.equals(playerField)) {
                     logic.addPlayerShip(nShip);
@@ -887,8 +889,8 @@ public class BattleShip extends Application {
         switch (mode) {
             case ONE_PLAYER: {
                 logic = context.getBean("logicOnePlayer", Logic.class);
-                logic.initAI(playerField, levelToSend);
-               // logic.initAiWithContainer(playerField, levelToSend);
+               // logic.initAI(playerField, levelToSend);
+                logic.initAiWithContainer(playerField, levelToSend);
                 settingsButton.setDisable(false);
                 statusLabel.setText(StringConst.PREPARE);
                 break;

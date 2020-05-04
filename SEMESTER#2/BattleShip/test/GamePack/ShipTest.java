@@ -1,8 +1,10 @@
 package GamePack;
 
+import org.app.Config;
 import org.junit.Before;
 import org.junit.Test;
 import org.game.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
 
@@ -12,10 +14,15 @@ public class ShipTest {
     private Ship s4, s3, s2, s1;
     @Before
     public void setUp() {
-        s4 = new Ship(4);
-        s3 = new Ship(3);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+        //s4 = new Ship(4);
+        s4 = context.getBean("ship4", Ship.class);
+        //s3 = new Ship(3);
+        s3 = context.getBean("ship3", Ship.class);
         s2 = new Ship(new Cell(0,0), new Cell(0, Cell.SIZE));
-        s1 = new Ship(1);
+        //s1 = new Ship(1);
+        s1 = context.getBean("ship1", Ship.class);
 
     }
 

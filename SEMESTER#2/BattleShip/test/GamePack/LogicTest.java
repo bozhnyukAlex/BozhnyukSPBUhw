@@ -21,7 +21,8 @@ public class LogicTest {
         //field = new GameField();
         field = context.getBean("nonField", GameField.class);
         field.initAndDraw();
-        logic.initAI(field, IntelligenceLevel.MEDIUM);
+      //  logic.initAI(field, IntelligenceLevel.MEDIUM);
+        logic.initAiWithContainer(field, IntelligenceLevel.MEDIUM);
     }
 
     @Test

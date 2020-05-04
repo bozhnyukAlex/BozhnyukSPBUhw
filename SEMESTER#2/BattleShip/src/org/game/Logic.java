@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Random;
 
-@Component
+
 public class Logic {
     private int playerShipsLeft;
     private int enemyShipsLeft;
@@ -43,7 +43,7 @@ public class Logic {
         enemyAI = new AI(opponentField, il);
     }
 
-    /*public void initAiWithContainer(GameField opponentField, IntelligenceLevel il) {
+    public void initAiWithContainer(GameField opponentField, IntelligenceLevel il) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         switch (il) {
             case LOW: {
@@ -60,10 +60,11 @@ public class Logic {
             }
         }
         enemyAI.setOpponentField(opponentField);
-    }*/
+    }
 
     public ArrayList<Ship> autoShipGenerate(GameField field) {
         ArrayList<Ship> resShip = new ArrayList<Ship>();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         Random rnd = new Random();
         resShip.add(getRandomShip(4, field));
         for (int k = 0; k < 2; k++) {
@@ -76,7 +77,10 @@ public class Logic {
             while (true) {
                 int oi = rnd.nextInt(GameField.SIZE), oj = rnd.nextInt(GameField.SIZE);
                 if (!field.getCell(oi, oj).isBusy()) {
-                    resShip.add(new Ship(field.getCell(oi, oj)));
+                    //resShip.add(new Ship(field.getCell(oi, oj)));
+                    Ship newShip = context.getBean("ship1", Ship.class);
+                    newShip.build(field.getCell(oi, oj));
+                    resShip.add(newShip);
                     field.setBusyAroundCell(oi, oj, INCREASE_MODE);
                     break;
                 }
@@ -138,7 +142,9 @@ public class Logic {
     private Ship getRandomShip(int length, GameField field) {
         Random rnd = new Random();
         Direction dir;
-        Ship nwS = new Ship(length);
+      //  Ship nwS = new Ship(length);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        Ship nwS = context.getBean("ship" + length, Ship.class);
         M: while (true) {
             int twi = rnd.nextInt(GameField.SIZE), twj = rnd.nextInt(GameField.SIZE);
             boolean[] usedDir = new boolean[] {false, false, false, false};

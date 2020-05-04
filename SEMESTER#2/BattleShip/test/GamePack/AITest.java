@@ -1,8 +1,10 @@
 package GamePack;
 
+import org.app.Config;
 import org.game.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.Assert.assertTrue;
 
@@ -11,9 +13,12 @@ public class AITest {
     private GameField field;
     @Before
     public void setUp() throws Exception {
-        field = new GameField();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+       // field = new GameField();
+        field = context.getBean("playerField", GameField.class);
         field.initAndDraw();
-        ai = new AI(field, IntelligenceLevel.LOW);
+      //  ai = new AI(field, IntelligenceLevel.LOW);
+        ai = context.getBean("enemyAILow", AI.class);
     }
 
     @Test
