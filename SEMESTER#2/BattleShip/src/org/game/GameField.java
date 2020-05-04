@@ -3,9 +3,11 @@ package org.game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component
 public class GameField extends Canvas {
     public static final int SIZE = 10;
     public static final int PLAYER_MODE = 3;

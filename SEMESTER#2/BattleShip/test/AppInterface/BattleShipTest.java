@@ -60,7 +60,7 @@ public class BattleShipTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         prStage = stage;
-        VBox pane = FXMLLoader.load(BattleShip.class.getResource("/view/battlemenu.fxml"));
+        VBox pane = FXMLLoader.load(BattleShip.class.getResource(BattleShip.MENU_PATH));
         stage.setScene(new Scene(pane));
         stage.show();
         primScreenBounds = Screen.getPrimary().getVisualBounds();

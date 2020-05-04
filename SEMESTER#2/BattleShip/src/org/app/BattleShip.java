@@ -18,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.game.*;
 import org.game.Cell;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -91,13 +92,14 @@ public class BattleShip extends Application {
     private boolean isEnd = true;
     private IntelligenceLevel levelToSend;
     private static ArrayList<String> plugNames;
+    private AnnotationConfigApplicationContext context;
 
     private final String PLAYER_FIELD_ID = "playerField";
     private final String ENEMY_FIELD_ID = "enemyField";
     public static final String DELETE_MENU_ID = "deleteMenu";
     public static final String MENU_PATH = "/view/battleMenu.fxml";
     public static final String SETTINGS_PATH = "/view/settings.fxml";
-    private static final String ICON_PATH = "/images/icon.png";
+    public static final String ICON_PATH = "/images/icon.png";
 
     private final int TO_BUTTON_PANE = 5;
     private final int TO_ENEMY_FIELD = 6;
@@ -118,11 +120,13 @@ public class BattleShip extends Application {
 
     @FXML
     public void initialize() {
+        initAllPlugins();
+        context = new AnnotationConfigApplicationContext(Config.class);
         captureTriggers = new boolean[] {false, false, false, false, false};
         setDisableToButtonsOnSecondField(true);
-        playerField = new GameField(GameField.PLAYER_MODE);
+        //playerField = new GameField(GameField.PLAYER_MODE);
+        playerField = context.getBean("playerField", GameField.class);
         playerField.setId(PLAYER_FIELD_ID);
-    //    enemyField = new GameField();
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
         deleteMenu.setId(DELETE_MENU_ID);
@@ -212,7 +216,8 @@ public class BattleShip extends Application {
         readyButton.setOnAction(actionEvent -> {
             if (logic.getGameMode().equals(GameMode.ONE_PLAYER)) {
                 logic.setGameState(GameState.PLAYING);
-                enemyField = new GameField(GameField.ENEMY_MODE);
+                //enemyField = new GameField(GameField.ENEMY_MODE);
+                enemyField = context.getBean("enemyField", GameField.class);
                 enemyField.setId(ENEMY_FIELD_ID);
                 toggleRightField(TO_ENEMY_FIELD);
                 logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
@@ -240,7 +245,8 @@ public class BattleShip extends Application {
             else if (logic.getGameMode().equals(GameMode.TWO_PLAYERS)) {
                 if (logic.getState().equals(GameState.PREPARATION1)) { //если готовился, то должен начать готовиться второй
                     logic.setGameState(GameState.PREPARATION2);
-                    enemyField = new GameField(GameField.ENEMY_MODE);
+                   // enemyField = new GameField(GameField.ENEMY_MODE);
+                    enemyField = context.getBean("enemyField", GameField.class);
                     enemyField.setId(ENEMY_FIELD_ID);
                     toggleRightField(TO_ENEMY_FIELD);
                     toggleLeftField(TO_BUTTON_PANE);
@@ -860,12 +866,12 @@ public class BattleShip extends Application {
         }
         playerShipsLeft.setText("10");
         enemyShipsLeft.setText("10");
-        if (mode.equals(GameMode.ONE_PLAYER)) {
+        /*if (mode.equals(GameMode.ONE_PLAYER)) {
             statusLabel.setText(StringConst.PREPARE);
         }
         else if (mode.equals(GameMode.TWO_PLAYERS)) {
             statusLabel.setText(StringConst.PREPARE_FIRST);
-        }
+        }*/
         autoGenerateButton.setDisable(false);
         setDisableToButtonsOnSecondField(false);
         readyButton.setDisable(true);
@@ -876,17 +882,35 @@ public class BattleShip extends Application {
                 updateTriggers();
             }
         }
-        logic = new Logic(mode);
-        if (mode.equals(GameMode.ONE_PLAYER)) {
-            logic.initAI(playerField, levelToSend);
+        //logic = context.getBean("logic", Logic.class);
+        //logic.setGameMode(mode);
+        switch (mode) {
+            case ONE_PLAYER: {
+                logic = context.getBean("logicOnePlayer", Logic.class);
+                logic.initAI(playerField, levelToSend);
+               // logic.initAiWithContainer(playerField, levelToSend);
+                settingsButton.setDisable(false);
+                statusLabel.setText(StringConst.PREPARE);
+                break;
+            }
+            case TWO_PLAYERS: {
+                logic = context.getBean("logicTwoPlayers", Logic.class);
+                settingsButton.setDisable(true);
+                statusLabel.setText(StringConst.PREPARE_FIRST);
+                break;
+            }
         }
+        logic.setGameState(GameState.PREPARATION1);
+/* *//*       if (mode.equals(GameMode.ONE_PLAYER)) {
+            logic.initAI(playerField, levelToSend);
+        }*//*
         logic.setGameState(GameState.PREPARATION1);
         if (mode.equals(GameMode.ONE_PLAYER)) {
             settingsButton.setDisable(false);
         }
         else if (mode.equals(GameMode.TWO_PLAYERS)) {
             settingsButton.setDisable(true);
-        }
+        }*/
     }
 
     private void setLocale(String localeStr) {
@@ -918,14 +942,15 @@ public class BattleShip extends Application {
         rightABC.setText(StringConst.RIGHT_ABC);
     }
 
-
-
-    public static void main(String[] args) {
+    public void initAllPlugins() {
         serviceLoader = ServiceLoader.load(LocaleService.class);
         plugNames = new ArrayList<String>();
         for (LocaleService localeService : serviceLoader) {
             plugNames.add(localeService.getName());
         }
+    }
+
+    public static void main(String[] args) {
         launch(args);
     }
 }

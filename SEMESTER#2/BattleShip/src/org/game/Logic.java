@@ -1,10 +1,14 @@
 package org.game;
 
 import javafx.scene.paint.Color;
+import org.app.Config;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+@Component
 public class Logic {
     private int playerShipsLeft;
     private int enemyShipsLeft;
@@ -38,6 +42,25 @@ public class Logic {
     public void initAI(GameField opponentField, IntelligenceLevel il) {
         enemyAI = new AI(opponentField, il);
     }
+
+    /*public void initAiWithContainer(GameField opponentField, IntelligenceLevel il) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        switch (il) {
+            case LOW: {
+                enemyAI = context.getBean("enemyAILow", AI.class);
+                break;
+            }
+            case MEDIUM: {
+                enemyAI = context.getBean("enemyAIMedium", AI.class);
+                break;
+            }
+            case HIGH: {
+                enemyAI = context.getBean("enemyAIHigh", AI.class);
+                break;
+            }
+        }
+        enemyAI.setOpponentField(opponentField);
+    }*/
 
     public ArrayList<Ship> autoShipGenerate(GameField field) {
         ArrayList<Ship> resShip = new ArrayList<Ship>();

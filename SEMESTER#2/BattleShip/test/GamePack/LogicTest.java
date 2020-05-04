@@ -1,8 +1,10 @@
 package GamePack;
 
+import org.app.Config;
 import org.junit.Before;
 import org.junit.Test;
 import org.game.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
 
@@ -13,8 +15,11 @@ public class LogicTest {
     private GameField field;
     @Before
     public void setUp() throws Exception {
-        logic = new Logic(GameMode.ONE_PLAYER);
-        field = new GameField();
+        //logic = new Logic(GameMode.ONE_PLAYER);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        logic = context.getBean("logic", Logic.class);
+        //field = new GameField();
+        field = context.getBean("nonField", GameField.class);
         field.initAndDraw();
         logic.initAI(field, IntelligenceLevel.MEDIUM);
     }

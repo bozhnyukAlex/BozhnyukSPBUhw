@@ -7,14 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Spring_5_2_3_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BattleShip.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleShip.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleShip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/RussianLocale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/RussianLocale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleShipTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/LogicTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/LogicTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battleMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/localePlugins/RussianLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/localePlugins/RussianLocale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/LogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/LogicTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +33,8 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,7 +96,7 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BattleShip">
+  <component name="RunManager" selected="JUnit.BattleShipTest">
     <configuration name="BattleShip" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.app.BattleShip" />
       <module name="BattleShip" />
@@ -103,30 +110,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BattleShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GamePack.*" />
+          <option name="PATTERN" value="AppInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.AITest" />
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleShipTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in core" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GamePack in BattleShip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GameFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
@@ -135,13 +134,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.GameFieldTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GamePack in core" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core" />
+    <configuration name="LogicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GamePack.*" />
@@ -149,18 +149,34 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BattleShip" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GamePack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="GamePack" />
+      <option name="MAIN_CLASS_NAME" value="GamePack.ShipTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BattleShipTest" />
         <item itemvalue="Application.BattleShip" />
-        <item itemvalue="JUnit.AITest" />
-        <item itemvalue="JUnit.GamePack in BattleShip" />
-        <item itemvalue="JUnit.All in core" />
-        <item itemvalue="JUnit.GamePack in core" />
+        <item itemvalue="JUnit.ShipTest" />
+        <item itemvalue="JUnit.LogicTest" />
+        <item itemvalue="JUnit.GameFieldTest" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +222,7 @@
       <workItem from="1588376733509" duration="237000" />
       <workItem from="1588414065906" duration="13363000" />
       <workItem from="1588524755247" duration="2799000" />
-      <workItem from="1588589907856" duration="2949000" />
+      <workItem from="1588589907856" duration="9952000" />
     </task>
     <servers />
   </component>
@@ -226,10 +242,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="687" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588418419173" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1588423938098">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1588613565099">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588423938098" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588613565099" />
     <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588419504841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -246,42 +262,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
+    <state width="434" height="466" key="DebuggerActiveHint" timestamp="1588610016007">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="434" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1588610016007" />
     <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1588606016436">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588606016436" />
-    <state width="1877" height="202" key="GridCell.Tab.0.bottom" timestamp="1588606918729">
+    <state width="1877" height="419" key="GridCell.Tab.0.bottom" timestamp="1588613986910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
-    <state width="1877" height="202" key="GridCell.Tab.0.center" timestamp="1588606918729">
+    <state width="1877" height="419" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588613986910" />
+    <state width="1877" height="419" key="GridCell.Tab.0.center" timestamp="1588613986910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
-    <state width="1877" height="202" key="GridCell.Tab.0.left" timestamp="1588606918729">
+    <state width="1877" height="419" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588613986910" />
+    <state width="1877" height="419" key="GridCell.Tab.0.left" timestamp="1588613986910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
-    <state width="1877" height="202" key="GridCell.Tab.0.right" timestamp="1588606918729">
+    <state width="1877" height="419" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588613986910" />
+    <state width="1877" height="419" key="GridCell.Tab.0.right" timestamp="1588613986910">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
-    <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588430092020">
+    <state width="1877" height="419" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588613986910" />
+    <state width="1877" height="153" key="GridCell.Tab.1.bottom" timestamp="1588611944868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
-    <state width="1877" height="384" key="GridCell.Tab.1.center" timestamp="1588430092020">
+    <state width="1877" height="153" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588611944868" />
+    <state width="1877" height="153" key="GridCell.Tab.1.center" timestamp="1588611944868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
-    <state width="1877" height="384" key="GridCell.Tab.1.left" timestamp="1588430092020">
+    <state width="1877" height="153" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588611944868" />
+    <state width="1877" height="153" key="GridCell.Tab.1.left" timestamp="1588611944867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
-    <state width="1877" height="384" key="GridCell.Tab.1.right" timestamp="1588430092020">
+    <state width="1877" height="153" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588611944867" />
+    <state width="1877" height="153" key="GridCell.Tab.1.right" timestamp="1588611944868">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
+    <state width="1877" height="153" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588611944868" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1588606404995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -310,6 +330,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="537" y="181" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1588525031753" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1588608266698">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588608266698" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587598201353">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

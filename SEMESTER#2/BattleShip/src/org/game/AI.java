@@ -1,7 +1,10 @@
 package org.game;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 
+//@Component
 public class AI {
     private GameField opponentField;
     private IntelligenceLevel iLevel;
@@ -325,5 +328,9 @@ public class AI {
 
     public void setILevel(IntelligenceLevel iLevel) {
         this.iLevel = iLevel;
+    }
+
+    public void setOpponentField(GameField opponentField) {
+        this.opponentField = opponentField;
     }
 }
