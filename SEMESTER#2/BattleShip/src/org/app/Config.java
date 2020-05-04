@@ -88,4 +88,9 @@ public class Config {
     public Ship ship0() {
         return new Ship();
     }
+    @Bean
+    @Scope
+    public Cell cell() {
+        return new Cell(0,0);
+    }
 }

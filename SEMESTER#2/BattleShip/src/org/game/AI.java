@@ -1,6 +1,9 @@
 package org.game;
 
 
+import org.app.Config;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.util.Random;
 
 
@@ -15,9 +18,13 @@ public class AI {
 
 
     public AI (GameField opponentField, IntelligenceLevel iLevel) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         this.opponentField = opponentField;
         this.iLevel = iLevel;
-        previousShot = new Cell(-1,-1);
+        //previousShot = new Cell(-1,-1);
+        previousShot = context.getBean("cell", Cell.class);
+        previousShot.setY(-1);
+        previousShot.setX(-1);
         isShipFired = false;
         isShipDead = false;
         isFirstShot = true;
