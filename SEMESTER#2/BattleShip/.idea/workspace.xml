@@ -7,18 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Spring_5_2_3_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleShip.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleShip.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleShip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleShip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/LocaleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/LocaleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/StringConst.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/StringConst.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/EnglishLocale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/EnglishLocale.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/RussianLocale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/localePlugins/RussianLocale.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/LocaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/LocaleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/StringConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/StringConst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/localePlugins/EnglishLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/localePlugins/EnglishLocale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/localePlugins/RussianLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/localePlugins/RussianLocale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +204,9 @@
       <workItem from="1588002072905" duration="9283000" />
       <workItem from="1588371912454" duration="1591000" />
       <workItem from="1588376733509" duration="237000" />
-      <workItem from="1588414065906" duration="12958000" />
+      <workItem from="1588414065906" duration="13363000" />
+      <workItem from="1588524755247" duration="2799000" />
+      <workItem from="1588589907856" duration="2949000" />
     </task>
     <servers />
   </component>
@@ -248,54 +246,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1588417362861">
+    <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1588606016436">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588417362861" />
-    <state width="1877" height="202" key="GridCell.Tab.0.bottom" timestamp="1588429828362">
+    <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588606016436" />
+    <state width="1877" height="202" key="GridCell.Tab.0.bottom" timestamp="1588606918729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
-    <state width="1877" height="202" key="GridCell.Tab.0.center" timestamp="1588429828362">
+    <state width="1877" height="202" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
+    <state width="1877" height="202" key="GridCell.Tab.0.center" timestamp="1588606918729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
-    <state width="1877" height="202" key="GridCell.Tab.0.left" timestamp="1588429828362">
+    <state width="1877" height="202" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
+    <state width="1877" height="202" key="GridCell.Tab.0.left" timestamp="1588606918729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
-    <state width="1877" height="202" key="GridCell.Tab.0.right" timestamp="1588429828362">
+    <state width="1877" height="202" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
+    <state width="1877" height="202" key="GridCell.Tab.0.right" timestamp="1588606918729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588429828362" />
-    <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588429041698">
+    <state width="1877" height="202" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588606918729" />
+    <state width="1877" height="384" key="GridCell.Tab.1.bottom" timestamp="1588430092020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
-    <state width="1877" height="384" key="GridCell.Tab.1.center" timestamp="1588429041698">
+    <state width="1877" height="384" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
+    <state width="1877" height="384" key="GridCell.Tab.1.center" timestamp="1588430092020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
-    <state width="1877" height="384" key="GridCell.Tab.1.left" timestamp="1588429041698">
+    <state width="1877" height="384" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
+    <state width="1877" height="384" key="GridCell.Tab.1.left" timestamp="1588430092020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
-    <state width="1877" height="384" key="GridCell.Tab.1.right" timestamp="1588429041698">
+    <state width="1877" height="384" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
+    <state width="1877" height="384" key="GridCell.Tab.1.right" timestamp="1588430092020">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588429041698" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1588419638025">
+    <state width="1877" height="384" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588430092020" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1588606404995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588419638025" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588414067080">
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588606404995" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588589908735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588414067080" />
-    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587566891165">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588589908735" />
+    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1588606072254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1587566891165" />
+    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1588606072254" />
     <state x="678" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587671000517">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -308,10 +306,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1090" y="166" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586960755324" />
-    <state x="342" y="215" key="new project wizard" timestamp="1588372605011">
+    <state x="537" y="181" key="new project wizard" timestamp="1588525031753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="342" y="215" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1588372605011" />
+    <state x="537" y="181" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1588525031753" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587598201353">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

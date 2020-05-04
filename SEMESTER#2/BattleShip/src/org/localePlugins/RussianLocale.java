@@ -50,6 +50,7 @@ public class RussianLocale implements LocaleService {
         StringConst.RIGHT_ABC = " А    Б    В   Г   Д    Е   Ж   З   И   К";
         StringConst.LANGUAGE_EDITED = "Язык изменен";
         StringConst.SET_LANG = "Язык";
+        StringConst.CHOOSE_DIFF = "Выберите уровень сложности";
     }
 
     @Override

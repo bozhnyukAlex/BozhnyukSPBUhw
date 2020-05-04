@@ -122,7 +122,7 @@ public class BattleShip extends Application {
         setDisableToButtonsOnSecondField(true);
         playerField = new GameField(GameField.PLAYER_MODE);
         playerField.setId(PLAYER_FIELD_ID);
-        enemyField = new GameField();
+    //    enemyField = new GameField();
         anchorPane.getChildren().add(playerField);
         deleteMenu = new ContextMenu();
         deleteMenu.setId(DELETE_MENU_ID);
@@ -151,6 +151,7 @@ public class BattleShip extends Application {
                 statusLabel.setText(StringConst.LEVEL_EDITED);
             }
         });
+
 
         exitButton.setOnAction(actionEvent -> System.exit(0));
 
