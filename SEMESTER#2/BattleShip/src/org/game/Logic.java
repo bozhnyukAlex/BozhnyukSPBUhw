@@ -21,6 +21,7 @@ public class Logic {
     private GameMode gameMode;
     public static final int PLAYER_SHIPS = 20;
     public static final int ENEMY_SHIPS = 30;
+    private AnnotationConfigApplicationContext context;
 
 
     public Logic(GameMode mode) {
@@ -44,7 +45,7 @@ public class Logic {
     }
 
     public void initAiWithContainer(GameField opponentField, IntelligenceLevel il) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        //context = new AnnotationConfigApplicationContext(Config.class);
         switch (il) {
             case LOW: {
                 enemyAI = context.getBean("enemyAILow", AI.class);
@@ -59,7 +60,8 @@ public class Logic {
                 break;
             }
         }
-        enemyAI.setOpponentField(opponentField);
+        /*System.out.println(opponentField == enemyAI.getOpponentField());
+        enemyAI.setOpponentField(opponentField);*/
     }
 
     public ArrayList<Ship> autoShipGenerate(GameField field) {
@@ -317,4 +319,10 @@ public class Logic {
         int pick = rnd.nextInt(Direction.values().length);
         return Direction.values()[pick];
     }
+
+    public void setContext(AnnotationConfigApplicationContext context) {
+        this.context = context;
+    }
+
+
 }

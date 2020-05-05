@@ -8,12 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/battleMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battleMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/app/BattleShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleShip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/game/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/game/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AppInterface/BattleShipTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/LogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/LogicTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,7 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\Battleship\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ShipTest">
+  <component name="RunManager" selected="JUnit.LogicTest">
     <configuration name="AITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BattleShip" />
       <extension name="coverage">
@@ -166,8 +166,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ShipTest" />
         <item itemvalue="JUnit.LogicTest" />
+        <item itemvalue="JUnit.ShipTest" />
         <item itemvalue="JUnit.GameFieldTest" />
         <item itemvalue="JUnit.AITest" />
         <item itemvalue="JUnit.BattleShipTest" />
@@ -217,6 +217,7 @@
       <workItem from="1588414065906" duration="13363000" />
       <workItem from="1588524755247" duration="2799000" />
       <workItem from="1588589907856" duration="15717000" />
+      <workItem from="1588670917751" duration="4012000" />
     </task>
     <servers />
   </component>
@@ -236,10 +237,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="687" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588418419173" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1588622281905">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1588674510289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588622281905" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588674510289" />
     <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588419504841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -264,46 +265,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588606016436" />
-    <state width="1877" height="312" key="GridCell.Tab.0.bottom" timestamp="1588624323804">
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1588674999237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="312" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588624323804" />
-    <state width="1877" height="312" key="GridCell.Tab.0.center" timestamp="1588624323804">
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588674999237" />
+    <state width="1877" height="261" key="GridCell.Tab.0.center" timestamp="1588674999237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="312" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588624323804" />
-    <state width="1877" height="312" key="GridCell.Tab.0.left" timestamp="1588624323804">
+    <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588674999237" />
+    <state width="1877" height="261" key="GridCell.Tab.0.left" timestamp="1588674999237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="312" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588624323804" />
-    <state width="1877" height="312" key="GridCell.Tab.0.right" timestamp="1588624323804">
+    <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588674999237" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right" timestamp="1588674999237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="312" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588624323804" />
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1588618125051">
+    <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588674999237" />
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1588673163077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588618125051" />
-    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1588618125051">
+    <state width="1877" height="284" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588673163077" />
+    <state width="1877" height="284" key="GridCell.Tab.1.center" timestamp="1588673163077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588618125051" />
-    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1588618125051">
+    <state width="1877" height="284" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588673163077" />
+    <state width="1877" height="284" key="GridCell.Tab.1.left" timestamp="1588673163077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588618125051" />
-    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1588618125051">
+    <state width="1877" height="284" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588673163077" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right" timestamp="1588673163077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588618125051" />
+    <state width="1877" height="284" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588673163077" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1588606404995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588606404995" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588589908735">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1588670921642">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588589908735" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588670921642" />
     <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1588606072254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -332,27 +333,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587598201353" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/app/BattleShip.java</url>
-          <line>237</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/app/BattleShip.java</url>
-          <line>892</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/app/BattleShip.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

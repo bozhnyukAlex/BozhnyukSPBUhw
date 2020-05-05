@@ -109,6 +109,9 @@ public class BattleShip extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         pane = FXMLLoader.load(BattleShip.class.getResource(MENU_PATH));
+       // FXMLLoader loader = new FXMLLoader(BattleShip.class.getResource(MENU_PATH));
+       // loader.setController(this);
+       // pane = loader.load();
         Scene startScene = new Scene(pane, 810, 435);
         stage.setScene(startScene);
         stage.centerOnScreen();
@@ -193,12 +196,12 @@ public class BattleShip extends Application {
                 hideDeleteMenu();
             }
             else if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PLAYING) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && !isEnd && logic.getFightState().equals(FightState.ENEMY_MOVE)) {
-                int plsi = (int) mouseEvent.getY() / Cell.SIZE;
-                int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                if (playerField.getCell(plsi, plsj).isShot() && (playerField.getCell(plsi, plsj).isDeck() || playerField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
+                int plsI = (int) mouseEvent.getY() / Cell.SIZE;
+                int plsJ = (int) mouseEvent.getX() / Cell.SIZE;
+                if (playerField.getCell(plsI, plsJ).isShot() && (playerField.getCell(plsI, plsJ).isDeck() || playerField.getCell(plsI, plsJ).getCellColor().equals(Color.TURQUOISE))) {
                     return;
                 }
-                makeFieldShot(plsi, plsj, playerField);
+                makeFieldShot(plsI, plsJ, playerField);
             }
         });
 
@@ -868,12 +871,6 @@ public class BattleShip extends Application {
         }
         playerShipsLeft.setText("10");
         enemyShipsLeft.setText("10");
-        /*if (mode.equals(GameMode.ONE_PLAYER)) {
-            statusLabel.setText(StringConst.PREPARE);
-        }
-        else if (mode.equals(GameMode.TWO_PLAYERS)) {
-            statusLabel.setText(StringConst.PREPARE_FIRST);
-        }*/
         autoGenerateButton.setDisable(false);
         setDisableToButtonsOnSecondField(false);
         readyButton.setDisable(true);
@@ -884,11 +881,10 @@ public class BattleShip extends Application {
                 updateTriggers();
             }
         }
-        //logic = context.getBean("logic", Logic.class);
-        //logic.setGameMode(mode);
         switch (mode) {
             case ONE_PLAYER: {
                 logic = context.getBean("logicOnePlayer", Logic.class);
+                logic.setContext(context);
                // logic.initAI(playerField, levelToSend);
                 logic.initAiWithContainer(playerField, levelToSend);
                 settingsButton.setDisable(false);
@@ -903,16 +899,6 @@ public class BattleShip extends Application {
             }
         }
         logic.setGameState(GameState.PREPARATION1);
-/* *//*       if (mode.equals(GameMode.ONE_PLAYER)) {
-            logic.initAI(playerField, levelToSend);
-        }*//*
-        logic.setGameState(GameState.PREPARATION1);
-        if (mode.equals(GameMode.ONE_PLAYER)) {
-            settingsButton.setDisable(false);
-        }
-        else if (mode.equals(GameMode.TWO_PLAYERS)) {
-            settingsButton.setDisable(true);
-        }*/
     }
 
     private void setLocale(String localeStr) {
@@ -950,6 +936,10 @@ public class BattleShip extends Application {
         for (LocaleService localeService : serviceLoader) {
             plugNames.add(localeService.getName());
         }
+    }
+
+    public Logic getLogicForTest() {
+        return logic;
     }
 
     public static void main(String[] args) {

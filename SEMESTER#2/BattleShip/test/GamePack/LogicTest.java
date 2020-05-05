@@ -18,6 +18,7 @@ public class LogicTest {
         //logic = new Logic(GameMode.ONE_PLAYER);
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         logic = context.getBean("logic", Logic.class);
+        logic.setContext(context);
         //field = new GameField();
         field = context.getBean("nonField", GameField.class);
         field.initAndDraw();

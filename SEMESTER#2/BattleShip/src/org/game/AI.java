@@ -336,8 +336,4 @@ public class AI {
         this.iLevel = iLevel;
     }
 
-    public void setOpponentField(GameField opponentField) {
-        this.opponentField = opponentField;
-    }
-
 }

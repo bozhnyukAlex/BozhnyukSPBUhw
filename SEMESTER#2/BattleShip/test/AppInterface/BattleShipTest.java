@@ -55,12 +55,19 @@ public class BattleShipTest extends ApplicationTest {
     private Label statusLbl, en1, en2, en3, en4;
     private Label playerLeft, enemyLeft;
     private GameField playerField, enemyField;
+    private BattleShip controller;
+    private Logic logic;
 
 
     @Override
     public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(BattleShip.class.getResource(BattleShip.MENU_PATH));
+        //loader.setController(controller);
         prStage = stage;
-        VBox pane = FXMLLoader.load(BattleShip.class.getResource(BattleShip.MENU_PATH));
+        //VBox pane = FXMLLoader.load(BattleShip.class.getResource(BattleShip.MENU_PATH));
+        VBox pane = loader.load();
+      //  controller = (BattleShip) loader.getController();
         stage.setScene(new Scene(pane));
         stage.show();
         primScreenBounds = Screen.getPrimary().getVisualBounds();
@@ -96,6 +103,7 @@ public class BattleShipTest extends ApplicationTest {
         zeroXPl += playerField.getLayoutX() + 10;
         zeroYPL = zeroYEN = (int) (primScreenBounds.getHeight() - prStage.getHeight()) / 2;
         zeroYPL += playerField.getLayoutY() + 10;
+       // logic = controller.getLogicForTest();
     }
 
     @Test
@@ -119,7 +127,8 @@ public class BattleShipTest extends ApplicationTest {
     public void shipSettingTest() throws InterruptedException {
        // Thread.sleep(30000);
         clickOn(onePlayerBtn);
-        
+     //   logic = controller.getLogicForTest();
+        //assertNotNull(logic);
         clickOn(enable4);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_4);
         clickOn(zeroXPl, zeroYPL);
