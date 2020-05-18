@@ -2,8 +2,6 @@ package org.app;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,7 +23,7 @@ import java.util.ArrayList;
 import java.util.ServiceLoader;
 
 
-public class BattleShip extends Application {
+public class BattleController extends Application {
 
     private static ServiceLoader<LocaleService> serviceLoader;
     @FXML
@@ -108,7 +106,7 @@ public class BattleShip extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        pane = FXMLLoader.load(BattleShip.class.getResource(MENU_PATH));
+        pane = FXMLLoader.load(BattleController.class.getResource(MENU_PATH));
        // FXMLLoader loader = new FXMLLoader(BattleShip.class.getResource(MENU_PATH));
        // loader.setController(this);
        // pane = loader.load();
@@ -937,10 +935,7 @@ public class BattleShip extends Application {
             plugNames.add(localeService.getName());
         }
     }
-
-    public Logic getLogicForTest() {
-        return logic;
-    }
+    
 
     public static void main(String[] args) {
         launch(args);

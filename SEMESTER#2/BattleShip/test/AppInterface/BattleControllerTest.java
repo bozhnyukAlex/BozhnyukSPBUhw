@@ -1,6 +1,6 @@
 package AppInterface;
 
-import org.app.BattleShip;
+import org.app.BattleController;
 import org.app.StringConst;
 import org.game.*;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,7 @@ import java.util.Random;
 
 import static org.junit.Assert.*;
 
-public class BattleShipTest extends ApplicationTest {
+public class BattleControllerTest extends ApplicationTest {
     private String DELETE = "Удалить корабль";
     private String ONE_PLAYER_BUTTON_ID = "#onePlayerButton";
     private String TWO_PLAYERS_BUTTON_ID = "#twoPlayersButton";
@@ -55,14 +55,14 @@ public class BattleShipTest extends ApplicationTest {
     private Label statusLbl, en1, en2, en3, en4;
     private Label playerLeft, enemyLeft;
     private GameField playerField, enemyField;
-    private BattleShip controller;
+    private BattleController controller;
     private Logic logic;
 
 
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(BattleShip.class.getResource(BattleShip.MENU_PATH));
+        loader.setLocation(BattleController.class.getResource(BattleController.MENU_PATH));
         //loader.setController(controller);
         prStage = stage;
         //VBox pane = FXMLLoader.load(BattleShip.class.getResource(BattleShip.MENU_PATH));
