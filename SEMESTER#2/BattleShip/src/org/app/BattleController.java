@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.ServiceLoader;
 
 
-public class BattleController extends Application {
+public class BattleController extends View {
 
     private static ServiceLoader<LocaleService> serviceLoader;
     @FXML
@@ -104,7 +104,7 @@ public class BattleController extends Application {
     private final int DECREASE_PLAYER = 7;
     private final int DECREASE_ENEMY = 8;
 
-    @Override
+   /* @Override
     public void start(Stage stage) throws Exception {
         pane = FXMLLoader.load(BattleController.class.getResource(MENU_PATH));
        // FXMLLoader loader = new FXMLLoader(BattleShip.class.getResource(MENU_PATH));
@@ -117,7 +117,7 @@ public class BattleController extends Application {
         stage.setTitle(StringConst.TITLE);
         stage.getIcons().add(new Image(getClass().getResourceAsStream(ICON_PATH)));
         stage.show();
-    }
+    }*/
 
     @FXML
     public void initialize() {
@@ -936,8 +936,8 @@ public class BattleController extends Application {
         }
     }
     
-
+/*
     public static void main(String[] args) {
         launch(args);
-    }
+    }*/
 }
