@@ -672,7 +672,7 @@ public class BattleController extends View {
         }
     }
 
-    private void updateEnableLabels() {
+   /* private void updateEnableLabels() {
         oneShipToGo = 4;
         twoShipToGo = 3;
         threeShipToGo = 2;
@@ -681,7 +681,7 @@ public class BattleController extends View {
         twoShipToGoLab.setText("3");
         threeShipToGoLab.setText("2");
         fourShipToGoLab.setText("1");
-    }
+    }*/
 
     private void updateTriggers() {
         captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
@@ -713,7 +713,7 @@ public class BattleController extends View {
         }
     }
 
-    private void toggleRightField(int mode) {
+  /*  private void toggleRightField(int mode) {
         switch (mode) {
             case TO_BUTTON_PANE: {
                 anchorPane.getChildren().remove(enemyField);
@@ -726,9 +726,9 @@ public class BattleController extends View {
                 break;
             }
         }
-    }
+    }*/
 
-    private void toggleLeftField(int mode) {
+    /*private void toggleLeftField(int mode) {
         switch (mode) {
             case TO_BUTTON_PANE: {
                 anchorPane.getChildren().remove(playerField);
@@ -745,7 +745,7 @@ public class BattleController extends View {
                 break;
             }
         }
-    }
+    }*/
 
     private void deleteShip(int di, int dj, GameField field) {
         if (field.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {

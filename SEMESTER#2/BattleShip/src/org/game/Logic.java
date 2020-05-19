@@ -22,11 +22,16 @@ public class Logic {
     public static final int PLAYER_SHIPS = 20;
     public static final int ENEMY_SHIPS = 30;
     private AnnotationConfigApplicationContext context;
+    private boolean[] captureTriggers; //срабатывает при нажатии на кнопки выбора корабля
+    private int[] enableCounts;
+
 
 
     public Logic(GameMode mode) {
         playerShipsLeft = 10;
         enemyShipsLeft = 10;
+        captureTriggers = new boolean[] {false, false, false, false, false};
+        enableCounts = new int[] {0, 4, 3, 2, 1};
         switch (mode) {
             case ONE_PLAYER: {
                 playerShips = new ArrayList<Ship>();
@@ -323,6 +328,44 @@ public class Logic {
     public void setContext(AnnotationConfigApplicationContext context) {
         this.context = context;
     }
+
+    private void setTrigger(int num, boolean state) { ///ЕСЛИ state == true - то цикл, а иначе можно просто установить
+        for (int i = 0; i < captureTriggers.length; i++) {
+            if (i != num) {
+                captureTriggers[i] = false;
+            }
+            else {
+                captureTriggers[i] = state;
+            }
+        }
+    }
+    private void updateEnableCounts() {
+        enableCounts[1] = 4;
+        enableCounts[2] = 3;
+        enableCounts[3] = 2;
+        enableCounts[4] = 1;
+    }
+
+    private void updateTriggers() {
+        captureTriggers[0] = captureTriggers[1] = captureTriggers[2] = captureTriggers[3] = captureTriggers[4] = false;
+    }
+
+    public void updateParams() {
+        updateEnableCounts();
+        updateTriggers();
+    }
+
+    public void processShipEnableClick(int num) {
+        setTrigger(num, true);
+    }
+
+
+
+    public int getEnableCounts(int decksCount) {
+        return enableCounts[decksCount];
+    }
+
+
 
 
 }

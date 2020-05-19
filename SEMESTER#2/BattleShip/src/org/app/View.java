@@ -10,20 +10,24 @@ import javafx.scene.layout.VBox;
 import org.game.GameField;
 import org.game.Logic;
 
-public class View extends VBox {
+public class View {
     private Logic logic;
+    private final String PLAYER_FIELD_ID = "playerField";
+    private final String ENEMY_FIELD_ID = "enemyField";
+    public static final int TO_BUTTON_PANE = 5;
+    public static final int TO_ENEMY_FIELD = 6;
     @FXML
     private VBox pane;
     @FXML
     private AnchorPane settingsPane;
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane anchorPane; // отвечает за размещение полей и области с кнопками
     @FXML
     private Label statusLabel;
 
-    private GameField playerField;
+    public GameField playerField;
 
-    private GameField enemyField; // здесь полня только для оображения самих иконок
+    public GameField enemyField; // здесь полня только для оображения самих иконок
     @FXML
     private Label playerShipsLeft;
     @FXML
@@ -48,6 +52,69 @@ public class View extends VBox {
     private Label leftABC;
     @FXML
     private Label rightABC;
+
+    public void toggleRightField(int mode) {
+        switch (mode) {
+            case TO_BUTTON_PANE: {
+                anchorPane.getChildren().remove(enemyField);
+                anchorPane.getChildren().add(enemyPane);
+                break;
+            }
+            case TO_ENEMY_FIELD: {
+                anchorPane.getChildren().remove(enemyPane);
+                anchorPane.getChildren().add(enemyField);
+                break;
+            }
+        }
+    }
+
+    public void toggleLeftField(int mode) {
+        switch (mode) {
+            case TO_BUTTON_PANE: {
+                anchorPane.getChildren().remove(playerField);
+                enemyPane.setLayoutX(95);
+                enemyPane.setLayoutY(126);
+                anchorPane.getChildren().add(enemyPane);
+                break;
+            }
+            case TO_ENEMY_FIELD: {
+                enemyPane.setLayoutX(367);
+                enemyPane.setLayoutY(126);
+                anchorPane.getChildren().remove(enemyPane);
+                anchorPane.getChildren().add(playerField);
+                break;
+            }
+        }
+    }
+
+    public void initShipsLeftLabels() {
+        playerShipsLeft.setText("10");
+        enemyShipsLeft.setText("10");
+    }
+
+    public void setStatusLabel(String statusText) {
+        statusLabel.setText(statusText);
+    }
+
+
+
+    public void updateEnableLabels() {
+        //нужно еще апдейт счетчиков сделать в
+        oneShipToGoLab.setText("4");
+        twoShipToGoLab.setText("3");
+        threeShipToGoLab.setText("2");
+        fourShipToGoLab.setText("1");
+    }
+
+    public void setZeroToEnableShipsLabels() {
+        oneShipToGoLab.setText("0");
+        twoShipToGoLab.setText("0");
+        threeShipToGoLab.setText("0");
+        fourShipToGoLab.setText("0");
+    }
+
+
+
 
 
 
