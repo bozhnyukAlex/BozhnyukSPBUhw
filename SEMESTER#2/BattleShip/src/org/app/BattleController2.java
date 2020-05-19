@@ -3,10 +3,15 @@ package org.app;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import org.game.GameField;
+import org.game.GameMode;
 import org.game.Logic;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class BattleController2 extends View {
 
+
+    private AnnotationConfigApplicationContext context;
     private Logic logic;
     @FXML
     private Button onePlayerButton;
@@ -31,19 +36,29 @@ public class BattleController2 extends View {
     @FXML
     private ComboBox langBox;
 
+    private boolean isEnd = true;
+
+    @FXML
+    public void initialize() {
+        context = new AnnotationConfigApplicationContext(Config.class);
+
+    }
+
+
+
     @FXML
     public void onePlayerButtonClick() {
-
+        gameStart(GameMode.ONE_PLAYER);
     }
 
     @FXML
     public void twoPlayerButtonClick() {
-
+        gameStart(GameMode.TWO_PLAYERS);
     }
 
     @FXML
     public void exitButtonClick() {
-
+        System.exit(0);
     }
 
     @FXML
@@ -88,7 +103,31 @@ public class BattleController2 extends View {
 
     @FXML
     public void onEnemyFieldClick() {
-        
+
+    }
+
+    private void gameStart(GameMode mode) {
+        isEnd = false;
+        if (logic != null) {
+            switch (logic.getGameMode()) {
+                case ONE_PLAYER: {
+                    break;
+                }
+                case TWO_PLAYERS: {
+                    break;
+                }
+            }
+        }
+
+    }
+
+    private void setDisableToButtonsOnSecondField(boolean state) {
+        enable1Ship.setDisable(state);
+        enable2Ship.setDisable(state);
+        enable3Ship.setDisable(state);
+        enable4Ship.setDisable(state);
+        readyButton.setDisable(state);
+        autoGenerateButton.setDisable(state);
     }
 
 

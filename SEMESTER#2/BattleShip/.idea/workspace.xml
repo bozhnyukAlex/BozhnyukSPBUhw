@@ -7,10 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/app/BattleController2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/app/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/battleMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battleMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/app/BattleController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleController2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -228,7 +227,7 @@
       <workItem from="1589728659785" duration="2643000" />
       <workItem from="1589786992036" duration="2089000" />
       <workItem from="1589789281257" duration="4309000" />
-      <workItem from="1589918840046" duration="1826000" />
+      <workItem from="1589918840046" duration="3583000" />
     </task>
     <servers />
   </component>
@@ -344,10 +343,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588608266698" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587598201353">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589921863741">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587598201353" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589921863741" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

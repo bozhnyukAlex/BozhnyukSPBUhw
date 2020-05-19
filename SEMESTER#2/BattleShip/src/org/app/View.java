@@ -24,30 +24,31 @@ public class View extends VBox {
     private GameField playerField;
 
     private GameField enemyField; // здесь полня только для оображения самих иконок
-
+    @FXML
     private Label playerShipsLeft;
-
+    @FXML
     private Label enemyShipsLeft;
-
+    @FXML
     private Pane enemyPane; //вся панель с кнопками выборов
-
+    @FXML
     private Label oneShipToGoLab;
-
+    @FXML
     private Label twoShipToGoLab;
-
+    @FXML
     private Label threeShipToGoLab;
-
+    @FXML
     private Label fourShipToGoLab;
-
+    @FXML
     private Label lSLeft;
-
+    @FXML
     private Label rSLeft;
-
+    @FXML
     private ComboBox langBox;
-
+    @FXML
     private Label leftABC;
-
+    @FXML
     private Label rightABC;
+
 
 
 }
