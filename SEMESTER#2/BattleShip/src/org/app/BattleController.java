@@ -337,7 +337,7 @@ public class BattleController extends View {
         int INCREASE_BUSY = 1;
         if (getTrigger() == 1) {
             if (clickedField.getCell(cli, clj).isBusy()) {
-                statusLabel.setText(StringConst.CELL_IS_BUSY);
+                statusLabel.setText(StringConst.CELL_IS_BUSY); //!!!
                 return;
             }
             clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.RED);
@@ -352,10 +352,10 @@ public class BattleController extends View {
                 logic.addEnemyShip(ship1);
             }
             clickedField.setBusyAroundCell(cli, clj, INCREASE_BUSY);
-            decreaseShipsToGo();
-            setLabelAfterSettingShip();
+            decreaseShipsToGo(); ///!!!
+            setLabelAfterSettingShip(); /// !!!
             setTrigger(1, false);
-            if (logic.checkPreparation()) {
+            if (logic.checkPreparation()) { //!!!
                 readyButton.setDisable(false);
             }
         }

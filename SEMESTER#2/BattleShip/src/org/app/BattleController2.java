@@ -1,7 +1,5 @@
 package org.app;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -117,7 +115,7 @@ public class BattleController2 extends View {
                                     return;
                                 }
                                 makeFieldShot(plsi, plsj, enemyField);
-                                while (logic.isEnemyMove() && logic.isPlaying()) {
+                                while (logic.isEnemyMove() && logic.playing()) {
                                     Cell aiShot = logic.makeAiAttack();
                                     makeFieldShot(aiShot.getI(), aiShot.getJ(), playerField);
                                 }
@@ -140,7 +138,13 @@ public class BattleController2 extends View {
                         setDisableToEnableButtons(false);
                         settingsButton.setDisable(true);
                         enemyField.setOnMouseClicked(mouseEvent -> {
-
+                            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PREPARATION2)) {
+                                int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
+                                cli /= Cell.SIZE;
+                                clj /= Cell.SIZE;
+                                setShipToClickedField(cli, clj, enemyField);
+                                hideDeleteMenu();
+                            }
                         });
 
                         enemyField.setOnContextMenuRequested(contextMenuEvent -> {
@@ -168,7 +172,6 @@ public class BattleController2 extends View {
                             }
                         });
                     }
-
                     break;
                 }
             }
@@ -176,8 +179,24 @@ public class BattleController2 extends View {
 
 
         playerField.setOnMouseClicked(mouseEvent ->  {
-            if (logic == null || logic.end()) {
+            if (logic == null || (logic.firstPreparing() && logic.noEnableButtonsClicked()) || logic.secondPreparing()
+                    || (logic.playing() && logic.isOnePlayerMode()) || (logic.playing() && logic.isTwoPlayersMode() && logic.enemyMove())) {
                 return;
+            }
+            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.firstPreparing()) {
+                int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
+                cli /= Cell.SIZE;
+                clj /= Cell.SIZE;
+                setShipToClickedField(cli, clj, playerField);
+                hideDeleteMenu();
+            }
+            else if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PLAYING) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getFightState().equals(FightState.ENEMY_MOVE)) {
+                int plsI = (int) mouseEvent.getY() / Cell.SIZE;
+                int plsJ = (int) mouseEvent.getX() / Cell.SIZE;
+                if (playerField.getCell(plsI, plsJ).isShot() && (playerField.getCell(plsI, plsJ).isDeck() || playerField.getCell(plsI, plsJ).getCellColor().equals(Color.TURQUOISE))) {
+                    return;
+                }
+                makeFieldShot(plsI, plsJ, playerField);
             }
         });
 
@@ -185,16 +204,12 @@ public class BattleController2 extends View {
             int rci = (int) contextMenuEvent.getY() / Cell.SIZE, rcj = (int) contextMenuEvent.getX() / Cell.SIZE;
             menuAction(rci, rcj, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY(), playerField);
         });
-
-
-
-
     }
 
 
 
     private void gameStart(GameMode mode) {
-        isEnd = false;
+        //isEnd = false;
         if (logic != null) {
             switch (logic.getGameMode()) {
                 case ONE_PLAYER: {
@@ -264,17 +279,17 @@ public class BattleController2 extends View {
             //logic.setShips(logic.autoShipGenerate(playerField), Logic.PLAYER_SHIPS);
             logic.autoGenerate(playerField);
            // field.drawShips(logic.getShips(Logic.PLAYER_SHIPS), Color.RED);
-            drawShips(playerField);
+            drawShips(playerField, logic.getShips(Logic.PLAYER_SHIPS));
         }
         else if (field.equals(enemyField)) {
          //   logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
             logic.autoGenerate(enemyField);
             //field.drawShips(logic.getShips(Logic.ENEMY_SHIPS), Color.RED);
-            drawShips(enemyField);
+            drawShips(enemyField, logic.getShips(Logic.ENEMY_SHIPS));
         }
       //  setZeroToEnableLabelsAndCounts();
         logic.updateParams();
-        updateEnableLabels();
+        setZeroToEnableShipsLabels();
         setDisableToButtonsOnSecondField(true);
         readyButton.setDisable(false);
         setStatusLabel(StringConst.YOU_ARE_READY);
@@ -354,7 +369,7 @@ public class BattleController2 extends View {
         readyButton.setDisable(true);
     }
 
-    public void menuAction(int rci, int rcj, double scrX, double scrY, GameField field) {
+    private void menuAction(int rci, int rcj, double scrX, double scrY, GameField field) {
         if (field.ofEnemy()) {
             if (logic.secondPreparing()) {
                 if (enemyField.getCell(rci, rcj).getCellColor().equals(Color.RED) || enemyField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
@@ -372,6 +387,26 @@ public class BattleController2 extends View {
             itemDelete.setOnAction(actionEvent -> deleteShip(rci, rcj, playerField));
         }
     }
+
+    private void setShipToClickedField(int cli, int clj, GameField clickedField) {
+        String message = logic.processSettingShip(cli, clj, clickedField);
+        setStatusLabel(message);
+        setLabelToGo(logic.getEnableCounts());
+        disableButtonsIfNeed();
+        if (logic.allShipsAreReady()) {
+            readyButton.setDisable(false);
+        }
+
+    }
+
+    private void disableButtonsIfNeed() {
+        enable1Ship.setDisable(logic.getEnableCounts(1) <= 0);
+        enable2Ship.setDisable(logic.getEnableCounts(2) <= 0);
+        enable3Ship.setDisable(logic.getEnableCounts(3) <= 0);
+        enable4Ship.setDisable(logic.getEnableCounts(4) <= 0);
+    }
+
+
 
 
 

@@ -13,7 +13,7 @@ import org.game.Ship;
 import java.util.ArrayList;
 
 public class View {
-    private Logic logic;
+
     private final String PLAYER_FIELD_ID = "playerField";
     private final String ENEMY_FIELD_ID = "enemyField";
     public static final int TO_BUTTON_PANE = 5;
@@ -59,9 +59,6 @@ public class View {
 
     public ContextMenu deleteMenu;
     public MenuItem itemDelete;
-
-    public View() {
-    }
 
     public void toggleRightField(int mode) {
         switch (mode) {
@@ -122,8 +119,8 @@ public class View {
         fourShipToGoLab.setText("0");
     }
 
-    public void drawShips(GameField field) {
-        field.drawShips(logic.getShips(Logic.PLAYER_SHIPS), Color.RED);
+    public void drawShips(GameField field, ArrayList<Ship> ships) {
+        field.drawShips(ships, Color.RED);
     }
 
     public void decreaseLabelHP(int mode) {
@@ -171,6 +168,13 @@ public class View {
                 break;
             }
         }
+    }
+
+    public void setLabelToGo(int ... values) {
+        oneShipToGoLab.setText(Integer.toString(values[1]));
+        twoShipToGoLab.setText(Integer.toString(values[2]));
+        threeShipToGoLab.setText(Integer.toString(values[3]));
+        fourShipToGoLab.setText(Integer.toString(values[4]));
     }
 
     public String status() {
