@@ -474,6 +474,72 @@ public class Logic {
         }
     }
 
+    private void deleteAllDecks(int di, int dj, GameField field) {
+        if (field.getCell(di, dj).getCellColor().equals(Color.RED)) {
+            field.getCell(di, dj).setCellColor(Color.WHITE);
+            field.getCell(di, dj).setDeck(false);
+            field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
+            int DECREASE_BUSY = -1;
+            field.setBusyAroundCell(di, dj, DECREASE_BUSY);
+            if (di - 1 >= 0 && field.getCell(di - 1, dj).getCellColor().equals(Color.RED)) {
+                deleteAllDecks(di - 1, dj, field);
+            }
+            if (di + 1 < GameField.SIZE && field.getCell(di + 1, dj).getCellColor().equals(Color.RED)) { ///don't write else!!!!!
+                deleteAllDecks(di + 1, dj, field);
+            }
+            if (dj + 1 < GameField.SIZE && field.getCell(di, dj + 1).getCellColor().equals(Color.RED)) {
+                deleteAllDecks(di, dj + 1, field);
+            }
+            if (dj - 1 >= 0 && field.getCell(di, dj - 1).getCellColor().equals(Color.RED)) {
+                deleteAllDecks(di, dj - 1, field);
+            }
+        }
+        else if (field.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
+            field.getCell(di, dj).setCellColor(Color.WHITE);
+            field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
+        }
+    }
+
+    public int deleteProcessing(int di, int dj, GameField field) {
+        if (field.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
+            deleteAllDecks(di, dj, field);
+            if (field.ofPlayer()) {
+                //logic.getShips(Logic.PLAYER_SHIPS).remove(logic.getShips(Logic.PLAYER_SHIPS).size() - 1);
+                playerShips.remove(playerShips.size() - 1);
+            }
+            else if (field.ofEnemy()) {
+                //logic.getShips(Logic.ENEMY_SHIPS).remove(logic.getShips(Logic.ENEMY_SHIPS).size() - 1);
+                enemyShips.remove(enemyShips.size() - 1);
+            }
+            clickCount--;
+            return -1;
+        }
+        int shipLength = 0;
+        if (field.ofPlayer()) {
+            for (Ship ship : playerShips) {
+                if (ship.hasDeckWithThisCoordinates(di, dj)) {
+                    shipLength = ship.getLength();
+                    //logic.getShips(Logic.PLAYER_SHIPS).remove(ship);
+                    playerShips.remove(ship);
+                    break;
+                }
+            }
+        }
+        else if (field.ofEnemy()){
+            for (Ship ship : enemyShips) {
+                if (ship.hasDeckWithThisCoordinates(di, dj)) {
+                    shipLength = ship.getLength();
+                    //logic.getShips(Logic.ENEMY_SHIPS).remove(ship);
+                    enemyShips.remove(ship);
+                    break;
+                }
+            }
+        }
+        deleteAllDecks(di, dj, field);
+        enableCounts[shipLength]++;
+        return shipLength;
+    }
+
 
 
 }

@@ -1,9 +1,7 @@
 package org.app;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -58,6 +56,9 @@ public class View {
     private Label leftABC;
     @FXML
     private Label rightABC;
+
+    public ContextMenu deleteMenu;
+    public MenuItem itemDelete;
 
     public View() {
     }
@@ -138,6 +139,42 @@ public class View {
                 break;
             }
         }
+    }
+
+    public void hideDeleteMenu() {
+        if (deleteMenu.isShowing()) {
+            deleteMenu.hide();
+        }
+    }
+
+    public void increaseShipsToGo(int num) {
+        int val;
+        switch (num) {
+            case 1: {
+                val = Integer.parseInt(oneShipToGoLab.getText()) + 1;
+                oneShipToGoLab.setText(Integer.toString(val));
+                break;
+            }
+            case 2: {
+                val = Integer.parseInt(twoShipToGoLab.getText()) + 1;
+                twoShipToGoLab.setText(Integer.toString(val));
+                break;
+            }
+            case 3: {
+                val = Integer.parseInt(threeShipToGoLab.getText()) + 1;
+                threeShipToGoLab.setText(Integer.toString(val));
+                break;
+            }
+            case 4: {
+                val = Integer.parseInt(fourShipToGoLab.getText()) + 1;
+                fourShipToGoLab.setText(Integer.toString(val));
+                break;
+            }
+        }
+    }
+
+    public String status() {
+        return statusLabel.getText();
     }
 
 

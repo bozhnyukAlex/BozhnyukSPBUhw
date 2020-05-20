@@ -226,7 +226,7 @@ public class BattleController extends View {
                 enemyField = context.getBean("enemyField", GameField.class);
                 enemyField.setId(ENEMY_FIELD_ID);
                 toggleRightField(TO_ENEMY_FIELD);
-                logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
+       //         logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
                 settingsButton.setDisable(true);
                 logic.setFightState(FightState.PLAYER_MOVE);
                 statusLabel.setText(StringConst.FIGHT);
@@ -254,8 +254,10 @@ public class BattleController extends View {
                    // enemyField = new GameField(GameField.ENEMY_MODE);
                     enemyField = context.getBean("enemyField", GameField.class);
                     enemyField.setId(ENEMY_FIELD_ID);
+
                     toggleRightField(TO_ENEMY_FIELD);
                     toggleLeftField(TO_BUTTON_PANE);
+
                     statusLabel.setText(StringConst.PREPARE_SECOND);
                     updateEnableLabels();
                     setDisableToEnableButtons(false);
@@ -626,11 +628,11 @@ public class BattleController extends View {
         }
     }
 
-    private void hideDeleteMenu() {
+/*    private void hideDeleteMenu() {
         if (deleteMenu.isShowing()) {
             deleteMenu.hide();
         }
-    }
+    }*/
 
     private void setTrigger(int num, boolean state) { ///ЕСЛИ state == true - то цикл, а иначе можно просто установить
         for (int i = 0; i < captureTriggers.length; i++) {
@@ -809,7 +811,7 @@ public class BattleController extends View {
             statusLabel.setText(StringConst.CHOOSE_SHIP);
         }
         readyButton.setDisable(true);
-        deleteAllDecks(di, dj, field );
+        deleteAllDecks(di, dj, field);
     }
 
   /*  private void decreaseLabelHP(int mode) {
@@ -880,7 +882,7 @@ public class BattleController extends View {
             if (!logic.getShips(Logic.PLAYER_SHIPS).isEmpty()) {
                 playerField.update();
                 updateEnableLabels();
-                updateTriggers();
+            //    updateTriggers();
             }
         }
         switch (mode) {

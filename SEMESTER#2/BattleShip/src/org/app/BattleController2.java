@@ -39,8 +39,7 @@ public class BattleController2 extends View {
     private Button readyButton;
     @FXML
     private ComboBox langBox;
-    private ContextMenu deleteMenu;
-    private MenuItem itemDelete;
+
     public static final String DELETE_MENU_ID = "deleteMenu";
 
     private boolean isEnd = true; //пойдет в Logic, либо потом заменим
@@ -130,12 +129,50 @@ public class BattleController2 extends View {
                 }
 
                 case TWO_PLAYERS: {
+                    if (logic.firstPreparing()) { //если готовился, то должен начать готовиться второй
+                        logic.setGameState(GameState.PREPARATION2);
+                        initField(GameField.ENEMY_MODE);
+                        toggleRightField(TO_ENEMY_FIELD);
+                        toggleLeftField(TO_BUTTON_PANE);
+                        setStatusLabel(StringConst.PREPARE_SECOND);
+                        logic.updateParams();
+                        updateEnableLabels();
+                        setDisableToEnableButtons(false);
+                        settingsButton.setDisable(true);
+                        enemyField.setOnMouseClicked(mouseEvent -> {
 
+                        });
+
+                        enemyField.setOnContextMenuRequested(contextMenuEvent -> {
+
+                        });
+
+
+                    }
+                    else if (logic.secondPreparing()) {
+                        logic.setGameState(GameState.PLAYING);
+                        logic.setFightState(FightState.PLAYER_MOVE);
+                        setStatusLabel(StringConst.MOVE_FIRST);
+                        toggleLeftField(TO_ENEMY_FIELD);
+                        playerField.redraw();
+                        enemyField.redraw();
+                        enemyField.setOnMouseClicked(mouseEvent -> {
+                            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getFightState().equals(FightState.PLAYER_MOVE) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getState().equals(GameState.PLAYING)) {
+                                int plsi = (int) mouseEvent.getY() / Cell.SIZE;
+                                int plsj = (int) mouseEvent.getX() / Cell.SIZE;
+                                if (enemyField.getCell(plsi, plsj).isShot() && (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
+                                    return;
+                                }
+                                makeFieldShot(plsi, plsj, enemyField);
+                            }
+                        });
+                    }
 
                     break;
                 }
             }
         });
+
 
 
 
@@ -293,6 +330,30 @@ public class BattleController2 extends View {
                 }
             }
         }
+    }
+
+    public void setDisableToEnableButtons(boolean state) {
+        enable1Ship.setDisable(state);
+        enable2Ship.setDisable(state);
+        enable3Ship.setDisable(state);
+        enable4Ship.setDisable(state);
+    }
+
+    private void deleteShip(int di, int dj, GameField field) {
+        int shipLength = logic.deleteProcessing(di, dj, field);
+        if (shipLength == -1) {
+            return;
+        }
+        setDisableToEnableButtons(logic.getEnableCounts(shipLength) <= 0);
+        increaseShipsToGo(shipLength);
+        if (status().equals(StringConst.YOU_ARE_READY)) {
+            setStatusLabel(StringConst.CHOOSE_SHIP);
+        }
+        readyButton.setDisable(true);
+    }
+
+    public void menuAction(int rci, int rcj, double scrX, double scrY, GameField field) {
+
     }
 
 
