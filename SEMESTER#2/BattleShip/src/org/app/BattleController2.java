@@ -144,7 +144,8 @@ public class BattleController2 extends View {
                         });
 
                         enemyField.setOnContextMenuRequested(contextMenuEvent -> {
-
+                            int rci = (int) contextMenuEvent.getY() / Cell.SIZE, rcj = (int) contextMenuEvent.getX() / Cell.SIZE;
+                            menuAction(rci, rcj, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY(), enemyField);
                         });
 
 
@@ -174,22 +175,23 @@ public class BattleController2 extends View {
         });
 
 
+        playerField.setOnMouseClicked(mouseEvent ->  {
+            if (logic == null || logic.end()) {
+                return;
+            }
+        });
+
+        playerField.setOnContextMenuRequested(contextMenuEvent -> {
+            int rci = (int) contextMenuEvent.getY() / Cell.SIZE, rcj = (int) contextMenuEvent.getX() / Cell.SIZE;
+            menuAction(rci, rcj, contextMenuEvent.getScreenX(), contextMenuEvent.getScreenY(), playerField);
+        });
+
 
 
 
     }
 
 
-
-    @FXML
-    public void onPlayerFieldClick() {
-
-    }
-
-    @FXML
-    public void onEnemyFieldClick() {
-
-    }
 
     private void gameStart(GameMode mode) {
         isEnd = false;
@@ -353,7 +355,22 @@ public class BattleController2 extends View {
     }
 
     public void menuAction(int rci, int rcj, double scrX, double scrY, GameField field) {
-
+        if (field.ofEnemy()) {
+            if (logic.secondPreparing()) {
+                if (enemyField.getCell(rci, rcj).getCellColor().equals(Color.RED) || enemyField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
+                    deleteMenu.show(enemyField, scrX, scrY);
+                }
+            }
+            itemDelete.setOnAction(actionEvent1 -> deleteShip(rci, rcj, enemyField));
+        }
+        else if (field.ofPlayer()) {
+            if (logic.firstPreparing()) {
+                if (playerField.getCell(rci, rcj).getCellColor().equals(Color.RED) || playerField.getCell(rci, rcj).getCellColor().equals(Color.ORANGE)) {
+                    deleteMenu.show(playerField, scrX, scrY);
+                }
+            }
+            itemDelete.setOnAction(actionEvent -> deleteShip(rci, rcj, playerField));
+        }
     }
 
 

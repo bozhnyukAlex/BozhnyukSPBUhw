@@ -407,6 +407,10 @@ public class Logic {
         return state.equals(GameState.PREPARATION2);
     }
 
+    public boolean end() {
+        return state.equals(GameState.END);
+    }
+
     public boolean isPlayerMove() {
         return fightState.equals(FightState.PLAYER_MOVE);
     }

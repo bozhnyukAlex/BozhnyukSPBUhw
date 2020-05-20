@@ -8,9 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/BattleController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleController2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/app/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/game/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Logic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -228,7 +226,7 @@
       <workItem from="1589789281257" duration="4309000" />
       <workItem from="1589918840046" duration="9041000" />
       <workItem from="1589928515146" duration="24000" />
-      <workItem from="1589967136867" duration="21187000" />
+      <workItem from="1589967136867" duration="22402000" />
     </task>
     <servers />
   </component>
