@@ -15,7 +15,7 @@
          <children>
             <Button fx:id="onePlayerButton" layoutX="647.0" layoutY="119.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" text="Одиночная игра"/>
             <Button fx:id="exitButton" layoutX="647.0" layoutY="299.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" text="Выход" />
-            <Button fx:id="settingsButton" layoutX="647.0" layoutY="239.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" text="Сложность" />
+            <Button fx:id="settingsButton" layoutX="647.0" layoutY="239.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="137.0" text="Сложность" disable="true" />
             <Label fx:id="statusLabel" alignment="CENTER" layoutX="89.0" layoutY="48.0" prefHeight="35.0" prefWidth="632.0" text="Состояние игры">
                <font>
                   <Font size="24.0" />

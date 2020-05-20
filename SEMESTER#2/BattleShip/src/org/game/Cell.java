@@ -92,6 +92,7 @@ public class Cell {
 
     public void drawDamaged(GraphicsContext gc) {
         gc.setFill(Color.ORANGE);
+        //setCellColor(Color.ORANGE);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 

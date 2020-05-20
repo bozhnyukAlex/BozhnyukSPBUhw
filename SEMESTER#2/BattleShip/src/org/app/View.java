@@ -7,8 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import org.game.GameField;
 import org.game.Logic;
+import org.game.Ship;
+
+import java.util.ArrayList;
 
 public class View {
     private Logic logic;
@@ -16,12 +20,14 @@ public class View {
     private final String ENEMY_FIELD_ID = "enemyField";
     public static final int TO_BUTTON_PANE = 5;
     public static final int TO_ENEMY_FIELD = 6;
+    public static final int DECREASE_PLAYER = 7;
+    public static final int DECREASE_ENEMY = 8;
     @FXML
     private VBox pane;
     @FXML
     private AnchorPane settingsPane;
     @FXML
-    private AnchorPane anchorPane; // отвечает за размещение полей и области с кнопками
+    public AnchorPane anchorPane; // отвечает за размещение полей и области с кнопками
     @FXML
     private Label statusLabel;
 
@@ -52,6 +58,9 @@ public class View {
     private Label leftABC;
     @FXML
     private Label rightABC;
+
+    public View() {
+    }
 
     public void toggleRightField(int mode) {
         switch (mode) {
@@ -99,7 +108,6 @@ public class View {
 
 
     public void updateEnableLabels() {
-        //нужно еще апдейт счетчиков сделать в
         oneShipToGoLab.setText("4");
         twoShipToGoLab.setText("3");
         threeShipToGoLab.setText("2");
@@ -111,6 +119,25 @@ public class View {
         twoShipToGoLab.setText("0");
         threeShipToGoLab.setText("0");
         fourShipToGoLab.setText("0");
+    }
+
+    public void drawShips(GameField field) {
+        field.drawShips(logic.getShips(Logic.PLAYER_SHIPS), Color.RED);
+    }
+
+    public void decreaseLabelHP(int mode) {
+        switch (mode) {
+            case DECREASE_PLAYER: {
+                int playerHPD = Integer.parseInt(playerShipsLeft.getText()) - 1;
+                playerShipsLeft.setText(Integer.toString(playerHPD));
+                break;
+            }
+            case DECREASE_ENEMY: {
+                int enemyHPD = Integer.parseInt(enemyShipsLeft.getText()) - 1;
+                enemyShipsLeft.setText(Integer.toString(enemyHPD));
+                break;
+            }
+        }
     }
 
 

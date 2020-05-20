@@ -15,6 +15,7 @@ public class GameField extends Canvas {
     public static final int PLAYER_MODE = 3;
     public static final int ENEMY_MODE = 4;
     private Cell[][] cells;
+    private int accessory; //3 - player, 4 - enemy
 
     public GameField(int mode) {
         switch (mode) {
@@ -29,6 +30,7 @@ public class GameField extends Canvas {
                 break;
             }
         }
+        accessory = mode;
         setWidth(240);
         setHeight(240);
         initAndDraw();
@@ -114,5 +116,17 @@ public class GameField extends Canvas {
             }
         }
         return false;
+    }
+
+    public int getAccessory() {
+        return accessory;
+    }
+
+    public boolean ofPlayer() {
+        return accessory == GameField.PLAYER_MODE;
+    }
+
+    public boolean ofEnemy() {
+        return accessory == GameField.ENEMY_MODE;
     }
 }

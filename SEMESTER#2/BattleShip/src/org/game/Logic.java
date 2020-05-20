@@ -24,6 +24,7 @@ public class Logic {
     private AnnotationConfigApplicationContext context;
     private boolean[] captureTriggers; //срабатывает при нажатии на кнопки выбора корабля
     private int[] enableCounts;
+    private int clickCount = 0;
 
 
 
@@ -69,7 +70,7 @@ public class Logic {
         enemyAI.setOpponentField(opponentField);*/
     }
 
-    public ArrayList<Ship> autoShipGenerate(GameField field) {
+    private ArrayList<Ship> autoShipGenerate(GameField field) {
         ArrayList<Ship> resShip = new ArrayList<Ship>();
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         Random rnd = new Random();
@@ -365,6 +366,113 @@ public class Logic {
         return enableCounts[decksCount];
     }
 
+    public void fieldClick() {
+        clickCount++;
+    }
+
+    public int fieldClickCount() {
+        return clickCount;
+    }
+
+    public void autoGenerate(GameField field) {
+        switch (field.getAccessory()) {
+            case GameField.PLAYER_MODE: {
+                playerShips = autoShipGenerate(field);
+                break;
+            }
+            case GameField.ENEMY_MODE: {
+                enemyShips = autoShipGenerate(field);
+                break;
+            }
+        }
+    }
+
+    public boolean playerLose() {
+        return playerShipsLeft == 0;
+    }
+
+    public boolean enemyLose() {
+        return enemyShipsLeft == 0;
+    }
+
+    public boolean isPlaying() {
+        return state.equals(GameState.PLAYING);
+    }
+
+    public boolean firstPreparing() {
+        return state.equals(GameState.PREPARATION1);
+    }
+
+    public boolean secondPreparing() {
+        return state.equals(GameState.PREPARATION2);
+    }
+
+    public boolean isPlayerMove() {
+        return fightState.equals(FightState.PLAYER_MOVE);
+    }
+
+    public boolean isEnemyMove() {
+        return fightState.equals(FightState.ENEMY_MOVE);
+    }
+
+    public boolean isOnePlayerMode() {
+        return gameMode.equals(GameMode.ONE_PLAYER);
+    }
+
+    public boolean isTwoPlayersMode() {
+        return gameMode.equals(GameMode.TWO_PLAYERS);
+    }
+
+    public void processShot(int shotI, int shotJ, GameField field) {
+        field.getCell(shotI, shotJ).setShot(true);
+        if (field.getCell(shotI, shotJ).isDeck()) {
+            Ship firedShip = new Ship();
+            if (field.ofPlayer()) {
+                firedShip = getShipByDeck(field.getCell(shotI, shotJ), playerShips);
+            }
+            else if (field.ofEnemy()) {
+                firedShip = getShipByDeck(field.getCell(shotI, shotJ), enemyShips);
+            }
+            firedShip.getDamage();
+            if (firedShip.isDestroyed()) {
+                if (field.ofPlayer()) {
+                    if (gameMode.equals(GameMode.ONE_PLAYER)) {
+                        field.drawShip(firedShip, Color.DARKOLIVEGREEN);
+                        sendToAiSignalAboutDeadShip(true);
+                    }
+                    else if (gameMode.equals(GameMode.TWO_PLAYERS)) {
+                        field.drawShip(firedShip, Color.RED);
+                    }
+                    if (playerShipsLeft == 0) {
+                        setGameState(GameState.END);
+                    }
+                }
+                else if (field.ofEnemy()) {
+                    field.drawShip(firedShip, Color.RED);
+                    decreaseShips(ENEMY_SHIPS);
+                    if (enemyShipsLeft == 0) {
+                        // isEnd = true;
+                        setGameState(GameState.END);
+                    }
+                }
+            }
+            else { // если не уничтожен
+                field.getCell(shotI, shotJ).drawDamaged(field.getGraphicsContext2D());
+                if (gameMode.equals(GameMode.ONE_PLAYER)) {
+                    sendToAiSignalAboutDeadShip(false);
+                }
+            }
+        }
+        else { //рисуем воду
+            field.getCell(shotI, shotJ).drawWater(field.getGraphicsContext2D());
+            if (field.ofPlayer()) {
+                setFightState(FightState.PLAYER_MOVE);
+            }
+            else if (field.ofEnemy()) {
+                setFightState(FightState.ENEMY_MOVE);
+            }
+        }
+    }
 
 
 
