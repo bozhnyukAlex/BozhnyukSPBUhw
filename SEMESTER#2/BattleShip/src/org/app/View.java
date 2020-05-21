@@ -181,6 +181,13 @@ public class View {
         return statusLabel.getText();
     }
 
+    public void localeLabels() {
+        lSLeft.setText(StringConst.SHIPS_LEFT);
+        rSLeft.setText(StringConst.SHIPS_LEFT);
+        leftABC.setText(StringConst.LEFT_ABC);
+        rightABC.setText(StringConst.RIGHT_ABC);
+    }
+
 
 
 

@@ -1,5 +1,6 @@
 package org.app;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +19,8 @@ import org.game.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.ServiceLoader;
 
 public class BattleController2 extends View {
 
@@ -52,23 +55,27 @@ public class BattleController2 extends View {
     public static final String DELETE_MENU_ID = "deleteMenu";
     public static final String SETTINGS_PATH = "/view/settings.fxml";
     public static final String ICON_PATH = "/images/icon.png";
+    private static ServiceLoader<LocaleService> serviceLoader;
+    private static ArrayList<String> plugNames;
 
 
     @FXML
     public void initialize() {
+        initAllPlugins();
         context = new AnnotationConfigApplicationContext(Config.class);
         initField(GameField.PLAYER_MODE);
         anchorPane.getChildren().add(playerField);
         initContextMenu();
         setStatusLabel(StringConst.CHOOSE_GAME_MODE);
+        langBox.setItems(FXCollections.observableArrayList(plugNames));
+        langBox.setPromptText(StringConst.SET_LANG);
         onePlayerButton.setOnAction(actionEvent -> gameStart(GameMode.ONE_PLAYER));
         twoPlayersButton.setOnAction(actionEvent -> gameStart(GameMode.TWO_PLAYERS));
         exitButton.setOnAction(actionEvent -> System.exit(0));
+        langBox.setOnAction(actionEvent -> setLocale(langBox.getValue().toString()));
         settingsButton.setOnAction(actionEvent -> {
             boolean okClicked  = showDialogEditAi();
             if (okClicked) {
-              //  levelToSend = logic.getDifficulty();
-              //  statusLabel.setText(StringConst.LEVEL_EDITED);
                 setStatusLabel(StringConst.LEVEL_EDITED);
             }
         });
@@ -480,9 +487,47 @@ public class BattleController2 extends View {
 
     }
 
+    private void setLocale(String localeStr) {
+        for (LocaleService service : serviceLoader) {
+            if (service.getName().equals(localeStr)) {
+                service.locale();
+                break;
+            }
+        }
+        localeButtons();
+        localeLabels();
+        setStatusLabel(StringConst.LANGUAGE_EDITED);
+        if (logic != null) {
+            if (logic.getState().equals(GameState.PLAYING)) {
+                setStatusLabel(StringConst.FIGHT);
+            }
+        }
+    }
+
     private boolean canShoot(int i, int j, GameField field) {
         Cell shot = field.getCell(i, j);
         return shot.isEmpty() || shot.isNotShotDeck();
+    }
+
+    private void localeButtons() {
+        onePlayerButton.setText(StringConst.ONE_PLAYER_GAME);
+        twoPlayersButton.setText(StringConst.TWO_PLAYER_GAME);
+        settingsButton.setText(StringConst.DIFF_SETTINGS);
+        exitButton.setText(StringConst.EXIT);
+        enable1Ship.setText(StringConst.SHIP1);
+        enable2Ship.setText(StringConst.SHIP2);
+        enable3Ship.setText(StringConst.SHIP3);
+        enable4Ship.setText(StringConst.SHIP4);
+        readyButton.setText(StringConst.READY);
+        autoGenerateButton.setText(StringConst.AUTOMATIC);
+    }
+
+    private void initAllPlugins() {
+        serviceLoader = ServiceLoader.load(LocaleService.class);
+        plugNames = new ArrayList<String>();
+        for (LocaleService localeService : serviceLoader) {
+            plugNames.add(localeService.getName());
+        }
     }
 
 
