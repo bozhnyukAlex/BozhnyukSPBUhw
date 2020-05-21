@@ -1,6 +1,7 @@
 package AppInterface;
 
 import org.app.BattleController;
+import org.app.Main;
 import org.app.StringConst;
 import org.game.*;
 import javafx.fxml.FXMLLoader;
@@ -62,7 +63,7 @@ public class BattleControllerTest extends ApplicationTest {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(BattleController.class.getResource(BattleController.MENU_PATH));
+        loader.setLocation(BattleController.class.getResource(Main.MENU_PATH));
         //loader.setController(controller);
         prStage = stage;
         //VBox pane = FXMLLoader.load(BattleShip.class.getResource(BattleShip.MENU_PATH));
@@ -137,7 +138,7 @@ public class BattleControllerTest extends ApplicationTest {
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertEquals(en4.getText(), "0");
         assertTrue(enable4.isDisable());
-        assertTrue(playerField.getCell(0, 0).isDeck() && playerField.getCell(1, 0).isDeck() && playerField.getCell(2, 0).isDeck() && playerField.getCell(3, 0).isDeck());
+        assertTrue(playerField.getCell(0, 0).isNotShotDeck() && playerField.getCell(1, 0).isNotShotDeck() && playerField.getCell(2, 0).isNotShotDeck() && playerField.getCell(3, 0).isNotShotDeck());
 
         clickOn(enable3);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_3);
@@ -146,7 +147,7 @@ public class BattleControllerTest extends ApplicationTest {
         clickOn(zeroXPl + Cell.SIZE * 5, zeroYPL + Cell.SIZE * 5);
         assertEquals(en3.getText(), "1");
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
-        assertTrue(playerField.getCell(6, 5).isDeck() && playerField.getCell(5,5).isDeck() && playerField.getCell(4,5).isDeck());
+        assertTrue(playerField.getCell(6, 5).isNotShotDeck() && playerField.getCell(5,5).isNotShotDeck() && playerField.getCell(4,5).isNotShotDeck());
 
         clickOn(enable2);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_2);
@@ -155,14 +156,14 @@ public class BattleControllerTest extends ApplicationTest {
         clickOn(zeroXPl + 8 * Cell.SIZE, zeroYPL + Cell.SIZE * 3);
         assertEquals(en2.getText(), "2");
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
-        assertTrue(playerField.getCell(3,7).isDeck() && playerField.getCell(3, 8).isDeck());
+        assertTrue(playerField.getCell(3,7).isNotShotDeck() && playerField.getCell(3, 8).isNotShotDeck());
 
         clickOn(enable1);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_1);
         clickOn(zeroXPl + Cell.SIZE * 9, zeroYPL);
         assertEquals(en1.getText(), "3");
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
-        assertTrue(playerField.getCell(0, 9).isDeck());
+        assertTrue(playerField.getCell(0, 9).isNotShotDeck());
 
     }
 
@@ -195,7 +196,7 @@ public class BattleControllerTest extends ApplicationTest {
         clickOn(zeroXPl + Cell.SIZE * 5, zeroYPL + Cell.SIZE * 5);
         rightClickOn(zeroXPl + Cell.SIZE * 5, zeroYPL + Cell.SIZE * 6);
         clickOn(DELETE);
-        assertTrue(!playerField.getCell(6, 5).isDeck() && !playerField.getCell(5,5).isDeck() && !playerField.getCell(4,5).isDeck() && !playerField.getCell(3,5).isDeck());
+        assertTrue(!playerField.getCell(6, 5).isNotShotDeck() && !playerField.getCell(5,5).isNotShotDeck() && !playerField.getCell(4,5).isNotShotDeck() && !playerField.getCell(3,5).isNotShotDeck());
     }
 
     @Test
@@ -205,7 +206,7 @@ public class BattleControllerTest extends ApplicationTest {
         int deckCnt = 0;
         for (int i = 0; i < GameField.SIZE; i++) {
             for (int j = 0; j < GameField.SIZE; j++) {
-                if (playerField.getCell(i, j).isDeck()) {
+                if (playerField.getCell(i, j).isNotShotDeck()) {
                     deckCnt++;
                     checkAllNeighbours(i, j);
                 }
@@ -271,7 +272,7 @@ public class BattleControllerTest extends ApplicationTest {
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
         assertEquals(en4.getText(), "0");
         assertTrue(enable4.isDisable());
-        assertTrue(enemyField.getCell(0, 0).isDeck() && enemyField.getCell(1, 0).isDeck() && enemyField.getCell(2, 0).isDeck() && enemyField.getCell(3, 0).isDeck());
+        assertTrue(enemyField.getCell(0, 0).isNotShotDeck() && enemyField.getCell(1, 0).isNotShotDeck() && enemyField.getCell(2, 0).isNotShotDeck() && enemyField.getCell(3, 0).isNotShotDeck());
 
         clickOn(enable3);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_3);
@@ -280,7 +281,7 @@ public class BattleControllerTest extends ApplicationTest {
         clickOn(zeroXEN + Cell.SIZE * 5, zeroYEN + Cell.SIZE * 5);
         assertEquals(en3.getText(), "1");
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
-        assertTrue(enemyField.getCell(6, 5).isDeck() && enemyField.getCell(5,5).isDeck() && enemyField.getCell(4,5).isDeck());
+        assertTrue(enemyField.getCell(6, 5).isNotShotDeck() && enemyField.getCell(5,5).isNotShotDeck() && enemyField.getCell(4,5).isNotShotDeck());
 
         clickOn(enable2);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_2);
@@ -289,14 +290,14 @@ public class BattleControllerTest extends ApplicationTest {
         clickOn(zeroXEN + 8 * Cell.SIZE, zeroYEN + Cell.SIZE * 3);
         assertEquals(en2.getText(), "2");
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
-        assertTrue(enemyField.getCell(3,7).isDeck() && enemyField.getCell(3, 8).isDeck());
+        assertTrue(enemyField.getCell(3,7).isNotShotDeck() && enemyField.getCell(3, 8).isNotShotDeck());
 
         clickOn(enable1);
         assertEquals(statusLbl.getText(), StringConst.SET_SHIP_1);
         clickOn(zeroXEN + Cell.SIZE * 9, zeroYEN);
         assertEquals(en1.getText(), "3");
         assertEquals(statusLbl.getText(), StringConst.CHOOSE_SHIP);
-        assertTrue(enemyField.getCell(0, 9).isDeck());
+        assertTrue(enemyField.getCell(0, 9).isNotShotDeck());
     }
 
     @Test
@@ -313,7 +314,7 @@ public class BattleControllerTest extends ApplicationTest {
             di = rnd.nextInt(GameField.SIZE);
             dj = rnd.nextInt(GameField.SIZE);
             clickOn(zeroXEN + dj * Cell.SIZE + 10, zeroYEN + di * Cell.SIZE + 10);
-            if (!enemyField.getCell(di, dj).isDeck()) {
+            if (!enemyField.getCell(di, dj).isNotShotDeck()) {
                 break;
             }
             assertTrue(enemyField.getCell(di, dj).isShot());
@@ -322,7 +323,7 @@ public class BattleControllerTest extends ApplicationTest {
             di = rnd.nextInt(GameField.SIZE);
             dj = rnd.nextInt(GameField.SIZE);
             clickOn(zeroXPl + dj * Cell.SIZE + 10, zeroYPL + di * Cell.SIZE + 10);
-            if (!playerField.getCell(di, dj).isDeck()) {
+            if (!playerField.getCell(di, dj).isNotShotDeck()) {
                 break;
             }
             assertTrue(playerField.getCell(di, dj).isShot());

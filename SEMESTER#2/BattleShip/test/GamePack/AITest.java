@@ -35,7 +35,7 @@ public class AITest {
         field.setShip(testShip);
         for (int i = 0; i < 6; i++) { //тест добития корабля, за 6 выстрелов корабль должен умереть
             shot = ai.makeShot();
-            if (shot.isDeck()) {
+            if (shot.isNotShotDeck()) {
                 testShip.getDamage();
             }
         }

@@ -7,8 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/org/app/BattleController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleController2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController2$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/BattleController2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/Condition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/app/Condition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/AI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/view/battlemenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/AppInterface/BattleControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/view/battleMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/battleMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/app/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/BattleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/app/BattleController2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/app/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/Condition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/app/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/app/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AppInterface/BattleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AppInterface/BattleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/AITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/AITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/GameFieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/GameFieldTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +252,7 @@
       <workItem from="1589928515146" duration="24000" />
       <workItem from="1589967136867" duration="35866000" />
       <workItem from="1590049663763" duration="2854000" />
-      <workItem from="1590072670891" duration="14683000" />
+      <workItem from="1590072670891" duration="23753000" />
     </task>
     <servers />
   </component>
@@ -279,38 +304,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589798866317" />
-    <state width="1877" height="146" key="GridCell.Tab.0.bottom" timestamp="1590090869925">
+    <state width="1877" height="146" key="GridCell.Tab.0.bottom" timestamp="1590101618366">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="146" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590090869925" />
-    <state width="1877" height="146" key="GridCell.Tab.0.center" timestamp="1590090869925">
+    <state width="1877" height="146" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590101618366" />
+    <state width="1877" height="146" key="GridCell.Tab.0.center" timestamp="1590101618366">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="146" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590090869925" />
-    <state width="1877" height="146" key="GridCell.Tab.0.left" timestamp="1590090869925">
+    <state width="1877" height="146" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590101618366" />
+    <state width="1877" height="146" key="GridCell.Tab.0.left" timestamp="1590101618366">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="146" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590090869925" />
-    <state width="1877" height="146" key="GridCell.Tab.0.right" timestamp="1590090869925">
+    <state width="1877" height="146" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590101618366" />
+    <state width="1877" height="146" key="GridCell.Tab.0.right" timestamp="1590101618366">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="146" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590090869925" />
-    <state width="1877" height="302" key="GridCell.Tab.1.bottom" timestamp="1590086572084">
+    <state width="1877" height="146" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590101618366" />
+    <state width="1877" height="302" key="GridCell.Tab.1.bottom" timestamp="1590101269062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="302" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590086572084" />
-    <state width="1877" height="302" key="GridCell.Tab.1.center" timestamp="1590086572084">
+    <state width="1877" height="302" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590101269062" />
+    <state width="1877" height="302" key="GridCell.Tab.1.center" timestamp="1590101269061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="302" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590086572084" />
-    <state width="1877" height="302" key="GridCell.Tab.1.left" timestamp="1590086572084">
+    <state width="1877" height="302" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590101269061" />
+    <state width="1877" height="302" key="GridCell.Tab.1.left" timestamp="1590101269061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="302" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590086572084" />
-    <state width="1877" height="302" key="GridCell.Tab.1.right" timestamp="1590086572084">
+    <state width="1877" height="302" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590101269061" />
+    <state width="1877" height="302" key="GridCell.Tab.1.right" timestamp="1590101269061">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="302" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590086572084" />
+    <state width="1877" height="302" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590101269061" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1588606404995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -347,6 +372,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589921863741" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/app/BattleController.java</url>
+          <line>426</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>

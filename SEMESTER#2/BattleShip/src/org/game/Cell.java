@@ -7,8 +7,6 @@ import org.app.Condition;
 public class Cell {
     private int x, y;
     public static final int SIZE = 24;
-    private boolean isDeck;
-    private boolean isShot;
     private int busyCount;
     private Color cellColor;
     private Condition condition;
@@ -17,8 +15,6 @@ public class Cell {
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;
-        isDeck = false;
-        isShot = false;
         busyCount = 0;
         condition = Condition.EMPTY;
     }
@@ -31,19 +27,16 @@ public class Cell {
         busyCount += mode;
     }
 
-    public void setDeck(boolean deck) {
-        isDeck = deck;
+
+    public boolean isNotShotDeck() {
+        return condition.equals(Condition.SHIP_DECK);
     }
 
-    public boolean isDeck() {
-        return isDeck;
-    }
-
-    public void setCellColor(Color cellColor) {
+    private void setCellColor(Color cellColor) {
         this.cellColor = cellColor;
     }
 
-    public Color getCellColor() {
+    private Color getCellColor() {
         return cellColor;
     }
 
@@ -56,12 +49,9 @@ public class Cell {
     }
 
     public boolean isShot() {
-        return isShot;
+        return isShipKilledDeck() || isShotWater() || isDamagedDeck();
     }
 
-    public void setShot(boolean shot) {
-        isShot = shot;
-    }
 
     public int getI() {
         return y / SIZE;
@@ -72,14 +62,7 @@ public class Cell {
     }
 
     public void draw(GraphicsContext gc, boolean needFill) {
-        if (needFill) {
-            gc.setFill(Color.color(0.96F, 0.96F, 0.96F));
-            gc.fillRect(x, y, SIZE, SIZE);
-        }
-        gc.setStroke(Color.BLUE);
-        gc.strokeRect(x, y, SIZE, SIZE);
-
-        /*if (isEmpty()) {
+        if (isEmpty()) {
             if (needFill) {
                 gc.setFill(getCellColor());
                 gc.fillRect(x, y, SIZE, SIZE);
@@ -89,28 +72,8 @@ public class Cell {
             return;
         }
         gc.setFill(getCellColor());
-        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);*/
-
-    }
-
-
-    public void drawShipDeck(GraphicsContext gc, Color color) {
-        gc.setFill(color);
-        setCellColor(color);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
 
-    }
-
-    public void drawWater(GraphicsContext gc) {
-        gc.setFill(Color.TURQUOISE);
-      //  setCellColor(Color.TURQUOISE);
-        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
-    }
-
-    public void drawDamaged(GraphicsContext gc) {
-        gc.setFill(Color.ORANGE);
-      //  setCellColor(Color.ORANGE);
-        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 
     public void setX(int x) {
@@ -137,10 +100,12 @@ public class Cell {
                 setCellColor(Color.TURQUOISE);
                 break;
             }
+            case SHIP_FIRST_CLICK:
             case SHIP_DAMAGED: {
                 setCellColor(Color.ORANGE);
                 break;
             }
+            case SHIP_DECK:
             case SHIP_KILLED_ENEMY:
             case SHIP_KILLED_TWO_PLAYERS: {
                 setCellColor(Color.RED);
@@ -175,12 +140,13 @@ public class Cell {
     public boolean isAroundShip() {
         return condition.equals(Condition.SHIP_AROUND);
     }
-    public boolean isNotShotDeck() {
-        return condition.equals(Condition.SHIP_DECK);
-    }
 
     public boolean isShipKilledDeck() {
         return isShipKilledEnemy() || isShipKilledPlayer() || isShipKilledPlayerTwo();
+    }
+
+    public boolean isFirstClickedDeck() {
+        return condition.equals(Condition.SHIP_FIRST_CLICK);
     }
 
 }

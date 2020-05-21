@@ -1,5 +1,6 @@
 package GamePack;
 
+import org.app.Condition;
 import org.game.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +39,7 @@ public class GameFieldTest {
     public boolean checkAroundDeckAndShot(int i, int j) {
         for (int w = -1; w <= 1; w++) {
             for (int v = -1; v <= 1; v++) {
-                if (GameField.inRange(i + w, j + v) && field.getCell(i + w, j + v).isDeck() && field.getCell(i + w, j + v).isShot()) {
+                if (GameField.inRange(i + w, j + v) && field.getCell(i + w, j + v).isNotShotDeck() && field.getCell(i + w, j + v).isShot()) {
                     return true;
                 }
             }
@@ -64,8 +65,9 @@ public class GameFieldTest {
     @Test
     public void hasFiredShipAroundTest() {
         assertFalse(field.hasFiredShipAround(1, 5));
-        field.getCell(2,5).setDeck(true);
-        field.getCell(2, 5).setShot(true);
+      /*  field.getCell(2,5).setDeck(true);
+        field.getCell(2, 5).setShot(true);*/
+        field.getCell(2, 5).setCondition(Condition.SHIP_KILLED_ENEMY);
         assertTrue(field.hasFiredShipAround(1, 5));
     }
 }

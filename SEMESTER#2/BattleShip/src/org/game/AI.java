@@ -42,7 +42,6 @@ public class AI {
                     shi = rnd.nextInt(GameField.SIZE);
                     shj = rnd.nextInt(GameField.SIZE);
                     if (!opponentField.getCell(shi, shj).isShot()) {
-                        opponentField.getCell(shi, shj).setShot(true);
                         return opponentField.getCell(shi, shj);
                     }
                 }
@@ -99,16 +98,15 @@ public class AI {
             shj = rnd.nextInt(GameField.SIZE);
             if (!opponentField.getCell(shi, shj).isShot()) {
                 if (!opponentField.hasFiredShipAround(shi, shj)) {
-                    if (!opponentField.getCell(shi, shj).isDeck()){
+                    if (!opponentField.getCell(shi, shj).isNotShotDeck()){
                         isShipFired = false;
                         previousShot = opponentField.getCell(shi, shj);
                     }
-                    else if (opponentField.getCell(shi, shj).isDeck()){
+                    else if (opponentField.getCell(shi, shj).isNotShotDeck()){
                         isShipFired = true;
                         previousShot = opponentField.getCell(shi, shj);
                         firstHit = previousShot;
                     }
-                    opponentField.getCell(shi, shj).setShot(true);
                     return opponentField.getCell(shi, shj);
                 }
             }
@@ -138,7 +136,7 @@ public class AI {
         }
         else { ///если нет, то по логике мы должны были стрелять в стороны, нужно определить по предыдущему выстрелу, в каком напралении начинали двигаться
             if (prevI < firstHit.getI()) { // если стреляли вверх, то надо проверить, а не промахнулись ли мы ранее, а потом стрелять в нужное место
-                if (previousShot.isDeck() && prevI - 1 >= 0 && !opponentField.getCell(prevI - 1, prevJ).isShot()) { //если в прошлый раз все же попали, то стреляем дальше вверх
+                if (previousShot.isDamagedDeck() && prevI - 1 >= 0) { //если в прошлый раз все же попали, то стреляем дальше вверх
                     previousShot = opponentField.getCell(prevI - 1, prevJ);
                     resShot = opponentField.getCell(prevI - 1, prevJ);
                 }
@@ -158,7 +156,7 @@ public class AI {
                 }
             }
             else if (prevI > firstHit.getI()) {
-                if (previousShot.isDeck() && prevI + 1 < GameField.SIZE && !opponentField.getCell(prevI + 1, prevJ).isShot()) { //если в прошлый раз все же попали, то стреляем дальше вниз
+                if (previousShot.isDamagedDeck() && prevI + 1 < GameField.SIZE) { //если в прошлый раз все же попали, то стреляем дальше вниз
                     previousShot = opponentField.getCell(prevI + 1, prevJ);
                     resShot = opponentField.getCell(prevI + 1, prevJ);
                 }
@@ -179,7 +177,7 @@ public class AI {
                 }
             }
             else if (prevJ < firstHit.getJ()) { //влево
-                if (previousShot.isDeck() && prevJ - 1 >= 0 && !opponentField.getCell(prevI, prevJ - 1).isShot()) {
+                if (previousShot.isDamagedDeck() && prevJ - 1 >= 0) {
                     previousShot = opponentField.getCell(prevI, prevJ - 1);
                     resShot = opponentField.getCell(prevI, prevJ - 1);
                 }
@@ -200,12 +198,12 @@ public class AI {
                 }
             }
             else if (prevJ > firstHit.getJ()) { //вправо
-                if (previousShot.isDeck() && prevJ + 1 < GameField.SIZE && !opponentField.getCell(prevI, prevJ + 1).isShot()) {
+                if (previousShot.isDamagedDeck() && prevJ + 1 < GameField.SIZE) {
                     previousShot = opponentField.getCell(prevI, prevJ + 1);
                     resShot = opponentField.getCell(prevI, prevJ + 1);
                 }
                 else {
-                    if (firstHit.getJ() - 1 >= 0 && opponentField.getCell(firstHit.getI(), firstHit.getJ() - 1).isShot()) {
+                    if (firstHit.getJ() - 1 >= 0 && !opponentField.getCell(firstHit.getI(), firstHit.getJ() - 1).isShot()) {
                         previousShot = opponentField.getCell(firstHit.getI(), firstHit.getJ() - 1);
                         resShot = opponentField.getCell(firstHit.getI(), firstHit.getJ() - 1);
                     }
@@ -220,7 +218,6 @@ public class AI {
                 }
             }
         }
-        resShot.setShot(true);
         return resShot;
     }
 
@@ -232,7 +229,7 @@ public class AI {
             M1: while (true) {
                 if (!opponentField. getCell(curI, curJ).isShot() && !opponentField.hasFiredShipAround(curI, curJ)) {
                     resShot = previousShot = opponentField.getCell(curI, curJ);
-                    if (resShot.isDeck()) {
+                    if (resShot.isNotShotDeck()) {
                         isShipFired = true;
                         firstHit = resShot;
                     }
@@ -275,7 +272,7 @@ public class AI {
         M2:    while (true) {
                 if (!opponentField.getCell(curI, curJ).isShot() && !opponentField.hasFiredShipAround(curI, curJ)) {
                     resShot = previousShot = opponentField.getCell(curI, curJ);
-                    if (resShot.isDeck()) {
+                    if (resShot.isNotShotDeck()) {
                         isShipFired = true;
                         firstHit = resShot;
                     }
@@ -320,7 +317,6 @@ public class AI {
         if (bigFindingState == 3) { //остались только однопалубные - стреляем рандомно по оставшимся клеткам
             previousShot = resShot = makeRandomShot();
         }
-        resShot.setShot(true);
         return resShot;
     }
 

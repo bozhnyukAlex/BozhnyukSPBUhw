@@ -51,8 +51,6 @@ public class View {
     @FXML
     private Label rSLeft;
     @FXML
-    private ComboBox langBox;
-    @FXML
     private Label leftABC;
     @FXML
     private Label rightABC;

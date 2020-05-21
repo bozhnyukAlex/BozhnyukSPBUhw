@@ -124,7 +124,7 @@ public class GameField extends Canvas {
     public boolean hasFiredShipAround(int i, int j) {
         for (int w = -1; w <= 1; w++) {
             for (int v = -1; v <= 1; v++) {
-                if (inRange(i + w, j + v) && getCell(i + w, j + v).isShipKilledDeck()) {
+                if (inRange(i + w, j + v) && getCell(i + w, j + v).isNotShotDeck() && getCell(i + w, j + v).isShot()) {
                     return true;
                 }
             }

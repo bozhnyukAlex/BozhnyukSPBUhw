@@ -28,7 +28,7 @@ public class Ship {
     public void build(Cell ... cells) {
         for (Cell cell : cells) {
             decks.add(cell);
-            cell.setDeck(true);
+           // cell.setDeck(true);
             cell.setCondition(Condition.SHIP_DECK);
         }
     }
