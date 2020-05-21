@@ -1,10 +1,12 @@
 package org.app;
 
 public enum Condition {
-    EMPTY,
-    SHOT_WATER,
-    SHIP_DAMAGED,
-    SHIP,
-    SHIP_KILLED_PLAYER,
-    SHIP_KILLED_ENEMY
+    EMPTY, // yes
+    SHIP_DECK, //yes
+    SHIP_AROUND, //устанавливать после подбития корабля
+    SHOT_WATER, // yes
+    SHIP_DAMAGED, // yes
+    SHIP_KILLED_PLAYER, // yes
+    SHIP_KILLED_ENEMY, // yes
+    SHIP_KILLED_TWO_PLAYERS // yes
 }

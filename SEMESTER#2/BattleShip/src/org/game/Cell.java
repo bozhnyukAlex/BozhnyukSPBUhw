@@ -2,6 +2,7 @@ package org.game;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import org.app.Condition;
 
 public class Cell {
     private int x, y;
@@ -10,6 +11,7 @@ public class Cell {
     private boolean isShot;
     private int busyCount;
     private Color cellColor;
+    private Condition condition;
 
 
     public Cell(int x, int y) {
@@ -18,6 +20,7 @@ public class Cell {
         isDeck = false;
         isShot = false;
         busyCount = 0;
+        condition = Condition.EMPTY;
     }
 
     public boolean isBusy() {
@@ -75,24 +78,38 @@ public class Cell {
         }
         gc.setStroke(Color.BLUE);
         gc.strokeRect(x, y, SIZE, SIZE);
+
+        /*if (isEmpty()) {
+            if (needFill) {
+                gc.setFill(getCellColor());
+                gc.fillRect(x, y, SIZE, SIZE);
+            }
+            gc.setStroke(Color.BLUE);
+            gc.strokeRect(x, y, SIZE, SIZE);
+            return;
+        }
+        gc.setFill(getCellColor());
+        gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);*/
+
     }
 
 
     public void drawShipDeck(GraphicsContext gc, Color color) {
         gc.setFill(color);
+        setCellColor(color);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
 
     }
 
     public void drawWater(GraphicsContext gc) {
         gc.setFill(Color.TURQUOISE);
-        setCellColor(Color.TURQUOISE);
+      //  setCellColor(Color.TURQUOISE);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 
     public void drawDamaged(GraphicsContext gc) {
         gc.setFill(Color.ORANGE);
-        //setCellColor(Color.ORANGE);
+      //  setCellColor(Color.ORANGE);
         gc.fillRect(x + 1, y + 1, SIZE - 1, SIZE - 1);
     }
 
@@ -107,4 +124,63 @@ public class Cell {
     public int getBusyCount() {
         return busyCount;
     }
+
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+        switch (condition) {
+            case EMPTY: {
+                setCellColor(Color.color(0.96F, 0.96F, 0.96F));
+                break;
+            }
+            case SHOT_WATER:
+            case SHIP_AROUND: {
+                setCellColor(Color.TURQUOISE);
+                break;
+            }
+            case SHIP_DAMAGED: {
+                setCellColor(Color.ORANGE);
+                break;
+            }
+            case SHIP_KILLED_ENEMY:
+            case SHIP_KILLED_TWO_PLAYERS: {
+                setCellColor(Color.RED);
+                break;
+            }
+            case SHIP_KILLED_PLAYER: {
+                setCellColor(Color.DARKOLIVEGREEN);
+                break;
+            }
+
+        }
+    }
+
+    public boolean isEmpty() {
+        return condition.equals(Condition.EMPTY);
+    }
+    public boolean isShotWater() {
+        return condition.equals(Condition.SHOT_WATER);
+    }
+    public boolean isDamagedDeck() {
+        return condition.equals(Condition.SHIP_DAMAGED);
+    }
+    public boolean isShipKilledPlayer() {
+        return condition.equals(Condition.SHIP_KILLED_PLAYER);
+    }
+    public boolean isShipKilledPlayerTwo() {
+        return condition.equals(Condition.SHIP_KILLED_TWO_PLAYERS);
+    }
+    public boolean isShipKilledEnemy() {
+        return condition.equals(Condition.SHIP_KILLED_ENEMY);
+    }
+    public boolean isAroundShip() {
+        return condition.equals(Condition.SHIP_AROUND);
+    }
+    public boolean isNotShotDeck() {
+        return condition.equals(Condition.SHIP_DECK);
+    }
+
+    public boolean isShipKilledDeck() {
+        return isShipKilledEnemy() || isShipKilledPlayer() || isShipKilledPlayerTwo();
+    }
+
 }

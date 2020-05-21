@@ -1,14 +1,23 @@
 package org.app;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.apache.commons.logging.Log;
 import org.game.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.io.IOException;
 
 public class BattleController2 extends View {
 
@@ -37,10 +46,13 @@ public class BattleController2 extends View {
     private Button readyButton;
     @FXML
     private ComboBox langBox;
+    @FXML
+    private AnchorPane settingsPane;
 
     public static final String DELETE_MENU_ID = "deleteMenu";
+    public static final String SETTINGS_PATH = "/view/settings.fxml";
+    public static final String ICON_PATH = "/images/icon.png";
 
-    private boolean isEnd = true; //пойдет в Logic, либо потом заменим
 
     @FXML
     public void initialize() {
@@ -53,7 +65,12 @@ public class BattleController2 extends View {
         twoPlayersButton.setOnAction(actionEvent -> gameStart(GameMode.TWO_PLAYERS));
         exitButton.setOnAction(actionEvent -> System.exit(0));
         settingsButton.setOnAction(actionEvent -> {
-
+            boolean okClicked  = showDialogEditAi();
+            if (okClicked) {
+              //  levelToSend = logic.getDifficulty();
+              //  statusLabel.setText(StringConst.LEVEL_EDITED);
+                setStatusLabel(StringConst.LEVEL_EDITED);
+            }
         });
         enable1Ship.setOnAction(actionEvent -> {
             setStatusLabel(StringConst.SET_SHIP_1);
@@ -107,14 +124,13 @@ public class BattleController2 extends View {
 
                     enemyField.setOnMouseClicked(mouseEvent -> {
                         if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                            if (logic.getState().equals(GameState.PLAYING) && logic.getFightState().equals(FightState.PLAYER_MOVE)) {
-                                int plsi = (int) mouseEvent.getY() / Cell.SIZE;
-                                int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                                if (enemyField.getCell(plsi, plsj).isShot() &&
-                                        (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
+                            if (logic.playing() && logic.isPlayerMove()) {
+                                int plsI = (int) mouseEvent.getY() / Cell.SIZE;
+                                int plsJ = (int) mouseEvent.getX() / Cell.SIZE;
+                                if (!canShoot(plsI, plsJ, enemyField)) {
                                     return;
                                 }
-                                makeFieldShot(plsi, plsj, enemyField);
+                                makeFieldShot(plsI, plsJ, enemyField);
                                 while (logic.isEnemyMove() && logic.playing()) {
                                     Cell aiShot = logic.makeAiAttack();
                                     makeFieldShot(aiShot.getI(), aiShot.getJ(), playerField);
@@ -122,7 +138,6 @@ public class BattleController2 extends View {
                             }
                         }
                     });
-
                     break;
                 }
 
@@ -138,7 +153,7 @@ public class BattleController2 extends View {
                         setDisableToEnableButtons(false);
                         settingsButton.setDisable(true);
                         enemyField.setOnMouseClicked(mouseEvent -> {
-                            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PREPARATION2)) {
+                            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.secondPreparing()) {
                                 int cli = (int) mouseEvent.getY(), clj = (int) mouseEvent.getX();
                                 cli /= Cell.SIZE;
                                 clj /= Cell.SIZE;
@@ -162,13 +177,13 @@ public class BattleController2 extends View {
                         playerField.redraw();
                         enemyField.redraw();
                         enemyField.setOnMouseClicked(mouseEvent -> {
-                            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getFightState().equals(FightState.PLAYER_MOVE) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getState().equals(GameState.PLAYING)) {
-                                int plsi = (int) mouseEvent.getY() / Cell.SIZE;
+                            if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.playerMove() && logic.isTwoPlayersMode() && logic.playing()) {
+                                int plsI = (int) mouseEvent.getY() / Cell.SIZE;
                                 int plsj = (int) mouseEvent.getX() / Cell.SIZE;
-                                if (enemyField.getCell(plsi, plsj).isShot() && (enemyField.getCell(plsi, plsj).isDeck() || enemyField.getCell(plsi, plsj).getCellColor().equals(Color.TURQUOISE))) {
+                                if (!canShoot(plsI, plsj, enemyField)) {
                                     return;
                                 }
-                                makeFieldShot(plsi, plsj, enemyField);
+                                makeFieldShot(plsI, plsj, enemyField);
                             }
                         });
                     }
@@ -180,7 +195,7 @@ public class BattleController2 extends View {
 
         playerField.setOnMouseClicked(mouseEvent ->  {
             if (logic == null || (logic.firstPreparing() && logic.noEnableButtonsClicked()) || logic.secondPreparing()
-                    || (logic.playing() && logic.isOnePlayerMode()) || (logic.playing() && logic.isTwoPlayersMode() && logic.enemyMove())) {
+                    || (logic.playing() && logic.isOnePlayerMode()) || (logic.playing() && logic.isTwoPlayersMode() && logic.playerMove())) {
                 return;
             }
             if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.firstPreparing()) {
@@ -190,10 +205,10 @@ public class BattleController2 extends View {
                 setShipToClickedField(cli, clj, playerField);
                 hideDeleteMenu();
             }
-            else if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.getState().equals(GameState.PLAYING) && logic.getGameMode().equals(GameMode.TWO_PLAYERS) && logic.getFightState().equals(FightState.ENEMY_MOVE)) {
+            else if (mouseEvent.getButton() == MouseButton.PRIMARY && logic.playing() && logic.isTwoPlayersMode() && logic.enemyMove()) {
                 int plsI = (int) mouseEvent.getY() / Cell.SIZE;
                 int plsJ = (int) mouseEvent.getX() / Cell.SIZE;
-                if (playerField.getCell(plsI, plsJ).isShot() && (playerField.getCell(plsI, plsJ).isDeck() || playerField.getCell(plsI, plsJ).getCellColor().equals(Color.TURQUOISE))) {
+                if (!canShoot(plsI, plsJ, playerField)) {
                     return;
                 }
                 makeFieldShot(plsI, plsJ, playerField);
@@ -210,10 +225,11 @@ public class BattleController2 extends View {
 
     private void gameStart(GameMode mode) {
         //isEnd = false;
+        IntelligenceLevel levelToSend = (logic == null) ? IntelligenceLevel.MEDIUM : logic.getDifficulty();
         if (logic != null) {
             switch (logic.getGameMode()) {
                 case ONE_PLAYER: {
-                    if (logic.getState().equals(GameState.PLAYING)) {
+                    if (logic.playing() || logic.end()) {
                         toggleRightField(TO_BUTTON_PANE);
                     }
                     break;
@@ -225,8 +241,10 @@ public class BattleController2 extends View {
                             toggleRightField(TO_BUTTON_PANE);
                             break;
                         }
+                        case END:
                         case PLAYING: {
                             toggleRightField(TO_BUTTON_PANE);
+                            break;
                         }
                     }
                     break;
@@ -248,13 +266,14 @@ public class BattleController2 extends View {
                 logic = context.getBean("logicOnePlayer", Logic.class);
                 logic.setContext(context);
                 // logic.initAI(playerField, levelToSend);
-                logic.initAiWithContainer(playerField, IntelligenceLevel.MEDIUM); // это временно
+                logic.initAiWithContainer(playerField, levelToSend);
                 settingsButton.setDisable(false);
                 setStatusLabel(StringConst.PREPARE);
                 break;
             }
             case TWO_PLAYERS: {
                 logic = context.getBean("logicTwoPlayers", Logic.class);
+                logic.setContext(context);
                 settingsButton.setDisable(true);
                 setStatusLabel(StringConst.PREPARE_FIRST);
                 break;
@@ -276,22 +295,18 @@ public class BattleController2 extends View {
     private void generateShipsByClicking(GameField field) {
         field.update();
         if (field.equals(playerField)) {
-            //logic.setShips(logic.autoShipGenerate(playerField), Logic.PLAYER_SHIPS);
             logic.autoGenerate(playerField);
-           // field.drawShips(logic.getShips(Logic.PLAYER_SHIPS), Color.RED);
             drawShips(playerField, logic.getShips(Logic.PLAYER_SHIPS));
         }
         else if (field.equals(enemyField)) {
-         //   logic.setShips(logic.autoShipGenerate(enemyField), Logic.ENEMY_SHIPS);
             logic.autoGenerate(enemyField);
-            //field.drawShips(logic.getShips(Logic.ENEMY_SHIPS), Color.RED);
             drawShips(enemyField, logic.getShips(Logic.ENEMY_SHIPS));
         }
-      //  setZeroToEnableLabelsAndCounts();
         logic.updateParams();
         setZeroToEnableShipsLabels();
         setDisableToButtonsOnSecondField(true);
         readyButton.setDisable(false);
+        autoGenerateButton.setDisable(false);
         setStatusLabel(StringConst.YOU_ARE_READY);
     }
 
@@ -320,12 +335,17 @@ public class BattleController2 extends View {
     private void makeFieldShot(int shotI, int shotJ, GameField field) {
         logic.processShot(shotI, shotJ, field);
         Cell shot = field.getCell(shotI, shotJ);
-        if (shot.getCellColor().equals(Color.TURQUOISE)) { //промах
-            if (field.ofPlayer() && logic.isTwoPlayersMode()) {
-                setStatusLabel(StringConst.MOVE_FIRST);
+        if (shot.isShotWater()) { //промах
+            if (logic.isTwoPlayersMode()) {
+                if (field.ofPlayer()) {
+                    setStatusLabel(StringConst.MOVE_FIRST);
+                }
+                else if (field.ofEnemy()) {
+                    setStatusLabel(StringConst.MOVE_SECOND);
+                }
             }
         }
-        else if (shot.getCellColor().equals(Color.RED)) {
+        else if (shot.isShipKilledEnemy()) {
             decreaseLabelHP(DECREASE_ENEMY);
             if (logic.enemyLose()) {
                 if (logic.isOnePlayerMode()) {
@@ -336,7 +356,13 @@ public class BattleController2 extends View {
                 }
             }
         }
-        else if (shot.getCellColor().equals(Color.DARKOLIVEGREEN)) {
+        else if (shot.isShipKilledPlayerTwo()) {
+            decreaseLabelHP(DECREASE_PLAYER);
+            if (logic.playerLose()) {
+                setStatusLabel(StringConst.SECOND_WON);
+            }
+        }
+        else if (shot.isShipKilledPlayer()) {
             decreaseLabelHP(DECREASE_PLAYER);
             if (logic.playerLose()) {
                 if (logic.isOnePlayerMode()) {
@@ -361,7 +387,8 @@ public class BattleController2 extends View {
         if (shipLength == -1) {
             return;
         }
-        setDisableToEnableButtons(logic.getEnableCounts(shipLength) <= 0);
+        //setDisableToEnableButtons(logic.getEnableCounts(shipLength) <= 0);
+        setDisableToEnableButton(shipLength, logic.getEnableCounts(shipLength) <= 0);
         increaseShipsToGo(shipLength);
         if (status().equals(StringConst.YOU_ARE_READY)) {
             setStatusLabel(StringConst.CHOOSE_SHIP);
@@ -404,6 +431,58 @@ public class BattleController2 extends View {
         enable2Ship.setDisable(logic.getEnableCounts(2) <= 0);
         enable3Ship.setDisable(logic.getEnableCounts(3) <= 0);
         enable4Ship.setDisable(logic.getEnableCounts(4) <= 0);
+    }
+
+    private void setDisableToEnableButton(int num, boolean cond) {
+        switch (num) {
+            case 1: {
+                enable1Ship.setDisable(cond);
+                break;
+            }
+            case 2: {
+                enable2Ship.setDisable(cond);
+                break;
+            }
+            case 3: {
+                enable3Ship.setDisable(cond);
+                break;
+            }
+            case 4: {
+                enable4Ship.setDisable(cond);
+                break;
+            }
+        }
+    }
+
+    private boolean showDialogEditAi() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(SETTINGS_PATH));
+        try {
+            settingsPane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle(StringConst.EDIT_AI);
+        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream(ICON_PATH)));
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(settingsButton.getScene().getWindow());
+        Scene scene = new Scene(settingsPane);
+        dialogStage.setScene(scene);
+
+        SettingsWindow controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setObservableLogic(logic);
+
+        dialogStage.showAndWait();
+        return controller.isOkClicked();
+
+    }
+
+    private boolean canShoot(int i, int j, GameField field) {
+        Cell shot = field.getCell(i, j);
+        return shot.isEmpty() || shot.isNotShotDeck();
     }
 
 

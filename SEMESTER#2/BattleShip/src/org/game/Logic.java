@@ -1,11 +1,19 @@
 package org.game;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.app.Condition;
 import org.app.Config;
+import org.app.SettingsWindow;
 import org.app.StringConst;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -457,13 +465,17 @@ public class Logic {
                 firedShip = getShipByDeck(field.getCell(shotI, shotJ), enemyShips);
             }
             firedShip.getDamage();
-            if (firedShip.isDestroyed()) {
+            if (firedShip.isDestroyed()) { // если корабь уничтожен, рисуй его
+                field.setWaterAroundDestroyedShip(firedShip);
                 if (field.ofPlayer()) {
+                    decreaseShips(PLAYER_SHIPS);
                     if (gameMode.equals(GameMode.ONE_PLAYER)) {
+                        firedShip.setCondition(Condition.SHIP_KILLED_PLAYER);
                         field.drawShip(firedShip, Color.DARKOLIVEGREEN);
                         sendToAiSignalAboutDeadShip(true);
                     }
                     else if (gameMode.equals(GameMode.TWO_PLAYERS)) {
+                        firedShip.setCondition(Condition.SHIP_KILLED_TWO_PLAYERS);
                         field.drawShip(firedShip, Color.RED);
                     }
                     if (playerShipsLeft == 0) {
@@ -471,22 +483,25 @@ public class Logic {
                     }
                 }
                 else if (field.ofEnemy()) {
+                    firedShip.setCondition(Condition.SHIP_KILLED_ENEMY);
                     field.drawShip(firedShip, Color.RED);
                     decreaseShips(ENEMY_SHIPS);
                     if (enemyShipsLeft == 0) {
-                        // isEnd = true;
                         setGameState(GameState.END);
                     }
                 }
             }
             else { // если не уничтожен
+                field.getCell(shotI, shotJ).setCondition(Condition.SHIP_DAMAGED);
                 field.getCell(shotI, shotJ).drawDamaged(field.getGraphicsContext2D());
+             //   field.getCell(shotI, shotJ).setCondition(Condition.SHIP_DAMAGED, field.getGraphicsContext2D());
                 if (gameMode.equals(GameMode.ONE_PLAYER)) {
                     sendToAiSignalAboutDeadShip(false);
                 }
             }
         }
         else { //рисуем воду
+            field.getCell(shotI, shotJ).setCondition(Condition.SHOT_WATER);
             field.getCell(shotI, shotJ).drawWater(field.getGraphicsContext2D());
             if (field.ofPlayer()) {
                 setFightState(FightState.PLAYER_MOVE);
@@ -499,8 +514,9 @@ public class Logic {
 
     private void deleteAllDecks(int di, int dj, GameField field) {
         if (field.getCell(di, dj).getCellColor().equals(Color.RED)) {
-            field.getCell(di, dj).setCellColor(Color.WHITE);
+          //  field.getCell(di, dj).setCellColor(Color.WHITE);
             field.getCell(di, dj).setDeck(false);
+            field.getCell(di, dj).setCondition(Condition.EMPTY);
             field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
             int DECREASE_BUSY = -1;
             field.setBusyAroundCell(di, dj, DECREASE_BUSY);
@@ -518,7 +534,8 @@ public class Logic {
             }
         }
         else if (field.getCell(di, dj).getCellColor().equals(Color.ORANGE)) {
-            field.getCell(di, dj).setCellColor(Color.WHITE);
+           // field.getCell(di, dj).setCellColor(Color.WHITE);
+            field.getCell(di, dj).setCondition(Condition.EMPTY);
             field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
         }
     }
@@ -585,26 +602,22 @@ public class Logic {
     public String processSettingShip(int cli, int clj, GameField clickedField) {
         int INCREASE_BUSY = 1;
         if (getTrigger() == 1) {
+            if (clickedField.getCell(cli, clj).isBusy()) {
+                return StringConst.CELL_IS_BUSY;
+            }
             clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.RED);
             clickedField.getCell(cli, clj).setCellColor(Color.RED);
             Ship ship1 = context.getBean("ship1", Ship.class);
             ship1.build(clickedField.getCell(cli, clj));
             if (clickedField.ofPlayer()) {
-                //logic.addPlayerShip(ship1);
                 addPlayerShip(ship1);
             }
             else if (clickedField.ofEnemy()) {
-                //logic.addEnemyShip(ship1);
                 addEnemyShip(ship1);
             }
             clickedField.setBusyAroundCell(cli, clj, INCREASE_BUSY);
-           // decreaseShipsToGo(); !!!
             enableCounts[1]--;
-           // setLabelAfterSettingShip(); !!
             setTrigger(1, false);
-            /*if (logic.checkPreparation()) {
-                readyButton.setDisable(false);
-            }*/
             if (enableCounts[1] == 0 && enableCounts[2] == 0 && enableCounts[3] == 0 && enableCounts[4] == 0) {
                 return StringConst.YOU_ARE_READY;
             }
@@ -616,11 +629,9 @@ public class Logic {
             clickCount++;
             if (clickCount == 1) {
                 if (clickedField.getCell(cli, clj).isBusy()) {
-                //    statusLabel.setText(StringConst.CELL_IS_BUSY);
                     clickCount--;
                     return StringConst.CELL_IS_BUSY;
                 }
-             //   statusLabel.setText(StringConst.SET_DIR);
                 clickedField.getCell(cli, clj).drawShipDeck(clickedField.getGraphicsContext2D(), Color.ORANGE);
                 clickedField.getCell(cli, clj).setCellColor(Color.ORANGE);
                 //Ship nShip = new Ship(getTrigger());
@@ -637,11 +648,9 @@ public class Logic {
             if (clickCount == 2) {
                 Ship prevShip = new Ship();
                 if (clickedField.ofPlayer()) {
-                   // prevShip = logic.getShips(Logic.PLAYER_SHIPS).get(logic.getShips(Logic.PLAYER_SHIPS).size() - 1);
                     prevShip = playerShips.get(playerShips.size() - 1);
                 }
                 else if (clickedField.ofEnemy()) {
-                   // prevShip = logic.getShips(Logic.ENEMY_SHIPS).get(logic.getShips(Logic.ENEMY_SHIPS).size() - 1);
                     prevShip = enemyShips.get(enemyShips.size() - 1);
                 }
                 int pi = prevShip.getDecks().get(0).getY() / Cell.SIZE,  pj = prevShip.getDecks().get(0).getX() / Cell.SIZE;
@@ -650,14 +659,12 @@ public class Logic {
                         dj = Math.abs(pj - clj);
                 if (cli == pi - di && pj == clj) {
                     if (pi - prevShip.getLength() + 1 < 0) {
-                   //     statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return StringConst.CELL_IS_BUSY;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi - i, pj).isBusy()) {
-                   //         statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return StringConst.CELL_IS_BUSY;
@@ -674,14 +681,12 @@ public class Logic {
                 }
                 else if (cli == pi + di && pj == clj) {
                     if (pi + prevShip.getLength() - 1 >= GameField.SIZE) {
-                 //       statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return StringConst.CELL_IS_BUSY;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi + i, pj).isBusy()) {
-                    //        statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return StringConst.CELL_IS_BUSY;
@@ -698,14 +703,12 @@ public class Logic {
                 }
                 else if (cli == pi && clj == pj - dj) {
                     if (pj - prevShip.getLength() + 1 < 0) {
-                 //       statusLabel.setText(StringConst.CELL_IS_BUSY);
                         clickCount--;
                         clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                         return StringConst.CELL_IS_BUSY;
                     }
                     for (int i = 0; i < prevShip.getLength(); i++) {
                         if (clickedField.getCell(pi, pj - i).isBusy()) {
-                      //      statusLabel.setText(StringConst.CELL_IS_BUSY);
                             clickCount--;
                             clickedField.getCell(pi, pj).setCellColor(Color.ORANGE);
                             return StringConst.CELL_IS_BUSY;
@@ -764,6 +767,8 @@ public class Logic {
         }
         return StringConst.CELL_IS_BUSY;
     }
+
+
 
 
 

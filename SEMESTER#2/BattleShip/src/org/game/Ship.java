@@ -1,5 +1,7 @@
 package org.game;
 
+import org.app.Condition;
+
 import java.util.ArrayList;
 
 public class Ship {
@@ -27,8 +29,10 @@ public class Ship {
         for (Cell cell : cells) {
             decks.add(cell);
             cell.setDeck(true);
+            cell.setCondition(Condition.SHIP_DECK);
         }
     }
+
 
     public void getDamage() {
         length--;
@@ -49,5 +53,11 @@ public class Ship {
 
     public boolean isDestroyed() {
         return length == 0;
+    }
+
+    public void setCondition(Condition condition) {
+        for (Cell deck : getDecks()) {
+            deck.setCondition(condition);
+        }
     }
 }

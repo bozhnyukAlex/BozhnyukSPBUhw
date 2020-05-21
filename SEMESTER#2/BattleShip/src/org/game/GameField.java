@@ -3,11 +3,14 @@ package org.game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import org.app.Condition;
 import org.app.Config;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.concurrent.CancellationException;
 
 
 public class GameField extends Canvas {
@@ -91,8 +94,21 @@ public class GameField extends Canvas {
 
     public void drawShip(Ship ship, Color color) {
         for (Cell deck : ship.getDecks()) {
-            deck.setCellColor(color);
             deck.drawShipDeck(getGraphicsContext2D(), color);
+        }
+    }
+
+    public void setWaterAroundDestroyedShip(Ship ship) {
+        for (Cell cell : ship.getDecks()) {
+            for (int w = -1; w <= 1; w++) {
+                for (int v = -1; v <= 1; v++) {
+                    int i = cell.getI(), j = cell.getJ();
+                    if (inRange(i + w, j + v) && !getCell(i + w, j + v).isShipKilledDeck()) {
+                        getCell(i + w, j + v).setCondition(Condition.SHIP_AROUND);
+                        getCell(i + w, j + v).drawWater(getGraphicsContext2D()); //draw()
+                    }
+                }
+            }
         }
     }
 
