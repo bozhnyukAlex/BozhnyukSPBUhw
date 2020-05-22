@@ -9,5 +9,6 @@ public enum Condition {
     SHIP_KILLED_PLAYER, // yes
     SHIP_KILLED_ENEMY, // yes
     SHIP_KILLED_TWO_PLAYERS,// yes
-    SHIP_FIRST_CLICK
+    SHIP_FIRST_CLICK,
+    SHIP_REDRAW
 }

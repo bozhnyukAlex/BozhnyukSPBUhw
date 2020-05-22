@@ -60,8 +60,11 @@ public class GameField extends Canvas {
         GraphicsContext gc = getGraphicsContext2D();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE ; j++) {
-                cells[i][j].setCondition(Condition.EMPTY);
-                cells[i][j].draw(gc, true);
+                if (cells[i][j].isNotShotDeck()) {
+                    cells[i][j].setCondition(Condition.SHIP_REDRAW);
+                    cells[i][j].draw(gc, true);
+                }
+
             }
         }
     }

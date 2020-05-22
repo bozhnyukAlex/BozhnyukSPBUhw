@@ -506,7 +506,7 @@ public class BattleController extends View {
 
     private boolean canShoot(int i, int j, GameField field) {
         Cell shot = field.getCell(i, j);
-        return shot.isEmpty() || shot.isNotShotDeck();
+        return shot.isEmpty() || shot.isNotShotDeck() || shot.isRedrawShip();
     }
 
     private void localeButtons() {

@@ -448,7 +448,7 @@ public class Logic {
 
     public void processShot(int shotI, int shotJ, GameField field) {
       //  field.getCell(shotI, shotJ).setShot(true);
-        if (field.getCell(shotI, shotJ).isNotShotDeck()) {
+        if (field.getCell(shotI, shotJ).isNotShotDeck() || field.getCell(shotI, shotJ).isRedrawShip()) {
             Ship firedShip = new Ship();
             if (field.ofPlayer()) {
                 firedShip = getShipByDeck(field.getCell(shotI, shotJ), playerShips);

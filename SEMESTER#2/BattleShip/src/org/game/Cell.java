@@ -62,7 +62,7 @@ public class Cell {
     }
 
     public void draw(GraphicsContext gc, boolean needFill) {
-        if (isEmpty()) {
+        if (isEmpty() || isRedrawShip()) {
             if (needFill) {
                 gc.setFill(getCellColor());
                 gc.fillRect(x, y, SIZE, SIZE);
@@ -91,6 +91,7 @@ public class Cell {
     public void setCondition(Condition condition) {
         this.condition = condition;
         switch (condition) {
+            case SHIP_REDRAW:
             case EMPTY: {
                 setCellColor(Color.color(0.96F, 0.96F, 0.96F));
                 break;
@@ -143,6 +144,10 @@ public class Cell {
 
     public boolean isShipKilledDeck() {
         return isShipKilledEnemy() || isShipKilledPlayer() || isShipKilledPlayerTwo();
+    }
+
+    public boolean isRedrawShip() {
+        return condition.equals(Condition.SHIP_REDRAW);
     }
 
     public boolean isFirstClickedDeck() {
