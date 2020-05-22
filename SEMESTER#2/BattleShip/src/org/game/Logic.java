@@ -1,7 +1,6 @@
 package org.game;
 
 import javafx.scene.paint.Color;
-import org.app.Condition;
 import org.app.Config;
 import org.app.StringConst;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -606,7 +605,7 @@ public class Logic {
                 return StringConst.YOU_ARE_READY;
             }
             else {
-                return StringConst.CHOOSE_GAME_MODE;
+                return StringConst.CHOOSE_SHIP;
             }
         }
         if (getTrigger() != 1 && getTrigger() != 0) {

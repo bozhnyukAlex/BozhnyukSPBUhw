@@ -3,7 +3,6 @@ package org.game;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import org.app.Condition;
 
 import java.util.ArrayList;
 

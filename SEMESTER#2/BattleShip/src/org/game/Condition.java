@@ -1,4 +1,4 @@
-package org.app;
+package org.game;
 
 public enum Condition {
     EMPTY, // yes

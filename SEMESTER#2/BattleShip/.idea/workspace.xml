@@ -8,12 +8,22 @@
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/app/Condition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Cell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/GameField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Logic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleShip/org/game/Ship.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BattleShip/org/game/Ship.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/AITest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/AITest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/GameFieldTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/GameFieldTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/app/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Condition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/game/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/game/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/game/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/game/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/GamePack/AITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/AITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/GameFieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/GameFieldTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +98,13 @@
       <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\BattleShip\uml" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AITest">
+  <component name="RunManager" selected="JUnit.BattleControllerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.app.Main" />
       <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.app.*" />
+          <option name="PATTERN" value="org.game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,51 +143,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AITest.makeShotLowTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BattleControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GamePack.*" />
+          <option name="PATTERN" value="AppInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.AITest" />
-      <option name="METHOD_NAME" value="makeShotLowTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BattleControllerTest.shipSettingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BattleShip" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GamePack.*" />
+          <option name="PATTERN" value="AppInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="GamePack" />
-      <option name="MAIN_CLASS_NAME" value="GamePack.LogicTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="AppInterface" />
+      <option name="MAIN_CLASS_NAME" value="AppInterface.BattleControllerTest" />
+      <option name="METHOD_NAME" value="shipSettingTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.LogicTest" />
       <item itemvalue="JUnit.AITest.makeShotHighTest" />
-      <item itemvalue="JUnit.AITest.makeShotLowTest" />
       <item itemvalue="JUnit.AITest" />
+      <item itemvalue="JUnit.BattleControllerTest.shipSettingTest" />
+      <item itemvalue="JUnit.BattleControllerTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BattleControllerTest" />
+        <item itemvalue="JUnit.BattleControllerTest.shipSettingTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.AITest" />
         <item itemvalue="JUnit.AITest.makeShotHighTest" />
-        <item itemvalue="JUnit.AITest.makeShotLowTest" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.LogicTest" />
       </list>
     </recent_temporary>
   </component>
@@ -287,22 +297,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589798866317" />
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1590149804149">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1590150387069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590149804149" />
-    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1590149804148">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590150387069" />
+    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1590150387069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590149804148" />
-    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1590149804148">
+    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590150387069" />
+    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1590150387069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590149804148" />
-    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1590149804148">
+    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590150387069" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1590150387069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590149804148" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590150387069" />
     <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1590149719045">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -366,13 +376,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/game/Logic.java</url>
-          <line>450</line>
+          <line>449</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/GamePack/AITest.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

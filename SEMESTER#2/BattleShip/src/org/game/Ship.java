@@ -1,7 +1,5 @@
 package org.game;
 
-import org.app.Condition;
-
 import java.util.ArrayList;
 
 public class Ship {

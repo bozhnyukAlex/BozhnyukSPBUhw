@@ -1,6 +1,6 @@
 package GamePack;
 
-import org.app.Condition;
+import org.game.Condition;
 import org.game.*;
 import org.junit.Before;
 import org.junit.Test;
