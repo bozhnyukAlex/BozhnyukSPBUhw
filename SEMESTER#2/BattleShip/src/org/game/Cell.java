@@ -49,7 +49,7 @@ public class Cell {
     }
 
     public boolean isShot() {
-        return isShipKilledDeck() || isShotWater() || isDamagedDeck();
+        return isShipKilledDeck() || isShotWater() || isDamagedDeck() || isAroundShip();
     }
 
 

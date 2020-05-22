@@ -116,6 +116,7 @@ public class GameField extends Canvas {
     public void setShip(Ship ship) {
         for (Cell deck : ship.getDecks()) {
             cells[deck.getI()][deck.getJ()] = deck;
+            deck.setCondition(Condition.SHIP_DECK);
             setBusyAroundCell(deck.getI(), deck.getJ(), 1);
         }
     }
