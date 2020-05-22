@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class AITest {
     private AI ai;
     private GameField field;
+
     @Before
     public void setUp() throws Exception {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
@@ -24,7 +25,7 @@ public class AITest {
 
     @Test
     public void makeShotLowTest() {
-        Cell shot = testShot();
+        testShot();
         assertTrue(checkShot());
     }
 
@@ -34,7 +35,9 @@ public class AITest {
         Cell shot;
         Ship testShip = new Ship(new Cell(0, 3 * Cell.SIZE), new Cell(Cell.SIZE, 3 * Cell.SIZE), new Cell(2 * Cell.SIZE, 3 * Cell.SIZE), new Cell(3 * Cell.SIZE, 3 * Cell.SIZE));
         field.setShip(testShip);
-        for (int i = 0; i < 6; i++) { //тест добития корабля, за 6 выстрелов корабль должен умереть
+        int MAX_TURNS_TO_SINK_RECOGNIZED_SHIP = 6;
+        int stepCount = 5;
+        for (int i = 0; i < MAX_TURNS_TO_SINK_RECOGNIZED_SHIP; i++) { //тест добития корабля, за 6 выстрелов корабль должен умереть
             shot = ai.makeShot();
             if (shot.isEmpty()) {
                 shot.setCondition(Condition.SHOT_WATER);
@@ -52,17 +55,19 @@ public class AITest {
         shot = testShot();
         shot = testShot();
         assertTrue(shot.getI() == 7 && shot.getJ() == 0); //проверяем перескок 1
-        for (int i = 0; i < 5; i++) { //переходя диагональ, должен сделать 5 выстрелов, так как там находится корабль
+        for (int i = 0; i < stepCount; i++) { //переходя диагональ, должен сделать 5 выстрелов, так как там находится корабль
             shot = testShot();
         }
         shot = testShot();
+        stepCount = 7;
         assertTrue(shot.getI() == 9 && shot.getJ() == 2); //и проверяем еще один перескок и так далее
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < stepCount; i++) {
             shot = testShot();
         }
         shot = testShot();
         assertTrue(shot.getI() == 9 && shot.getJ() == 6);
-        for (int i = 0; i < 3; i++) {
+        stepCount = 3;
+        for (int i = 0; i < stepCount; i++) {
             shot = testShot();
         }
         shot = testShot();
@@ -75,13 +80,15 @@ public class AITest {
         assertTrue(shot.getI() == 0 && shot.getJ() == 5);
         shot = testShot();
         assertTrue(shot.getI() == 9 && shot.getJ() == 0);
-        for (int i = 0; i < 9; i++) {
+        stepCount = 9;
+        for (int i = 0; i < stepCount; i++) {
             shot = testShot();
         }
         assertTrue(shot.getI() == 0 && shot.getJ() == 9);
         shot = testShot();
         assertTrue(shot.getI() == 9 && shot.getJ() == 4);
-        for (int i = 0; i < 5; i++) {
+        stepCount = 5;
+        for (int i = 0; i < stepCount; i++) {
             shot = testShot();
         }
         assertTrue(shot.getI() == 4 && shot.getJ() == 9);

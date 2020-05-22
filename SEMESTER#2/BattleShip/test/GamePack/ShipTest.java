@@ -68,7 +68,8 @@ public class ShipTest {
         assertTrue(s1.isDestroyed());
 
         assertFalse(s4.isDestroyed());
-        for (int i = 0; i < 4; i++) {
+        int damageCnt = 4;
+        for (int i = 0; i < damageCnt; i++) {
             s4.getDamage();
         }
         assertTrue(s4.isDestroyed());
