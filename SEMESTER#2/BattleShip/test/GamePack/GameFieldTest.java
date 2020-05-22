@@ -11,7 +11,7 @@ public class GameFieldTest {
     private GameField field;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         field = new GameField();
         field.initAndDraw();
     }
@@ -65,8 +65,6 @@ public class GameFieldTest {
     @Test
     public void hasFiredShipAroundTest() {
         assertFalse(field.hasFiredShipAround(1, 5));
-      /*  field.getCell(2,5).setDeck(true);
-        field.getCell(2, 5).setShot(true);*/
         field.getCell(2, 5).setCondition(Condition.SHIP_KILLED_ENEMY);
         assertTrue(field.hasFiredShipAround(1, 5));
     }

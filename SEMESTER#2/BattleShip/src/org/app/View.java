@@ -5,9 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import org.game.GameField;
-import org.game.Logic;
 import org.game.Ship;
 
 import java.util.ArrayList;
@@ -118,7 +116,7 @@ public class View {
     }
 
     public void drawShips(GameField field, ArrayList<Ship> ships) {
-        field.drawShips(ships, Color.RED);
+        field.drawShips(ships);
     }
 
     public void decreaseLabelHP(int mode) {

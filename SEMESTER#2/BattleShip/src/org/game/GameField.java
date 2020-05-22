@@ -2,7 +2,6 @@ package org.game;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -84,13 +83,13 @@ public class GameField extends Canvas {
         }
     }
 
-    public void drawShips(ArrayList<Ship> ships, Color color) {
+    public void drawShips(ArrayList<Ship> ships) {
         for(Ship ship : ships) {
-            drawShip(ship, color);
+            drawShip(ship);
         }
     }
 
-    public void drawShip(Ship ship, Color color) {
+    public void drawShip(Ship ship) {
         for (Cell deck : ship.getDecks()) {
            // deck.drawShipDeck(getGraphicsContext2D(), color);
             deck.draw(getGraphicsContext2D(), false);

@@ -1,6 +1,5 @@
 package org.game;
 
-import javafx.scene.paint.Color;
 import org.app.Config;
 import org.app.StringConst;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -330,7 +329,7 @@ public class Logic {
         this.context = context;
     }
 
-    private void setTrigger(int num, boolean state) { ///ЕСЛИ state == true - то цикл, а иначе можно просто установить
+    public void setTrigger(int num, boolean state) { ///ЕСЛИ state == true - то цикл, а иначе можно просто установить
         for (int i = 0; i < captureTriggers.length; i++) {
             if (i != num) {
                 captureTriggers[i] = false;
@@ -380,16 +379,19 @@ public class Logic {
         return clickCount;
     }
 
-    public void autoGenerate(GameField field) {
+    public ArrayList<Ship> autoGenerate(GameField field) {
         switch (field.getAccessory()) {
             case GameField.PLAYER_MODE: {
                 playerShips = autoShipGenerate(field);
-                break;
+                return playerShips;
             }
             case GameField.ENEMY_MODE: {
                 enemyShips = autoShipGenerate(field);
-                break;
+                return enemyShips;
             }
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + field.getAccessory());
         }
     }
 
@@ -462,12 +464,12 @@ public class Logic {
                     decreaseShips(PLAYER_SHIPS);
                     if (gameMode.equals(GameMode.ONE_PLAYER)) {
                         firedShip.setCondition(Condition.SHIP_KILLED_PLAYER);
-                        field.drawShip(firedShip, Color.DARKOLIVEGREEN);
+                        field.drawShip(firedShip);
                         sendToAiSignalAboutDeadShip(true);
                     }
                     else if (gameMode.equals(GameMode.TWO_PLAYERS)) {
                         firedShip.setCondition(Condition.SHIP_KILLED_TWO_PLAYERS);
-                        field.drawShip(firedShip, Color.RED);
+                        field.drawShip(firedShip);
                     }
                     if (playerShipsLeft == 0) {
                         setGameState(GameState.END);
@@ -475,7 +477,7 @@ public class Logic {
                 }
                 else if (field.ofEnemy()) {
                     firedShip.setCondition(Condition.SHIP_KILLED_ENEMY);
-                    field.drawShip(firedShip, Color.RED);
+                    field.drawShip(firedShip);
                     decreaseShips(ENEMY_SHIPS);
                     if (enemyShipsLeft == 0) {
                         setGameState(GameState.END);
@@ -504,7 +506,6 @@ public class Logic {
 
     private void deleteAllDecks(int di, int dj, GameField field) {
         if (field.getCell(di, dj).isNotShotDeck()) {
-            //field.getCell(di, dj).setDeck(false);
             field.getCell(di, dj).setCondition(Condition.EMPTY);
             field.getCell(di, dj).draw(field.getGraphicsContext2D(), true);
             int DECREASE_BUSY = -1;
@@ -744,6 +745,10 @@ public class Logic {
 
     public boolean aiInitialized() {
         return enemyAI != null;
+    }
+
+    public boolean isPlayerListEmpty() {
+        return playerShips.isEmpty();
     }
 
 
