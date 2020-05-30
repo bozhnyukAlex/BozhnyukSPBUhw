@@ -38,8 +38,6 @@ public class UIController {
     @FXML
     private Label scaleLabel;
 
-    @FXML
-    private Button drawBtn;
 
     @FXML
     public void initialize() {
@@ -55,14 +53,14 @@ public class UIController {
         decScaleBtn.setOnAction(actionEvent -> {
             decScale();
         });
-        drawBtn.setOnAction(actionEvent -> {
+        /*drawBtn.setOnAction(actionEvent -> {
             if (curveBox.getValue() == null) {
                 return;
             }
             incScaleBtn.setDisable(false);
             decScaleBtn.setDisable(false);
             drawingField.draw(curveBox.getValue());
-        });
+        });*/
         drawingField.setOnScroll(scrollEvent -> {
             if (incScaleBtn.isDisable() || decScaleBtn.isDisable()) {
                 return;
@@ -74,6 +72,12 @@ public class UIController {
             else if (deltaY > 0) {
                 incScale();
             }
+        });
+
+        curveBox.setOnAction(actionEvent -> {
+            drawingField.draw(curveBox.getValue());
+            decScaleBtn.setDisable(false);
+            incScaleBtn.setDisable(false);
         });
 
 

@@ -23,7 +23,6 @@
       </Label>
       <Button fx:id="incScaleBtn" disable="true" layoutX="149.0" layoutY="197.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="61.0" text="+0.1" />
       <Button fx:id="decScaleBtn" disable="true" layoutX="149.0" layoutY="243.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="61.0" text="-0.1" />
-      <Button fx:id="drawBtn" layoutX="54.0" layoutY="310.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="Нарисовать" />
       <Pane fx:id="curvePane" layoutX="275.0" layoutY="85.0" prefHeight="500.0" prefWidth="600.0">
          <children>
             <Canvas height="500.0" width="600.0" />
