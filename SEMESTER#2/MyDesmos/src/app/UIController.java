@@ -18,7 +18,7 @@ import math.Parabola;
 import java.util.ArrayList;
 
 public class UIController {
-    DrawingField drawingField;
+    private DrawingField drawingField;
 
     @FXML
     private AnchorPane pane;
@@ -44,6 +44,7 @@ public class UIController {
         drawingField = new DrawingField();
         pane.getChildren().add(drawingField);
         drawingField.setParentPane(curvePane);
+        drawingField.setId("drawingField");
         initCurves();
         curvePane.setStyle("-fx-border-color: black");
         scaleLabel.setStyle("-fx-border-color: black");
@@ -53,14 +54,6 @@ public class UIController {
         decScaleBtn.setOnAction(actionEvent -> {
             decScale();
         });
-        /*drawBtn.setOnAction(actionEvent -> {
-            if (curveBox.getValue() == null) {
-                return;
-            }
-            incScaleBtn.setDisable(false);
-            decScaleBtn.setDisable(false);
-            drawingField.draw(curveBox.getValue());
-        });*/
         drawingField.setOnScroll(scrollEvent -> {
             if (incScaleBtn.isDisable() || decScaleBtn.isDisable()) {
                 return;
@@ -86,7 +79,7 @@ public class UIController {
     public void initCurves() {
         ArrayList<Curve> toBox = new ArrayList<>();
         toBox.add(new Ellipse(4,3, (float) (-drawingField.getWidth() / 2), (float) drawingField.getWidth() / 2));
-        toBox.add(new Ellipse(5,5, (float) (-drawingField.getWidth() / 2), (float) drawingField.getWidth() / 2));
+        toBox.add(new Ellipse(2.5f, 2.5f, (float) (-drawingField.getWidth() / 2), (float) drawingField.getWidth() / 2));
         toBox.add(new Ellipse(1, 2,(float) (-drawingField.getWidth() / 2), (float) drawingField.getWidth() / 2));
         toBox.add(new Hyperbola(3.5f, 2.5f, (float) (-drawingField.getWidth() / 2), (float) drawingField.getWidth() / 2));
         toBox.add(new Hyperbola(2, 4, (float) (-drawingField.getWidth() / 2), (float) drawingField.getWidth() / 2));

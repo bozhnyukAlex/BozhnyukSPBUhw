@@ -94,7 +94,12 @@ public class DrawingField extends Canvas {
         num = (float) d / 10;
         gc.setLineWidth(2.0);
         gc.setFill(Color.BLACK);
-        gc.fillText(Float.toString(num), getWidth() / 2 + num * pixStep - 5, getHeight() / 2 + 18);
+        if (num == Math.ceil(num)) {
+            gc.fillText(Integer.toString((int) num), getWidth() / 2 + num * pixStep - 5, getHeight() / 2 + 18);
+        }
+        else {
+            gc.fillText(Float.toString(num), getWidth() / 2 + num * pixStep - 5, getHeight() / 2 + 18);
+        }
     }
 
     private void drawNumY(float num) {
@@ -104,7 +109,12 @@ public class DrawingField extends Canvas {
         num = (float) d / 10;
         gc.setLineWidth(2.0);
         gc.setFill(Color.BLACK);
-        gc.fillText(Float.toString(-num), getWidth() / 2 + 15, getHeight() / 2 + num * pixStep + 5);
+        if (num == Math.ceil(num)) {
+            gc.fillText(Integer.toString((int) -num), getWidth() / 2 + 15, getHeight() / 2 + num * pixStep + 5);
+        }
+        else {
+            gc.fillText(Float.toString(-num), getWidth() / 2 + 15, getHeight() / 2 + num * pixStep + 5);
+        }
     }
 
     private void drawZeroPoint() {

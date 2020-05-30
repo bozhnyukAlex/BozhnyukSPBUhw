@@ -17,6 +17,8 @@ public abstract class Curve {
 
     public abstract ArrayList<Float> getYPoints(float x); //сначала хотел возвращать одну точку, но из-за симметрии нужно иногда две
 
+    public abstract void buildEquation();
+
     public ArrayList<Point2D>[] makePoints(int pixStep) {
         //прорисовка по четвертям, потому что если бы мы рисовали полную ломаную, то вышли бы проблемы с гиперболой, например
         ArrayList<Point2D> firstQuarter = new ArrayList<>();

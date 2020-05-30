@@ -8,7 +8,7 @@ public class Parabola extends Curve {
     public Parabola(float p, float from, float to) {
         super(from, to);
         this.p = p;
-        equation = "y^2 = 2*" + p + "*x";
+        buildEquation();
     }
 
     @Override
@@ -23,5 +23,19 @@ public class Parabola extends Curve {
         yRes.add(y);
         yRes.add(-y);
         return yRes;
+    }
+
+    @Override
+    public void buildEquation() {
+        StringBuilder builder = new StringBuilder("y^2 = ");
+        int tp = (int) p;
+        if (tp == p) {
+            builder.append(2 * tp);
+        }
+        else {
+            builder.append(2 * p);
+        }
+        builder.append("*x");
+        equation = builder.toString();
     }
 }

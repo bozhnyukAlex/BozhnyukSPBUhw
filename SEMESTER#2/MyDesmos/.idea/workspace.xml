@@ -2,14 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aab2d86a-5d2d-44dc-915e-2dc15a0c4ba9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../BattleShip/.idea/BattleShip.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_guava_guava_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_hamcrest_hamcrest_junit_2_0_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/images/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyDesmos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyDesmos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/view/uiMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/res/view/uiMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/app/DrawingField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/app/DrawingField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/app/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/app/UIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/app/UIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/math/Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/math/Curve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/math/Ellipse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/math/Ellipse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/math/Hyperbola.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/math/Hyperbola.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyDesmos/math/Parabola.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyDesmos/math/Parabola.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/MyDesmos/app/UIControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/MyDesmos/app/UIControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/DrawingField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/DrawingField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/Curve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/Ellipse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/Ellipse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/Hyperbola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/Hyperbola.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/math/Parabola.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/Parabola.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/app/UIControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/app/UIControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +33,7 @@
         <option value="FxmlFile" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -45,7 +56,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -54,14 +66,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="math" />
       <recent name="app" />
+      <recent name="math" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\SEMESTER#2\MyDesmos\res\images" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.UIControllerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="MyDesmos" />
@@ -75,64 +90,56 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CurveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in MyDesmos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyDesmos" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UIControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyDesmos" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="math.*" />
+          <option name="PATTERN" value="app.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="math" />
-      <option name="MAIN_CLASS_NAME" value="math.CurveTest" />
+      <option name="PACKAGE_NAME" value="app" />
+      <option name="MAIN_CLASS_NAME" value="app.UIControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CurveTest.getYPointsEllipseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UIControllerTest.testDrawingEnable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyDesmos" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="math.*" />
+          <option name="PATTERN" value="app.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="math" />
-      <option name="MAIN_CLASS_NAME" value="math.CurveTest" />
-      <option name="METHOD_NAME" value="getYPointsEllipseTest" />
+      <option name="PACKAGE_NAME" value="app" />
+      <option name="MAIN_CLASS_NAME" value="app.UIControllerTest" />
+      <option name="METHOD_NAME" value="testDrawingEnable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CurveTest.getYPointsHyperbolaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UIControllerTest.testScrolling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="MyDesmos" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="math.*" />
+          <option name="PATTERN" value="app.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="math" />
-      <option name="MAIN_CLASS_NAME" value="math.CurveTest" />
-      <option name="METHOD_NAME" value="getYPointsHyperbolaTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CurveTest.getYPointsParabolaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="MyDesmos" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="math.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="math" />
-      <option name="MAIN_CLASS_NAME" value="math.CurveTest" />
-      <option name="METHOD_NAME" value="getYPointsParabolaTest" />
+      <option name="PACKAGE_NAME" value="app" />
+      <option name="MAIN_CLASS_NAME" value="app.UIControllerTest" />
+      <option name="METHOD_NAME" value="testScrolling" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UIControllerTest" />
+        <item itemvalue="JUnit.UIControllerTest.testDrawingEnable" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CurveTest" />
-        <item itemvalue="JUnit.CurveTest.getYPointsParabolaTest" />
-        <item itemvalue="JUnit.CurveTest.getYPointsHyperbolaTest" />
-        <item itemvalue="JUnit.CurveTest.getYPointsEllipseTest" />
+        <item itemvalue="JUnit.All in MyDesmos" />
+        <item itemvalue="JUnit.UIControllerTest.testScrolling" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +169,8 @@
       <workItem from="1590388322799" duration="11840000" />
       <workItem from="1590521550018" duration="9511000" />
       <workItem from="1590769713743" duration="19414000" />
-      <workItem from="1590828842877" duration="2933000" />
+      <workItem from="1590828842877" duration="7040000" />
+      <workItem from="1590836728844" duration="500000" />
     </task>
     <servers />
   </component>
@@ -174,62 +182,62 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1590434108348" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1590793429870">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1590836116619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590793429870" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590836116619" />
     <state width="433" height="466" key="DebuggerActiveHint" timestamp="1590787709147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="433" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1590787709147" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1590832384848">
+    <state width="1877" height="395" key="GridCell.Tab.0.bottom" timestamp="1590837343789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590832384848" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1590832384848">
+    <state width="1877" height="395" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590837343789" />
+    <state width="1877" height="395" key="GridCell.Tab.0.center" timestamp="1590837343789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590832384848" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1590832384848">
+    <state width="1877" height="395" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590837343789" />
+    <state width="1877" height="395" key="GridCell.Tab.0.left" timestamp="1590837343789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590832384848" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1590832384848">
+    <state width="1877" height="395" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590837343789" />
+    <state width="1877" height="395" key="GridCell.Tab.0.right" timestamp="1590837343789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590832384848" />
-    <state width="1877" height="345" key="GridCell.Tab.1.bottom" timestamp="1590832196361">
+    <state width="1877" height="395" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590837343789" />
+    <state width="1877" height="345" key="GridCell.Tab.1.bottom" timestamp="1590836711885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="345" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590832196361" />
-    <state width="1877" height="345" key="GridCell.Tab.1.center" timestamp="1590832196361">
+    <state width="1877" height="345" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590836711885" />
+    <state width="1877" height="345" key="GridCell.Tab.1.center" timestamp="1590836711885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="345" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590832196361" />
-    <state width="1877" height="345" key="GridCell.Tab.1.left" timestamp="1590832196361">
+    <state width="1877" height="345" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590836711885" />
+    <state width="1877" height="345" key="GridCell.Tab.1.left" timestamp="1590836711885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="345" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590832196361" />
-    <state width="1877" height="345" key="GridCell.Tab.1.right" timestamp="1590832196361">
+    <state width="1877" height="345" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590836711885" />
+    <state width="1877" height="345" key="GridCell.Tab.1.right" timestamp="1590836711885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="345" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590832196361" />
+    <state width="1877" height="345" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590836711885" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1590829185445">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590829185445" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590828843066">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590836740895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590828843066" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590836740895" />
     <state x="664" y="413" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1590829177083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="664" y="413" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1590829177083" />
-    <state x="731" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1590791384985">
+    <state x="731" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1590833262916">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="731" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590791384985" />
+    <state x="731" y="223" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590833262916" />
     <state x="1096" y="244" key="run.anything.popup" timestamp="1590786363124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
