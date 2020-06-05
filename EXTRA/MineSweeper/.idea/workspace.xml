@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="MineSweeper:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba5fdf9e-2ee6-4403-95d0-7bec6ac707e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/JavaSweeper.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/JavaSweeper$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/JavaSweeper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/bomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/bombed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/closed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/flaged.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/inform.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/nobomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/num8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/opened.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/out/production/JavaSweeper/img/zero.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/bomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/bombed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/closed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/flaged.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/inform.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/nobomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/num8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/opened.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/res/img/zero.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaSweeper/src/JavaSweeper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JavaSweeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JavaSweeper.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\BozhnyukSPBUhw\EXTRA\MineSweeper\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aJCKmWjOhLyL0hy0fkIVCvzYjW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/res" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\EXTRA\MineSweeper\res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BozhnyukSPBUhw\EXTRA\MineSweeper\res\img" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="JavaSweeper" />
+      <module name="MineSweeper" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba5fdf9e-2ee6-4403-95d0-7bec6ac707e4" name="Default Changelist" comment="" />
+      <created>1586444247788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586444247788</updated>
+      <workItem from="1586444251235" duration="9652000" />
+      <workItem from="1586462262475" duration="17703000" />
+      <workItem from="1586506745329" duration="2574000" />
+      <workItem from="1586517181955" duration="105000" />
+      <workItem from="1586517612669" duration="467000" />
+      <workItem from="1586518096757" duration="2193000" />
+      <workItem from="1586605059584" duration="7000" />
+      <workItem from="1586610267217" duration="6070000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1127" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1586477211080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1127" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586477211080" />
+    <state x="1048" y="311" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586467025103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1048" y="311" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586467025103" />
+    <state x="1236" y="408" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586465004248">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1236" y="408" width="408" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1586465004248" />
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1586632354625">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586632354625" />
+    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1586632354625">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="166" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586632354625" />
+    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1586632354625">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="166" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586632354625" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1586632354625">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="166" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586632354625" />
+    <state width="914" height="44" key="GridCell.Tab.1.bottom" timestamp="1586462249057">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="44" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586462249057" />
+    <state width="914" height="44" key="GridCell.Tab.1.center" timestamp="1586462249057">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="44" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586462249057" />
+    <state width="914" height="44" key="GridCell.Tab.1.left" timestamp="1586462249057">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="44" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586462249057" />
+    <state width="914" height="44" key="GridCell.Tab.1.right" timestamp="1586462249057">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="44" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586462249057" />
+    <state x="466" y="250" key="SettingsEditor" timestamp="1586517166787">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="466" y="250" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586517166787" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586518096441">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586518096441" />
+    <state x="1170" y="279" key="extract.method.dialog" timestamp="1586480331051">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1170" y="279" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586480331051" />
+    <state x="685" y="144" key="new project wizard" timestamp="1586610324465">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="685" y="144" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586610324465" />
+    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1586475662035">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586475662035" />
+  </component>
+</project>
