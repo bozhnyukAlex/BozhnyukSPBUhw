@@ -9,6 +9,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="JavaFX-11" level="application" />
+    <orderEntry type="library" name="com.google.guava:guava:18.0" level="project" />
+    <orderEntry type="library" name="junit:junit:4.13" level="project" />
+    <orderEntry type="library" name="org.hamcrest:hamcrest-junit:2.0.0.0" level="project" />
+    <orderEntry type="library" name="org.loadui:testFx:3.1.2" level="project" />
+    <orderEntry type="library" name="org.testfx:testfx-core:4.0.16-alpha" level="project" />
+    <orderEntry type="library" name="org.testfx:testfx-junit:4.0.15-alpha" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.4">
         <CLASSES>
@@ -25,10 +32,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="org.loadui:testFx:3.1.2" level="project" />
-    <orderEntry type="library" name="org.testfx:testfx-core:4.0.16-alpha" level="project" />
-    <orderEntry type="library" name="org.testfx:testfx-junit:4.0.15-alpha" level="project" />
-    <orderEntry type="library" name="com.google.guava:guava:18.0" level="project" />
-    <orderEntry type="library" name="org.hamcrest:hamcrest-junit:2.0.0.0" level="project" />
   </component>
 </module>

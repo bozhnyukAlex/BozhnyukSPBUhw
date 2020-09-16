@@ -8,8 +8,23 @@
   <component name="ChangeListManager">
     <list default="true" id="60ef7d84-b4db-41f7-af24-cb953b16eb52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Battleship/GamePack/AITest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Battleship/GamePack/AITest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/GamePack/AITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/GamePack/AITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleShip.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleShip.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AppInterface/BattleControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/AITest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/GameFieldTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/LogicTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/GamePack/ShipTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/res/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/res/view/uiMenu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/app/DrawingField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/app/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/app/UIController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/math/Curve.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/math/Ellipse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/math/Hyperbola.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/src/math/Parabola.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/test/app/UIControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyDesmos/test/math/CurveTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +48,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -50,8 +64,8 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="D:/src" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../src" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -180,6 +194,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -235,129 +250,34 @@
       <workItem from="1590049663763" duration="2854000" />
       <workItem from="1590072670891" duration="24000000" />
       <workItem from="1590136603405" duration="2680000" />
+      <workItem from="1600247575375" duration="2794000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="677" y="178" key="#BattleShip" timestamp="1588418115936">
+    <state width="1921" height="486" key="GridCell.Tab.0.bottom" timestamp="1600245226547">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="677" y="178" key="#BattleShip/0.0.1920.1040@0.0.1920.1040" timestamp="1588418115936" />
-    <state x="552" y="178" key="#Project_Structure" timestamp="1588372622449">
+    <state width="1921" height="486" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600245226547" />
+    <state width="1921" height="486" key="GridCell.Tab.0.center" timestamp="1600245226546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1588372622449" />
-    <state x="687" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588418419173">
+    <state width="1921" height="486" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600245226546" />
+    <state width="1921" height="486" key="GridCell.Tab.0.left" timestamp="1600245226546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="687" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588418419173" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1590049827172">
+    <state width="1921" height="486" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600245226546" />
+    <state width="1921" height="486" key="GridCell.Tab.0.right" timestamp="1600245226546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590049827172" />
-    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588419504841">
+    <state width="1921" height="486" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600245226546" />
+    <state x="388" y="69" key="SettingsEditor" timestamp="1600281273500">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588419504841" />
-    <state x="1139" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1588418635650">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1139" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588418635650" />
-    <state x="756" y="405" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590009689953">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="756" y="405" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1590009689953" />
-    <state x="236" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589787801762">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="236" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589787801762" />
-    <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1586624789208">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1198" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1586624789208" />
-    <state width="434" height="466" key="DebuggerActiveHint" timestamp="1588617118605">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="434" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1588617118605" />
-    <state x="740" y="246" key="FileChooserDialogImpl" timestamp="1589798866317">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="246" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589798866317" />
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1590158660386">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590158660386" />
-    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1590158660386">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590158660386" />
-    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1590158660385">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590158660385" />
-    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1590158660386">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590158660386" />
-    <state width="1877" height="338" key="GridCell.Tab.1.bottom" timestamp="1590154234509">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590154234509" />
-    <state width="1877" height="338" key="GridCell.Tab.1.center" timestamp="1590154234509">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590154234509" />
-    <state width="1877" height="338" key="GridCell.Tab.1.left" timestamp="1590154234509">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590154234509" />
-    <state width="1877" height="338" key="GridCell.Tab.1.right" timestamp="1590154234509">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="338" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590154234509" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1588606404995">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588606404995" />
-    <state x="499" y="268" key="caller.chooser.dialog" timestamp="1590156443497">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="499" y="268" key="caller.chooser.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590156443497" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590136629278">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590136629278" />
-    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1588606072254">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="252" y="407" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1588606072254" />
-    <state x="678" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587671000517">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="678" y="196" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587671000517" />
-    <state x="968" y="206" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1587645682391">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="968" y="206" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587645682391" />
-    <state x="1090" y="166" key="extract.method.dialog" timestamp="1586960755324">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1090" y="166" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586960755324" />
-    <state x="537" y="166" key="new project wizard" timestamp="1589576198090">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="537" y="166" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1589576198090" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1589924659839">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589924659839" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590156178665">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590156178665" />
+    <state x="388" y="69" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600281273500" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
