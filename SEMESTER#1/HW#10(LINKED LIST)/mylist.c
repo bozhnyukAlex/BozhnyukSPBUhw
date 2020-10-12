@@ -52,6 +52,21 @@ void insertAfterEl(struct List* list, size_t afterNum, int newValue) {
     }
 }
 
+void push(struct List* list, int newValue) {
+    if (list->length == 0) {
+        list->head = createNode(newValue);
+        list->head->next = NULL;
+        list->end = list->head;
+        list->length++;
+        return;
+    }
+    struct Node *curr = list->head;
+    struct Node* newNode = createNode(newValue);
+    list->end->next = newNode;
+    list->end = newNode;
+    list->length++;
+}
+
 void deleteNode(struct List* list, size_t numDelete) {
     struct Node* toDelete = getN(list, numDelete);
     struct Node* curr = list->head;
@@ -70,6 +85,16 @@ void deleteNode(struct List* list, size_t numDelete) {
         }
         curr = curr->next;
     }
+}
+
+void deleteHead(struct List* list) {
+    if (list->length == 0) {
+        return;
+    }
+    struct Node* toDelete = list->head;
+    list->head = toDelete->next;
+    list->length--;
+    free(toDelete);
 }
 
 void createCycle(struct List* list, size_t to) {
@@ -113,6 +138,35 @@ void clearList(struct List* list) {
     list->end = NULL;
     list->length = 0;
 }
+
+void shiftRight(struct List* list, int pos, int shift) {
+    if (pos + shift > list->length - 1) {
+        struct Node* toDelete = getN(list, pos);
+        push(list, toDelete->data);
+        deleteNode(list, pos);
+        return; 
+    }
+    if (pos == 0) {
+        insertAfterEl(list, shift, list->head->data);
+        deleteHead(list);
+        return;
+    }
+    struct Node* toShift = getN(list, pos);
+    insertAfterEl(list, pos + shift, toShift->data);
+    deleteNode(list, pos);
+    
+}
+
+void printList(struct List *list) {
+    struct Node* curr = list->head;
+    while (curr) {
+        printf("%d ", curr->data);
+        curr = curr->next;
+    }
+    printf("\n");
+}
+
+
 
 void reverseList(struct List* list) {
     if (list->length == 0 || list->length == 1) {
