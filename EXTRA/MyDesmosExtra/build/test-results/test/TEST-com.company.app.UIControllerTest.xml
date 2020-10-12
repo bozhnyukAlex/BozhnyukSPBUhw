@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.company.app.UIControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-10-12T11:32:31" hostname="bozhnyuks-HP-Pavilion-Gaming-Laptop-15-dk0xxx" time="24.038">
+  <properties/>
+  <testcase name="testChangingScaleBtn" classname="com.company.app.UIControllerTest" time="19.186"/>
+  <testcase name="testDrawingEnable" classname="com.company.app.UIControllerTest" time="4.852"/>
+  <system-out><![CDATA[HI
+world
+HI
+world
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
