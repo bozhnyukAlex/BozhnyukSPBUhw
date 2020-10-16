@@ -1,9 +1,14 @@
 package com.company;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class CounterHandler {
     private int cnt;
+    private Lock mutex;
     public CounterHandler(int cnt) {
         this.cnt = cnt;
+        mutex = new ReentrantLock();
     }
 
     public int getCnt() {
@@ -11,10 +16,20 @@ public class CounterHandler {
     }
 
     public void inc() {
-        cnt++;
+        mutex.lock();
+        try {
+            cnt++;
+        } finally {
+            mutex.unlock();
+        }
     }
 
     public void dec() {
-        cnt--;
+        mutex.lock();
+        try {
+            cnt--;
+        } finally {
+            mutex.unlock();
+        }
     }
 }
