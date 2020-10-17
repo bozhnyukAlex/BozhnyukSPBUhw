@@ -5,10 +5,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class CounterHandler {
     private int cnt;
-    private Lock mutex;
+    private PetersonLock mutex;
     public CounterHandler(int cnt) {
         this.cnt = cnt;
-        mutex = new ReentrantLock();
+        mutex = new PetersonLock();
     }
 
     public int getCnt() {

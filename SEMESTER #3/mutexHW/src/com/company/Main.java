@@ -17,6 +17,8 @@ public class Main {
                 System.out.println("Dec 1: " + ch.getCnt());
             }
         });
+        decTh.setName("0");
+        incTh.setName("1");
         decTh.start();
         incTh.start();
         decTh.join();
