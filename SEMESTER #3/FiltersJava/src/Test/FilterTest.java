@@ -5,18 +5,21 @@ import Picture.Picture;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 public class FilterTest {
-    private final String COLORWB_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\colorWb.bmp";
-    private final String AVERAGE_3_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\average.bmp";
-    private final String GAUSS3_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\gauss3.bmp";
-    private final String GAUSS5_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\gauss5.bmp";
-    private final String SOBELX_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\sobelX.bmp";
-    private final String SOBELY_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\sobelY.bmp";
-    private final String TEST_PATH = "D:\\BozhnyukSPBUhw\\EXTRA\\FiltersJava\\pic\\input.bmp";
+    private final String CUR_DIR = System.getProperty("user.dir");
+    private final String SEP = File.separator;
+    private final String COLORWB_PATH = CUR_DIR + SEP + "pic" + SEP + "colorWb.bmp";
+    private final String AVERAGE_3_PATH = CUR_DIR + SEP + "pic" + SEP + "average.bmp";
+    private final String GAUSS3_PATH = CUR_DIR + SEP + "pic" + SEP + "gauss3.bmp";
+    private final String GAUSS5_PATH = CUR_DIR + SEP + "pic" + SEP + "gauss5.bmp";
+    private final String SOBELX_PATH = CUR_DIR + SEP + "pic" + SEP + "sobelX.bmp";
+    private final String SOBELY_PATH = CUR_DIR + SEP + "pic" + SEP + "sobelY.bmp";
+    private final String TEST_PATH = CUR_DIR + SEP + "pic" + SEP + "input.bmp";
 
     private final String COLORWB_LABEL = "ColorWB";
     private final String AVERAGE_LABEL = "Average3x3";
