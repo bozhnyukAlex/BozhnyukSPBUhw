@@ -9,6 +9,8 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+      //  System.out.println(System.getProperty("user.dir"));
+
         if (args.length != 3 || !(args[1].equals("Average3x3") || args[1].equals("Gauss3x3") || args[1].equals("Gauss5x5") || args[1].equals("SobelX") || args[1].equals("SobelY") || args[1].equals("ColorWB"))) {
             System.out.println("Input Error!");
             System.exit(-1);
