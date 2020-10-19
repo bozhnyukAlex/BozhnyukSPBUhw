@@ -99,4 +99,8 @@ public class Picture {
         this.pixels[i][j].setGreen(par.getGreen());
         this.pixels[i][j].setBlue(par.getBlue());
     }
+
+    public RGB[][] getPixelPane() {
+        return pixels;
+    }
 }

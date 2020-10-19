@@ -1,6 +1,11 @@
 package Main;
 
 import Picture.*;
+import Threads.ApplyRowFilterThread;
+import Threads.CopyRowInitThread;
+import Threads.SetPixThread;
+
+import java.util.ArrayList;
 
 public class Filter {
     private String filterLabel;
@@ -12,6 +17,12 @@ public class Filter {
     public Filter(String filterLabel) {
         this.filterLabel = filterLabel;
         switch (filterLabel) {
+            case "ColorWB": {
+                border = 0;
+                isSobel = false;
+                divisor = -1;
+                break;
+            }
             case "Average3x3": {
                 mask = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1};
                 divisor = 9;
@@ -76,7 +87,7 @@ public class Filter {
             }
             return;
         }
-        int redRes = 0, greenRes = 0, blueRes = 0, count = 0;
+        int redRes, greenRes, blueRes, count;
         for (int i = border; i < picture.getHeight() - border; i++) {
             for (int j = border; j < picture.getWidth() - border; j++) {
                 redRes = greenRes = blueRes = count = 0;
@@ -112,6 +123,62 @@ public class Filter {
                 picture.setPixel(i, j, copy[i][j]);
             }
         }
+    }
 
+    public void parallelUse(Picture picture) throws Exception {
+        RGB[][] copy = new RGB[picture.getHeight()][picture.getWidth()];
+        ArrayList<Thread> rawInitThreads = new ArrayList<>();
+        for (int i = 0; i < picture.getHeight(); i++) {
+            Thread curThr = new CopyRowInitThread(copy, i, picture.getWidth());
+            rawInitThreads.add(curThr);
+            curThr.start();
+        }
+        for (Thread rawInitThread : rawInitThreads) {
+            rawInitThread.join();
+        }
+
+        ArrayList<Thread> applyThreads = new ArrayList<>();
+        for (int i = border; i < picture.getHeight() - border; i++) {
+            Thread curThr = new ApplyRowFilterThread(picture, this, i, copy);
+            applyThreads.add(curThr);
+            curThr.start();
+        }
+        for (Thread appThread : applyThreads) {
+            appThread.join();
+        }
+        if (filterLabel.equals("ColorWB")) {
+            return;
+        }
+        ArrayList<Thread> setterThreads = new ArrayList<>();
+        for (int i = 0; i < picture.getHeight(); i++) {
+            Thread curTh = new SetPixThread(picture, copy, i);
+            setterThreads.add(curTh);
+            curTh.start();
+        }
+
+        for (Thread setThread : setterThreads) {
+            setThread.join();
+        }
+
+    }
+
+    public String getFilterLabel() {
+        return filterLabel;
+    }
+
+    public int getDivisor() {
+        return divisor;
+    }
+
+    public int[] getMask() {
+        return mask;
+    }
+
+    public int getBorder() {
+        return border;
+    }
+
+    public boolean isSobel() {
+        return isSobel;
     }
 }

@@ -91,4 +91,52 @@ public class FilterTest {
         check();
     }
 
+
+    //------------------------------------
+
+    @Test
+    public void colorWBParallelTest() throws Exception {
+        expected.Read(COLORWB_PATH);
+        Filter colorWbFilter = new Filter(COLORWB_LABEL);
+        colorWbFilter.parallelUse(test);
+        check();
+    }
+
+    @Test
+    public void averageParallelTest() throws Exception {
+        expected.Read(AVERAGE_3_PATH);
+        Filter averageFilter = new Filter(AVERAGE_LABEL);
+        averageFilter.parallelUse(test);
+        check();
+    }
+
+    @Test
+    public void gauss3ParallelTest() throws Exception {
+        expected.Read(GAUSS3_PATH);
+        Filter gauss3Filter = new Filter(GAUSS3_LABEL);
+        gauss3Filter.parallelUse(test);
+        check();
+    }
+    @Test
+    public void gauss5ParallelTest() throws Exception {
+        expected.Read(GAUSS5_PATH);
+        Filter gauss5Filter = new Filter(GAUSS5_LABEL);
+        gauss5Filter.parallelUse(test);
+        check();
+    }
+    @Test
+    public void sobelXParallelTest() throws Exception {
+        expected.Read(SOBELX_PATH);
+        Filter sobelXFilter = new Filter(SOBELX_LABEL);
+        sobelXFilter.parallelUse(test);
+        check();
+    }
+    @Test
+    public void sobelYParallelTest() throws Exception {
+        expected.Read(SOBELY_PATH);
+        Filter sobelYFilter = new Filter(SOBELY_LABEL);
+        sobelYFilter.parallelUse(test);
+        check();
+    }
+
 }
