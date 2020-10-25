@@ -1,0 +1,4 @@
+JMH S 19 com.company.Measure S 49 com.company.generated.Measure_measureTTAS_jmhTest S 11 measureTTAS S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E M 1 7 nThread 7 1 1 1 2 1 4 1 8 2 16 2 32 2 64 U 12 MILLISECONDS E E 
+JMH S 25 com.company.tests.Measure S 55 com.company.tests.generated.Measure_measureTTAS_jmhTest S 11 measureTTAS S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E M 1 7 nThread 7 1 1 1 2 1 4 1 8 2 16 2 32 2 64 U 12 MILLISECONDS E E 
+JMH S 19 com.company.Measure S 48 com.company.generated.Measure_measureTAS_jmhTest S 10 measureTAS S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E M 1 7 nThread 7 1 1 1 2 1 4 1 8 2 16 2 32 2 64 U 12 MILLISECONDS E E 
+JMH S 25 com.company.tests.Measure S 54 com.company.tests.generated.Measure_measureTAS_jmhTest S 10 measureTAS S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E M 1 7 nThread 7 1 1 1 2 1 4 1 8 2 16 2 32 2 64 U 12 MILLISECONDS E E 

@@ -1,9 +1,12 @@
-package com.company;
+package com.company.main;
+
+import com.company.locks.PetersonLock;
+import com.company.main.CounterHandler;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        CounterHandler ch = new CounterHandler(0);
+        CounterHandler ch = new CounterHandler(0, new PetersonLock());
         Thread incTh = new Thread(() -> {
             for (int i = 0; i < 16; i++) {
                 ch.inc();

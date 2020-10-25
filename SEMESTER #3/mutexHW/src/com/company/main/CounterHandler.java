@@ -1,14 +1,13 @@
-package com.company;
+package com.company.main;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import com.company.locks.AbstractLock;
 
 public class CounterHandler {
     private int cnt;
-    private PetersonLock mutex;
-    public CounterHandler(int cnt) {
+    private AbstractLock mutex;
+    public CounterHandler(int cnt, AbstractLock lock) {
         this.cnt = cnt;
-        mutex = new PetersonLock();
+        mutex = lock;
     }
 
     public int getCnt() {

@@ -1,10 +1,11 @@
-package com.company;
+package com.company.locks;
 
 
-public class PetersonLock {
+public class PetersonLock extends AbstractLock{
     private volatile boolean[] flag = new boolean[2];
     private volatile long victim;
 
+    @Override
     public void lock() {
         long currId = Long.parseLong(Thread.currentThread().getName());
         long otherId = 1 - currId;
@@ -13,6 +14,7 @@ public class PetersonLock {
         while (flag[(int)otherId] && victim == currId) {}
     }
 
+    @Override
     public void unlock() {
         long currId = Long.parseLong(Thread.currentThread().getName());
         flag[(int)currId] = false;
