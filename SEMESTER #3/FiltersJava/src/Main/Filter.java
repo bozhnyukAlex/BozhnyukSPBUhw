@@ -1,8 +1,8 @@
 package Main;
 
 import Picture.*;
-import Threads.ApplyRowFilterThread;
-import Threads.CopyRowInitThread;
+import Threads.ApplyFilterThread;
+import Threads.CopyInitThread;
 import Threads.SetPixThread;
 
 import java.util.ArrayList;
@@ -125,11 +125,26 @@ public class Filter {
         }
     }
 
-    public void parallelUse(Picture picture) throws Exception {
+    public void parallelUseHorizontal(Picture picture, int threadNum, boolean isHorizontal) throws Exception {
         RGB[][] copy = new RGB[picture.getHeight()][picture.getWidth()];
+
+        int currDimension = (isHorizontal)? picture.getHeight() : picture.getWidth();
         ArrayList<Thread> rawInitThreads = new ArrayList<>();
-        for (int i = 0; i < picture.getHeight(); i++) {
-            Thread curThr = new CopyRowInitThread(copy, i, picture.getWidth());
+        int startInclusive;
+        int endExclusive;
+
+        int strikeWidth = currDimension / threadNum + 1;
+        if (currDimension % threadNum == 0) {
+            strikeWidth--;
+        }
+
+        for (int i = 0; i < threadNum; i++) {
+            startInclusive = i * strikeWidth;
+            endExclusive = (i + 1) * strikeWidth;
+            if (i == threadNum - 1) {
+                endExclusive = currDimension;
+            }
+            Thread curThr = new CopyInitThread(copy, startInclusive, endExclusive, picture, isHorizontal);
             rawInitThreads.add(curThr);
             curThr.start();
         }
@@ -137,9 +152,19 @@ public class Filter {
             rawInitThread.join();
         }
 
+
         ArrayList<Thread> applyThreads = new ArrayList<>();
-        for (int i = border; i < picture.getHeight() - border; i++) {
-            Thread curThr = new ApplyRowFilterThread(picture, this, i, copy);
+        strikeWidth = (currDimension - 2 * border) / threadNum + 1;
+        if ((currDimension - 2 * border) % threadNum == 0) {
+            strikeWidth--;
+        }
+        for (int i = 0; i < threadNum; i++) {
+            startInclusive = border + (i * strikeWidth);
+            endExclusive = border + (i + 1) * strikeWidth;
+            if (i == threadNum - 1) {
+                endExclusive = currDimension - border;
+            }
+            Thread curThr = new ApplyFilterThread(picture, this, copy, startInclusive, endExclusive, isHorizontal);
             applyThreads.add(curThr);
             curThr.start();
         }
@@ -149,9 +174,20 @@ public class Filter {
         if (filterLabel.equals("ColorWB")) {
             return;
         }
+
+
         ArrayList<Thread> setterThreads = new ArrayList<>();
-        for (int i = 0; i < picture.getHeight(); i++) {
-            Thread curTh = new SetPixThread(picture, copy, i);
+        strikeWidth = currDimension / threadNum + 1;
+        if (currDimension % threadNum == 0) {
+            strikeWidth--;
+        }
+        for (int i = 0; i < threadNum; i++) {
+            startInclusive = i * strikeWidth;
+            endExclusive = (i + 1) * strikeWidth;
+            if (i == threadNum - 1) {
+                endExclusive = currDimension;
+            }
+            Thread curTh = new SetPixThread(picture, startInclusive, endExclusive, copy, isHorizontal);
             setterThreads.add(curTh);
             curTh.start();
         }
@@ -160,6 +196,15 @@ public class Filter {
             setThread.join();
         }
 
+
+    }
+
+    public void parallelUseVertical(Picture picture, int threadNum) throws Exception {
+        RGB[][] copy = new RGB[picture.getHeight()][picture.getWidth()];
+        ArrayList<Thread> rawInitThreads = new ArrayList<>();
+        for (int i = 0; i < threadNum; i++) {
+
+        }
     }
 
     public String getFilterLabel() {

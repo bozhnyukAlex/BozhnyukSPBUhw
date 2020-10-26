@@ -1,19 +1,20 @@
 package Threads;
 
-import Picture.*;
+import Picture.Picture;
+import Picture.RGB;
 
-public class SetPixThread extends Thread {
+public class CopyInitThread extends Thread {
+    private RGB[][] pane;
     private Picture picture;
-    private RGB[][] copy;
     private int startIncl;
     private int endExcl;
     private boolean isHorizontal;
 
-    public SetPixThread(Picture picture, int start, int end , RGB[][] copy, boolean isHor) {
-        this.picture = picture;
-        this.copy = copy;
+    public CopyInitThread(RGB[][] rgb, int start, int end, Picture picture, boolean isHor) {
+        this.pane = rgb;
         this.startIncl = start;
         this.endExcl = end;
+        this.picture = picture;
         this.isHorizontal = isHor;
     }
 
@@ -25,7 +26,7 @@ public class SetPixThread extends Thread {
             for (int j = 0; j < secondCycleLimit; j++) {
                 firstDim = (isHorizontal)? i : j;
                 secondDim = (isHorizontal)? j : i;
-                picture.setPixel(firstDim, secondDim, copy[firstDim][secondDim]);
+                pane[firstDim][secondDim] = new RGB();
             }
         }
     }
