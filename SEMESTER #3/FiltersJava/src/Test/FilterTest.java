@@ -99,7 +99,7 @@ public class FilterTest {
     public void colorWBParallelHorTest() throws Exception {
         expected.Read(COLORWB_PATH);
         Filter colorWbFilter = new Filter(COLORWB_LABEL);
-        colorWbFilter.parallelUseHorizontal(test, 8, true);
+        colorWbFilter.parallelUse(test, 8, true);
         check();
     }
 
@@ -107,7 +107,7 @@ public class FilterTest {
     public void averageParallelHorTest() throws Exception {
         expected.Read(AVERAGE_3_PATH);
         Filter averageFilter = new Filter(AVERAGE_LABEL);
-        averageFilter.parallelUseHorizontal(test, 8, true);
+        averageFilter.parallelUse(test, 8, true);
         check();
     }
 
@@ -115,28 +115,28 @@ public class FilterTest {
     public void gauss3ParallelHorTest() throws Exception {
         expected.Read(GAUSS3_PATH);
         Filter gauss3Filter = new Filter(GAUSS3_LABEL);
-        gauss3Filter.parallelUseHorizontal(test, 8, true);
+        gauss3Filter.parallelUse(test, 8, true);
         check();
     }
     @Test
     public void gauss5ParallelHorTest() throws Exception {
         expected.Read(GAUSS5_PATH);
         Filter gauss5Filter = new Filter(GAUSS5_LABEL);
-        gauss5Filter.parallelUseHorizontal(test, 8, true);
+        gauss5Filter.parallelUse(test, 8, true);
         check();
     }
     @Test
     public void sobelXParallelHorTest() throws Exception {
         expected.Read(SOBELX_PATH);
         Filter sobelXFilter = new Filter(SOBELX_LABEL);
-        sobelXFilter.parallelUseHorizontal(test, 8, true);
+        sobelXFilter.parallelUse(test, 8, true);
         check();
     }
     @Test
     public void sobelYParallelHorTest() throws Exception {
         expected.Read(SOBELY_PATH);
         Filter sobelYFilter = new Filter(SOBELY_LABEL);
-        sobelYFilter.parallelUseHorizontal(test, 8, true);
+        sobelYFilter.parallelUse(test, 8, true);
         check();
     }
 
@@ -146,7 +146,7 @@ public class FilterTest {
     public void colorWBParallelVertTest() throws Exception {
         expected.Read(COLORWB_PATH);
         Filter colorWbFilter = new Filter(COLORWB_LABEL);
-        colorWbFilter.parallelUseHorizontal(test, 8, false);
+        colorWbFilter.parallelUse(test, 8, false);
         check();
     }
 
@@ -154,7 +154,7 @@ public class FilterTest {
     public void averageParallelVertTest() throws Exception {
         expected.Read(AVERAGE_3_PATH);
         Filter averageFilter = new Filter(AVERAGE_LABEL);
-        averageFilter.parallelUseHorizontal(test, 8, false);
+        averageFilter.parallelUse(test, 8, false);
         check();
     }
 
@@ -162,28 +162,28 @@ public class FilterTest {
     public void gauss3ParallelVertTest() throws Exception {
         expected.Read(GAUSS3_PATH);
         Filter gauss3Filter = new Filter(GAUSS3_LABEL);
-        gauss3Filter.parallelUseHorizontal(test, 8, false);
+        gauss3Filter.parallelUse(test, 8, false);
         check();
     }
     @Test
     public void gauss5ParallelVertTest() throws Exception {
         expected.Read(GAUSS5_PATH);
         Filter gauss5Filter = new Filter(GAUSS5_LABEL);
-        gauss5Filter.parallelUseHorizontal(test, 8, false);
+        gauss5Filter.parallelUse(test, 8, false);
         check();
     }
     @Test
     public void sobelXParallelVertTest() throws Exception {
         expected.Read(SOBELX_PATH);
         Filter sobelXFilter = new Filter(SOBELX_LABEL);
-        sobelXFilter.parallelUseHorizontal(test, 8, false);
+        sobelXFilter.parallelUse(test, 8, false);
         check();
     }
     @Test
     public void sobelYParallelVertTest() throws Exception {
         expected.Read(SOBELY_PATH);
         Filter sobelYFilter = new Filter(SOBELY_LABEL);
-        sobelYFilter.parallelUseHorizontal(test, 8, false);
+        sobelYFilter.parallelUse(test, 8, false);
         check();
     }
 

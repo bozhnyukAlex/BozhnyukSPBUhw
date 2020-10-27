@@ -125,7 +125,7 @@ public class Filter {
         }
     }
 
-    public void parallelUseHorizontal(Picture picture, int threadNum, boolean isHorizontal) throws Exception {
+    public void parallelUse(Picture picture, int threadNum, boolean isHorizontal) throws Exception {
         RGB[][] copy = new RGB[picture.getHeight()][picture.getWidth()];
 
         int currDimension = (isHorizontal)? picture.getHeight() : picture.getWidth();
@@ -199,13 +199,6 @@ public class Filter {
 
     }
 
-    public void parallelUseVertical(Picture picture, int threadNum) throws Exception {
-        RGB[][] copy = new RGB[picture.getHeight()][picture.getWidth()];
-        ArrayList<Thread> rawInitThreads = new ArrayList<>();
-        for (int i = 0; i < threadNum; i++) {
-
-        }
-    }
 
     public String getFilterLabel() {
         return filterLabel;
