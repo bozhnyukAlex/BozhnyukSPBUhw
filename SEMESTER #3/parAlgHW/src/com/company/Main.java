@@ -1,23 +1,24 @@
 package com.company;
 
-import java.util.ArrayList;
+import com.company.scanner.PrefixScanner;
+
 import java.util.concurrent.ExecutionException;
 import java.util.function.BinaryOperator;
 
 public class Main {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ArrayList<Integer> test = new ArrayList<Integer>();
-        for (int i = 1; i <= 14; i++) {
-            test.add(i);
+        int sz = 12;
+        Integer[] test = new Integer[sz];
+        for (int i = 0; i < sz; i++) {
+            test[i] = i + 1;
         }
-
+        Integer[] result = new Integer[sz];
         BinaryOperator<Integer> sum = Integer::sum;
-
-        ReduceScanner<Integer> sumScanner = new ReduceScanner<>(test, sum, 0);
-        sumScanner.parallelScan(4);
-        for (int i = 0; i < sumScanner.getBuffer().size(); i++) {
-            System.out.print(sumScanner.getBuffer().get(i) + " ");
+        PrefixScanner<Integer> prefixSumScanner = new PrefixScanner<>(test, result, Integer::sum, 0);
+        prefixSumScanner.scan(4);
+        for (Integer integer : result) {
+            System.out.print(integer + " ");
         }
     }
 }
