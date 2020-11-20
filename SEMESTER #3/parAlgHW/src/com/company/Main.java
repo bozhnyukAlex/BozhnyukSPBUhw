@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.scanner.PrefixScanner;
+import com.company.sumTask.Summator;
 
 import java.util.concurrent.ExecutionException;
 import java.util.function.BinaryOperator;
@@ -20,5 +21,21 @@ public class Main {
         for (Integer integer : result) {
             System.out.print(integer + " ");
         }
+
+        System.out.println("");
+        Summator summator = new Summator();
+        int[] res = summator.sum(new int[] {9}, new int[] {9, 9, 9, 9, 9});
+        System.out.print("Sum not parallel res: ");
+        for (int i = 0; i < res.length; i++) {
+            System.out.print(res[i]);
+        }
+        System.out.println("Parallel sum: ");
+
+        int[] res1 = summator.parallelSum(new int[] {9,9,9,9,9}, new int[] {9,9,9,9,9}, 2);
+        for (int i = 0; i < res.length; i++) {
+            System.out.print(res1[i]);
+        }
+        System.out.println("");
+
     }
 }
