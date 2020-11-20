@@ -17,7 +17,7 @@ public class PrefixScanner <T> {
         this.result = result;
     }
 
-    public void scan(int threadNum) throws ExecutionException, InterruptedException {
+    public void scan(int threadNum) throws InterruptedException {
    //     Info<T>[][] infoCollect = new Info[threadNum][threadNum];
    //     Info<T>[][] infoDistribute = new Info[threadNum][threadNum];
         ArrayList<ArrayList<Info<T>>> infoCollect = new ArrayList<>();
@@ -36,9 +36,9 @@ public class PrefixScanner <T> {
             infoCollect.add(infoCol);
             infoDistribute.add(infoDist);
         }
-        ArrayList<ScanThread<T>> threadList = new ArrayList<>();
+        ArrayList<PrefixScanThread<T>> threadList = new ArrayList<>();
         for (int i = 0; i < threadNum; i++) {
-            ScanThread<T> thread = new ScanThread<T>(threadNum, i, operator, idElem, array, result, infoCollect, infoDistribute);
+            PrefixScanThread<T> thread = new PrefixScanThread<T>(threadNum, i, operator, idElem, array, result, infoCollect, infoDistribute);
             threadList.add(thread);
             thread.start();
         }

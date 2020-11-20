@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class Summator {
-    public int[] sum(int[] first, int[] second) {
+public class Adder {
+    public static int[] add(int[] first, int[] second) {
         int[] res = new int[Math.max(first.length, second.length) + 1];
         int carry = 0;
         int[] more, less;
@@ -34,7 +34,7 @@ public class Summator {
         return res;
     }
 
-    public int[] parallelSum(int[] first, int[] second, int threadNum) throws InterruptedException, ExecutionException {
+    public static int[] parallelAdd(int[] first, int[] second, int threadNum) throws InterruptedException, ExecutionException {
         int[] res = new int[Math.max(first.length, second.length) + 1];
         int[] more, less;
         if (first.length >= second.length) {

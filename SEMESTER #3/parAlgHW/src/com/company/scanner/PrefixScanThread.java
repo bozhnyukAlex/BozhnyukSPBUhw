@@ -3,7 +3,7 @@ package com.company.scanner;
 import java.util.ArrayList;
 import java.util.function.BinaryOperator;
 
-public class ScanThread <T> extends Thread {
+public class PrefixScanThread<T> extends Thread {
     private final int threadNum;
     private final int tId;
     private final int fromInc;
@@ -18,7 +18,7 @@ public class ScanThread <T> extends Thread {
     private ArrayList<ArrayList<Info<T>>> infoCollect;
     private ArrayList<ArrayList<Info<T>>> infoDistribute;
 
-    public ScanThread(int threadNum, int tId, BinaryOperator<T> operator, T idElement, T[] array, T[] result, ArrayList<ArrayList<Info<T>>> infoCollect, ArrayList<ArrayList<Info<T>>> infoDistribute) {
+    public PrefixScanThread(int threadNum, int tId, BinaryOperator<T> operator, T idElement, T[] array, T[] result, ArrayList<ArrayList<Info<T>>> infoCollect, ArrayList<ArrayList<Info<T>>> infoDistribute) {
         this.threadNum = threadNum;
         this.tId = tId;
         this.operator = operator;
