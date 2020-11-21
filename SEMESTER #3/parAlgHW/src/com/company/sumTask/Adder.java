@@ -34,7 +34,7 @@ public class Adder {
         return res;
     }
 
-    public static int[] parallelAdd(int[] first, int[] second, int threadNum) throws InterruptedException, ExecutionException {
+    public static int[] addParallel(int[] first, int[] second, int threadNum) throws InterruptedException, ExecutionException {
         int[] res = new int[Math.max(first.length, second.length) + 1];
         int[] more, less;
         if (first.length >= second.length) {

@@ -1,12 +1,8 @@
 package com.company;
 
 import com.company.parensTask.ParensBalanceChecker;
-import com.company.scanner.ParallelScanner;
 
 import java.util.concurrent.ExecutionException;
-
-import com.company.sequenceTask.*;
-import com.company.sequenceTask.Pair;
 
 public class Main {
 
@@ -50,7 +46,7 @@ public class Main {
         */
 
         String s = "((()(()))";
-        System.out.println(ParensBalanceChecker.check(s) + " " + ParensBalanceChecker.parallelCheck(s, 4));
+        System.out.println(ParensBalanceChecker.check(s) + " " + ParensBalanceChecker.checkParallel(s, 4));
 
     }
 }

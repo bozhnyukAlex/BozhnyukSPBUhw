@@ -28,7 +28,7 @@ public class ParensBalanceChecker {
     }
 
 
-    public static boolean parallelCheck(String test, int threadNum) throws InterruptedException {
+    public static boolean checkParallel(String test, int threadNum) throws InterruptedException {
         int testLen = test.length();
         Integer[] array = new Integer[testLen];
         ArrayList<ProcessingThread> threads = new ArrayList<>();

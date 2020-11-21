@@ -10,7 +10,7 @@ public class SequenceFinder {
         }
         return x;
     }
-    public static int parallelFind(Pair[] array, int threadNum) throws InterruptedException {
+    public static int findParallel(Pair[] array, int threadNum) throws InterruptedException {
         Pair total = new Pair(1, 2);
         ParallelScanner<Pair> pairParallelScanner = new ParallelScanner<>(array, total, Pair::operator);
         pairParallelScanner.scan(threadNum);
