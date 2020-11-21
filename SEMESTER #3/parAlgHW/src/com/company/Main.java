@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.parensTask.ParensBalanceChecker;
 import com.company.scanner.ParallelScanner;
 
 import java.util.concurrent.ExecutionException;
@@ -43,10 +44,13 @@ public class Main {
         total = parallelScanner.getTotal();
         System.out.println(total);*/
 
-        //Pai[] pair = new Pa[] {new Pair(0,3), new Pair(1, 2), new Pair(2, 3)};
-        Pair[] pairs = new Pair[] {new Pair(0,3), new Pair(1, 2), new Pair(2, 3)};
+        /*Pair[] pairs = new Pair[] {new Pair(0,3), new Pair(1, 2), new Pair(2, 3)};
         int total = SequenceFinder.parallelFind(pairs, 2);
         System.out.println(total);
+        */
+
+        String s = "((()(()))";
+        System.out.println(ParensBalanceChecker.check(s) + " " + ParensBalanceChecker.parallelCheck(s, 4));
 
     }
 }
