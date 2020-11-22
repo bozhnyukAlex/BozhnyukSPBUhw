@@ -50,6 +50,6 @@ public class Main {
        /* String s = "((()(()))";
         System.out.println(ParensBalanceChecker.check(s) + " " + ParensBalanceChecker.checkParallel(s, 4));*/
 
-      
+
     }
 }
