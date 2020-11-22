@@ -1,6 +1,8 @@
 package com.company.main;
 
 import com.company.parensTask.ParensBalanceChecker;
+import com.company.turtleTask.StepPair;
+import com.company.turtleTask.TurtleLocator;
 
 import java.util.concurrent.ExecutionException;
 
@@ -45,8 +47,9 @@ public class Main {
         System.out.println(total);
         */
 
-        String s = "((()(()))";
-        System.out.println(ParensBalanceChecker.check(s) + " " + ParensBalanceChecker.checkParallel(s, 4));
+       /* String s = "((()(()))";
+        System.out.println(ParensBalanceChecker.check(s) + " " + ParensBalanceChecker.checkParallel(s, 4));*/
 
+      
     }
 }
