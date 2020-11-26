@@ -20,15 +20,17 @@ public class Task implements Callable<Info> {
         Info prev = null;
         double res;
         for (Info info : infoSet) {
+          //  System.out.println(taskInfo + " | " + info + " " + info.getPolynomial().equals(taskInfo.getPolynomial())
+          //          + " " + Double.compare(info.getFrom(), taskInfo.getFrom()) + " " + Double.compare(info.getTo(), taskInfo.getFrom()));
             if (info.getPolynomial().equals(taskInfo.getPolynomial())
                 && Double.compare(info.getFrom(), taskInfo.getFrom()) >= 0
-                && Double.compare(info.getTo(), taskInfo.getFrom()) <= 0) {
+                && Double.compare(info.getTo(), taskInfo.getTo()) <= 0) {
                 prev = info;
                 break;
             }
         }
         if (prev != null) {
-            System.out.println("not null");
+            System.out.println("not null: " + taskInfo + " " + prev);
             res = calculate(taskInfo.getFrom(), prev.getFrom(), taskInfo.getPolynomial()) +
                     prev.getResult() +
                     calculate(prev.getTo(), taskInfo.getTo(), taskInfo.getPolynomial());

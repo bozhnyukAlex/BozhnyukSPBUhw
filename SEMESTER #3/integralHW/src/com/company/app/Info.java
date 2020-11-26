@@ -42,4 +42,18 @@ public class Info implements Comparable<Info>{
     public int compareTo(Info info) {
         return this.polynomial.coefficients.size() - info.polynomial.coefficients.size();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Info)){
+            return false;
+        }
+        Info info = (Info) obj;
+        return info.polynomial.equals(this.polynomial)
+                && Double.compare(info.to, this.to) == 0
+                && Double.compare(info.from, this.from) == 0;
+    }
 }
