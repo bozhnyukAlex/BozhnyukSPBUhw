@@ -56,4 +56,13 @@ public class Info implements Comparable<Info>{
                 && Double.compare(info.to, this.to) == 0
                 && Double.compare(info.from, this.from) == 0;
     }
+
+    @Override
+    public int hashCode() {
+        int res = 0;
+        for (Integer d : polynomial.coefficients) {
+            res += Integer.hashCode(d);
+        }
+        return Double.hashCode(from) + Double.hashCode(to) + res;
+    }
 }

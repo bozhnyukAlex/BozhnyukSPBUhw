@@ -1,15 +1,18 @@
 package com.company.app;
 
+import com.company.concurrent.LazyList;
+
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 public class Task implements Callable<Info> {
     private String input;
-    private ConcurrentSkipListSet<Info> infoSet;
+    //private ConcurrentSkipListSet<Info> infoSet;
+    private LazyList<Info> infoSet;
     private final double stepNum = 1000000;
 
-    public Task(String input, ConcurrentSkipListSet<Info> infos) {
+    public Task(String input, /*ConcurrentSkipListSet<Info> infos*/ LazyList<Info> infos) {
         this.input = input;
         this.infoSet = infos;
     }
@@ -20,13 +23,18 @@ public class Task implements Callable<Info> {
         Info prev = null;
         double res;
         for (Info info : infoSet) {
+            if (info == null) {
+                continue;
+            }
             if (info.getPolynomial().equals(taskInfo.getPolynomial())
-                && Double.compare(info.getFrom(), taskInfo.getFrom()) >= 0
-                && Double.compare(info.getTo(), taskInfo.getTo()) <= 0) {
+                    && Double.compare(info.getFrom(), taskInfo.getFrom()) >= 0
+                    && Double.compare(info.getTo(), taskInfo.getTo()) <= 0) {
                 prev = info;
                 break;
             }
         }
+
+
         if (prev != null) {
             res = calculate(taskInfo.getFrom(), prev.getFrom(), taskInfo.getPolynomial()) +
                     prev.getResult() +

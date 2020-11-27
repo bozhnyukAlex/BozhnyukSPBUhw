@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
-        ArrayList<Future<Info>> futureList = new ArrayList<>(ProblemSolver.solve("test.txt", 4));
+        ArrayList<Future<Info>> futureList = new ArrayList<>(ProblemSolver.solve("test.txt", 2));
         for(Future<Info> future : futureList) {
             System.out.println(future.get());
         }
