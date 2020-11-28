@@ -26,7 +26,7 @@ class TaskTest {
     void calculateTest() {
         ArrayList<Integer> pol = new ArrayList<>();
         pol.add(1); pol.add(2);
-        assertTrue(compareDouble(new Task("(1,2) 4 10", /*new ConcurrentSkipListSet<>()*/ new LazyList<>()).calculate(4, 10, new Polynomial(pol)), 54.0));
+        assertTrue(compareDouble(new Task("(1,2) 4 10", /*new ConcurrentSkipListSet<>() */new LazyList<>()).calculate(4, 10, new Polynomial(pol)), 54.0));
     }
 
     boolean compareDouble(double a, double b) {

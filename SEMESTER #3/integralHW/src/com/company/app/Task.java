@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-public class Task implements Callable<Info> {
+public class Task implements Runnable {
     private String input;
     //private ConcurrentSkipListSet<Info> infoSet;
     private LazyList<Info> infoSet;
     private final double stepNum = 1000000;
+    private Info taskInfo;
 
     public Task(String input, /*ConcurrentSkipListSet<Info> infos*/ LazyList<Info> infos) {
         this.input = input;
@@ -18,8 +19,8 @@ public class Task implements Callable<Info> {
     }
 
     @Override
-    public Info call() throws Exception {
-        Info taskInfo = parse();
+    public void run() {
+        taskInfo = parse();
         Info prev = null;
         double res;
         for (Info info : infoSet) {
@@ -45,8 +46,9 @@ public class Task implements Callable<Info> {
         }
         taskInfo.setResult(res);
         infoSet.add(taskInfo);
-        return taskInfo;
+        //System.out.println(taskInfo);
     }
+
 
     public Info parse() {
         String[] strings = input.split("\\s+");
@@ -80,5 +82,7 @@ public class Task implements Callable<Info> {
         return trapezoidal_integral;
     }
 
-
+    public LazyList<Info> /*ConcurrentSkipListSet<Info>*/ getInfoSet() {
+        return infoSet;
+    }
 }
