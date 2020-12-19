@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class MeasureTest {
 
     private int size = 10000000;
-    @Param({"2", "4", "8", "16"})
+    @Param({"1", "2", "4", "8", "16"})
     public int threadNum;
 
     private int[] firstNum = new int[size];
