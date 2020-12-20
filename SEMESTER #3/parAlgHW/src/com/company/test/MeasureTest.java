@@ -18,8 +18,10 @@ import java.util.concurrent.TimeUnit;
 @Fork(1)
 public class MeasureTest {
 
+    public final int SINGLE = -1;
+
     private int size = 10000000;
-    @Param({"1", "2", "4", "8", "16"})
+    @Param({"-1", "1", "2", "4", "8", "16"})
     public int threadNum;
 
     private int[] firstNum = new int[size];
@@ -33,7 +35,7 @@ public class MeasureTest {
 
     @Setup
     public void preparations() {
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
             firstNum[i] = secondNum[i] = 9;
             sb.append("()");
@@ -44,42 +46,34 @@ public class MeasureTest {
     }
 
     @Benchmark
-    public int[] addMeasureSingle() {
-        return Adder.add(firstNum, secondNum);
-    }
-
-    @Benchmark
-    public int[] addMeasureParallel() throws ExecutionException, InterruptedException {
+    public int[] addMeasure() throws ExecutionException, InterruptedException {
+        if (threadNum == SINGLE) {
+            return Adder.add(firstNum, secondNum);
+        }
         return Adder.addParallel(firstNum, secondNum, threadNum);
     }
 
     @Benchmark
-    public boolean checkerParentsMeasureSingle() {
-        return ParensBalanceChecker.check(test);
-    }
-
-    @Benchmark
-    public boolean checkerParentsMeasureParallel() throws InterruptedException {
+    public boolean checkerParentsMeasure() throws InterruptedException {
+        if (threadNum == SINGLE) {
+            return ParensBalanceChecker.check(test);
+        }
         return ParensBalanceChecker.checkParallel(test, threadNum);
     }
 
     @Benchmark
-    public int sequenceMeasureSingle() {
-        return SequenceFinder.find(pairs);
-    }
-
-    @Benchmark
-    public int sequenceMeasureParallel() throws InterruptedException {
+    public int sequenceMeasure() throws InterruptedException {
+        if (threadNum == SINGLE) {
+            return SequenceFinder.find(pairs);
+        }
         return SequenceFinder.findParallel(pairs, threadNum);
     }
 
     @Benchmark
-    public StatePair turtleMeasureSingle() {
-        return TurtleLocator.locate(stepPairs);
-    }
-
-    @Benchmark
-    public StatePair turtleMeasureParallel() throws InterruptedException {
+    public StatePair turtleMeasure() throws InterruptedException {
+        if (threadNum == SINGLE) {
+            return TurtleLocator.locate(stepPairs);
+        }
         return TurtleLocator.locateParallel(stepPairs, threadNum);
     }
 }

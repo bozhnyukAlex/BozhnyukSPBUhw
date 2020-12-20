@@ -3,12 +3,8 @@ dontinline,*.*_avgt_jmhStub
 dontinline,*.*_sample_jmhStub
 dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
-inline,com/company/test/MeasureTest.addMeasureParallel
-inline,com/company/test/MeasureTest.addMeasureSingle
-inline,com/company/test/MeasureTest.checkerParentsMeasureParallel
-inline,com/company/test/MeasureTest.checkerParentsMeasureSingle
+inline,com/company/test/MeasureTest.addMeasure
+inline,com/company/test/MeasureTest.checkerParentsMeasure
 inline,com/company/test/MeasureTest.preparations
-inline,com/company/test/MeasureTest.sequenceMeasureParallel
-inline,com/company/test/MeasureTest.sequenceMeasureSingle
-inline,com/company/test/MeasureTest.turtleMeasureParallel
-inline,com/company/test/MeasureTest.turtleMeasureSingle
+inline,com/company/test/MeasureTest.sequenceMeasure
+inline,com/company/test/MeasureTest.turtleMeasure
