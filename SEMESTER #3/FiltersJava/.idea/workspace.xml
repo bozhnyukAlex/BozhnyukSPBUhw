@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ae52525-11d9-4923-99b2-1ce1b6429f16" name="Default Changelist" comment="" />
+    <list default="true" id="4ae52525-11d9-4923-99b2-1ce1b6429f16" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../mutexHW/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutexHW/.idea/modules.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,10 +33,9 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/screenReport" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -74,6 +76,7 @@
       <workItem from="1603779781752" duration="1580000" />
       <workItem from="1603782196722" duration="4038000" />
       <workItem from="1604235645639" duration="50000" />
+      <workItem from="1608569199436" duration="22000" />
     </task>
     <servers />
   </component>
