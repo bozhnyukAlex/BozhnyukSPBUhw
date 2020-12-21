@@ -1,0 +1,1 @@
+JMH S 12 Test.Measure S 38 Test.generated.Measure_measure_jmhTest S 7 measure S 11 AverageTime E A 1 1 1 E E E E E E E E E E E E E M 3 11 filterLabel 6 7 ColorWB 10 Average3x3 8 Gauss3x3 8 Gauss5x5 6 SobelX 6 SobelY 12 isHorizontal 2 4 true 5 false 7 threadN 6 1 1 1 2 1 4 1 8 2 16 2 32 U 12 MILLISECONDS E E 
