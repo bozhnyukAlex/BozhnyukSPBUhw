@@ -1,0 +1,10 @@
+dontinline,*.*_all_jmhStub
+dontinline,*.*_avgt_jmhStub
+dontinline,*.*_sample_jmhStub
+dontinline,*.*_ss_jmhStub
+dontinline,*.*_thrpt_jmhStub
+inline,com/company/test/MeasureTest.addMeasure
+inline,com/company/test/MeasureTest.checkerParentsMeasure
+inline,com/company/test/MeasureTest.preparations
+inline,com/company/test/MeasureTest.sequenceMeasure
+inline,com/company/test/MeasureTest.turtleMeasure
