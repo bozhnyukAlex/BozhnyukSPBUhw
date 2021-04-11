@@ -33,7 +33,7 @@ The code contains the following functions:
 - ``other``.
 ``main`` calls ``input``, specially matched input results in a call to other (overwritten return address). ``other`` prints something to demonstrate that it was called. Correct continuation of work is not required.
 ``main`` or ``input`` print any necessary information: function addresses, stack contents.
-## Task 6: Sorting Algorithms and Maping
+## Task 6: Sorting Algorithms and Memory Mapping
 1. Implement three sorting algorithms: counting sort, based on comparisons with asymptotic complexity O(n*log (n) and based on comparisons with asymptotic complexity O(n^2). Measure the running time and fill in the table on input data sets of different sizes: 5, 10, 100, 1k, 10k, 100k, 1M, 10M, 100M. Value n/a is allowed - did not wait for an answer.
 Arrays can be filled with random numbers. For reproducibility of the result, the generator should not be initialized with the current time, but with some number.
 2. Write a program to sort strings in a text file using the memory mapped files mechanism. Lines in the file are terminated according to the operating system rules (``\n`` or ``\r\n``).
