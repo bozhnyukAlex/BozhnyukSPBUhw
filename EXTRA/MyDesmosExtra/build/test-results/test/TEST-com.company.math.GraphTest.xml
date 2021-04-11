@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.company.math.GraphTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-12T11:32:31" hostname="bozhnyuks-HP-Pavilion-Gaming-Laptop-15-dk0xxx" time="0.002">
-  <properties/>
-  <testcase name="getYPointsHyperbolaTest" classname="com.company.math.GraphTest" time="0.001"/>
-  <testcase name="getYPointsEllipseTest" classname="com.company.math.GraphTest" time="0.0"/>
-  <testcase name="getYPointsParabolaTest" classname="com.company.math.GraphTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
